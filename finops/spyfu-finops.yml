@@ -1,0 +1,87 @@
+name: SpyFu API FinOps
+description: >-
+  FinOps Framework 1.0 FOCUS-aligned cost visibility profile for SpyFu API
+  consumption. SpyFu uses a hybrid model: a flat monthly subscription fee
+  includes a bundled API credit allowance, and overage is billed on a
+  pay-as-you-go CPM basis per row of data returned.
+specificationVersion: "1.0"
+url: https://developer.spyfu.com/docs/api-pricing
+
+costModel:
+  type: Hybrid (Subscription + Usage-Based Overage)
+  billingGranularity: Per row of data returned
+  formula: "(successful_rows / 1000) * cpm_rate"
+  billingCycle: Monthly (1st to last day of calendar month, UTC)
+  currency: USD
+  overage: Charged to account payment method when monthly credit is exhausted
+
+includedCredits:
+  - plan: Pro + AI
+    monthlyCredit: 40.00
+  - plan: Team / Agency
+    monthlyCredit: 100.00
+
+endpointPricing:
+  - api: Domain Stats API
+    endpoints:
+      - name: getDomainStatsForQuery
+        cpm: 0.50
+      - name: getBulkDomainStats
+        cpm: 0.50
+  - api: Ad History Research API
+    endpoints:
+      - name: getAdHistoryForDomain
+        cpm: 2.00
+      - name: getAdHistoryForKeyword
+        cpm: 2.00
+  - api: PPC Research API
+    endpoints:
+      - name: getPaidKeywords
+        cpm: 1.00
+      - name: getPaidSerps
+        cpm: 1.00
+  - api: SEO Research API
+    endpoints:
+      - name: getTopPages
+        cpm: 5.00
+      - name: getOrganicKeywords
+        cpm: 1.00
+  - api: Competitors API
+    endpoints:
+      - name: getCompetitors
+        cpm: 0.20
+      - name: getKeywordInformation
+        cpm: 0.20
+  - api: Kombat API
+    endpoints:
+      - name: getDomainKombat
+        cpm: 1.00
+  - api: Keyword Research API
+    endpoints:
+      - name: getRelatedKeywords
+        cpm: 1.00
+      - name: getKeywordInformation
+        cpm: 0.20
+  - api: Ranking History Research API
+    endpoints:
+      - name: getRankingHistory
+        cpm: 1.00
+
+focusAlignment:
+  chargeType: Usage
+  serviceCategory: Analytics
+  resourceType: API Rows
+  usageUnit: Rows (per 1,000)
+  provider: SpyFu
+
+costOptimization:
+  - strategy: Cache API responses to eliminate duplicate row charges
+  - strategy: Use bulk endpoints (e.g., getBulkDomainStats) to consolidate calls
+  - strategy: Prioritize low-CPM Competitors API endpoints when only basic data is needed
+  - strategy: Avoid getTopPages ($5.00 CPM) unless page-level data is strictly required
+  - strategy: Monitor monthly consumption at spyfu.com/account/api before credit exhaustion
+  - strategy: Choose the Team/Agency plan if monthly API spend consistently exceeds $40
+
+monitoring:
+  dashboard: https://www.spyfu.com/account/api
+  alertRecommendation: Set internal spend alerts at 75% and 90% of monthly credit allowance

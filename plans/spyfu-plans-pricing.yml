@@ -1,0 +1,74 @@
+name: SpyFu Plans and Pricing
+description: >-
+  SpyFu offers three subscription tiers. API access is included on Pro + AI and
+  Team/Agency plans. Each plan bundles monthly API credits on a pay-as-you-go
+  CPM model billed per row of data returned.
+specificationVersion: "0.1"
+url: https://www.spyfu.com/pricing
+plans:
+  - name: Basic
+    description: >-
+      Entry-level plan for individual users who need core SEO and PPC research
+      features without programmatic API access.
+    price: 39.00
+    currency: USD
+    billingCycle: monthly
+    annualDiscount: true
+    annualPrice: 29.00
+    features:
+      - 10,000 search results per month
+      - Domain and keyword research
+      - PPC and SEO competitor reports
+      - No API access
+    apiAccess: false
+
+  - name: Pro + AI
+    description: >-
+      Mid-tier plan for agencies and power users requiring REST API access along
+      with AI-enhanced research workflows.
+    price: 119.00
+    currency: USD
+    billingCycle: monthly
+    promoFirstMonth: 59.00
+    annualDiscount: true
+    annualPrice: 89.00
+    features:
+      - Unlimited search results
+      - Full domain, keyword, and competitor reports
+      - Ad history and ranking history
+      - REST API access included
+      - $40 monthly API credit (CPM billed per row returned)
+      - API usage dashboard at spyfu.com/account/api
+    apiAccess: true
+    apiCredit: 40.00
+    apiCreditCurrency: USD
+    apiCreditCycle: monthly
+
+  - name: Team / Agency
+    description: >-
+      Top-tier plan designed for agencies and large teams needing maximum data
+      exports and the highest API credit allowance.
+    price: 249.00
+    currency: USD
+    billingCycle: monthly
+    annualDiscount: true
+    annualPrice: 199.00
+    features:
+      - Unlimited search results and data exports
+      - Full access to all research modules
+      - REST API access included
+      - $100 monthly API credit (CPM billed per row returned)
+      - Priority support
+      - API usage dashboard at spyfu.com/account/api
+    apiAccess: true
+    apiCredit: 100.00
+    apiCreditCurrency: USD
+    apiCreditCycle: monthly
+
+notes: >-
+  API charges are billed per row of data returned using the formula:
+  (successful rows / 1,000) × CPM rate per endpoint. CPM rates range from
+  $0.20 (Competitors / Keyword Information) to $5.00 (Top Pages endpoints).
+  Billing cycles run from the first to the last day of each calendar month
+  (UTC). Overage above included credits is charged to the account payment
+  method.

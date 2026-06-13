@@ -1,0 +1,70 @@
+aid: spyfu
+name: SpyFu
+description: >-
+  SpyFu is a competitive SEO and PPC intelligence platform that gives marketers
+  and agencies programmatic access to competitor keyword rankings, ad history,
+  backlinks, and domain performance data. The REST API covers eight research
+  domains — Domain Stats, Ad History, PPC Research, SEO Research, Competitors,
+  Kombat, Keyword Research, and Ranking History — and is indexed against 1.6
+  trillion search results, 8 billion keywords, and 152 million domains.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/spyfu/refs/heads/main/apis.yml
+created: 2026-06-13
+modified: 2026-06-13
+specificationVersion: "0.19"
+tags:
+  - SEO
+  - PPC
+  - Competitive Intelligence
+  - Keyword Research
+  - Ad History
+  - Backlinks
+  - Domain Analytics
+  - SERP
+apis:
+  - aid: spyfu:spyfu-api
+    name: SpyFu API
+    description: >-
+      REST API providing access to SpyFu's full competitive search intelligence
+      dataset, including domain stats, PPC ad history, SEO research, keyword
+      analysis, competitor profiling, and ranking history tracking.
+    humanURL: https://developer.spyfu.com/
+    baseURL: https://api.spyfu.com
+    tags:
+      - SEO
+      - PPC
+      - Keyword Research
+      - Competitive Intelligence
+    properties:
+      - type: Documentation
+        url: https://developer.spyfu.com/docs
+      - type: OpenAPI
+        url: https://developer.spyfu.com/openapi.json
+    contact:
+      - FN: SpyFu Support
+        url: https://www.spyfu.com/contact
+common:
+  - type: Website
+    url: https://www.spyfu.com/
+  - type: Documentation
+    url: https://developer.spyfu.com/
+  - type: GitHubOrg
+    url: https://github.com/spyfu
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/spyfu
+  - type: X
+    url: https://x.com/spyfu
+  - type: Blog
+    url: https://www.spyfu.com/blog/
+  - type: Pricing
+    url: https://www.spyfu.com/pricing
+  - type: Plans
+    url: plans/spyfu-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/spyfu-rate-limits.yml
+  - type: FinOps
+    url: finops/spyfu-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

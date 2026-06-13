@@ -1,0 +1,86 @@
+name: SpyFu API Rate Limits
+description: >-
+  SpyFu enforces per-endpoint rate limits on rolling 1-second windows. When a
+  limit is exceeded the API returns HTTP 429 Too Many Requests with a
+  Retry-After header. There are no separate daily or monthly request quotas;
+  usage is metered through the monthly API credit system.
+specificationVersion: "0.1"
+url: https://developer.spyfu.com/docs
+enforcement:
+  window: 1 second (rolling)
+  errorCode: 429
+  retryHeader: Retry-After
+  retryBehavior: Retry after the number of seconds indicated by Retry-After
+limits:
+  - api: Domain Stats API
+    endpoints:
+      - path: /getBulkDomainStats
+        limit: 333
+        unit: requests/second
+      - path: /getMatchingDomains
+        limit: 10
+        unit: requests/second
+      - path: "*"
+        limit: 1000
+        unit: requests/second
+
+  - api: Ad History Research API
+    endpoints:
+      - path: "*"
+        limit: 10
+        unit: requests/second
+
+  - api: PPC Research API
+    endpoints:
+      - path: /getPaidSerps
+        limit: 12
+        unit: requests/second
+      - path: "*"
+        limit: 10
+        unit: requests/second
+
+  - api: SEO Research API
+    endpoints:
+      - path: /getTopPages
+        limit: 2
+        unit: requests/second
+      - path: "*"
+        limit: 10
+        unit: requests/second
+
+  - api: Competitors API
+    endpoints:
+      - path: "*"
+        limit: 1000
+        unit: requests/second
+
+  - api: Kombat API
+    endpoints:
+      - path: "*"
+        limit: 10
+        unit: requests/second
+
+  - api: Keyword Research API
+    endpoints:
+      - path: /getRelatedKeywords
+        limit: 5
+        unit: requests/second
+      - path: /getKeywordInformation
+        limit: 100
+        unit: requests/second
+      - path: "*"
+        limit: 10
+        unit: requests/second
+
+  - api: Ranking History Research API
+    endpoints:
+      - path: "*"
+        limit: 10
+        unit: requests/second
+
+bestPractices:
+  - Batch requests where possible to reduce total call volume
+  - Cache API responses to avoid redundant queries
+  - Limit concurrency to stay within per-endpoint thresholds
+  - Monitor usage at spyfu.com/account/api
+  - Contact SpyFu support to request higher limits for specific workloads
