@@ -1,0 +1,1904 @@
+openapi: 3.0.3
+info:
+  title: Domain Stats API
+  version: v2
+  description: 'Access comprehensive domain performance metrics and historical analytics
+    to track search visibility trends, competitive positioning, and market share evolution
+    over time. Powered by SpyFu''s unmatched historical data collection spanning 18
+    years of continuous monitoring across both organic and paid search channels.
+
+
+    SpyFu''s Domain Stats API provides **18 years of complete historical data** for
+    every tracked domain, built on a foundation of **1.6 trillion search results**
+    and **152 million domains** analyzed for comprehensive performance metrics. Our
+    database delivers **20x more paid keywords per domain** and **2x more organic
+    keywords per domain** than SEMRush or Ahrefs. **Every domain metric updates every
+    15 seconds**, ensuring you have real-time performance intelligence across all
+    28 supported countries.
+
+
+    While competitors provide basic domain snapshots with limited history, SpyFu offers
+    complete domain timeline analysis with 18 years of historical data and live updates
+    every 15 seconds. Our comprehensive tracking covers both organic and paid search
+    performance since 2007, providing unmatched insight into long-term domain evolution.
+
+
+    With this API, you can track domain performance trends across SEO and PPC channels
+    over time, analyze seasonal patterns and growth trajectories, benchmark domain
+    performance against historical baselines, identify performance inflection points
+    and strategy changes, monitor competitive domain performance evolution, and access
+    complete domain visibility metrics spanning nearly two decades. Understand how
+    domains have grown their search presence and learn from successful optimization
+    strategies implemented over years.
+
+
+    The Domain Stats API integrates seamlessly with SpyFu''s SEO Research, Ad History,
+    and Competitors APIs to provide complete domain intelligence, enabling you to
+    correlate performance metrics with specific keyword strategies and competitive
+    activities.
+
+
+    Get started with comprehensive API documentation and interactive examples at [SpyFu
+    Developer Portal](https://developer.spyfu.com).'
+servers:
+- url: https://api.spyfu.com/apis/domain_stats_api
+paths:
+  /v2/getAllDomainStats:
+    get:
+      operationId: DomainStatsApi_GetAllDomainStats_GET
+      summary: Get All Domain Stats
+      description: 'Returns comprehensive domain statistics for all available historical
+        periods. This endpoint provides time-series data showing SEO and PPC performance
+        trends to analyze domain growth, competitive positioning, and marketing effectiveness
+        over time.
+
+
+        [Visualize this API live on SpyFu](https://www.spyfu.com/domain-overview?query=example.com)'
+      parameters:
+      - name: domain
+        in: query
+        description: Domain to retrieve comprehensive statistics for.
+        required: true
+        schema:
+          type: string
+          example: example.com
+        example: example.com
+      - name: countryCode
+        in: query
+        description: Country market to search.  Specifically, this maps to the Google
+          domain version to query against (e.g., google.com for US, google.de for
+          Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All
+          Countries</a>
+        schema:
+          type: string
+          default: US
+          enum:
+          - AR
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - DE
+          - DK
+          - ES
+          - FR
+          - IE
+          - IN
+          - IT
+          - JP
+          - MX
+          - NL
+          - 'NO'
+          - NZ
+          - PL
+          - PT
+          - SE
+          - SG
+          - TR
+          - UA
+          - UK
+          - US
+          - ZA
+          example: US
+        example: US
+      responses:
+        '200':
+          description: Successfully retrieved comprehensive domain statistics across
+            all time periods. Returns historical data showing SEO/PPC trends, keyword
+            counts, traffic estimates, and competitive metrics.
+          content:
+            application/json:
+              schema:
+                description: Response wrapper containing comprehensive domain performance
+                  statistics across multiple time periods with detailed SEO and PPC
+                  metrics.
+                type: object
+                properties:
+                  domain:
+                    description: Domain name for which the statistics were collected
+                      and analyzed.
+                    type: string
+                    nullable: true
+                    example: example.com
+                  results:
+                    description: Array of domain performance statistics organized
+                      by time period, including SEO metrics, PPC data, traffic estimates,
+                      and competitive strength indicators.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        searchMonth:
+                          description: Month when these domain statistics were collected
+                            (1-12).
+                          type: integer
+                          format: int32
+                          example: 5
+                        searchYear:
+                          description: Year when these domain statistics were collected.
+                          type: integer
+                          format: int32
+                          example: 2021
+                        averageOrganicRank:
+                          description: Average organic search ranking position across
+                            all keywords for this domain during the specified month.
+                          type: number
+                          format: double
+                          example: 41.08
+                        monthlyPaidClicks:
+                          description: Estimated monthly clicks received from paid
+                            search advertising across all keywords, calculated based
+                            on average ad positions and click-through rates.
+                          type: number
+                          format: double
+                          example: 61181.88
+                        averageAdRank:
+                          description: Average paid search ad position across all
+                            advertised keywords during the specified month.
+                          type: number
+                          format: double
+                          example: 1.03
+                        totalOrganicResults:
+                          description: Total number of unique organic keywords where
+                            this domain appears in the top 100 search results during
+                            the specified month.
+                          type: integer
+                          format: int32
+                          example: 302731
+                        monthlyBudget:
+                          description: Estimated monthly Google Ads spending based
+                            on keyword positions, click-through rates, and cost-per-click
+                            data across all paid campaigns.
+                          type: number
+                          format: double
+                          example: 6721.39
+                        monthlyOrganicValue:
+                          description: Estimated value of organic search traffic based
+                            on keyword rankings and equivalent cost-per-click values,
+                            representing the advertising spend equivalent of organic
+                            visibility.
+                          type: number
+                          format: double
+                          example: 384233.16
+                        totalAdsPurchased:
+                          description: Total number of unique paid keywords where
+                            this domain's ads appeared on the first page of search
+                            results, measured over the last 14 data collection periods.
+                          type: integer
+                          format: int32
+                          example: 599
+                        monthlyOrganicClicks:
+                          description: Estimated monthly organic search traffic clicks
+                            received from all ranking keywords during the specified
+                            month.
+                          type: number
+                          format: double
+                          example: 290145
+                        strength:
+                          description: Domain authority score (0-100) indicating competitive
+                            strength and ranking consistency across high-value keywords,
+                            with higher scores representing stronger market position.
+                          type: integer
+                          format: int32
+                          example: 75
+                        totalInverseRank:
+                          description: Cumulative ranking score where higher organic
+                            positions receive higher point values (position 1 = 100
+                            points, position 2 = 99 points, etc.), summed across all
+                            ranking keywords.
+                          type: integer
+                          format: int64
+                          example: 4971564
+                        areStatsNormalized:
+                          description: Indicates whether the statistics have been
+                            normalized for consistent comparison across different
+                            time periods and data collection methods.
+                          type: boolean
+                          example: true
+                      additionalProperties: false
+                      description: Represents comprehensive domain performance statistics
+                        for a specific month, including SEO and PPC metrics, traffic
+                        estimates, and competitive strength indicators.
+                    nullable: true
+                  resultCount:
+                    description: Number of results returned
+                    type: integer
+                    format: int32
+                    readOnly: true
+                    example: 1
+                additionalProperties: false
+        '400':
+          description: Bad Request - Invalid parameters provided (e.g., invalid domain
+            format or invalid country code)
+        '401':
+          description: Unauthorized - Invalid API credentials or insufficient permissions
+            to access domain statistics data
+        '500':
+          description: Internal Server Error - A server-side error occurred while
+            processing the request
+      tags:
+      - Domain Stats API
+  /v2/getLatestDomainStats:
+    get:
+      operationId: DomainStatsApi_GetLatestDomainStats_GET
+      summary: Get Latest Domain Stats
+      description: 'Returns the most recent domain statistics available in SpyFu''s
+        database. This endpoint provides current SEO and PPC performance metrics to
+        analyze the domain''s latest competitive position and marketing activity.
+
+
+        [Visualize this API live on SpyFu](https://www.spyfu.com/domain-overview?query=example.com)'
+      parameters:
+      - name: domain
+        in: query
+        description: Domain to retrieve latest statistics for.
+        required: true
+        schema:
+          type: string
+          example: example.com
+        example: example.com
+      - name: countryCode
+        in: query
+        description: Country market to search.  Specifically, this maps to the Google
+          version to query against (google.de for Germany, etc).  Google.com (US)
+          is the default.      [See full list of supported Countries](https://developer.spyfu.com/update/reference/country-code-enum#/)
+        schema:
+          type: string
+          default: US
+          enum:
+          - AR
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - DE
+          - DK
+          - ES
+          - FR
+          - IE
+          - IN
+          - IT
+          - JP
+          - MX
+          - NL
+          - 'NO'
+          - NZ
+          - PL
+          - PT
+          - SE
+          - SG
+          - TR
+          - UA
+          - UK
+          - US
+          - ZA
+          example: US
+        example: US
+      - name: pastNMonths
+        in: query
+        description: Returns the latest N months of stats for domain.
+        schema:
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+      responses:
+        '200':
+          description: Successfully retrieved latest domain statistics. Returns the
+            most recent SEO and PPC metrics including keyword counts, traffic estimates,
+            and competitive positioning data.
+          content:
+            application/json:
+              schema:
+                description: Response wrapper containing comprehensive domain performance
+                  statistics across multiple time periods with detailed SEO and PPC
+                  metrics.
+                type: object
+                properties:
+                  domain:
+                    description: Domain name for which the statistics were collected
+                      and analyzed.
+                    type: string
+                    nullable: true
+                    example: example.com
+                  results:
+                    description: Array of domain performance statistics organized
+                      by time period, including SEO metrics, PPC data, traffic estimates,
+                      and competitive strength indicators.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        searchMonth:
+                          description: Month when these domain statistics were collected
+                            (1-12).
+                          type: integer
+                          format: int32
+                          example: 5
+                        searchYear:
+                          description: Year when these domain statistics were collected.
+                          type: integer
+                          format: int32
+                          example: 2021
+                        averageOrganicRank:
+                          description: Average organic search ranking position across
+                            all keywords for this domain during the specified month.
+                          type: number
+                          format: double
+                          example: 41.08
+                        monthlyPaidClicks:
+                          description: Estimated monthly clicks received from paid
+                            search advertising across all keywords, calculated based
+                            on average ad positions and click-through rates.
+                          type: number
+                          format: double
+                          example: 61181.88
+                        averageAdRank:
+                          description: Average paid search ad position across all
+                            advertised keywords during the specified month.
+                          type: number
+                          format: double
+                          example: 1.03
+                        totalOrganicResults:
+                          description: Total number of unique organic keywords where
+                            this domain appears in the top 100 search results during
+                            the specified month.
+                          type: integer
+                          format: int32
+                          example: 302731
+                        monthlyBudget:
+                          description: Estimated monthly Google Ads spending based
+                            on keyword positions, click-through rates, and cost-per-click
+                            data across all paid campaigns.
+                          type: number
+                          format: double
+                          example: 6721.39
+                        monthlyOrganicValue:
+                          description: Estimated value of organic search traffic based
+                            on keyword rankings and equivalent cost-per-click values,
+                            representing the advertising spend equivalent of organic
+                            visibility.
+                          type: number
+                          format: double
+                          example: 384233.16
+                        totalAdsPurchased:
+                          description: Total number of unique paid keywords where
+                            this domain's ads appeared on the first page of search
+                            results, measured over the last 14 data collection periods.
+                          type: integer
+                          format: int32
+                          example: 599
+                        monthlyOrganicClicks:
+                          description: Estimated monthly organic search traffic clicks
+                            received from all ranking keywords during the specified
+                            month.
+                          type: number
+                          format: double
+                          example: 290145
+                        strength:
+                          description: Domain authority score (0-100) indicating competitive
+                            strength and ranking consistency across high-value keywords,
+                            with higher scores representing stronger market position.
+                          type: integer
+                          format: int32
+                          example: 75
+                        totalInverseRank:
+                          description: Cumulative ranking score where higher organic
+                            positions receive higher point values (position 1 = 100
+                            points, position 2 = 99 points, etc.), summed across all
+                            ranking keywords.
+                          type: integer
+                          format: int64
+                          example: 4971564
+                        areStatsNormalized:
+                          description: Indicates whether the statistics have been
+                            normalized for consistent comparison across different
+                            time periods and data collection methods.
+                          type: boolean
+                          example: true
+                      additionalProperties: false
+                      description: Represents comprehensive domain performance statistics
+                        for a specific month, including SEO and PPC metrics, traffic
+                        estimates, and competitive strength indicators.
+                    nullable: true
+                  resultCount:
+                    description: Number of results returned
+                    type: integer
+                    format: int32
+                    readOnly: true
+                    example: 1
+                additionalProperties: false
+        '400':
+          description: Bad Request - Invalid parameters provided (e.g., invalid domain
+            format or invalid country code)
+        '401':
+          description: Unauthorized - Invalid API credentials or insufficient permissions
+            to access domain statistics data
+        '500':
+          description: Internal Server Error - A server-side error occurred while
+            processing the request
+      tags:
+      - Domain Stats API
+  /v2/getDomainStatsForExactDate:
+    get:
+      operationId: DomainStatsApi_GetDomainStatsForExactDate_GET
+      summary: Get Domain Stats For Exact Date
+      description: 'Returns domain statistics for a specific month and year. This
+        endpoint provides point-in-time snapshots of SEO and PPC performance metrics
+        to analyze historical domain activity and compare performance across different
+        time periods.
+
+
+        [Visualize this API live on SpyFu](https://www.spyfu.com/domain-overview?query=example.com)'
+      parameters:
+      - name: domain
+        in: query
+        description: Domain to retrieve statistics for.
+        required: true
+        schema:
+          type: string
+          example: example.com
+        example: example.com
+      - name: countryCode
+        in: query
+        description: Country market to search.  Specifically, this maps to the Google
+          version to query against (google.de for Germany, etc).  Google.com (US)
+          is the default.      [See full list of supported Countries](https://developer.spyfu.com/update/reference/country-code-enum#/)
+        schema:
+          type: string
+          default: US
+          enum:
+          - AR
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - DE
+          - DK
+          - ES
+          - FR
+          - IE
+          - IN
+          - IT
+          - JP
+          - MX
+          - NL
+          - 'NO'
+          - NZ
+          - PL
+          - PT
+          - SE
+          - SG
+          - TR
+          - UA
+          - UK
+          - US
+          - ZA
+          example: US
+        example: US
+      - name: year
+        in: query
+        description: Year to retrieve statistics for.
+        required: true
+        schema:
+          type: integer
+          format: int32
+          maximum: 2025
+          minimum: 2006
+          example: 2020
+        example: 2020
+      - name: month
+        in: query
+        description: Month to retrieve statistics for (1-12).
+        required: true
+        schema:
+          type: integer
+          format: int32
+          maximum: 12
+          minimum: 1
+          example: 6
+        example: 6
+      responses:
+        '200':
+          description: Successfully retrieved domain statistics for the specified
+            date. Returns SEO and PPC metrics including keyword counts, traffic estimates,
+            and competitive positioning data.
+          content:
+            application/json:
+              schema:
+                description: Response wrapper containing comprehensive domain performance
+                  statistics across multiple time periods with detailed SEO and PPC
+                  metrics.
+                type: object
+                properties:
+                  domain:
+                    description: Domain name for which the statistics were collected
+                      and analyzed.
+                    type: string
+                    nullable: true
+                    example: example.com
+                  results:
+                    description: Array of domain performance statistics organized
+                      by time period, including SEO metrics, PPC data, traffic estimates,
+                      and competitive strength indicators.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        searchMonth:
+                          description: Month when these domain statistics were collected
+                            (1-12).
+                          type: integer
+                          format: int32
+                          example: 5
+                        searchYear:
+                          description: Year when these domain statistics were collected.
+                          type: integer
+                          format: int32
+                          example: 2021
+                        averageOrganicRank:
+                          description: Average organic search ranking position across
+                            all keywords for this domain during the specified month.
+                          type: number
+                          format: double
+                          example: 41.08
+                        monthlyPaidClicks:
+                          description: Estimated monthly clicks received from paid
+                            search advertising across all keywords, calculated based
+                            on average ad positions and click-through rates.
+                          type: number
+                          format: double
+                          example: 61181.88
+                        averageAdRank:
+                          description: Average paid search ad position across all
+                            advertised keywords during the specified month.
+                          type: number
+                          format: double
+                          example: 1.03
+                        totalOrganicResults:
+                          description: Total number of unique organic keywords where
+                            this domain appears in the top 100 search results during
+                            the specified month.
+                          type: integer
+                          format: int32
+                          example: 302731
+                        monthlyBudget:
+                          description: Estimated monthly Google Ads spending based
+                            on keyword positions, click-through rates, and cost-per-click
+                            data across all paid campaigns.
+                          type: number
+                          format: double
+                          example: 6721.39
+                        monthlyOrganicValue:
+                          description: Estimated value of organic search traffic based
+                            on keyword rankings and equivalent cost-per-click values,
+                            representing the advertising spend equivalent of organic
+                            visibility.
+                          type: number
+                          format: double
+                          example: 384233.16
+                        totalAdsPurchased:
+                          description: Total number of unique paid keywords where
+                            this domain's ads appeared on the first page of search
+                            results, measured over the last 14 data collection periods.
+                          type: integer
+                          format: int32
+                          example: 599
+                        monthlyOrganicClicks:
+                          description: Estimated monthly organic search traffic clicks
+                            received from all ranking keywords during the specified
+                            month.
+                          type: number
+                          format: double
+                          example: 290145
+                        strength:
+                          description: Domain authority score (0-100) indicating competitive
+                            strength and ranking consistency across high-value keywords,
+                            with higher scores representing stronger market position.
+                          type: integer
+                          format: int32
+                          example: 75
+                        totalInverseRank:
+                          description: Cumulative ranking score where higher organic
+                            positions receive higher point values (position 1 = 100
+                            points, position 2 = 99 points, etc.), summed across all
+                            ranking keywords.
+                          type: integer
+                          format: int64
+                          example: 4971564
+                        areStatsNormalized:
+                          description: Indicates whether the statistics have been
+                            normalized for consistent comparison across different
+                            time periods and data collection methods.
+                          type: boolean
+                          example: true
+                      additionalProperties: false
+                      description: Represents comprehensive domain performance statistics
+                        for a specific month, including SEO and PPC metrics, traffic
+                        estimates, and competitive strength indicators.
+                    nullable: true
+                  resultCount:
+                    description: Number of results returned
+                    type: integer
+                    format: int32
+                    readOnly: true
+                    example: 1
+                additionalProperties: false
+        '400':
+          description: Bad Request - Invalid parameters provided (e.g., invalid domain
+            format, date out of range, or invalid country code)
+        '401':
+          description: Unauthorized - Invalid API credentials or insufficient permissions
+            to access domain statistics data
+        '500':
+          description: Internal Server Error - A server-side error occurred while
+            processing the request
+      tags:
+      - Domain Stats API
+  /v2/getActiveDatesForDomain:
+    get:
+      operationId: DomainStatsApi_GetActiveDatesForDomain_GET
+      summary: Get Active Dates For Domain
+      description: 'Returns a chronological list of dates for which SpyFu has collected
+        domain statistics data. This endpoint helps identify data coverage periods
+        and historical tracking availability for domain analysis and competitive research.
+
+
+        [Visualize this API live on SpyFu](https://www.spyfu.com/domain-overview?query=example.com)'
+      parameters:
+      - name: domain
+        in: query
+        description: Domain to retrieve data coverage dates for.
+        required: true
+        schema:
+          type: string
+          example: example.com
+        example: example.com
+      - name: countryCode
+        in: query
+        description: Country market to search.  Specifically, this maps to the Google
+          version to query against (google.de for Germany, etc).  Google.com (US)
+          is the default.      [See full list of supported Countries](https://developer.spyfu.com/update/reference/country-code-enum#/)
+        schema:
+          type: string
+          default: US
+          enum:
+          - AR
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - DE
+          - DK
+          - ES
+          - FR
+          - IE
+          - IN
+          - IT
+          - JP
+          - MX
+          - NL
+          - 'NO'
+          - NZ
+          - PL
+          - PT
+          - SE
+          - SG
+          - TR
+          - UA
+          - UK
+          - US
+          - ZA
+          example: US
+        example: US
+      responses:
+        '200':
+          description: Successfully retrieved list of active data collection dates
+            for the domain. Returns chronological dates showing when SpyFu collected
+            statistics data for historical analysis.
+          content:
+            application/json:
+              schema:
+                description: Response wrapper containing a list of available search
+                  dates for which domain statistics data is available, used for historical
+                  analysis and date-specific queries.
+                type: object
+                properties:
+                  resultCount:
+                    description: Number of results returned
+                    type: integer
+                    format: int32
+                    readOnly: true
+                    example: 100
+                  results:
+                    description: Array of available search dates for which domain
+                      performance statistics have been collected and can be queried.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        dateString:
+                          type: string
+                          nullable: true
+                        month:
+                          type: integer
+                          format: int32
+                          readOnly: true
+                        year:
+                          type: integer
+                          format: int32
+                          readOnly: true
+                      additionalProperties: false
+                    readOnly: true
+                    nullable: true
+                additionalProperties: false
+        '400':
+          description: Bad Request - Invalid parameters provided (e.g., invalid domain
+            format or invalid country code)
+        '401':
+          description: Unauthorized - Invalid API credentials or insufficient permissions
+            to access domain statistics data
+        '500':
+          description: Internal Server Error - A server-side error occurred while
+            processing the request
+      tags:
+      - Domain Stats API
+  /v2/getBulkDomainStats:
+    get:
+      operationId: DomainStatsApi_GetBulkDomainStats_GET
+      summary: Bulk Domain Statistics (Snapshot or History)
+      description: Returns SEO and PPC metrics for multiple domains in one request.
+        Suitable for batch enrichment, benchmarking, and portfolio monitoring.
+      parameters:
+      - name: domains
+        in: query
+        description: Comma-separated list of domains to analyze. Each domain should
+          be provided as a root domain (example.com) without protocol or paths. Maximum
+          of 1000 domains per request.
+        required: true
+        schema:
+          type: string
+          example: example.com,competitor.com,industry-leader.com
+        example: example.com,competitor.com,industry-leader.com
+      - name: countryCode
+        in: query
+        description: Country market to analyze. Specifically, this maps to the Google
+          domain version to query against (e.g., google.com for US, google.de for
+          Germany, etc.).
+        schema:
+          type: string
+          default: US
+          enum:
+          - AR
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - DE
+          - DK
+          - ES
+          - FR
+          - IE
+          - IN
+          - IT
+          - JP
+          - MX
+          - NL
+          - 'NO'
+          - NZ
+          - PL
+          - PT
+          - SE
+          - SG
+          - TR
+          - UA
+          - UK
+          - US
+          - ZA
+          example: US
+        example: US
+      - name: showOnlyLatest
+        in: query
+        description: Controls data scope returned. If true, returns only the most
+          recent statistics for each domain (current snapshot). If false, returns
+          complete historical data showing trends over time for comprehensive analysis.
+        required: true
+        schema:
+          type: boolean
+          default: true
+          example: true
+        example: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  resultCount:
+                    description: Number of results returned
+                    type: integer
+                    format: int32
+                    readOnly: true
+                    example: 1
+                  totalMatchingResults:
+                    description: "The total number of results available that matches\
+                      \ the query including\r\nitems that might not be included in\
+                      \ the returned results/page."
+                    type: integer
+                    format: int64
+                    readOnly: true
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        domain:
+                          description: Searched domain
+                          type: string
+                          nullable: true
+                          example: domain.com
+                        results:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              searchMonth:
+                                description: Month when these domain statistics were
+                                  collected (1-12).
+                                type: integer
+                                format: int32
+                                example: 5
+                              searchYear:
+                                description: Year when these domain statistics were
+                                  collected.
+                                type: integer
+                                format: int32
+                                example: 2021
+                              averageOrganicRank:
+                                description: Average organic search ranking position
+                                  across all keywords for this domain during the specified
+                                  month.
+                                type: number
+                                format: double
+                                example: 41.08
+                              monthlyPaidClicks:
+                                description: Estimated monthly clicks received from
+                                  paid search advertising across all keywords, calculated
+                                  based on average ad positions and click-through
+                                  rates.
+                                type: number
+                                format: double
+                                example: 61181.88
+                              averageAdRank:
+                                description: Average paid search ad position across
+                                  all advertised keywords during the specified month.
+                                type: number
+                                format: double
+                                example: 1.03
+                              totalOrganicResults:
+                                description: Total number of unique organic keywords
+                                  where this domain appears in the top 100 search
+                                  results during the specified month.
+                                type: integer
+                                format: int32
+                                example: 302731
+                              monthlyBudget:
+                                description: Estimated monthly Google Ads spending
+                                  based on keyword positions, click-through rates,
+                                  and cost-per-click data across all paid campaigns.
+                                type: number
+                                format: double
+                                example: 6721.39
+                              monthlyOrganicValue:
+                                description: Estimated value of organic search traffic
+                                  based on keyword rankings and equivalent cost-per-click
+                                  values, representing the advertising spend equivalent
+                                  of organic visibility.
+                                type: number
+                                format: double
+                                example: 384233.16
+                              totalAdsPurchased:
+                                description: Total number of unique paid keywords
+                                  where this domain's ads appeared on the first page
+                                  of search results, measured over the last 14 data
+                                  collection periods.
+                                type: integer
+                                format: int32
+                                example: 599
+                              monthlyOrganicClicks:
+                                description: Estimated monthly organic search traffic
+                                  clicks received from all ranking keywords during
+                                  the specified month.
+                                type: number
+                                format: double
+                                example: 290145
+                              strength:
+                                description: Domain authority score (0-100) indicating
+                                  competitive strength and ranking consistency across
+                                  high-value keywords, with higher scores representing
+                                  stronger market position.
+                                type: integer
+                                format: int32
+                                example: 75
+                              totalInverseRank:
+                                description: Cumulative ranking score where higher
+                                  organic positions receive higher point values (position
+                                  1 = 100 points, position 2 = 99 points, etc.), summed
+                                  across all ranking keywords.
+                                type: integer
+                                format: int64
+                                example: 4971564
+                              areStatsNormalized:
+                                description: Indicates whether the statistics have
+                                  been normalized for consistent comparison across
+                                  different time periods and data collection methods.
+                                type: boolean
+                                example: true
+                            additionalProperties: false
+                            description: Represents comprehensive domain performance
+                              statistics for a specific month, including SEO and PPC
+                              metrics, traffic estimates, and competitive strength
+                              indicators.
+                          nullable: true
+                      additionalProperties: false
+                    nullable: true
+                additionalProperties: false
+        '400':
+          description: Bad Request
+        '401':
+          description: User failed authorization
+        '500':
+          description: Internal Server Error
+      tags:
+      - Domain Stats API
+  /v2/getMatchingDomains:
+    get:
+      operationId: DomainStatsApi_GetMatchingDomains_GET
+      summary: Find Domains by Pattern and Metrics
+      description: Discovers domains matching wildcard patterns and performance criteria
+        for lead generation and competitive prospecting. Use wildcards like `*car*`
+        to find automotive domains or filter by traffic, budget, and ranking metrics
+        to identify high-value prospects.
+      parameters:
+      - name: query
+        in: query
+        description: A wildcard(*) used to find any domain that matches the pattern.
+          `*blog*` will find any domain with the word blog appearing anywhere within
+          it.
+        required: true
+        schema:
+          type: string
+          example: '*blog*'
+        example: '*blog*'
+      - name: countryCode
+        in: query
+        description: Country to get results for.
+        schema:
+          type: string
+          default: US
+          enum:
+          - AR
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - DE
+          - DK
+          - ES
+          - FR
+          - IE
+          - IN
+          - IT
+          - JP
+          - MX
+          - NL
+          - 'NO'
+          - NZ
+          - PL
+          - PT
+          - SE
+          - SG
+          - TR
+          - UA
+          - UK
+          - US
+          - ZA
+          example: US
+        example: US
+      - name: sortBy
+        in: query
+        description: Column to sort by.
+        schema:
+          type: string
+          default: MonthlyOrganicClicks
+          enum:
+          - AverageAdRank
+          - AverageOrganicRank
+          - MonthlyBudget
+          - MonthlyOrganicClicks
+          - MonthlyOrganicValue
+          - MonthlyPaidClicks
+          - Strength
+          - TotalOrganicResults
+          example: MonthlyOrganicClicks
+        example: MonthlyOrganicClicks
+      - name: sortOrder
+        in: query
+        description: Order to sort the results.
+        schema:
+          type: string
+          default: Descending
+          enum:
+          - Ascending
+          - Descending
+          example: Descending
+        example: Descending
+      - name: monthlyBudget.min
+        in: query
+        description: Minimum monthly ad budget filter.
+        schema:
+          type: number
+          format: float
+          example: 1000
+        example: 1000
+      - name: monthlyBudget.max
+        in: query
+        description: Maximum monthly ad budget filter.
+        schema:
+          type: number
+          format: float
+          example: 50000
+        example: 50000
+      - name: monthlyOrganicClicks.min
+        in: query
+        description: Minimum monthly organic traffic filter.
+        schema:
+          type: number
+          format: float
+          example: 10000
+        example: 10000
+      - name: monthlyOrganicClicks.max
+        in: query
+        description: Maximum monthly organic traffic filter.
+        schema:
+          type: number
+          format: float
+          example: 500000
+        example: 500000
+      - name: totalOrganicResults.min
+        in: query
+        description: Minimum organic keyword count filter.
+        schema:
+          type: number
+          format: float
+          example: 100
+        example: 100
+      - name: totalOrganicResults.max
+        in: query
+        description: Maximum organic keyword count filter.
+        schema:
+          type: number
+          format: float
+          example: 10000
+        example: 10000
+      - name: monthlyOrganicValue.min
+        in: query
+        description: Minimum organic traffic value filter.
+        schema:
+          type: number
+          format: float
+          example: 5000
+        example: 5000
+      - name: monthlyOrganicValue.max
+        in: query
+        description: Maximum organic traffic value filter.
+        schema:
+          type: number
+          format: float
+          example: 100000
+        example: 100000
+      - name: strength.min
+        in: query
+        description: Minimum domain strength score filter.
+        schema:
+          type: number
+          format: float
+          example: 30
+        example: 30
+      - name: strength.max
+        in: query
+        description: Maximum domain strength score filter.
+        schema:
+          type: number
+          format: float
+          example: 90
+        example: 90
+      - name: monthlyPaidClicks.min
+        in: query
+        description: Minimum monthly paid clicks filter.
+        schema:
+          type: number
+          format: float
+          example: 500
+        example: 500
+      - name: monthlyPaidClicks.max
+        in: query
+        description: Maximum monthly paid clicks filter.
+        schema:
+          type: number
+          format: float
+          example: 100000
+        example: 100000
+      - name: averageOrganicRank.min
+        in: query
+        description: Minimum average organic rank filter.
+        schema:
+          type: number
+          format: float
+          example: 1
+        example: 1
+      - name: averageOrganicRank.max
+        in: query
+        description: Maximum average organic rank filter.
+        schema:
+          type: number
+          format: float
+          example: 50
+        example: 50
+      - name: averageAdRank.min
+        in: query
+        description: Minimum average ad position filter.
+        schema:
+          type: number
+          format: float
+          example: 1
+        example: 1
+      - name: averageAdRank.max
+        in: query
+        description: Maximum average ad position filter.
+        schema:
+          type: number
+          format: float
+          example: 4
+        example: 4
+      - name: pageSize
+        in: query
+        description: The maximum number of rows returned.
+        schema:
+          type: integer
+          format: int32
+          default: 5
+          maximum: 10000
+          minimum: 1
+          example: 5
+        example: 5
+      - name: startingRow
+        in: query
+        description: Row number to start the results with.
+        schema:
+          type: integer
+          format: int32
+          default: 1
+          maximum: 10000
+          minimum: 1
+          example: 1
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  resultCount:
+                    description: Number of results returned
+                    type: integer
+                    format: int32
+                    readOnly: true
+                    example: 1
+                  totalMatchingResults:
+                    description: "The total number of results available that matches\
+                      \ the query including\r\nitems that might not be included in\
+                      \ the returned results/page."
+                    type: integer
+                    format: int64
+                    readOnly: true
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        domain:
+                          description: Searched domain
+                          type: string
+                          nullable: true
+                          example: domain.com
+                        results:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              searchMonth:
+                                description: Month when these domain statistics were
+                                  collected (1-12).
+                                type: integer
+                                format: int32
+                                example: 5
+                              searchYear:
+                                description: Year when these domain statistics were
+                                  collected.
+                                type: integer
+                                format: int32
+                                example: 2021
+                              averageOrganicRank:
+                                description: Average organic search ranking position
+                                  across all keywords for this domain during the specified
+                                  month.
+                                type: number
+                                format: double
+                                example: 41.08
+                              monthlyPaidClicks:
+                                description: Estimated monthly clicks received from
+                                  paid search advertising across all keywords, calculated
+                                  based on average ad positions and click-through
+                                  rates.
+                                type: number
+                                format: double
+                                example: 61181.88
+                              averageAdRank:
+                                description: Average paid search ad position across
+                                  all advertised keywords during the specified month.
+                                type: number
+                                format: double
+                                example: 1.03
+                              totalOrganicResults:
+                                description: Total number of unique organic keywords
+                                  where this domain appears in the top 100 search
+                                  results during the specified month.
+                                type: integer
+                                format: int32
+                                example: 302731
+                              monthlyBudget:
+                                description: Estimated monthly Google Ads spending
+                                  based on keyword positions, click-through rates,
+                                  and cost-per-click data across all paid campaigns.
+                                type: number
+                                format: double
+                                example: 6721.39
+                              monthlyOrganicValue:
+                                description: Estimated value of organic search traffic
+                                  based on keyword rankings and equivalent cost-per-click
+                                  values, representing the advertising spend equivalent
+                                  of organic visibility.
+                                type: number
+                                format: double
+                                example: 384233.16
+                              totalAdsPurchased:
+                                description: Total number of unique paid keywords
+                                  where this domain's ads appeared on the first page
+                                  of search results, measured over the last 14 data
+                                  collection periods.
+                                type: integer
+                                format: int32
+                                example: 599
+                              monthlyOrganicClicks:
+                                description: Estimated monthly organic search traffic
+                                  clicks received from all ranking keywords during
+                                  the specified month.
+                                type: number
+                                format: double
+                                example: 290145
+                              strength:
+                                description: Domain authority score (0-100) indicating
+                                  competitive strength and ranking consistency across
+                                  high-value keywords, with higher scores representing
+                                  stronger market position.
+                                type: integer
+                                format: int32
+                                example: 75
+                              totalInverseRank:
+                                description: Cumulative ranking score where higher
+                                  organic positions receive higher point values (position
+                                  1 = 100 points, position 2 = 99 points, etc.), summed
+                                  across all ranking keywords.
+                                type: integer
+                                format: int64
+                                example: 4971564
+                              areStatsNormalized:
+                                description: Indicates whether the statistics have
+                                  been normalized for consistent comparison across
+                                  different time periods and data collection methods.
+                                type: boolean
+                                example: true
+                            additionalProperties: false
+                            description: Represents comprehensive domain performance
+                              statistics for a specific month, including SEO and PPC
+                              metrics, traffic estimates, and competitive strength
+                              indicators.
+                          nullable: true
+                      additionalProperties: false
+                    nullable: true
+                additionalProperties: false
+        '400':
+          description: Bad Request
+        '401':
+          description: User failed authorization
+        '500':
+          description: Internal Server Error
+      tags:
+      - Domain Stats API
+components:
+  schemas:
+    PublicApiBulkDomainStatsWrapperOutputDto:
+      type: object
+      properties:
+        resultCount:
+          description: Number of results returned
+          type: integer
+          format: int32
+          readOnly: true
+          example: 1
+        totalMatchingResults:
+          description: "The total number of results available that matches the query\
+            \ including\r\nitems that might not be included in the returned results/page."
+          type: integer
+          format: int64
+          readOnly: true
+          nullable: true
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              domain:
+                description: Searched domain
+                type: string
+                nullable: true
+                example: domain.com
+              results:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    searchMonth:
+                      description: Month when these domain statistics were collected
+                        (1-12).
+                      type: integer
+                      format: int32
+                      example: 5
+                    searchYear:
+                      description: Year when these domain statistics were collected.
+                      type: integer
+                      format: int32
+                      example: 2021
+                    averageOrganicRank:
+                      description: Average organic search ranking position across
+                        all keywords for this domain during the specified month.
+                      type: number
+                      format: double
+                      example: 41.08
+                    monthlyPaidClicks:
+                      description: Estimated monthly clicks received from paid search
+                        advertising across all keywords, calculated based on average
+                        ad positions and click-through rates.
+                      type: number
+                      format: double
+                      example: 61181.88
+                    averageAdRank:
+                      description: Average paid search ad position across all advertised
+                        keywords during the specified month.
+                      type: number
+                      format: double
+                      example: 1.03
+                    totalOrganicResults:
+                      description: Total number of unique organic keywords where this
+                        domain appears in the top 100 search results during the specified
+                        month.
+                      type: integer
+                      format: int32
+                      example: 302731
+                    monthlyBudget:
+                      description: Estimated monthly Google Ads spending based on
+                        keyword positions, click-through rates, and cost-per-click
+                        data across all paid campaigns.
+                      type: number
+                      format: double
+                      example: 6721.39
+                    monthlyOrganicValue:
+                      description: Estimated value of organic search traffic based
+                        on keyword rankings and equivalent cost-per-click values,
+                        representing the advertising spend equivalent of organic visibility.
+                      type: number
+                      format: double
+                      example: 384233.16
+                    totalAdsPurchased:
+                      description: Total number of unique paid keywords where this
+                        domain's ads appeared on the first page of search results,
+                        measured over the last 14 data collection periods.
+                      type: integer
+                      format: int32
+                      example: 599
+                    monthlyOrganicClicks:
+                      description: Estimated monthly organic search traffic clicks
+                        received from all ranking keywords during the specified month.
+                      type: number
+                      format: double
+                      example: 290145
+                    strength:
+                      description: Domain authority score (0-100) indicating competitive
+                        strength and ranking consistency across high-value keywords,
+                        with higher scores representing stronger market position.
+                      type: integer
+                      format: int32
+                      example: 75
+                    totalInverseRank:
+                      description: Cumulative ranking score where higher organic positions
+                        receive higher point values (position 1 = 100 points, position
+                        2 = 99 points, etc.), summed across all ranking keywords.
+                      type: integer
+                      format: int64
+                      example: 4971564
+                    areStatsNormalized:
+                      description: Indicates whether the statistics have been normalized
+                        for consistent comparison across different time periods and
+                        data collection methods.
+                      type: boolean
+                      example: true
+                  additionalProperties: false
+                  description: Represents comprehensive domain performance statistics
+                    for a specific month, including SEO and PPC metrics, traffic estimates,
+                    and competitive strength indicators.
+                nullable: true
+            additionalProperties: false
+          nullable: true
+      additionalProperties: false
+    PublicApiDomainStatsOutputItemDto:
+      description: Represents comprehensive domain performance statistics for a specific
+        month, including SEO and PPC metrics, traffic estimates, and competitive strength
+        indicators.
+      type: object
+      properties:
+        searchMonth:
+          description: Month when these domain statistics were collected (1-12).
+          type: integer
+          format: int32
+          example: 5
+        searchYear:
+          description: Year when these domain statistics were collected.
+          type: integer
+          format: int32
+          example: 2021
+        averageOrganicRank:
+          description: Average organic search ranking position across all keywords
+            for this domain during the specified month.
+          type: number
+          format: double
+          example: 41.08
+        monthlyPaidClicks:
+          description: Estimated monthly clicks received from paid search advertising
+            across all keywords, calculated based on average ad positions and click-through
+            rates.
+          type: number
+          format: double
+          example: 61181.88
+        averageAdRank:
+          description: Average paid search ad position across all advertised keywords
+            during the specified month.
+          type: number
+          format: double
+          example: 1.03
+        totalOrganicResults:
+          description: Total number of unique organic keywords where this domain appears
+            in the top 100 search results during the specified month.
+          type: integer
+          format: int32
+          example: 302731
+        monthlyBudget:
+          description: Estimated monthly Google Ads spending based on keyword positions,
+            click-through rates, and cost-per-click data across all paid campaigns.
+          type: number
+          format: double
+          example: 6721.39
+        monthlyOrganicValue:
+          description: Estimated value of organic search traffic based on keyword
+            rankings and equivalent cost-per-click values, representing the advertising
+            spend equivalent of organic visibility.
+          type: number
+          format: double
+          example: 384233.16
+        totalAdsPurchased:
+          description: Total number of unique paid keywords where this domain's ads
+            appeared on the first page of search results, measured over the last 14
+            data collection periods.
+          type: integer
+          format: int32
+          example: 599
+        monthlyOrganicClicks:
+          description: Estimated monthly organic search traffic clicks received from
+            all ranking keywords during the specified month.
+          type: number
+          format: double
+          example: 290145
+        strength:
+          description: Domain authority score (0-100) indicating competitive strength
+            and ranking consistency across high-value keywords, with higher scores
+            representing stronger market position.
+          type: integer
+          format: int32
+          example: 75
+        totalInverseRank:
+          description: Cumulative ranking score where higher organic positions receive
+            higher point values (position 1 = 100 points, position 2 = 99 points,
+            etc.), summed across all ranking keywords.
+          type: integer
+          format: int64
+          example: 4971564
+        areStatsNormalized:
+          description: Indicates whether the statistics have been normalized for consistent
+            comparison across different time periods and data collection methods.
+          type: boolean
+          example: true
+      additionalProperties: false
+    PublicApiDomainStatsWrapper:
+      type: object
+      properties:
+        domain:
+          description: Searched domain
+          type: string
+          nullable: true
+          example: domain.com
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              searchMonth:
+                description: Month when these domain statistics were collected (1-12).
+                type: integer
+                format: int32
+                example: 5
+              searchYear:
+                description: Year when these domain statistics were collected.
+                type: integer
+                format: int32
+                example: 2021
+              averageOrganicRank:
+                description: Average organic search ranking position across all keywords
+                  for this domain during the specified month.
+                type: number
+                format: double
+                example: 41.08
+              monthlyPaidClicks:
+                description: Estimated monthly clicks received from paid search advertising
+                  across all keywords, calculated based on average ad positions and
+                  click-through rates.
+                type: number
+                format: double
+                example: 61181.88
+              averageAdRank:
+                description: Average paid search ad position across all advertised
+                  keywords during the specified month.
+                type: number
+                format: double
+                example: 1.03
+              totalOrganicResults:
+                description: Total number of unique organic keywords where this domain
+                  appears in the top 100 search results during the specified month.
+                type: integer
+                format: int32
+                example: 302731
+              monthlyBudget:
+                description: Estimated monthly Google Ads spending based on keyword
+                  positions, click-through rates, and cost-per-click data across all
+                  paid campaigns.
+                type: number
+                format: double
+                example: 6721.39
+              monthlyOrganicValue:
+                description: Estimated value of organic search traffic based on keyword
+                  rankings and equivalent cost-per-click values, representing the
+                  advertising spend equivalent of organic visibility.
+                type: number
+                format: double
+                example: 384233.16
+              totalAdsPurchased:
+                description: Total number of unique paid keywords where this domain's
+                  ads appeared on the first page of search results, measured over
+                  the last 14 data collection periods.
+                type: integer
+                format: int32
+                example: 599
+              monthlyOrganicClicks:
+                description: Estimated monthly organic search traffic clicks received
+                  from all ranking keywords during the specified month.
+                type: number
+                format: double
+                example: 290145
+              strength:
+                description: Domain authority score (0-100) indicating competitive
+                  strength and ranking consistency across high-value keywords, with
+                  higher scores representing stronger market position.
+                type: integer
+                format: int32
+                example: 75
+              totalInverseRank:
+                description: Cumulative ranking score where higher organic positions
+                  receive higher point values (position 1 = 100 points, position 2
+                  = 99 points, etc.), summed across all ranking keywords.
+                type: integer
+                format: int64
+                example: 4971564
+              areStatsNormalized:
+                description: Indicates whether the statistics have been normalized
+                  for consistent comparison across different time periods and data
+                  collection methods.
+                type: boolean
+                example: true
+            additionalProperties: false
+            description: Represents comprehensive domain performance statistics for
+              a specific month, including SEO and PPC metrics, traffic estimates,
+              and competitive strength indicators.
+          nullable: true
+      additionalProperties: false
+    PublicApiDomainStatsWrapperOutputDto:
+      description: Response wrapper containing comprehensive domain performance statistics
+        across multiple time periods with detailed SEO and PPC metrics.
+      type: object
+      properties:
+        domain:
+          description: Domain name for which the statistics were collected and analyzed.
+          type: string
+          nullable: true
+          example: example.com
+        results:
+          description: Array of domain performance statistics organized by time period,
+            including SEO metrics, PPC data, traffic estimates, and competitive strength
+            indicators.
+          type: array
+          items:
+            type: object
+            properties:
+              searchMonth:
+                description: Month when these domain statistics were collected (1-12).
+                type: integer
+                format: int32
+                example: 5
+              searchYear:
+                description: Year when these domain statistics were collected.
+                type: integer
+                format: int32
+                example: 2021
+              averageOrganicRank:
+                description: Average organic search ranking position across all keywords
+                  for this domain during the specified month.
+                type: number
+                format: double
+                example: 41.08
+              monthlyPaidClicks:
+                description: Estimated monthly clicks received from paid search advertising
+                  across all keywords, calculated based on average ad positions and
+                  click-through rates.
+                type: number
+                format: double
+                example: 61181.88
+              averageAdRank:
+                description: Average paid search ad position across all advertised
+                  keywords during the specified month.
+                type: number
+                format: double
+                example: 1.03
+              totalOrganicResults:
+                description: Total number of unique organic keywords where this domain
+                  appears in the top 100 search results during the specified month.
+                type: integer
+                format: int32
+                example: 302731
+              monthlyBudget:
+                description: Estimated monthly Google Ads spending based on keyword
+                  positions, click-through rates, and cost-per-click data across all
+                  paid campaigns.
+                type: number
+                format: double
+                example: 6721.39
+              monthlyOrganicValue:
+                description: Estimated value of organic search traffic based on keyword
+                  rankings and equivalent cost-per-click values, representing the
+                  advertising spend equivalent of organic visibility.
+                type: number
+                format: double
+                example: 384233.16
+              totalAdsPurchased:
+                description: Total number of unique paid keywords where this domain's
+                  ads appeared on the first page of search results, measured over
+                  the last 14 data collection periods.
+                type: integer
+                format: int32
+                example: 599
+              monthlyOrganicClicks:
+                description: Estimated monthly organic search traffic clicks received
+                  from all ranking keywords during the specified month.
+                type: number
+                format: double
+                example: 290145
+              strength:
+                description: Domain authority score (0-100) indicating competitive
+                  strength and ranking consistency across high-value keywords, with
+                  higher scores representing stronger market position.
+                type: integer
+                format: int32
+                example: 75
+              totalInverseRank:
+                description: Cumulative ranking score where higher organic positions
+                  receive higher point values (position 1 = 100 points, position 2
+                  = 99 points, etc.), summed across all ranking keywords.
+                type: integer
+                format: int64
+                example: 4971564
+              areStatsNormalized:
+                description: Indicates whether the statistics have been normalized
+                  for consistent comparison across different time periods and data
+                  collection methods.
+                type: boolean
+                example: true
+            additionalProperties: false
+            description: Represents comprehensive domain performance statistics for
+              a specific month, including SEO and PPC metrics, traffic estimates,
+              and competitive strength indicators.
+          nullable: true
+        resultCount:
+          description: Number of results returned
+          type: integer
+          format: int32
+          readOnly: true
+          example: 1
+      additionalProperties: false
+    PublicApiSearchDateListOutputDto:
+      description: Response wrapper containing a list of available search dates for
+        which domain statistics data is available, used for historical analysis and
+        date-specific queries.
+      type: object
+      properties:
+        resultCount:
+          description: Number of results returned
+          type: integer
+          format: int32
+          readOnly: true
+          example: 100
+        results:
+          description: Array of available search dates for which domain performance
+            statistics have been collected and can be queried.
+          type: array
+          items:
+            type: object
+            properties:
+              dateString:
+                type: string
+                nullable: true
+              month:
+                type: integer
+                format: int32
+                readOnly: true
+              year:
+                type: integer
+                format: int32
+                readOnly: true
+            additionalProperties: false
+          readOnly: true
+          nullable: true
+      additionalProperties: false
+    SearchDate:
+      type: object
+      properties:
+        dateString:
+          type: string
+          nullable: true
+        month:
+          type: integer
+          format: int32
+          readOnly: true
+        year:
+          type: integer
+          format: int32
+          readOnly: true
+      additionalProperties: false
+  securitySchemes:
+    Basic_Authentication_Token:
+      type: http
+      description: '<a href="https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side"
+        target="_blank">Basic Authentication</a> is a standard that involves encoding
+        your <code>SPYFU_API_ID:SECRET_KEY</code> into a Base64 string. Your <b>SpyFu
+        API ID</b> and <b>Secret Key</b> can both be found under the <b><a href="https://www.spyfu.com/account/api"
+        target="_blank">Account Settings -> API Usage</a></b> page. Additionally,
+        you can find the Base64 string has been pre-generated on the same page under
+        <b>Base 64 Key</b>. Finally, this encoded string is sent in the "Authorization"
+        header prefixed with the keyword "Basic":<br>For example, to authorize as
+        <code>00000000-0000-0000-0000-000000000000:AB12WXYZ</code> the client would
+        send<br><pre><code>Authorization: <span class="token keyword">Basic</span>
+        <span class="token constructor-invocation class-name">MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwOkFCMTJXWFla<span></code></pre>'
+      scheme: basic
+    Query_Parameter_Token:
+      type: apiKey
+      description: An API key can be added as a query parameter. Your API key is listed
+        as "Secret Key" found under the <b><a href="https://www.spyfu.com/account/api"
+        target="_blank">Account Settings -> API Usage</a></b> page<br>For example,
+        to authorize with the API key <code>AB12WXY</code><br><pre><code>/apis/example_api/GetExample?domain=spyfu.com<span
+        class="token keyword">&api_key=AB12WXYZ</span></code></pre>
+      name: api_key
+      in: query
+    HMAC_Authentication_Header:
+      type: apiKey
+      description: For even more security, each request can be individually authenticated
+        with a timestamped <a href="https://en.wikipedia.org/wiki/HMAC" target="_blank"><b>HMAC</b></a>
+        <em>(Hash Message Authentication Code)</em> signature. Composed of your secret
+        key, a valid timestamp, the API request path, and all request parameters.
+        <h3>Creating the signature:</h3><br>Combine the pieces that will be converted
+        into the signature.<br><pre><code><span class="token keyword">StringToSign</span>
+        <span class="token operator">=</span><br>&#x09;HTTP-Verb <span class="token
+        operator">+</span> <span class="token string">"\n"</span> <span class="token
+        operator">+</span><br>&#x09;Timestamp <span class="token operator">+</span>
+        <span class="token string">"\n"</span> <span class="token operator">+</span><br>&#x09;UrlPath
+        <span class="token operator">+</span> <span class="token string">"\n"</span><br>&#x09;QueryParameters<span
+        class="token operator">;</span><br></code></pre><br>Create UTF-8 encodings
+        of the above string and of your secret key.<br><pre><code><span class="token
+        keyword">byte</span><span class="token operator">[]</span> SecretKeyBytes
+        <span class="token operator">=</span> <span class="token function">UTF-8-Encoding-Of</span><span
+        class="token operator">(</span> Upper-Case-Of<span class="token operator">(</span>
+        SECRET_KEY <span class="token operator">)</span> <span class="token operator">)</span><span
+        class="token operator">;</span><br><span class="token keyword">byte</span><span
+        class="token operator">[]</span> StringToSignBytes <span class="token operator">=</span>
+        <span class="token function">UTF-8-Encoding-Of</span><span class="token operator">(</span>
+        StringToSign <span class="token operator">)</span><span class="token operator">;</span><br></code></pre><br>Use
+        an implementation of HMAC256 using your UTF-8 secret key to encode the combined
+        string of your request. This should then be converted to Base64 to finish
+        creating your signature.<br><pre><code><span class="token keyword">Signature</span>
+        <span class="token operator">=</span> <span class="token function">Base64</span><span
+        class="token operator">(</span> <span class="token function">HMAC-SHA256</span><span
+        class="token operator">(</span> SecretKeyBytes, StringToSignBytes <span class="token
+        operator">)</span> <span class="token operator">)</span><span class="token
+        operator">;</span><br></code></pre><br><h3>Using the signature:</h3><br>This
+        signature is then sent in through an Authentication header with your username.<br><pre><code>Authentication<span
+        class="token operator">:</span> <span class="token keyword">UserName</span><span
+        class="token operator">:</span><span class="token invocation class-name">Signature</span></code></pre>
+      name: Authentication
+      in: header
+security:
+- Basic_Authentication_Token: []
+- Query_Parameter_Token: []
+- HMAC_Authentication_Header: []

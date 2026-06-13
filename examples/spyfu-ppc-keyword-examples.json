@@ -1,0 +1,20 @@
+{
+  "examples": [
+    {
+      "operationId": "PaidSerpApi_GetMostSuccessful_GET",
+      "summary": "Get Most Profitable PPC Keywords",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 75000
+      }
+    },
+    {
+      "operationId": "PaidSerpApi_GetNewKeywords_GET",
+      "summary": "Get New PPC Keywords",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 75000
+      }
+    }
+  ]
+}

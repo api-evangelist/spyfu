@@ -1,0 +1,12 @@
+{
+  "examples": [
+    {
+      "operationId": "PaidSerpApi_GetPaidSerps_GET",
+      "summary": "Get Ads for Domain",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 50000
+      }
+    }
+  ]
+}

@@ -1,0 +1,483 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SpyFu Ad History API Schemas",
+  "description": "JSON Schema definitions for SpyFu Ad History API API responses",
+  "definitions": {
+    "AdHistoryApi_GetDomainAdHistory_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Domain Ad History",
+      "description": "Response wrapper containing domain ad history results with pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of ads with their associated keywords found for the specified domain.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keywords": {
+                "description": "List of keywords that triggered this ad to appear in search results.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "string"
+                },
+                "examples": [
+                  [
+                    "running shoes",
+                    "athletic shoes",
+                    "sports footwear"
+                  ]
+                ]
+              },
+              "position": {
+                "description": "The ad's position on the search results page when it was captured (1 = top position).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  1
+                ]
+              },
+              "searchDateId": {
+                "description": "Date when this ad was captured by SpyFu's crawling system, formatted as YYYYMMDD (e.g., 20231215 = December 15, 2023).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  20231215
+                ]
+              },
+              "title": {
+                "description": "The headline text of the ad as it appeared in search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "Best Running Shoes 2024 - Free Shipping"
+                ]
+              },
+              "body": {
+                "description": "The description text of the ad providing additional details about the offer.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order."
+                ]
+              },
+              "url": {
+                "description": "The landing page URL that the ad directed users to when clicked.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/running-shoes"
+                ]
+              },
+              "adId": {
+                "description": "Unique identifier for this specific ad in SpyFu's database.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  12345678
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents an ad with associated keywords that triggered it to appear in search results."
+          },
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "AdHistoryApi_GetTermAdHistory_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Keyword Ad History",
+      "description": "Response wrapper containing term ad history results with pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of ads found for the specified keyword with associated landing pages and advertiser information.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "domainName": {
+                "description": "The domain name of the advertiser who placed this ad.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "example.com"
+                ]
+              },
+              "urls": {
+                "description": "List of landing page URLs that this ad directed users to when clicked.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "string"
+                },
+                "examples": [
+                  [
+                    "https://example.com/running-shoes",
+                    "https://example.com/athletic-footwear"
+                  ]
+                ]
+              },
+              "position": {
+                "description": "The ad's position on the search results page when it was captured (1 = top position).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  1
+                ]
+              },
+              "searchDateId": {
+                "description": "Date when this ad was captured by SpyFu's crawling system, formatted as YYYYMMDD (e.g., 20231215 = December 15, 2023).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  20231215
+                ]
+              },
+              "title": {
+                "description": "The headline text of the ad as it appeared in search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "Best Running Shoes 2024 - Free Shipping"
+                ]
+              },
+              "body": {
+                "description": "The description text of the ad providing additional details about the offer.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order."
+                ]
+              },
+              "adId": {
+                "description": "Unique identifier for this specific ad in SpyFu's database.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  12345678
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents ad data for a specific keyword with associated advertiser information and landing pages."
+          },
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "AdHistoryApi_GetTermAdHistoryWithStats_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Keyword Ad History With Stats",
+      "description": "Response wrapper containing comprehensive term ad history statistics including advertiser analysis and top-performing ads.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "domains": {
+          "description": "Array of domains (advertisers) that have purchased ads for the specified keyword, ranked by performance metrics.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "ads": {
+                "description": "Collection of ads this domain has purchased for the specified keyword.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "searchDateId": {
+                      "description": "Date when this ad was captured by SpyFu's crawling system, formatted as YYYYMMDD (e.g., 20231215 = December 15, 2023).",
+                      "type": "integer",
+                      "format": "int32",
+                      "examples": [
+                        20231215
+                      ]
+                    },
+                    "position": {
+                      "description": "The ad's position on the search results page when it was captured (1 = top position).",
+                      "type": "integer",
+                      "format": "int32",
+                      "examples": [
+                        1
+                      ]
+                    },
+                    "title": {
+                      "description": "The headline text of the ad as it appeared in search results.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "examples": [
+                        "Best Running Shoes 2024 - Free Shipping"
+                      ]
+                    },
+                    "body": {
+                      "description": "The description text of the ad providing additional details about the offer.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "examples": [
+                        "Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order."
+                      ]
+                    },
+                    "domainName": {
+                      "description": "The domain name of the advertiser who placed this ad.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "examples": [
+                        "example.com"
+                      ]
+                    },
+                    "fullUrl": {
+                      "description": "The complete landing page URL that the ad directed users to when clicked.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "examples": [
+                        "https://example.com/running-shoes?utm_source=google&utm_campaign=shoes"
+                      ]
+                    },
+                    "term": {
+                      "description": "The search keyword that triggered this ad to appear in search results.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "examples": [
+                        "running shoes"
+                      ]
+                    },
+                    "adCount": {
+                      "description": "The number of times this specific ad variation was observed during the capture period.",
+                      "type": "integer",
+                      "format": "int32",
+                      "examples": [
+                        45
+                      ]
+                    },
+                    "isLeaderboardAd": {
+                      "description": "Indicates whether this ad appeared in the top ad positions (leaderboard) rather than sidebar positions.",
+                      "type": "boolean",
+                      "examples": [
+                        true
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Represents a single ad from SpyFu's historical advertising database with complete ad copy and metadata."
+                }
+              },
+              "budget": {
+                "description": "Estimated monthly advertising budget this domain spends on the specified keyword.",
+                "type": "number",
+                "format": "double",
+                "examples": [
+                  15000.5
+                ]
+              },
+              "coverage": {
+                "description": "Percentage of time this domain appears in ads for the specified keyword (0-100).",
+                "type": "number",
+                "format": "double",
+                "examples": [
+                  73.2
+                ]
+              },
+              "domainName": {
+                "description": "The domain name of the advertiser.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "example.com"
+                ]
+              },
+              "percentageLeaderboard": {
+                "description": "Percentage of time this domain's ads appear in top positions (leaderboard) rather than sidebar positions.",
+                "type": "number",
+                "format": "double",
+                "examples": [
+                  85.7
+                ]
+              },
+              "totalAdsPurchased": {
+                "description": "Total number of ads this domain has purchased across all keywords in SpyFu's database.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  2847
+                ]
+              },
+              "adCount": {
+                "description": "Number of ads this domain has purchased specifically for the requested keyword.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  45
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents an advertiser (domain) that purchases ads for a specific keyword, including their ad performance metrics and budget estimates."
+          }
+        },
+        "topAds": {
+          "description": "Array of the most successful ads for the specified keyword, ranked by performance and frequency metrics.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "adId": {
+                "description": "Unique identifier for this specific ad in SpyFu's database.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  12345678
+                ]
+              },
+              "averagePosition": {
+                "description": "Average position where this ad appeared on search results pages across all observations.",
+                "type": "number",
+                "format": "double",
+                "examples": [
+                  2.4
+                ]
+              },
+              "averageAdCount": {
+                "description": "Average total number of ads per capture period.",
+                "type": "number",
+                "format": "double",
+                "examples": [
+                  2.1
+                ]
+              },
+              "body": {
+                "description": "The description text of the ad providing additional details about the offer.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order."
+                ]
+              },
+              "title": {
+                "description": "The headline text of the ad as it appeared in search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "Best Running Shoes 2024 - Free Shipping"
+                ]
+              },
+              "fullUrl": {
+                "description": "The complete landing page URL that the ad directed users to when clicked.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/running-shoes?utm_source=google&utm_campaign=shoes"
+                ]
+              },
+              "leaderboardCount": {
+                "description": "Number of times this ad appeared in top ad positions (leaderboard) rather than sidebar positions.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  42
+                ]
+              },
+              "percentageLeaderboard": {
+                "description": "Percentage of time this ad appeared in top ad positions versus sidebar positions.",
+                "type": "number",
+                "format": "double",
+                "examples": [
+                  73.5
+                ]
+              },
+              "percentageAdsServed": {
+                "description": "Percentage of total ad impressions this specific ad variation represented for the advertiser.",
+                "type": "number",
+                "format": "double",
+                "examples": [
+                  28.7
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents a top-performing ad with aggregated performance metrics across multiple observations."
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

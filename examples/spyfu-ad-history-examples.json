@@ -1,0 +1,25 @@
+{
+  "examples": [
+    {
+      "operationId": "AdHistoryApi_GetDomainAdHistory_GET",
+      "summary": "Get Domain Ad History",
+      "example": {
+        "resultCount": 100
+      }
+    },
+    {
+      "operationId": "AdHistoryApi_GetTermAdHistory_GET",
+      "summary": "Get Keyword Ad History",
+      "example": {
+        "resultCount": 100
+      }
+    },
+    {
+      "operationId": "AdHistoryApi_GetTermAdHistoryWithStats_GET",
+      "summary": "Get Keyword Ad History With Stats",
+      "example": {
+        "resultCount": 100
+      }
+    }
+  ]
+}

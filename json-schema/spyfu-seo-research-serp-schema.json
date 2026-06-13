@@ -1,0 +1,4475 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SpyFu SEO Research API Schemas",
+  "description": "JSON Schema definitions for SpyFu SEO Research API API responses",
+  "definitions": {
+    "OrganicSerpApi_GetMostValuableKeywords_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Most Valuable Keywords",
+      "description": "Response wrapper containing organic SERP keyword results with comprehensive SEO metrics and pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "description": "The keyword for which this domain ranks organically in the top 100 search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "running shoes"
+                ],
+                "readOnly": true
+              },
+              "topRankedUrl": {
+                "description": "The highest ranking URL from this domain for this specific keyword.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/best-running-shoes"
+                ],
+                "readOnly": true
+              },
+              "rank": {
+                "description": "Current organic search position for this keyword (1 = top position).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  7
+                ],
+                "readOnly": true
+              },
+              "rankChange": {
+                "description": "Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ],
+                "readOnly": true
+              },
+              "searchVolume": {
+                "description": "Monthly search volume for this keyword based on Google search data across the selected country/region.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  700000
+                ],
+                "readOnly": true
+              },
+              "keywordDifficulty": {
+                "description": "SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  69
+                ],
+                "readOnly": true
+              },
+              "broadCostPerClick": {
+                "description": "Average cost per click for broad match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "phraseCostPerClick": {
+                "description": "Average cost per click for phrase match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "exactCostPerClick": {
+                "description": "Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "seoClicks": {
+                "description": "Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  3000
+                ],
+                "readOnly": true
+              },
+              "seoClicksChange": {
+                "description": "Change in estimated organic clicks compared to the previous measurement period.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  -600
+                ],
+                "readOnly": true
+              },
+              "totalMonthlyClicks": {
+                "description": "Total number of clicks (organic and paid combined) on search results for this keyword in the past month.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  647000
+                ],
+                "readOnly": true
+              },
+              "percentMobileSearches": {
+                "description": "Percentage of searches for this keyword that come from mobile devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.4
+                ],
+                "readOnly": true
+              },
+              "percentDesktopSearches": {
+                "description": "Percentage of searches for this keyword that come from desktop devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.6
+                ],
+                "readOnly": true
+              },
+              "percentNotClicked": {
+                "description": "Percentage of searches where users leave the SERP without clicking any result.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.075
+                ],
+                "readOnly": true
+              },
+              "percentPaidClicks": {
+                "description": "Percentage of total SERP clicks that go to paid ads.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.079
+                ],
+                "readOnly": true
+              },
+              "percentOrganicClicks": {
+                "description": "Percentage of total SERP clicks that go to organic search results.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.921
+                ],
+                "readOnly": true
+              },
+              "broadMonthlyCost": {
+                "description": "Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  6043.5
+                ],
+                "readOnly": true
+              },
+              "phraseMonthlyCost": {
+                "description": "Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5695.5
+                ],
+                "readOnly": true
+              },
+              "exactMonthlyCost": {
+                "description": "Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5392.5
+                ],
+                "readOnly": true
+              },
+              "paidCompetitors": {
+                "description": "Total number of advertisers observed purchasing ads for this keyword over the last 14 months.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  0
+                ],
+                "readOnly": true
+              },
+              "rankingHomepages": {
+                "description": "Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  10
+                ],
+                "readOnly": true
+              },
+              "yourRank": {
+                "description": "The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  5
+                ]
+              },
+              "yourRankChange": {
+                "description": "Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ]
+              },
+              "yourUrl": {
+                "description": "The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://comparedomain.com/blog"
+                ],
+                "readOnly": true
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data."
+          },
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of organic keywords available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            75000
+          ],
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "OrganicSerpApi_GetNewlyRankedKeywords_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Newly Ranked Keywords",
+      "description": "Response wrapper containing organic SERP keyword results with comprehensive SEO metrics and pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "description": "The keyword for which this domain ranks organically in the top 100 search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "running shoes"
+                ],
+                "readOnly": true
+              },
+              "topRankedUrl": {
+                "description": "The highest ranking URL from this domain for this specific keyword.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/best-running-shoes"
+                ],
+                "readOnly": true
+              },
+              "rank": {
+                "description": "Current organic search position for this keyword (1 = top position).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  7
+                ],
+                "readOnly": true
+              },
+              "rankChange": {
+                "description": "Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ],
+                "readOnly": true
+              },
+              "searchVolume": {
+                "description": "Monthly search volume for this keyword based on Google search data across the selected country/region.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  700000
+                ],
+                "readOnly": true
+              },
+              "keywordDifficulty": {
+                "description": "SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  69
+                ],
+                "readOnly": true
+              },
+              "broadCostPerClick": {
+                "description": "Average cost per click for broad match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "phraseCostPerClick": {
+                "description": "Average cost per click for phrase match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "exactCostPerClick": {
+                "description": "Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "seoClicks": {
+                "description": "Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  3000
+                ],
+                "readOnly": true
+              },
+              "seoClicksChange": {
+                "description": "Change in estimated organic clicks compared to the previous measurement period.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  -600
+                ],
+                "readOnly": true
+              },
+              "totalMonthlyClicks": {
+                "description": "Total number of clicks (organic and paid combined) on search results for this keyword in the past month.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  647000
+                ],
+                "readOnly": true
+              },
+              "percentMobileSearches": {
+                "description": "Percentage of searches for this keyword that come from mobile devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.4
+                ],
+                "readOnly": true
+              },
+              "percentDesktopSearches": {
+                "description": "Percentage of searches for this keyword that come from desktop devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.6
+                ],
+                "readOnly": true
+              },
+              "percentNotClicked": {
+                "description": "Percentage of searches where users leave the SERP without clicking any result.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.075
+                ],
+                "readOnly": true
+              },
+              "percentPaidClicks": {
+                "description": "Percentage of total SERP clicks that go to paid ads.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.079
+                ],
+                "readOnly": true
+              },
+              "percentOrganicClicks": {
+                "description": "Percentage of total SERP clicks that go to organic search results.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.921
+                ],
+                "readOnly": true
+              },
+              "broadMonthlyCost": {
+                "description": "Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  6043.5
+                ],
+                "readOnly": true
+              },
+              "phraseMonthlyCost": {
+                "description": "Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5695.5
+                ],
+                "readOnly": true
+              },
+              "exactMonthlyCost": {
+                "description": "Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5392.5
+                ],
+                "readOnly": true
+              },
+              "paidCompetitors": {
+                "description": "Total number of advertisers observed purchasing ads for this keyword over the last 14 months.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  0
+                ],
+                "readOnly": true
+              },
+              "rankingHomepages": {
+                "description": "Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  10
+                ],
+                "readOnly": true
+              },
+              "yourRank": {
+                "description": "The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  5
+                ]
+              },
+              "yourRankChange": {
+                "description": "Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ]
+              },
+              "yourUrl": {
+                "description": "The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://comparedomain.com/blog"
+                ],
+                "readOnly": true
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data."
+          },
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of organic keywords available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            75000
+          ],
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "OrganicSerpApi_GetGainedRanksKeywords_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Gained Ranks Keywords",
+      "description": "Response wrapper containing organic SERP keyword results with comprehensive SEO metrics and pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "description": "The keyword for which this domain ranks organically in the top 100 search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "running shoes"
+                ],
+                "readOnly": true
+              },
+              "topRankedUrl": {
+                "description": "The highest ranking URL from this domain for this specific keyword.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/best-running-shoes"
+                ],
+                "readOnly": true
+              },
+              "rank": {
+                "description": "Current organic search position for this keyword (1 = top position).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  7
+                ],
+                "readOnly": true
+              },
+              "rankChange": {
+                "description": "Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ],
+                "readOnly": true
+              },
+              "searchVolume": {
+                "description": "Monthly search volume for this keyword based on Google search data across the selected country/region.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  700000
+                ],
+                "readOnly": true
+              },
+              "keywordDifficulty": {
+                "description": "SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  69
+                ],
+                "readOnly": true
+              },
+              "broadCostPerClick": {
+                "description": "Average cost per click for broad match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "phraseCostPerClick": {
+                "description": "Average cost per click for phrase match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "exactCostPerClick": {
+                "description": "Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "seoClicks": {
+                "description": "Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  3000
+                ],
+                "readOnly": true
+              },
+              "seoClicksChange": {
+                "description": "Change in estimated organic clicks compared to the previous measurement period.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  -600
+                ],
+                "readOnly": true
+              },
+              "totalMonthlyClicks": {
+                "description": "Total number of clicks (organic and paid combined) on search results for this keyword in the past month.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  647000
+                ],
+                "readOnly": true
+              },
+              "percentMobileSearches": {
+                "description": "Percentage of searches for this keyword that come from mobile devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.4
+                ],
+                "readOnly": true
+              },
+              "percentDesktopSearches": {
+                "description": "Percentage of searches for this keyword that come from desktop devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.6
+                ],
+                "readOnly": true
+              },
+              "percentNotClicked": {
+                "description": "Percentage of searches where users leave the SERP without clicking any result.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.075
+                ],
+                "readOnly": true
+              },
+              "percentPaidClicks": {
+                "description": "Percentage of total SERP clicks that go to paid ads.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.079
+                ],
+                "readOnly": true
+              },
+              "percentOrganicClicks": {
+                "description": "Percentage of total SERP clicks that go to organic search results.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.921
+                ],
+                "readOnly": true
+              },
+              "broadMonthlyCost": {
+                "description": "Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  6043.5
+                ],
+                "readOnly": true
+              },
+              "phraseMonthlyCost": {
+                "description": "Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5695.5
+                ],
+                "readOnly": true
+              },
+              "exactMonthlyCost": {
+                "description": "Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5392.5
+                ],
+                "readOnly": true
+              },
+              "paidCompetitors": {
+                "description": "Total number of advertisers observed purchasing ads for this keyword over the last 14 months.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  0
+                ],
+                "readOnly": true
+              },
+              "rankingHomepages": {
+                "description": "Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  10
+                ],
+                "readOnly": true
+              },
+              "yourRank": {
+                "description": "The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  5
+                ]
+              },
+              "yourRankChange": {
+                "description": "Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ]
+              },
+              "yourUrl": {
+                "description": "The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://comparedomain.com/blog"
+                ],
+                "readOnly": true
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data."
+          },
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of organic keywords available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            75000
+          ],
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "OrganicSerpApi_GetLostRanksKeywords_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Lost Ranks Keywords",
+      "description": "Response wrapper containing organic SERP keyword results with comprehensive SEO metrics and pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "description": "The keyword for which this domain ranks organically in the top 100 search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "running shoes"
+                ],
+                "readOnly": true
+              },
+              "topRankedUrl": {
+                "description": "The highest ranking URL from this domain for this specific keyword.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/best-running-shoes"
+                ],
+                "readOnly": true
+              },
+              "rank": {
+                "description": "Current organic search position for this keyword (1 = top position).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  7
+                ],
+                "readOnly": true
+              },
+              "rankChange": {
+                "description": "Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ],
+                "readOnly": true
+              },
+              "searchVolume": {
+                "description": "Monthly search volume for this keyword based on Google search data across the selected country/region.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  700000
+                ],
+                "readOnly": true
+              },
+              "keywordDifficulty": {
+                "description": "SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  69
+                ],
+                "readOnly": true
+              },
+              "broadCostPerClick": {
+                "description": "Average cost per click for broad match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "phraseCostPerClick": {
+                "description": "Average cost per click for phrase match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "exactCostPerClick": {
+                "description": "Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "seoClicks": {
+                "description": "Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  3000
+                ],
+                "readOnly": true
+              },
+              "seoClicksChange": {
+                "description": "Change in estimated organic clicks compared to the previous measurement period.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  -600
+                ],
+                "readOnly": true
+              },
+              "totalMonthlyClicks": {
+                "description": "Total number of clicks (organic and paid combined) on search results for this keyword in the past month.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  647000
+                ],
+                "readOnly": true
+              },
+              "percentMobileSearches": {
+                "description": "Percentage of searches for this keyword that come from mobile devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.4
+                ],
+                "readOnly": true
+              },
+              "percentDesktopSearches": {
+                "description": "Percentage of searches for this keyword that come from desktop devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.6
+                ],
+                "readOnly": true
+              },
+              "percentNotClicked": {
+                "description": "Percentage of searches where users leave the SERP without clicking any result.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.075
+                ],
+                "readOnly": true
+              },
+              "percentPaidClicks": {
+                "description": "Percentage of total SERP clicks that go to paid ads.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.079
+                ],
+                "readOnly": true
+              },
+              "percentOrganicClicks": {
+                "description": "Percentage of total SERP clicks that go to organic search results.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.921
+                ],
+                "readOnly": true
+              },
+              "broadMonthlyCost": {
+                "description": "Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  6043.5
+                ],
+                "readOnly": true
+              },
+              "phraseMonthlyCost": {
+                "description": "Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5695.5
+                ],
+                "readOnly": true
+              },
+              "exactMonthlyCost": {
+                "description": "Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5392.5
+                ],
+                "readOnly": true
+              },
+              "paidCompetitors": {
+                "description": "Total number of advertisers observed purchasing ads for this keyword over the last 14 months.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  0
+                ],
+                "readOnly": true
+              },
+              "rankingHomepages": {
+                "description": "Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  10
+                ],
+                "readOnly": true
+              },
+              "yourRank": {
+                "description": "The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  5
+                ]
+              },
+              "yourRankChange": {
+                "description": "Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ]
+              },
+              "yourUrl": {
+                "description": "The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://comparedomain.com/blog"
+                ],
+                "readOnly": true
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data."
+          },
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of organic keywords available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            75000
+          ],
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "OrganicSerpApi_GetGainedClicksKeywords_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Gained Clicks Keywords",
+      "description": "Response wrapper containing organic SERP keyword results with comprehensive SEO metrics and pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "description": "The keyword for which this domain ranks organically in the top 100 search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "running shoes"
+                ],
+                "readOnly": true
+              },
+              "topRankedUrl": {
+                "description": "The highest ranking URL from this domain for this specific keyword.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/best-running-shoes"
+                ],
+                "readOnly": true
+              },
+              "rank": {
+                "description": "Current organic search position for this keyword (1 = top position).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  7
+                ],
+                "readOnly": true
+              },
+              "rankChange": {
+                "description": "Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ],
+                "readOnly": true
+              },
+              "searchVolume": {
+                "description": "Monthly search volume for this keyword based on Google search data across the selected country/region.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  700000
+                ],
+                "readOnly": true
+              },
+              "keywordDifficulty": {
+                "description": "SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  69
+                ],
+                "readOnly": true
+              },
+              "broadCostPerClick": {
+                "description": "Average cost per click for broad match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "phraseCostPerClick": {
+                "description": "Average cost per click for phrase match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "exactCostPerClick": {
+                "description": "Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "seoClicks": {
+                "description": "Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  3000
+                ],
+                "readOnly": true
+              },
+              "seoClicksChange": {
+                "description": "Change in estimated organic clicks compared to the previous measurement period.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  -600
+                ],
+                "readOnly": true
+              },
+              "totalMonthlyClicks": {
+                "description": "Total number of clicks (organic and paid combined) on search results for this keyword in the past month.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  647000
+                ],
+                "readOnly": true
+              },
+              "percentMobileSearches": {
+                "description": "Percentage of searches for this keyword that come from mobile devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.4
+                ],
+                "readOnly": true
+              },
+              "percentDesktopSearches": {
+                "description": "Percentage of searches for this keyword that come from desktop devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.6
+                ],
+                "readOnly": true
+              },
+              "percentNotClicked": {
+                "description": "Percentage of searches where users leave the SERP without clicking any result.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.075
+                ],
+                "readOnly": true
+              },
+              "percentPaidClicks": {
+                "description": "Percentage of total SERP clicks that go to paid ads.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.079
+                ],
+                "readOnly": true
+              },
+              "percentOrganicClicks": {
+                "description": "Percentage of total SERP clicks that go to organic search results.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.921
+                ],
+                "readOnly": true
+              },
+              "broadMonthlyCost": {
+                "description": "Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  6043.5
+                ],
+                "readOnly": true
+              },
+              "phraseMonthlyCost": {
+                "description": "Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5695.5
+                ],
+                "readOnly": true
+              },
+              "exactMonthlyCost": {
+                "description": "Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5392.5
+                ],
+                "readOnly": true
+              },
+              "paidCompetitors": {
+                "description": "Total number of advertisers observed purchasing ads for this keyword over the last 14 months.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  0
+                ],
+                "readOnly": true
+              },
+              "rankingHomepages": {
+                "description": "Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  10
+                ],
+                "readOnly": true
+              },
+              "yourRank": {
+                "description": "The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  5
+                ]
+              },
+              "yourRankChange": {
+                "description": "Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ]
+              },
+              "yourUrl": {
+                "description": "The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://comparedomain.com/blog"
+                ],
+                "readOnly": true
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data."
+          },
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of organic keywords available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            75000
+          ],
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "OrganicSerpApi_GetLostClicksKeywords_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Lost Clicks Keywords",
+      "description": "Response wrapper containing organic SERP keyword results with comprehensive SEO metrics and pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "description": "The keyword for which this domain ranks organically in the top 100 search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "running shoes"
+                ],
+                "readOnly": true
+              },
+              "topRankedUrl": {
+                "description": "The highest ranking URL from this domain for this specific keyword.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/best-running-shoes"
+                ],
+                "readOnly": true
+              },
+              "rank": {
+                "description": "Current organic search position for this keyword (1 = top position).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  7
+                ],
+                "readOnly": true
+              },
+              "rankChange": {
+                "description": "Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ],
+                "readOnly": true
+              },
+              "searchVolume": {
+                "description": "Monthly search volume for this keyword based on Google search data across the selected country/region.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  700000
+                ],
+                "readOnly": true
+              },
+              "keywordDifficulty": {
+                "description": "SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  69
+                ],
+                "readOnly": true
+              },
+              "broadCostPerClick": {
+                "description": "Average cost per click for broad match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "phraseCostPerClick": {
+                "description": "Average cost per click for phrase match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "exactCostPerClick": {
+                "description": "Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "seoClicks": {
+                "description": "Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  3000
+                ],
+                "readOnly": true
+              },
+              "seoClicksChange": {
+                "description": "Change in estimated organic clicks compared to the previous measurement period.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  -600
+                ],
+                "readOnly": true
+              },
+              "totalMonthlyClicks": {
+                "description": "Total number of clicks (organic and paid combined) on search results for this keyword in the past month.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  647000
+                ],
+                "readOnly": true
+              },
+              "percentMobileSearches": {
+                "description": "Percentage of searches for this keyword that come from mobile devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.4
+                ],
+                "readOnly": true
+              },
+              "percentDesktopSearches": {
+                "description": "Percentage of searches for this keyword that come from desktop devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.6
+                ],
+                "readOnly": true
+              },
+              "percentNotClicked": {
+                "description": "Percentage of searches where users leave the SERP without clicking any result.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.075
+                ],
+                "readOnly": true
+              },
+              "percentPaidClicks": {
+                "description": "Percentage of total SERP clicks that go to paid ads.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.079
+                ],
+                "readOnly": true
+              },
+              "percentOrganicClicks": {
+                "description": "Percentage of total SERP clicks that go to organic search results.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.921
+                ],
+                "readOnly": true
+              },
+              "broadMonthlyCost": {
+                "description": "Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  6043.5
+                ],
+                "readOnly": true
+              },
+              "phraseMonthlyCost": {
+                "description": "Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5695.5
+                ],
+                "readOnly": true
+              },
+              "exactMonthlyCost": {
+                "description": "Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5392.5
+                ],
+                "readOnly": true
+              },
+              "paidCompetitors": {
+                "description": "Total number of advertisers observed purchasing ads for this keyword over the last 14 months.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  0
+                ],
+                "readOnly": true
+              },
+              "rankingHomepages": {
+                "description": "Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  10
+                ],
+                "readOnly": true
+              },
+              "yourRank": {
+                "description": "The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  5
+                ]
+              },
+              "yourRankChange": {
+                "description": "Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ]
+              },
+              "yourUrl": {
+                "description": "The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://comparedomain.com/blog"
+                ],
+                "readOnly": true
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data."
+          },
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of organic keywords available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            75000
+          ],
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "OrganicSerpApi_GetJustMadeItKeywords_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Just Made It Keywords",
+      "description": "Response wrapper containing organic SERP keyword results with comprehensive SEO metrics and pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "description": "The keyword for which this domain ranks organically in the top 100 search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "running shoes"
+                ],
+                "readOnly": true
+              },
+              "topRankedUrl": {
+                "description": "The highest ranking URL from this domain for this specific keyword.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/best-running-shoes"
+                ],
+                "readOnly": true
+              },
+              "rank": {
+                "description": "Current organic search position for this keyword (1 = top position).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  7
+                ],
+                "readOnly": true
+              },
+              "rankChange": {
+                "description": "Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ],
+                "readOnly": true
+              },
+              "searchVolume": {
+                "description": "Monthly search volume for this keyword based on Google search data across the selected country/region.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  700000
+                ],
+                "readOnly": true
+              },
+              "keywordDifficulty": {
+                "description": "SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  69
+                ],
+                "readOnly": true
+              },
+              "broadCostPerClick": {
+                "description": "Average cost per click for broad match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "phraseCostPerClick": {
+                "description": "Average cost per click for phrase match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "exactCostPerClick": {
+                "description": "Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "seoClicks": {
+                "description": "Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  3000
+                ],
+                "readOnly": true
+              },
+              "seoClicksChange": {
+                "description": "Change in estimated organic clicks compared to the previous measurement period.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  -600
+                ],
+                "readOnly": true
+              },
+              "totalMonthlyClicks": {
+                "description": "Total number of clicks (organic and paid combined) on search results for this keyword in the past month.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  647000
+                ],
+                "readOnly": true
+              },
+              "percentMobileSearches": {
+                "description": "Percentage of searches for this keyword that come from mobile devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.4
+                ],
+                "readOnly": true
+              },
+              "percentDesktopSearches": {
+                "description": "Percentage of searches for this keyword that come from desktop devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.6
+                ],
+                "readOnly": true
+              },
+              "percentNotClicked": {
+                "description": "Percentage of searches where users leave the SERP without clicking any result.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.075
+                ],
+                "readOnly": true
+              },
+              "percentPaidClicks": {
+                "description": "Percentage of total SERP clicks that go to paid ads.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.079
+                ],
+                "readOnly": true
+              },
+              "percentOrganicClicks": {
+                "description": "Percentage of total SERP clicks that go to organic search results.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.921
+                ],
+                "readOnly": true
+              },
+              "broadMonthlyCost": {
+                "description": "Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  6043.5
+                ],
+                "readOnly": true
+              },
+              "phraseMonthlyCost": {
+                "description": "Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5695.5
+                ],
+                "readOnly": true
+              },
+              "exactMonthlyCost": {
+                "description": "Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5392.5
+                ],
+                "readOnly": true
+              },
+              "paidCompetitors": {
+                "description": "Total number of advertisers observed purchasing ads for this keyword over the last 14 months.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  0
+                ],
+                "readOnly": true
+              },
+              "rankingHomepages": {
+                "description": "Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  10
+                ],
+                "readOnly": true
+              },
+              "yourRank": {
+                "description": "The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  5
+                ]
+              },
+              "yourRankChange": {
+                "description": "Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ]
+              },
+              "yourUrl": {
+                "description": "The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://comparedomain.com/blog"
+                ],
+                "readOnly": true
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data."
+          },
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of organic keywords available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            75000
+          ],
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "OrganicSerpApi_GetJustFellOffKeywords_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Just Fell Off Keywords",
+      "description": "Response wrapper containing organic SERP keyword results with comprehensive SEO metrics and pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "description": "The keyword for which this domain ranks organically in the top 100 search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "running shoes"
+                ],
+                "readOnly": true
+              },
+              "topRankedUrl": {
+                "description": "The highest ranking URL from this domain for this specific keyword.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/best-running-shoes"
+                ],
+                "readOnly": true
+              },
+              "rank": {
+                "description": "Current organic search position for this keyword (1 = top position).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  7
+                ],
+                "readOnly": true
+              },
+              "rankChange": {
+                "description": "Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ],
+                "readOnly": true
+              },
+              "searchVolume": {
+                "description": "Monthly search volume for this keyword based on Google search data across the selected country/region.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  700000
+                ],
+                "readOnly": true
+              },
+              "keywordDifficulty": {
+                "description": "SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  69
+                ],
+                "readOnly": true
+              },
+              "broadCostPerClick": {
+                "description": "Average cost per click for broad match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "phraseCostPerClick": {
+                "description": "Average cost per click for phrase match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "exactCostPerClick": {
+                "description": "Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "seoClicks": {
+                "description": "Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  3000
+                ],
+                "readOnly": true
+              },
+              "seoClicksChange": {
+                "description": "Change in estimated organic clicks compared to the previous measurement period.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  -600
+                ],
+                "readOnly": true
+              },
+              "totalMonthlyClicks": {
+                "description": "Total number of clicks (organic and paid combined) on search results for this keyword in the past month.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  647000
+                ],
+                "readOnly": true
+              },
+              "percentMobileSearches": {
+                "description": "Percentage of searches for this keyword that come from mobile devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.4
+                ],
+                "readOnly": true
+              },
+              "percentDesktopSearches": {
+                "description": "Percentage of searches for this keyword that come from desktop devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.6
+                ],
+                "readOnly": true
+              },
+              "percentNotClicked": {
+                "description": "Percentage of searches where users leave the SERP without clicking any result.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.075
+                ],
+                "readOnly": true
+              },
+              "percentPaidClicks": {
+                "description": "Percentage of total SERP clicks that go to paid ads.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.079
+                ],
+                "readOnly": true
+              },
+              "percentOrganicClicks": {
+                "description": "Percentage of total SERP clicks that go to organic search results.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.921
+                ],
+                "readOnly": true
+              },
+              "broadMonthlyCost": {
+                "description": "Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  6043.5
+                ],
+                "readOnly": true
+              },
+              "phraseMonthlyCost": {
+                "description": "Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5695.5
+                ],
+                "readOnly": true
+              },
+              "exactMonthlyCost": {
+                "description": "Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5392.5
+                ],
+                "readOnly": true
+              },
+              "paidCompetitors": {
+                "description": "Total number of advertisers observed purchasing ads for this keyword over the last 14 months.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  0
+                ],
+                "readOnly": true
+              },
+              "rankingHomepages": {
+                "description": "Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  10
+                ],
+                "readOnly": true
+              },
+              "yourRank": {
+                "description": "The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  5
+                ]
+              },
+              "yourRankChange": {
+                "description": "Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ]
+              },
+              "yourUrl": {
+                "description": "The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://comparedomain.com/blog"
+                ],
+                "readOnly": true
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data."
+          },
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of organic keywords available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            75000
+          ],
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "OrganicSerpApi_GetSeoKeywords_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get SEO Keywords",
+      "description": "Response wrapper containing organic SERP keyword results with comprehensive SEO metrics and pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "description": "The keyword for which this domain ranks organically in the top 100 search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "running shoes"
+                ],
+                "readOnly": true
+              },
+              "topRankedUrl": {
+                "description": "The highest ranking URL from this domain for this specific keyword.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/best-running-shoes"
+                ],
+                "readOnly": true
+              },
+              "rank": {
+                "description": "Current organic search position for this keyword (1 = top position).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  7
+                ],
+                "readOnly": true
+              },
+              "rankChange": {
+                "description": "Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ],
+                "readOnly": true
+              },
+              "searchVolume": {
+                "description": "Monthly search volume for this keyword based on Google search data across the selected country/region.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  700000
+                ],
+                "readOnly": true
+              },
+              "keywordDifficulty": {
+                "description": "SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  69
+                ],
+                "readOnly": true
+              },
+              "broadCostPerClick": {
+                "description": "Average cost per click for broad match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "phraseCostPerClick": {
+                "description": "Average cost per click for phrase match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "exactCostPerClick": {
+                "description": "Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "seoClicks": {
+                "description": "Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  3000
+                ],
+                "readOnly": true
+              },
+              "seoClicksChange": {
+                "description": "Change in estimated organic clicks compared to the previous measurement period.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  -600
+                ],
+                "readOnly": true
+              },
+              "totalMonthlyClicks": {
+                "description": "Total number of clicks (organic and paid combined) on search results for this keyword in the past month.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  647000
+                ],
+                "readOnly": true
+              },
+              "percentMobileSearches": {
+                "description": "Percentage of searches for this keyword that come from mobile devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.4
+                ],
+                "readOnly": true
+              },
+              "percentDesktopSearches": {
+                "description": "Percentage of searches for this keyword that come from desktop devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.6
+                ],
+                "readOnly": true
+              },
+              "percentNotClicked": {
+                "description": "Percentage of searches where users leave the SERP without clicking any result.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.075
+                ],
+                "readOnly": true
+              },
+              "percentPaidClicks": {
+                "description": "Percentage of total SERP clicks that go to paid ads.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.079
+                ],
+                "readOnly": true
+              },
+              "percentOrganicClicks": {
+                "description": "Percentage of total SERP clicks that go to organic search results.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.921
+                ],
+                "readOnly": true
+              },
+              "broadMonthlyCost": {
+                "description": "Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  6043.5
+                ],
+                "readOnly": true
+              },
+              "phraseMonthlyCost": {
+                "description": "Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5695.5
+                ],
+                "readOnly": true
+              },
+              "exactMonthlyCost": {
+                "description": "Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5392.5
+                ],
+                "readOnly": true
+              },
+              "paidCompetitors": {
+                "description": "Total number of advertisers observed purchasing ads for this keyword over the last 14 months.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  0
+                ],
+                "readOnly": true
+              },
+              "rankingHomepages": {
+                "description": "Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  10
+                ],
+                "readOnly": true
+              },
+              "yourRank": {
+                "description": "The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  5
+                ]
+              },
+              "yourRankChange": {
+                "description": "Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ]
+              },
+              "yourUrl": {
+                "description": "The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://comparedomain.com/blog"
+                ],
+                "readOnly": true
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data."
+          },
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of organic keywords available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            75000
+          ],
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "OrganicSerpApi_GetOrganicOutrankingKeywords_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Organic Outranking Keywords",
+      "description": "Response wrapper containing organic SERP keyword results with comprehensive SEO metrics and pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "description": "The keyword for which this domain ranks organically in the top 100 search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "running shoes"
+                ],
+                "readOnly": true
+              },
+              "topRankedUrl": {
+                "description": "The highest ranking URL from this domain for this specific keyword.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/best-running-shoes"
+                ],
+                "readOnly": true
+              },
+              "rank": {
+                "description": "Current organic search position for this keyword (1 = top position).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  7
+                ],
+                "readOnly": true
+              },
+              "rankChange": {
+                "description": "Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ],
+                "readOnly": true
+              },
+              "searchVolume": {
+                "description": "Monthly search volume for this keyword based on Google search data across the selected country/region.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  700000
+                ],
+                "readOnly": true
+              },
+              "keywordDifficulty": {
+                "description": "SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  69
+                ],
+                "readOnly": true
+              },
+              "broadCostPerClick": {
+                "description": "Average cost per click for broad match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "phraseCostPerClick": {
+                "description": "Average cost per click for phrase match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "exactCostPerClick": {
+                "description": "Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "seoClicks": {
+                "description": "Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  3000
+                ],
+                "readOnly": true
+              },
+              "seoClicksChange": {
+                "description": "Change in estimated organic clicks compared to the previous measurement period.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  -600
+                ],
+                "readOnly": true
+              },
+              "totalMonthlyClicks": {
+                "description": "Total number of clicks (organic and paid combined) on search results for this keyword in the past month.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  647000
+                ],
+                "readOnly": true
+              },
+              "percentMobileSearches": {
+                "description": "Percentage of searches for this keyword that come from mobile devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.4
+                ],
+                "readOnly": true
+              },
+              "percentDesktopSearches": {
+                "description": "Percentage of searches for this keyword that come from desktop devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.6
+                ],
+                "readOnly": true
+              },
+              "percentNotClicked": {
+                "description": "Percentage of searches where users leave the SERP without clicking any result.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.075
+                ],
+                "readOnly": true
+              },
+              "percentPaidClicks": {
+                "description": "Percentage of total SERP clicks that go to paid ads.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.079
+                ],
+                "readOnly": true
+              },
+              "percentOrganicClicks": {
+                "description": "Percentage of total SERP clicks that go to organic search results.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.921
+                ],
+                "readOnly": true
+              },
+              "broadMonthlyCost": {
+                "description": "Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  6043.5
+                ],
+                "readOnly": true
+              },
+              "phraseMonthlyCost": {
+                "description": "Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5695.5
+                ],
+                "readOnly": true
+              },
+              "exactMonthlyCost": {
+                "description": "Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5392.5
+                ],
+                "readOnly": true
+              },
+              "paidCompetitors": {
+                "description": "Total number of advertisers observed purchasing ads for this keyword over the last 14 months.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  0
+                ],
+                "readOnly": true
+              },
+              "rankingHomepages": {
+                "description": "Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  10
+                ],
+                "readOnly": true
+              },
+              "yourRank": {
+                "description": "The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  5
+                ]
+              },
+              "yourRankChange": {
+                "description": "Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ]
+              },
+              "yourUrl": {
+                "description": "The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://comparedomain.com/blog"
+                ],
+                "readOnly": true
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data."
+          },
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of organic keywords available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            75000
+          ],
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "OrganicSerpApi_GetKeywordsWhereTheyOutRankYou_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Where They Outrank You Keywords",
+      "description": "Response wrapper containing organic SERP keyword results with comprehensive SEO metrics and pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "description": "The keyword for which this domain ranks organically in the top 100 search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "running shoes"
+                ],
+                "readOnly": true
+              },
+              "topRankedUrl": {
+                "description": "The highest ranking URL from this domain for this specific keyword.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/best-running-shoes"
+                ],
+                "readOnly": true
+              },
+              "rank": {
+                "description": "Current organic search position for this keyword (1 = top position).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  7
+                ],
+                "readOnly": true
+              },
+              "rankChange": {
+                "description": "Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ],
+                "readOnly": true
+              },
+              "searchVolume": {
+                "description": "Monthly search volume for this keyword based on Google search data across the selected country/region.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  700000
+                ],
+                "readOnly": true
+              },
+              "keywordDifficulty": {
+                "description": "SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  69
+                ],
+                "readOnly": true
+              },
+              "broadCostPerClick": {
+                "description": "Average cost per click for broad match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "phraseCostPerClick": {
+                "description": "Average cost per click for phrase match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "exactCostPerClick": {
+                "description": "Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "seoClicks": {
+                "description": "Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  3000
+                ],
+                "readOnly": true
+              },
+              "seoClicksChange": {
+                "description": "Change in estimated organic clicks compared to the previous measurement period.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  -600
+                ],
+                "readOnly": true
+              },
+              "totalMonthlyClicks": {
+                "description": "Total number of clicks (organic and paid combined) on search results for this keyword in the past month.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  647000
+                ],
+                "readOnly": true
+              },
+              "percentMobileSearches": {
+                "description": "Percentage of searches for this keyword that come from mobile devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.4
+                ],
+                "readOnly": true
+              },
+              "percentDesktopSearches": {
+                "description": "Percentage of searches for this keyword that come from desktop devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.6
+                ],
+                "readOnly": true
+              },
+              "percentNotClicked": {
+                "description": "Percentage of searches where users leave the SERP without clicking any result.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.075
+                ],
+                "readOnly": true
+              },
+              "percentPaidClicks": {
+                "description": "Percentage of total SERP clicks that go to paid ads.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.079
+                ],
+                "readOnly": true
+              },
+              "percentOrganicClicks": {
+                "description": "Percentage of total SERP clicks that go to organic search results.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.921
+                ],
+                "readOnly": true
+              },
+              "broadMonthlyCost": {
+                "description": "Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  6043.5
+                ],
+                "readOnly": true
+              },
+              "phraseMonthlyCost": {
+                "description": "Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5695.5
+                ],
+                "readOnly": true
+              },
+              "exactMonthlyCost": {
+                "description": "Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5392.5
+                ],
+                "readOnly": true
+              },
+              "paidCompetitors": {
+                "description": "Total number of advertisers observed purchasing ads for this keyword over the last 14 months.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  0
+                ],
+                "readOnly": true
+              },
+              "rankingHomepages": {
+                "description": "Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  10
+                ],
+                "readOnly": true
+              },
+              "yourRank": {
+                "description": "The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  5
+                ]
+              },
+              "yourRankChange": {
+                "description": "Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ]
+              },
+              "yourUrl": {
+                "description": "The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://comparedomain.com/blog"
+                ],
+                "readOnly": true
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data."
+          },
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of organic keywords available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            75000
+          ],
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "OrganicSerpApi_GetKeywordsWhereTheyJustSurpassedYou_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Where They Just Surpassed You Keywords",
+      "description": "Response wrapper containing organic SERP keyword results with comprehensive SEO metrics and pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "description": "The keyword for which this domain ranks organically in the top 100 search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "running shoes"
+                ],
+                "readOnly": true
+              },
+              "topRankedUrl": {
+                "description": "The highest ranking URL from this domain for this specific keyword.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/best-running-shoes"
+                ],
+                "readOnly": true
+              },
+              "rank": {
+                "description": "Current organic search position for this keyword (1 = top position).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  7
+                ],
+                "readOnly": true
+              },
+              "rankChange": {
+                "description": "Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ],
+                "readOnly": true
+              },
+              "searchVolume": {
+                "description": "Monthly search volume for this keyword based on Google search data across the selected country/region.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  700000
+                ],
+                "readOnly": true
+              },
+              "keywordDifficulty": {
+                "description": "SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  69
+                ],
+                "readOnly": true
+              },
+              "broadCostPerClick": {
+                "description": "Average cost per click for broad match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "phraseCostPerClick": {
+                "description": "Average cost per click for phrase match advertising on this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "exactCostPerClick": {
+                "description": "Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.28
+                ],
+                "readOnly": true
+              },
+              "seoClicks": {
+                "description": "Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  3000
+                ],
+                "readOnly": true
+              },
+              "seoClicksChange": {
+                "description": "Change in estimated organic clicks compared to the previous measurement period.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  -600
+                ],
+                "readOnly": true
+              },
+              "totalMonthlyClicks": {
+                "description": "Total number of clicks (organic and paid combined) on search results for this keyword in the past month.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  647000
+                ],
+                "readOnly": true
+              },
+              "percentMobileSearches": {
+                "description": "Percentage of searches for this keyword that come from mobile devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.4
+                ],
+                "readOnly": true
+              },
+              "percentDesktopSearches": {
+                "description": "Percentage of searches for this keyword that come from desktop devices.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.6
+                ],
+                "readOnly": true
+              },
+              "percentNotClicked": {
+                "description": "Percentage of searches where users leave the SERP without clicking any result.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.075
+                ],
+                "readOnly": true
+              },
+              "percentPaidClicks": {
+                "description": "Percentage of total SERP clicks that go to paid ads.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.079
+                ],
+                "readOnly": true
+              },
+              "percentOrganicClicks": {
+                "description": "Percentage of total SERP clicks that go to organic search results.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.921
+                ],
+                "readOnly": true
+              },
+              "broadMonthlyCost": {
+                "description": "Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  6043.5
+                ],
+                "readOnly": true
+              },
+              "phraseMonthlyCost": {
+                "description": "Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5695.5
+                ],
+                "readOnly": true
+              },
+              "exactMonthlyCost": {
+                "description": "Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  5392.5
+                ],
+                "readOnly": true
+              },
+              "paidCompetitors": {
+                "description": "Total number of advertisers observed purchasing ads for this keyword over the last 14 months.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  0
+                ],
+                "readOnly": true
+              },
+              "rankingHomepages": {
+                "description": "Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  10
+                ],
+                "readOnly": true
+              },
+              "yourRank": {
+                "description": "The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  5
+                ]
+              },
+              "yourRankChange": {
+                "description": "Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ]
+              },
+              "yourUrl": {
+                "description": "The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://comparedomain.com/blog"
+                ],
+                "readOnly": true
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data."
+          },
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of organic keywords available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            75000
+          ],
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "OrganicSerpApi_GetSerpAnalysisKeywords_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get SERP Analysis for Keyword ",
+      "description": "Response wrapper containing SERP analysis keyword results with detailed ranking data and competitive landscape insights.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of keywords with detailed SERP analysis including ranking data, search volume metrics, and competitive landscape insights.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "description": "The keyword for which this domain ranks organically in the top 100 search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "running shoes"
+                ]
+              },
+              "domain": {
+                "description": "The domain name that ranks for this keyword in organic search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "example.com"
+                ]
+              },
+              "url": {
+                "description": "The specific URL from this domain that ranks for this keyword.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/blog"
+                ]
+              },
+              "title": {
+                "description": "The page title of the ranking URL as it appears in search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "Best Running Shoes for Athletes"
+                ]
+              },
+              "rank": {
+                "description": "Current organic search position for this keyword (1 = top position).",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  7
+                ]
+              },
+              "rankChange": {
+                "description": "Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  -3
+                ]
+              },
+              "searchVolume": {
+                "description": "Monthly search volume for this keyword based on Google search data across the selected country/region.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  700000
+                ]
+              },
+              "rankingHomepages": {
+                "description": "Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  10
+                ]
+              },
+              "keywordDifficulty": {
+                "description": "SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  69
+                ]
+              },
+              "dateSearched": {
+                "description": "Date when this keyword was first discovered and added to SpyFu's database.",
+                "type": "string",
+                "format": "date-time",
+                "examples": [
+                  "2024-09-26T10:30:00Z"
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents a keyword with detailed SERP analysis including ranking data, search volume metrics, and competitive landscape insights."
+          },
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of keywords available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            25000
+          ],
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "OrganicSerpApi_GetLiveSeoStats_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Live SEO Stats",
+      "description": "Returns live, aggregated SEO metrics for a given domain, subdomain, path, or URL. Results summarize current organic visibility and traffic estimates derived from up-to-date SERP data. Updated continuo",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            1
+          ],
+          "readOnly": true
+        },
+        "domain": {
+          "description": "Root domain for the results",
+          "type": [
+            "string",
+            "null"
+          ],
+          "examples": [
+            "example.com"
+          ],
+          "readOnly": true
+        },
+        "url": {
+          "description": "URL for the results",
+          "type": [
+            "string",
+            "null"
+          ],
+          "examples": [
+            "https://example.com/blog"
+          ],
+          "readOnly": true
+        },
+        "totalOrganicResults": {
+          "description": "Total keywords found for domain or URL",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            15420
+          ],
+          "readOnly": true
+        },
+        "monthlyOrganicClicks": {
+          "description": "We estimate that the domain or URL should get this many total clicks to its page (per month).",
+          "type": "number",
+          "format": "double",
+          "examples": [
+            125000.5
+          ],
+          "readOnly": true
+        },
+        "monthlyOrganicClickValue": {
+          "description": "The estimated value over a month for ranking on the domain or URL.",
+          "type": "number",
+          "format": "double",
+          "examples": [
+            45000.75
+          ],
+          "readOnly": true
+        },
+        "totalSearchVolume": {
+          "description": "Sum of monthly search volume across all returned keywords.",
+          "type": "number",
+          "format": "double",
+          "examples": [
+            700000
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "TopPagesApi_GetMostTrafficTopPages_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Highest Traffic Top Pages",
+      "description": "Response wrapper containing top pages results with comprehensive SEO performance metrics and traffic analysis.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of top-performing pages with organic traffic estimates, keyword rankings, and competitive performance data.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "description": "The HTML title tag of the page as it appears in search results. This helps identify the page's content focus and SEO optimization strategy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "Best Running Shoes 2024 - Complete Buyer's Guide"
+                ]
+              },
+              "url": {
+                "description": "The complete URL of the page that ranks for multiple organic keywords. This shows the specific page driving organic traffic for the domain.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/best-running-shoes-2024"
+                ]
+              },
+              "keywordCount": {
+                "description": "Total number of unique keywords this page ranks for in the top 100 organic search results. Higher counts indicate broader topical coverage.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  247
+                ]
+              },
+              "estMonthlySeoClicks": {
+                "description": "Estimated total monthly organic clicks this page receives from all keywords it ranks for. This represents the page's overall organic traffic value.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  15420
+                ]
+              },
+              "topKeyword": {
+                "description": "The highest-value keyword this page ranks for, typically the term driving the most organic traffic to this specific page.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "best running shoes"
+                ]
+              },
+              "topKeywordPosition": {
+                "description": "The organic search position (rank) for the top keyword, where 1 represents the #1 organic result on Google.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  3
+                ]
+              },
+              "topKeywordSearchVolume": {
+                "description": "Monthly search volume for the top keyword, showing how many people search for this term each month on Google.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  74000
+                ]
+              },
+              "topKeywordClicks": {
+                "description": "Estimated monthly organic clicks this page receives specifically from its top keyword, based on the keyword's search volume and the page's ranking position.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  8950
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents a top-performing page from a domain's organic search portfolio, including traffic estimates, keyword performance, and the page's most valuable search term."
+          },
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "TopPagesApi_GetNewTopPages_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get New Top Pages",
+      "description": "Response wrapper containing top pages results with comprehensive SEO performance metrics and traffic analysis.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of top-performing pages with organic traffic estimates, keyword rankings, and competitive performance data.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "description": "The HTML title tag of the page as it appears in search results. This helps identify the page's content focus and SEO optimization strategy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "Best Running Shoes 2024 - Complete Buyer's Guide"
+                ]
+              },
+              "url": {
+                "description": "The complete URL of the page that ranks for multiple organic keywords. This shows the specific page driving organic traffic for the domain.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/best-running-shoes-2024"
+                ]
+              },
+              "keywordCount": {
+                "description": "Total number of unique keywords this page ranks for in the top 100 organic search results. Higher counts indicate broader topical coverage.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  247
+                ]
+              },
+              "estMonthlySeoClicks": {
+                "description": "Estimated total monthly organic clicks this page receives from all keywords it ranks for. This represents the page's overall organic traffic value.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  15420
+                ]
+              },
+              "topKeyword": {
+                "description": "The highest-value keyword this page ranks for, typically the term driving the most organic traffic to this specific page.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "best running shoes"
+                ]
+              },
+              "topKeywordPosition": {
+                "description": "The organic search position (rank) for the top keyword, where 1 represents the #1 organic result on Google.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  3
+                ]
+              },
+              "topKeywordSearchVolume": {
+                "description": "Monthly search volume for the top keyword, showing how many people search for this term each month on Google.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  74000
+                ]
+              },
+              "topKeywordClicks": {
+                "description": "Estimated monthly organic clicks this page receives specifically from its top keyword, based on the keyword's search volume and the page's ranking position.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  8950
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents a top-performing page from a domain's organic search portfolio, including traffic estimates, keyword performance, and the page's most valuable search term."
+          },
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "TopPagesApi_GetTopPages_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Top Performing Pages",
+      "description": "Response wrapper containing top pages results with comprehensive SEO performance metrics and traffic analysis.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of top-performing pages with organic traffic estimates, keyword rankings, and competitive performance data.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "description": "The HTML title tag of the page as it appears in search results. This helps identify the page's content focus and SEO optimization strategy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "Best Running Shoes 2024 - Complete Buyer's Guide"
+                ]
+              },
+              "url": {
+                "description": "The complete URL of the page that ranks for multiple organic keywords. This shows the specific page driving organic traffic for the domain.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "https://example.com/best-running-shoes-2024"
+                ]
+              },
+              "keywordCount": {
+                "description": "Total number of unique keywords this page ranks for in the top 100 organic search results. Higher counts indicate broader topical coverage.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  247
+                ]
+              },
+              "estMonthlySeoClicks": {
+                "description": "Estimated total monthly organic clicks this page receives from all keywords it ranks for. This represents the page's overall organic traffic value.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  15420
+                ]
+              },
+              "topKeyword": {
+                "description": "The highest-value keyword this page ranks for, typically the term driving the most organic traffic to this specific page.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "best running shoes"
+                ]
+              },
+              "topKeywordPosition": {
+                "description": "The organic search position (rank) for the top keyword, where 1 represents the #1 organic result on Google.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  3
+                ]
+              },
+              "topKeywordSearchVolume": {
+                "description": "Monthly search volume for the top keyword, showing how many people search for this term each month on Google.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  74000
+                ]
+              },
+              "topKeywordClicks": {
+                "description": "Estimated monthly organic clicks this page receives specifically from its top keyword, based on the keyword's search volume and the page's ranking position.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [
+                  8950
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents a top-performing page from a domain's organic search portfolio, including traffic estimates, keyword performance, and the page's most valuable search term."
+          },
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

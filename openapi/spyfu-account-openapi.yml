@@ -1,0 +1,285 @@
+openapi: 3.0.3
+info:
+  title: Account API
+  version: v2
+servers:
+- url: https://api.spyfu.com/apis/accounts_api
+paths:
+  /v2/usage/month/{usageDate}:
+    get:
+      operationId: AccountApi_GetApiUsageForMonth_GET
+      summary: API monthly usage
+      description: Returns stats for API usage.
+      parameters:
+      - name: usageDate
+        in: path
+        description: Date to get API usage for
+        required: true
+        schema:
+          type: string
+          example: 2025-07
+        example: 2025-07
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    month:
+                      type: string
+                      format: date-time
+                    serviceLevelName:
+                      type: string
+                      nullable: true
+                    requestCount:
+                      type: integer
+                      format: int32
+                    rowsReturned:
+                      type: integer
+                      format: int32
+                    baseUnits:
+                      type: integer
+                      format: int32
+                    unitsUsed:
+                      type: integer
+                      format: int32
+                    finalCost:
+                      type: number
+                      format: double
+                    isPaid:
+                      type: boolean
+                  additionalProperties: false
+        '400':
+          description: Bad Request
+        '401':
+          description: User failed authorization
+        '500':
+          description: Internal Server Error
+      tags:
+      - Account API
+  /v2/usage/month/{usageDate}/daily:
+    get:
+      operationId: AccountApi_GetApiUsageForMonthByDay_GET
+      summary: API daily usage
+      description: Returns stats for API usage.
+      parameters:
+      - name: usageDate
+        in: path
+        description: Date to get API usage for
+        required: true
+        schema:
+          type: string
+          example: 2025-07
+        example: 2025-07
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    month:
+                      type: string
+                      format: date-time
+                    serviceLevelName:
+                      type: string
+                      nullable: true
+                    requestCount:
+                      type: integer
+                      format: int32
+                    rowsReturned:
+                      type: integer
+                      format: int32
+                    baseUnits:
+                      type: integer
+                      format: int32
+                    unitsUsed:
+                      type: integer
+                      format: int32
+                    finalCost:
+                      type: number
+                      format: double
+                    isPaid:
+                      type: boolean
+                  additionalProperties: false
+        '400':
+          description: Bad Request
+        '401':
+          description: User failed authorization
+        '500':
+          description: Internal Server Error
+      tags:
+      - Account API
+  /v2/usage/month/{usageDate}/method:
+    get:
+      operationId: AccountApi_GetApiUsageForMonthByMethod_GET
+      summary: API monthly usage by method
+      description: Returns stats for API usage.
+      parameters:
+      - name: usageDate
+        in: path
+        description: Date to get API usage for
+        required: true
+        schema:
+          type: string
+          example: 2025-07
+        example: 2025-07
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    day:
+                      type: string
+                      format: date-time
+                    requestCount:
+                      type: integer
+                      format: int32
+                    rowsReturned:
+                      type: integer
+                      format: int32
+                    unitsPerRow:
+                      type: integer
+                      format: int32
+                    unitsUsed:
+                      type: integer
+                      format: int32
+                    apiMethod:
+                      type: string
+                      nullable: true
+                  additionalProperties: false
+        '400':
+          description: Bad Request
+        '401':
+          description: User failed authorization
+        '500':
+          description: Internal Server Error
+      tags:
+      - Account API
+components:
+  schemas:
+    ApiMethodDailyUsage:
+      type: object
+      properties:
+        day:
+          type: string
+          format: date-time
+        requestCount:
+          type: integer
+          format: int32
+        rowsReturned:
+          type: integer
+          format: int32
+        unitsPerRow:
+          type: integer
+          format: int32
+        unitsUsed:
+          type: integer
+          format: int32
+        apiMethod:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ApiMonthlyUsage:
+      type: object
+      properties:
+        month:
+          type: string
+          format: date-time
+        serviceLevelName:
+          type: string
+          nullable: true
+        requestCount:
+          type: integer
+          format: int32
+        rowsReturned:
+          type: integer
+          format: int32
+        baseUnits:
+          type: integer
+          format: int32
+        unitsUsed:
+          type: integer
+          format: int32
+        finalCost:
+          type: number
+          format: double
+        isPaid:
+          type: boolean
+      additionalProperties: false
+  securitySchemes:
+    Basic_Authentication_Token:
+      type: http
+      description: '<a href="https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side"
+        target="_blank">Basic Authentication</a> is a standard that involves encoding
+        your <code>SPYFU_API_ID:SECRET_KEY</code> into a Base64 string. Your <b>SpyFu
+        API ID</b> and <b>Secret Key</b> can both be found under the <b><a href="https://www.spyfu.com/account/api"
+        target="_blank">Account Settings -> API Usage</a></b> page. Additionally,
+        you can find the Base64 string has been pre-generated on the same page under
+        <b>Base 64 Key</b>. Finally, this encoded string is sent in the "Authorization"
+        header prefixed with the keyword "Basic":<br>For example, to authorize as
+        <code>00000000-0000-0000-0000-000000000000:AB12WXYZ</code> the client would
+        send<br><pre><code>Authorization: <span class="token keyword">Basic</span>
+        <span class="token constructor-invocation class-name">MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwOkFCMTJXWFla<span></code></pre>'
+      scheme: basic
+    Query_Parameter_Token:
+      type: apiKey
+      description: An API key can be added as a query parameter. Your API key is listed
+        as "Secret Key" found under the <b><a href="https://www.spyfu.com/account/api"
+        target="_blank">Account Settings -> API Usage</a></b> page<br>For example,
+        to authorize with the API key <code>AB12WXY</code><br><pre><code>/apis/example_api/GetExample?domain=spyfu.com<span
+        class="token keyword">&api_key=AB12WXYZ</span></code></pre>
+      name: api_key
+      in: query
+    HMAC_Authentication_Header:
+      type: apiKey
+      description: For even more security, each request can be individually authenticated
+        with a timestamped <a href="https://en.wikipedia.org/wiki/HMAC" target="_blank"><b>HMAC</b></a>
+        <em>(Hash Message Authentication Code)</em> signature. Composed of your secret
+        key, a valid timestamp, the API request path, and all request parameters.
+        <h3>Creating the signature:</h3><br>Combine the pieces that will be converted
+        into the signature.<br><pre><code><span class="token keyword">StringToSign</span>
+        <span class="token operator">=</span><br>&#x09;HTTP-Verb <span class="token
+        operator">+</span> <span class="token string">"\n"</span> <span class="token
+        operator">+</span><br>&#x09;Timestamp <span class="token operator">+</span>
+        <span class="token string">"\n"</span> <span class="token operator">+</span><br>&#x09;UrlPath
+        <span class="token operator">+</span> <span class="token string">"\n"</span><br>&#x09;QueryParameters<span
+        class="token operator">;</span><br></code></pre><br>Create UTF-8 encodings
+        of the above string and of your secret key.<br><pre><code><span class="token
+        keyword">byte</span><span class="token operator">[]</span> SecretKeyBytes
+        <span class="token operator">=</span> <span class="token function">UTF-8-Encoding-Of</span><span
+        class="token operator">(</span> Upper-Case-Of<span class="token operator">(</span>
+        SECRET_KEY <span class="token operator">)</span> <span class="token operator">)</span><span
+        class="token operator">;</span><br><span class="token keyword">byte</span><span
+        class="token operator">[]</span> StringToSignBytes <span class="token operator">=</span>
+        <span class="token function">UTF-8-Encoding-Of</span><span class="token operator">(</span>
+        StringToSign <span class="token operator">)</span><span class="token operator">;</span><br></code></pre><br>Use
+        an implementation of HMAC256 using your UTF-8 secret key to encode the combined
+        string of your request. This should then be converted to Base64 to finish
+        creating your signature.<br><pre><code><span class="token keyword">Signature</span>
+        <span class="token operator">=</span> <span class="token function">Base64</span><span
+        class="token operator">(</span> <span class="token function">HMAC-SHA256</span><span
+        class="token operator">(</span> SecretKeyBytes, StringToSignBytes <span class="token
+        operator">)</span> <span class="token operator">)</span><span class="token
+        operator">;</span><br></code></pre><br><h3>Using the signature:</h3><br>This
+        signature is then sent in through an Authentication header with your username.<br><pre><code>Authentication<span
+        class="token operator">:</span> <span class="token keyword">UserName</span><span
+        class="token operator">:</span><span class="token invocation class-name">Signature</span></code></pre>
+      name: Authentication
+      in: header
+security:
+- Basic_Authentication_Token: []
+- Query_Parameter_Token: []
+- HMAC_Authentication_Header: []

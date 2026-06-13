@@ -1,0 +1,20 @@
+{
+  "examples": [
+    {
+      "operationId": "KombatApi_GetCompetingPpcKeywords_GET",
+      "summary": "Get Competing PPC Keywords",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 50000
+      }
+    },
+    {
+      "operationId": "KombatApi_GetCompetingSeoKeywords_GET",
+      "summary": "Get Competing SEO Keywords",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 50000
+      }
+    }
+  ]
+}

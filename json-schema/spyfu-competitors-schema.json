@@ -1,0 +1,273 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SpyFu Competitors API Schemas",
+  "description": "JSON Schema definitions for SpyFu Competitors API API responses",
+  "definitions": {
+    "CompetitorsApi_GetTopPpcCompetitors_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Top PPC Competitors",
+      "description": "Response wrapper containing competitor analysis data for a specific search channel (SEO or PPC) with pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            50
+          ],
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of competitor domains available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            2500
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of competitor domains ranked by keyword overlap strength in the specified search channel.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "domain": {
+                "description": "Domain name of the competitor that shares significant keyword overlap in the specified search channel (SEO or PPC).",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "example.com"
+                ]
+              },
+              "commonTerms": {
+                "description": "Number of unique keywords that both this competitor domain and the target domain compete for in the same search channel.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  1432
+                ]
+              },
+              "rank": {
+                "description": "The rank is a metric for how much overlap there is between your domain and the competitor",
+                "type": "number",
+                "format": "float"
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents a competitor domain with shared keyword overlap data, indicating the strength of competitive relationship in either paid or organic search."
+          },
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "CompetitorsApi_GetTopSeoCompetitors_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Top SEO Competitors",
+      "description": "Response wrapper containing competitor analysis data for a specific search channel (SEO or PPC) with pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            50
+          ],
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of competitor domains available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            2500
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of competitor domains ranked by keyword overlap strength in the specified search channel.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "domain": {
+                "description": "Domain name of the competitor that shares significant keyword overlap in the specified search channel (SEO or PPC).",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "example.com"
+                ]
+              },
+              "commonTerms": {
+                "description": "Number of unique keywords that both this competitor domain and the target domain compete for in the same search channel.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  1432
+                ]
+              },
+              "rank": {
+                "description": "The rank is a metric for how much overlap there is between your domain and the competitor",
+                "type": "number",
+                "format": "float"
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents a competitor domain with shared keyword overlap data, indicating the strength of competitive relationship in either paid or organic search."
+          },
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "CompetitorsApi_GetCombinedTopCompetitors_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Combined Top Competitors",
+      "description": "Response wrapper containing comprehensive competitor analysis data across both paid and organic search channels with pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            50
+          ],
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of competitor domains available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            5000
+          ],
+          "readOnly": true
+        },
+        "combinedCompetitors": {
+          "description": "Array of competitor domains ranked by combined SEO and PPC keyword overlap strength.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "rank": {
+                "description": "Competitive ranking score indicating the strength of overlap between this competitor and the target domain across both SEO and PPC keywords.",
+                "type": "number",
+                "format": "float",
+                "examples": [
+                  1
+                ]
+              },
+              "domain": {
+                "description": "Domain name of the competitor that shares significant keyword overlap in both paid and organic search results.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "example.com"
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents a competitor domain that competes for similar keywords in both paid and organic search, ranked by competitive overlap strength."
+          },
+          "readOnly": true
+        },
+        "ppcCompetitors": {
+          "description": "Array of competitor domains ranked by paid search advertising keyword overlap and competitive strength.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "domain": {
+                "description": "Domain name of the competitor that shares significant keyword overlap in the specified search channel (SEO or PPC).",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "example.com"
+                ]
+              },
+              "commonTerms": {
+                "description": "Number of unique keywords that both this competitor domain and the target domain compete for in the same search channel.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  1432
+                ]
+              },
+              "rank": {
+                "description": "The rank is a metric for how much overlap there is between your domain and the competitor",
+                "type": "number",
+                "format": "float"
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents a competitor domain with shared keyword overlap data, indicating the strength of competitive relationship in either paid or organic search."
+          },
+          "readOnly": true
+        },
+        "seoCompetitors": {
+          "description": "Array of competitor domains ranked by organic search keyword overlap and SEO competitive strength.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "domain": {
+                "description": "Domain name of the competitor that shares significant keyword overlap in the specified search channel (SEO or PPC).",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "example.com"
+                ]
+              },
+              "commonTerms": {
+                "description": "Number of unique keywords that both this competitor domain and the target domain compete for in the same search channel.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  1432
+                ]
+              },
+              "rank": {
+                "description": "The rank is a metric for how much overlap there is between your domain and the competitor",
+                "type": "number",
+                "format": "float"
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents a competitor domain with shared keyword overlap data, indicating the strength of competitive relationship in either paid or organic search."
+          },
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "@context": {
+    "@vocab": "https://developer.spyfu.com/vocab/",
+    "spyfu": "https://developer.spyfu.com/vocab/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "domain": {
+      "@id": "spyfu:domain",
+      "@type": "xsd:string"
+    },
+    "countryCode": {
+      "@id": "spyfu:countryCode",
+      "@type": "xsd:string"
+    },
+    "keyword": {
+      "@id": "spyfu:keyword",
+      "@type": "xsd:string"
+    },
+    "searchVolume": {
+      "@id": "spyfu:searchVolume",
+      "@type": "xsd:integer"
+    },
+    "monthlySearches": {
+      "@id": "spyfu:monthlySearches",
+      "@type": "xsd:integer"
+    },
+    "costPerClick": {
+      "@id": "spyfu:costPerClick",
+      "@type": "xsd:double"
+    },
+    "averageOrganicRank": {
+      "@id": "spyfu:averageOrganicRank",
+      "@type": "xsd:double"
+    },
+    "averageAdRank": {
+      "@id": "spyfu:averageAdRank",
+      "@type": "xsd:double"
+    },
+    "totalOrganicResults": {
+      "@id": "spyfu:totalOrganicResults",
+      "@type": "xsd:integer"
+    },
+    "totalAdsPurchased": {
+      "@id": "spyfu:totalAdsPurchased",
+      "@type": "xsd:integer"
+    },
+    "monthlyBudget": {
+      "@id": "spyfu:monthlyBudget",
+      "@type": "xsd:double"
+    },
+    "monthlyOrganicClicks": {
+      "@id": "spyfu:monthlyOrganicClicks",
+      "@type": "xsd:double"
+    },
+    "monthlyPaidClicks": {
+      "@id": "spyfu:monthlyPaidClicks",
+      "@type": "xsd:double"
+    },
+    "strength": {
+      "@id": "spyfu:strength",
+      "@type": "xsd:integer"
+    },
+    "results": {
+      "@id": "spyfu:results",
+      "@container": "@list"
+    },
+    "searchMonth": {
+      "@id": "spyfu:searchMonth",
+      "@type": "xsd:integer"
+    },
+    "searchYear": {
+      "@id": "spyfu:searchYear",
+      "@type": "xsd:integer"
+    },
+    "adTitle": {
+      "@id": "spyfu:adTitle",
+      "@type": "xsd:string"
+    },
+    "adDescription": {
+      "@id": "spyfu:adDescription",
+      "@type": "xsd:string"
+    },
+    "rankingKeyword": {
+      "@id": "spyfu:rankingKeyword",
+      "@type": "xsd:string"
+    },
+    "competitorDomain": {
+      "@id": "spyfu:competitorDomain",
+      "@type": "xsd:string"
+    },
+    "startDate": {
+      "@id": "spyfu:startDate",
+      "@type": "xsd:string"
+    },
+    "endDate": {
+      "@id": "spyfu:endDate",
+      "@type": "xsd:string"
+    }
+  }
+}

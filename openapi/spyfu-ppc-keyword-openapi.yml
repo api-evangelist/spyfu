@@ -1,0 +1,1839 @@
+openapi: 3.0.3
+info:
+  title: PPC Research API
+  version: v2
+  description: 'Discover high-performing paid keywords and identify emerging advertising
+    opportunities to optimize your PPC campaigns and maximize ROI. Powered by SpyFu''s
+    unmatched paid search intelligence spanning 18 years of advertising data collection
+    across global markets.
+
+
+    SpyFu''s PPC Keyword Research API analyzes **8 billion keywords** with comprehensive
+    advertising metrics, delivering **20x more paid keywords per domain** than SEMRush
+    or Ahrefs. Built on a foundation of **1.6 trillion search results** and **18 years
+    of advertising intelligence**, our database tracks keyword performance patterns
+    to identify the most successful advertising strategies. **Every keyword metric
+    updates every 15 seconds**, ensuring you have real-time competitive intelligence
+    across all 28 supported countries.
+
+
+    While competitors provide basic paid keyword lists, SpyFu delivers comprehensive
+    keyword performance analysis with 18 years of historical data and live updates
+    every 15 seconds. Our advanced algorithms identify the most successful paid keywords
+    and emerging opportunities based on real advertising performance data.
+
+
+    With this API, you can discover the most successful paid keywords in any market
+    niche, identify emerging keyword opportunities before competitors, analyze keyword
+    performance trends over time, uncover high-converting keywords competitors are
+    targeting, track new keyword adoption patterns across industries, and access comprehensive
+    paid search intelligence to optimize campaign performance. Find the keywords that
+    drive results and build winning advertising campaigns based on proven performance
+    data.
+
+
+    The PPC Keyword Research API integrates seamlessly with SpyFu''s Ad History, SERP
+    Research, and Competitors APIs to provide complete paid search intelligence, enabling
+    you to combine keyword discovery with competitor analysis and historical advertising
+    insights.
+
+
+    Get started with comprehensive API documentation and interactive examples at [SpyFu
+    Developer Portal](https://developer.spyfu.com).'
+servers:
+- url: https://api.spyfu.com/apis/keyword_api
+paths:
+  /v2/ppc/getMostSuccessful:
+    get:
+      operationId: PaidSerpApi_GetMostSuccessful_GET
+      summary: Get Most Profitable PPC Keywords
+      description: 'Returns the most successful paid search keywords for a domain
+        based on search volume and competitive strength. This endpoint provides the
+        highest-performing PPC keywords from the past year to identify proven advertising
+        opportunities and optimize keyword strategy.
+
+
+        [Visualize this API live on SpyFu](https://www.spyfu.com/ppc/keywords?query=example.com)'
+      parameters:
+      - name: query
+        in: query
+        description: Domain or URL to analyze for successful PPC keywords.
+        required: true
+        schema:
+          type: string
+          example: example.com
+        example: example.com
+      - name: includeTerms
+        in: query
+        description: Comma-separated list of terms that must be present in the keyword.
+        schema:
+          type: string
+          example: hosting,domain,website
+      - name: includeAnyTerm
+        in: query
+        description: 'Used with includeTerms. If true: match any term (OR). If false:
+          require all terms (AND).'
+        schema:
+          type: boolean
+          default: false
+          example: false
+      - name: excludeTerms
+        in: query
+        description: Comma-separated list of terms to exclude from results (e.g.,
+          branded or irrelevant terms).
+        schema:
+          type: string
+          example: free,cheap,discount
+      - name: excludeDomain
+        in: query
+        description: Domain to exclude from keyword results.
+        schema:
+          type: string
+          example: yourdomain.com
+        example: yourdomain.com
+      - name: searchVolume.min
+        in: query
+        description: Filter by the number of searches done this past month on Google.
+        schema:
+          type: number
+          format: float
+      - name: searchVolume.max
+        in: query
+        description: Filter by the number of searches done this past month on Google.
+        schema:
+          type: number
+          format: float
+      - name: liveSearchVolume.min
+        in: query
+        description: Filter by the number of searches done this past month on Google.
+          This value is refreshed each month.
+        schema:
+          type: number
+          format: float
+      - name: liveSearchVolume.max
+        in: query
+        description: Filter by the number of searches done this past month on Google.
+          This value is refreshed each month.
+        schema:
+          type: number
+          format: float
+      - name: adCount.min
+        in: query
+        description: Filter by the number of total advertisers
+        schema:
+          type: number
+          format: float
+      - name: adCount.max
+        in: query
+        description: Filter by the number of total advertisers
+        schema:
+          type: number
+          format: float
+      - name: keywordDifficulty.min
+        in: query
+        description: Filter by how difficult it is to rank on this keyword.  This
+          can also be called Ranking Difficulty.
+        schema:
+          type: number
+          format: float
+      - name: keywordDifficulty.max
+        in: query
+        description: Filter by how difficult it is to rank on this keyword.  This
+          can also be called Ranking Difficulty.
+        schema:
+          type: number
+          format: float
+      - name: costPerClick.min
+        in: query
+        description: Filter by the average cost per click.  This will use the keyword
+          matching option selected in `costPerClickOption`
+        schema:
+          type: number
+          format: float
+      - name: costPerClick.max
+        in: query
+        description: Filter by the average cost per click.  This will use the keyword
+          matching option selected in `costPerClickOption`
+        schema:
+          type: number
+          format: float
+      - name: costPerClickOption
+        in: query
+        description: Cost per click keyword matching option to filter results by.
+        schema:
+          type: string
+          enum:
+          - Broad
+          - Exact
+          - Phrase
+          example: Broad
+        example: Broad
+      - name: clicks.min
+        in: query
+        description: Filter by the number of total monthly clicks on the SERP for
+          this keyword--organic and paid.
+        schema:
+          type: number
+          format: float
+      - name: clicks.max
+        in: query
+        description: Filter by the number of total monthly clicks on the SERP for
+          this keyword--organic and paid.
+        schema:
+          type: number
+          format: float
+      - name: isQuestion
+        in: query
+        description: Filter on if the keyword is a question.
+        schema:
+          type: boolean
+          default: false
+          example: false
+        example: false
+      - name: isTransactionalIntent
+        in: query
+        description: Filter on if the keyword has transactional intent.
+        schema:
+          type: boolean
+          default: false
+          example: false
+        example: false
+      - name: mobileSearchesPercentage.min
+        in: query
+        description: Filter by the percentage of searches that are done on mobile
+          devices.
+        schema:
+          type: number
+          format: float
+      - name: mobileSearchesPercentage.max
+        in: query
+        description: Filter by the percentage of searches that are done on mobile
+          devices.
+        schema:
+          type: number
+          format: float
+      - name: desktopSearchesPercentage.min
+        in: query
+        description: Filter by the percentage of searches that are done on desktop
+          devices.
+        schema:
+          type: number
+          format: float
+      - name: desktopSearchesPercentage.max
+        in: query
+        description: Filter by the percentage of searches that are done on desktop
+          devices.
+        schema:
+          type: number
+          format: float
+      - name: notClickedSearchesPercentage.min
+        in: query
+        description: 'Filter by the percentage of searches that are not clicked.
+
+          Some keyword searches supply clear information in a featured snippet or
+          similar displays. They don''t require a click to get the information. Those
+          will have higher percentages in this metric.'
+        schema:
+          type: number
+          format: float
+      - name: notClickedSearchesPercentage.max
+        in: query
+        description: 'Filter by the percentage of searches that are not clicked.
+
+          Some keyword searches supply clear information in a featured snippet or
+          similar displays. They don''t require a click to get the information. Those
+          will have higher percentages in this metric.'
+        schema:
+          type: number
+          format: float
+      - name: paidClickSearchPercentage.min
+        in: query
+        description: Filter by the percentage of clicks that go to ads.
+        schema:
+          type: number
+          format: float
+      - name: paidClickSearchPercentage.max
+        in: query
+        description: Filter by the percentage of clicks that go to ads.
+        schema:
+          type: number
+          format: float
+      - name: organicClicksSearchPercentage.min
+        in: query
+        description: Filter by the percentage of clicks that go to organic results,
+          not ads.
+        schema:
+          type: number
+          format: float
+      - name: organicClicksSearchPercentage.max
+        in: query
+        description: Filter by the percentage of clicks that go to organic results,
+          not ads.
+        schema:
+          type: number
+          format: float
+      - name: monthlyCost.min
+        in: query
+        description: Filter by the monthly cost of the keyword.  This will use the
+          keyword matching option selected in `monthlyCostOption`
+        schema:
+          type: number
+          format: float
+      - name: monthlyCost.max
+        in: query
+        description: Filter by the monthly cost of the keyword.  This will use the
+          keyword matching option selected in `monthlyCostOption`
+        schema:
+          type: number
+          format: float
+      - name: monthlyCostOption
+        in: query
+        description: Monthly Cost keyword matching option to filter results by.
+        schema:
+          type: string
+          enum:
+          - Broad
+          - Exact
+          - Phrase
+          example: Broad
+        example: Broad
+      - name: rankingHomepages.min
+        in: query
+        description: Homepages on the SERP range to filter results by.
+        schema:
+          type: number
+          format: float
+      - name: rankingHomepages.max
+        in: query
+        description: Homepages on the SERP range to filter results by.
+        schema:
+          type: number
+          format: float
+      - name: wordCount.min
+        in: query
+        description: Filter by the number of words in the keyword.
+        schema:
+          type: number
+          format: float
+      - name: wordCount.max
+        in: query
+        description: Filter by the number of words in the keyword.
+        schema:
+          type: number
+          format: float
+      - name: pageSize
+        in: query
+        description: The maximum number of rows returned.
+        schema:
+          type: integer
+          format: int32
+          default: 5
+          maximum: 10000
+          minimum: 1
+          example: 5
+        example: 5
+      - name: countryCode
+        in: query
+        description: Country market to search.  Specifically, this maps to the Google
+          domain version to query against (e.g., google.com for US, google.de for
+          Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All
+          Countries</a>
+        schema:
+          type: string
+          default: US
+          enum:
+          - AR
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - DE
+          - DK
+          - ES
+          - FR
+          - IE
+          - IN
+          - IT
+          - JP
+          - MX
+          - NL
+          - 'NO'
+          - NZ
+          - PL
+          - PT
+          - SE
+          - SG
+          - TR
+          - UA
+          - UK
+          - US
+          - ZA
+          example: US
+        example: US
+      - name: sortBy
+        in: query
+        description: Column to sort by.
+        schema:
+          type: string
+          default: SearchVolume
+          enum:
+          - SearchVolume
+          - LiveSearchVolume
+          - RankingDifficulty
+          - TotalMonthlyClicks
+          - PercentMobileSearches
+          - PercentDesktopSearches
+          - PercentSearchesNotClicked
+          - PercentPaidClicks
+          - PercentOrganicClicks
+          - BroadCostPerClick
+          - PhraseCostPerClick
+          - ExactCostPerClick
+          - BroadMonthlyClicks
+          - PhraseMonthlyClicks
+          - ExactMonthlyClicks
+          - BroadMonthlyCost
+          - PhraseMonthlyCost
+          - ExactMonthlyCost
+          - PaidCompetitors
+          - RankingHomepages
+          x-enumDescriptions:
+            SearchVolume: Monthly search volume
+            LiveSearchVolume: Real-time search volume data
+            RankingDifficulty: SEO competition difficulty score
+            TotalMonthlyClicks: Estimated total monthly clicks
+            PercentMobileSearches: Percentage of searches from mobile devices
+            PercentDesktopSearches: Percentage of searches from desktop devices
+            PercentSearchesNotClicked: Percentage of searches resulting in no clicks
+            PercentPaidClicks: Percentage of clicks going to paid results
+            PercentOrganicClicks: Percentage of clicks going to organic results
+            BroadCostPerClick: Broad match cost per click estimate
+            PhraseCostPerClick: Phrase match cost per click estimate
+            ExactCostPerClick: Exact match cost per click estimate
+            BroadMonthlyClicks: Estimated monthly clicks for broad match
+            PhraseMonthlyClicks: Estimated monthly clicks for phrase match
+            ExactMonthlyClicks: Estimated monthly clicks for exact match
+            BroadMonthlyCost: Estimated monthly cost for broad match
+            PhraseMonthlyCost: Estimated monthly cost for phrase match
+            ExactMonthlyCost: Estimated monthly cost for exact match
+            PaidCompetitors: Number of paid search competitors
+            RankingHomepages: Number of homepages ranking organically
+          example: SearchVolume
+        example: SearchVolume
+      - name: sortOrder
+        in: query
+        description: Order to sort the results.
+        schema:
+          type: string
+          default: Descending
+          enum:
+          - Ascending
+          - Descending
+          example: Descending
+        example: Descending
+      - name: startingRow
+        in: query
+        description: Row number to start the results with.
+        schema:
+          type: integer
+          format: int32
+          default: 1
+          maximum: 10000
+          minimum: 1
+          example: 1
+        example: 1
+      - name: adultFilter
+        in: query
+        description: Exclude adult keywords considered unsafe for work.
+        schema:
+          type: boolean
+          default: true
+          example: true
+        example: true
+      - name: onlyAdultKeywords
+        in: query
+        description: Only include adult keywords considered unsafe for work.
+        schema:
+          type: boolean
+          default: false
+          example: false
+        example: false
+      responses:
+        '200':
+          description: Successfully retrieved most successful PPC keywords. Returns
+            keyword data with search metrics, cost estimates, and competitive intelligence
+            showing the domain's highest-performing paid keywords.
+          content:
+            application/json:
+              schema:
+                description: Response wrapper containing PPC keyword research data
+                  with detailed advertising performance metrics and pagination metadata
+                  for keyword discovery and optimization.
+                type: object
+                properties:
+                  resultCount:
+                    description: Number of results returned
+                    type: integer
+                    format: int32
+                    readOnly: true
+                    example: 100
+                  totalMatchingResults:
+                    description: Total number of PPC keywords available that match
+                      the query criteria, including results not included in the current
+                      page.
+                    type: integer
+                    format: int64
+                    readOnly: true
+                    example: 75000
+                  results:
+                    description: Array of PPC keywords with comprehensive advertising
+                      performance metrics including search volume, cost data, and
+                      competitive intelligence insights.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        keyword:
+                          description: The keyword that shows high performance or
+                            profitability for successful competitors in paid search
+                            advertising.
+                          type: string
+                          nullable: true
+                          example: running shoes
+                        searchVolume:
+                          description: Estimated monthly search volume for this keyword
+                            based on Google search data across the selected country/region,
+                            blended from multiple sources for accuracy.
+                          type: integer
+                          format: int64
+                          nullable: true
+                          example: 266000
+                        liveSearchVolume:
+                          description: Adjusted search volume based on recent trends
+                            and real-time data, providing a more current estimate
+                            than historical averages.
+                          type: integer
+                          format: int64
+                          nullable: true
+                          example: 82000
+                        rankingDifficulty:
+                          description: SEO difficulty score (0-100) indicating how
+                            challenging it would be to rank organically for this keyword,
+                            with 100 being most difficult.
+                          type: integer
+                          format: int32
+                          nullable: true
+                          example: 98
+                        totalMonthlyClicks:
+                          description: Total estimated monthly clicks (both organic
+                            and paid) generated from search results for this keyword.
+                          type: integer
+                          format: int64
+                          nullable: true
+                          example: 219000
+                        percentMobileSearches:
+                          description: Percentage of searches for this keyword that
+                            originate from mobile devices (0.0-1.0).
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 0.52
+                        percentDesktopSearches:
+                          description: Percentage of searches for this keyword that
+                            originate from desktop devices (0.0-1.0).
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 0.48
+                        percentSearchesNotClicked:
+                          description: Percentage of searches where users leave the
+                            SERP without clicking any result, often due to sufficient
+                            information in featured snippets or direct answers (0.0-1.0).
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 0.18
+                        percentPaidClicks:
+                          description: Percentage of total SERP clicks that go to
+                            paid ad results (0.0-1.0).
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 0.52
+                        percentOrganicClicks:
+                          description: Percentage of total SERP clicks that go to
+                            organic search results (0.0-1.0).
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 0.48
+                        broadCostPerClick:
+                          description: Average cost-per-click for broad match keyword
+                            targeting, representing what advertisers typically pay
+                            when their ads are triggered by related keywords.
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 0.73
+                        phraseCostPerClick:
+                          description: Average cost-per-click for phrase match keyword
+                            targeting, where ads show for searches that include the
+                            keyword phrase in the same order.
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 0.67
+                        exactCostPerClick:
+                          description: Average cost-per-click for exact match keyword
+                            targeting, the most precise and typically highest-performing
+                            match type.
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 0.65
+                        broadMonthlyClicks:
+                          description: Estimated monthly paid clicks for broad match
+                            targeting of this keyword.
+                          type: number
+                          format: float
+                          nullable: true
+                          example: 57019.8
+                        phraseMonthlyClicks:
+                          description: Estimated monthly paid clicks for phrase match
+                            targeting of this keyword.
+                          type: number
+                          format: float
+                          nullable: true
+                          example: 38000
+                        exactMonthlyClicks:
+                          description: Estimated monthly paid clicks for exact match
+                            targeting of this keyword.
+                          type: number
+                          format: float
+                          nullable: true
+                          example: 29094.6
+                        broadMonthlyCost:
+                          description: Estimated monthly advertising spend for broad
+                            match targeting of this keyword.
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 41604.9
+                        phraseMonthlyCost:
+                          description: Estimated monthly advertising spend for phrase
+                            match targeting of this keyword.
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 25542
+                        exactMonthlyCost:
+                          description: Estimated monthly advertising spend for exact
+                            match targeting of this keyword.
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 19041.6
+                        paidCompetitors:
+                          description: Total number of unique advertisers observed
+                            purchasing ads for this keyword over the last 14 months,
+                            indicating competitive intensity.
+                          type: integer
+                          format: int32
+                          nullable: true
+                          example: 15
+                        distinctCompetitors:
+                          description: List of domain names that have purchased ads
+                            for this keyword over the last 14 months.
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                          example:
+                          - example.com
+                          - competitor1.com
+                          - competitor2.com
+                        rankingHomepages:
+                          description: Number of domain homepages (root URLs) ranking
+                            within the first 100 organic search results for this keyword.
+                          type: integer
+                          format: int32
+                          nullable: true
+                          example: 8
+                        serpFeaturesCsv:
+                          description: Comma-separated list of SERP features present
+                            for this keyword (e.g., Images, Videos, Maps, Shopping),
+                            indicating competition for organic real estate.
+                          type: string
+                          nullable: true
+                          example: Images,Maps
+                        serpFirstResult:
+                          description: Domain name of the top-ranking organic result
+                            for this keyword, useful for identifying category leaders.
+                          type: string
+                          nullable: true
+                          example: example.com
+                        isQuestion:
+                          description: Indicates whether this keyword is phrased as
+                            a question (who, what, when, where, why, how).
+                          type: boolean
+                          example: false
+                        isNotSafeForWork:
+                          description: Indicates whether this keyword is flagged as
+                            containing adult or inappropriate content.
+                          type: boolean
+                          example: false
+                      additionalProperties: false
+                      description: Represents a PPC keyword with comprehensive advertising
+                        performance metrics including search volume, cost analysis,
+                        competitive intelligence, and SERP characteristics for paid
+                        search campaign optimization.
+                    readOnly: true
+                    nullable: true
+                additionalProperties: false
+        '400':
+          description: Bad Request - Invalid parameters provided (e.g., invalid domain
+            format, search volume ranges, or invalid country code)
+        '401':
+          description: Unauthorized - Invalid API credentials or insufficient permissions
+            to access PPC keyword data
+        '500':
+          description: Internal Server Error - A server-side error occurred while
+            processing the request
+      tags:
+      - PPC Research API
+  /v2/ppc/getNewKeywords:
+    get:
+      operationId: PaidSerpApi_GetNewKeywords_GET
+      summary: Get New PPC Keywords
+      description: 'Returns newly acquired paid search keywords that a domain has
+        started advertising on for the first time. This endpoint identifies recent
+        keyword expansions and emerging advertising strategies to reveal new market
+        opportunities and competitive moves.
+
+
+        [Visualize this API live on SpyFu](https://www.spyfu.com/ppc/keywords?query=example.com)'
+      parameters:
+      - name: query
+        in: query
+        description: Domain or URL to analyze for new PPC keywords.
+        required: true
+        schema:
+          type: string
+          example: example.com
+        example: example.com
+      - name: includeTerms
+        in: query
+        description: Comma-separated list of terms that must be present in the keyword.
+        schema:
+          type: string
+          example: hosting,domain,website
+      - name: includeAnyTerm
+        in: query
+        description: 'Used with includeTerms. If true: match any term (OR). If false:
+          require all terms (AND).'
+        schema:
+          type: boolean
+          default: false
+          example: false
+      - name: excludeTerms
+        in: query
+        description: Comma-separated list of terms to exclude from results (e.g.,
+          branded or irrelevant terms).
+        schema:
+          type: string
+          example: free,cheap,discount
+      - name: excludeDomain
+        in: query
+        description: Domain to exclude from keyword results.
+        schema:
+          type: string
+          example: yourdomain.com
+        example: yourdomain.com
+      - name: searchVolume.min
+        in: query
+        description: Filter by the number of searches done this past month on Google.
+        schema:
+          type: number
+          format: float
+      - name: searchVolume.max
+        in: query
+        description: Filter by the number of searches done this past month on Google.
+        schema:
+          type: number
+          format: float
+      - name: liveSearchVolume.min
+        in: query
+        description: Filter by the number of searches done this past month on Google.
+          This value is refreshed each month.
+        schema:
+          type: number
+          format: float
+      - name: liveSearchVolume.max
+        in: query
+        description: Filter by the number of searches done this past month on Google.
+          This value is refreshed each month.
+        schema:
+          type: number
+          format: float
+      - name: adCount.min
+        in: query
+        description: Filter by the number of total advertisers
+        schema:
+          type: number
+          format: float
+      - name: adCount.max
+        in: query
+        description: Filter by the number of total advertisers
+        schema:
+          type: number
+          format: float
+      - name: keywordDifficulty.min
+        in: query
+        description: Filter by how difficult it is to rank on this keyword.  This
+          can also be called Ranking Difficulty.
+        schema:
+          type: number
+          format: float
+      - name: keywordDifficulty.max
+        in: query
+        description: Filter by how difficult it is to rank on this keyword.  This
+          can also be called Ranking Difficulty.
+        schema:
+          type: number
+          format: float
+      - name: costPerClick.min
+        in: query
+        description: Filter by the average cost per click.  This will use the keyword
+          matching option selected in `costPerClickOption`
+        schema:
+          type: number
+          format: float
+      - name: costPerClick.max
+        in: query
+        description: Filter by the average cost per click.  This will use the keyword
+          matching option selected in `costPerClickOption`
+        schema:
+          type: number
+          format: float
+      - name: costPerClickOption
+        in: query
+        description: Cost per click keyword matching option to filter results by.
+        schema:
+          type: string
+          enum:
+          - Broad
+          - Exact
+          - Phrase
+          example: Broad
+        example: Broad
+      - name: clicks.min
+        in: query
+        description: Filter by the number of total monthly clicks on the SERP for
+          this keyword--organic and paid.
+        schema:
+          type: number
+          format: float
+      - name: clicks.max
+        in: query
+        description: Filter by the number of total monthly clicks on the SERP for
+          this keyword--organic and paid.
+        schema:
+          type: number
+          format: float
+      - name: isQuestion
+        in: query
+        description: Filter on if the keyword is a question.
+        schema:
+          type: boolean
+          default: false
+          example: false
+        example: false
+      - name: isTransactionalIntent
+        in: query
+        description: Filter on if the keyword has transactional intent.
+        schema:
+          type: boolean
+          default: false
+          example: false
+        example: false
+      - name: mobileSearchesPercentage.min
+        in: query
+        description: Filter by the percentage of searches that are done on mobile
+          devices.
+        schema:
+          type: number
+          format: float
+      - name: mobileSearchesPercentage.max
+        in: query
+        description: Filter by the percentage of searches that are done on mobile
+          devices.
+        schema:
+          type: number
+          format: float
+      - name: desktopSearchesPercentage.min
+        in: query
+        description: Filter by the percentage of searches that are done on desktop
+          devices.
+        schema:
+          type: number
+          format: float
+      - name: desktopSearchesPercentage.max
+        in: query
+        description: Filter by the percentage of searches that are done on desktop
+          devices.
+        schema:
+          type: number
+          format: float
+      - name: notClickedSearchesPercentage.min
+        in: query
+        description: 'Filter by the percentage of searches that are not clicked.
+
+          Some keyword searches supply clear information in a featured snippet or
+          similar displays. They don''t require a click to get the information. Those
+          will have higher percentages in this metric.'
+        schema:
+          type: number
+          format: float
+      - name: notClickedSearchesPercentage.max
+        in: query
+        description: 'Filter by the percentage of searches that are not clicked.
+
+          Some keyword searches supply clear information in a featured snippet or
+          similar displays. They don''t require a click to get the information. Those
+          will have higher percentages in this metric.'
+        schema:
+          type: number
+          format: float
+      - name: paidClickSearchPercentage.min
+        in: query
+        description: Filter by the percentage of clicks that go to ads.
+        schema:
+          type: number
+          format: float
+      - name: paidClickSearchPercentage.max
+        in: query
+        description: Filter by the percentage of clicks that go to ads.
+        schema:
+          type: number
+          format: float
+      - name: organicClicksSearchPercentage.min
+        in: query
+        description: Filter by the percentage of clicks that go to organic results,
+          not ads.
+        schema:
+          type: number
+          format: float
+      - name: organicClicksSearchPercentage.max
+        in: query
+        description: Filter by the percentage of clicks that go to organic results,
+          not ads.
+        schema:
+          type: number
+          format: float
+      - name: monthlyCost.min
+        in: query
+        description: Filter by the monthly cost of the keyword.  This will use the
+          keyword matching option selected in `monthlyCostOption`
+        schema:
+          type: number
+          format: float
+      - name: monthlyCost.max
+        in: query
+        description: Filter by the monthly cost of the keyword.  This will use the
+          keyword matching option selected in `monthlyCostOption`
+        schema:
+          type: number
+          format: float
+      - name: monthlyCostOption
+        in: query
+        description: Monthly Cost keyword matching option to filter results by.
+        schema:
+          type: string
+          enum:
+          - Broad
+          - Exact
+          - Phrase
+          example: Broad
+        example: Broad
+      - name: rankingHomepages.min
+        in: query
+        description: Homepages on the SERP range to filter results by.
+        schema:
+          type: number
+          format: float
+      - name: rankingHomepages.max
+        in: query
+        description: Homepages on the SERP range to filter results by.
+        schema:
+          type: number
+          format: float
+      - name: wordCount.min
+        in: query
+        description: Filter by the number of words in the keyword.
+        schema:
+          type: number
+          format: float
+      - name: wordCount.max
+        in: query
+        description: Filter by the number of words in the keyword.
+        schema:
+          type: number
+          format: float
+      - name: pageSize
+        in: query
+        description: The maximum number of rows returned.
+        schema:
+          type: integer
+          format: int32
+          default: 5
+          maximum: 10000
+          minimum: 1
+          example: 5
+        example: 5
+      - name: countryCode
+        in: query
+        description: Country to get results for.
+        schema:
+          type: string
+          default: US
+          enum:
+          - AR
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - DE
+          - DK
+          - ES
+          - FR
+          - IE
+          - IN
+          - IT
+          - JP
+          - MX
+          - NL
+          - 'NO'
+          - NZ
+          - PL
+          - PT
+          - SE
+          - SG
+          - TR
+          - UA
+          - UK
+          - US
+          - ZA
+          example: US
+        example: US
+      - name: sortBy
+        in: query
+        description: Column to sort by.
+        schema:
+          type: string
+          default: SearchVolume
+          enum:
+          - SearchVolume
+          - LiveSearchVolume
+          - RankingDifficulty
+          - TotalMonthlyClicks
+          - PercentMobileSearches
+          - PercentDesktopSearches
+          - PercentSearchesNotClicked
+          - PercentPaidClicks
+          - PercentOrganicClicks
+          - BroadCostPerClick
+          - PhraseCostPerClick
+          - ExactCostPerClick
+          - BroadMonthlyClicks
+          - PhraseMonthlyClicks
+          - ExactMonthlyClicks
+          - BroadMonthlyCost
+          - PhraseMonthlyCost
+          - ExactMonthlyCost
+          - PaidCompetitors
+          - RankingHomepages
+          x-enumDescriptions:
+            SearchVolume: Monthly search volume
+            LiveSearchVolume: Real-time search volume data
+            RankingDifficulty: SEO competition difficulty score
+            TotalMonthlyClicks: Estimated total monthly clicks
+            PercentMobileSearches: Percentage of searches from mobile devices
+            PercentDesktopSearches: Percentage of searches from desktop devices
+            PercentSearchesNotClicked: Percentage of searches resulting in no clicks
+            PercentPaidClicks: Percentage of clicks going to paid results
+            PercentOrganicClicks: Percentage of clicks going to organic results
+            BroadCostPerClick: Broad match cost per click estimate
+            PhraseCostPerClick: Phrase match cost per click estimate
+            ExactCostPerClick: Exact match cost per click estimate
+            BroadMonthlyClicks: Estimated monthly clicks for broad match
+            PhraseMonthlyClicks: Estimated monthly clicks for phrase match
+            ExactMonthlyClicks: Estimated monthly clicks for exact match
+            BroadMonthlyCost: Estimated monthly cost for broad match
+            PhraseMonthlyCost: Estimated monthly cost for phrase match
+            ExactMonthlyCost: Estimated monthly cost for exact match
+            PaidCompetitors: Number of paid search competitors
+            RankingHomepages: Number of homepages ranking organically
+          example: SearchVolume
+        example: SearchVolume
+      - name: sortOrder
+        in: query
+        description: Sort direction for results.
+        schema:
+          type: string
+          default: Descending
+          enum:
+          - Ascending
+          - Descending
+          example: Descending
+        example: Descending
+      - name: startingRow
+        in: query
+        description: Row number to start the results with.
+        schema:
+          type: integer
+          format: int32
+          default: 1
+          maximum: 10000
+          minimum: 1
+          example: 1
+        example: 1
+      - name: adultFilter
+        in: query
+        description: Exclude adult keywords considered unsafe for work.
+        schema:
+          type: boolean
+          default: true
+          example: true
+        example: true
+      - name: onlyAdultKeywords
+        in: query
+        description: Only include adult keywords considered unsafe for work.
+        schema:
+          type: boolean
+          default: false
+          example: false
+        example: false
+      responses:
+        '200':
+          description: Successfully retrieved new PPC keywords. Returns keyword data
+            with search metrics, cost estimates, and competitive intelligence showing
+            recently acquired paid keywords for strategic expansion insights.
+          content:
+            application/json:
+              schema:
+                description: Response wrapper containing PPC keyword research data
+                  with detailed advertising performance metrics and pagination metadata
+                  for keyword discovery and optimization.
+                type: object
+                properties:
+                  resultCount:
+                    description: Number of results returned
+                    type: integer
+                    format: int32
+                    readOnly: true
+                    example: 100
+                  totalMatchingResults:
+                    description: Total number of PPC keywords available that match
+                      the query criteria, including results not included in the current
+                      page.
+                    type: integer
+                    format: int64
+                    readOnly: true
+                    example: 75000
+                  results:
+                    description: Array of PPC keywords with comprehensive advertising
+                      performance metrics including search volume, cost data, and
+                      competitive intelligence insights.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        keyword:
+                          description: The keyword that shows high performance or
+                            profitability for successful competitors in paid search
+                            advertising.
+                          type: string
+                          nullable: true
+                          example: running shoes
+                        searchVolume:
+                          description: Estimated monthly search volume for this keyword
+                            based on Google search data across the selected country/region,
+                            blended from multiple sources for accuracy.
+                          type: integer
+                          format: int64
+                          nullable: true
+                          example: 266000
+                        liveSearchVolume:
+                          description: Adjusted search volume based on recent trends
+                            and real-time data, providing a more current estimate
+                            than historical averages.
+                          type: integer
+                          format: int64
+                          nullable: true
+                          example: 82000
+                        rankingDifficulty:
+                          description: SEO difficulty score (0-100) indicating how
+                            challenging it would be to rank organically for this keyword,
+                            with 100 being most difficult.
+                          type: integer
+                          format: int32
+                          nullable: true
+                          example: 98
+                        totalMonthlyClicks:
+                          description: Total estimated monthly clicks (both organic
+                            and paid) generated from search results for this keyword.
+                          type: integer
+                          format: int64
+                          nullable: true
+                          example: 219000
+                        percentMobileSearches:
+                          description: Percentage of searches for this keyword that
+                            originate from mobile devices (0.0-1.0).
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 0.52
+                        percentDesktopSearches:
+                          description: Percentage of searches for this keyword that
+                            originate from desktop devices (0.0-1.0).
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 0.48
+                        percentSearchesNotClicked:
+                          description: Percentage of searches where users leave the
+                            SERP without clicking any result, often due to sufficient
+                            information in featured snippets or direct answers (0.0-1.0).
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 0.18
+                        percentPaidClicks:
+                          description: Percentage of total SERP clicks that go to
+                            paid ad results (0.0-1.0).
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 0.52
+                        percentOrganicClicks:
+                          description: Percentage of total SERP clicks that go to
+                            organic search results (0.0-1.0).
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 0.48
+                        broadCostPerClick:
+                          description: Average cost-per-click for broad match keyword
+                            targeting, representing what advertisers typically pay
+                            when their ads are triggered by related keywords.
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 0.73
+                        phraseCostPerClick:
+                          description: Average cost-per-click for phrase match keyword
+                            targeting, where ads show for searches that include the
+                            keyword phrase in the same order.
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 0.67
+                        exactCostPerClick:
+                          description: Average cost-per-click for exact match keyword
+                            targeting, the most precise and typically highest-performing
+                            match type.
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 0.65
+                        broadMonthlyClicks:
+                          description: Estimated monthly paid clicks for broad match
+                            targeting of this keyword.
+                          type: number
+                          format: float
+                          nullable: true
+                          example: 57019.8
+                        phraseMonthlyClicks:
+                          description: Estimated monthly paid clicks for phrase match
+                            targeting of this keyword.
+                          type: number
+                          format: float
+                          nullable: true
+                          example: 38000
+                        exactMonthlyClicks:
+                          description: Estimated monthly paid clicks for exact match
+                            targeting of this keyword.
+                          type: number
+                          format: float
+                          nullable: true
+                          example: 29094.6
+                        broadMonthlyCost:
+                          description: Estimated monthly advertising spend for broad
+                            match targeting of this keyword.
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 41604.9
+                        phraseMonthlyCost:
+                          description: Estimated monthly advertising spend for phrase
+                            match targeting of this keyword.
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 25542
+                        exactMonthlyCost:
+                          description: Estimated monthly advertising spend for exact
+                            match targeting of this keyword.
+                          type: number
+                          format: double
+                          nullable: true
+                          example: 19041.6
+                        paidCompetitors:
+                          description: Total number of unique advertisers observed
+                            purchasing ads for this keyword over the last 14 months,
+                            indicating competitive intensity.
+                          type: integer
+                          format: int32
+                          nullable: true
+                          example: 15
+                        distinctCompetitors:
+                          description: List of domain names that have purchased ads
+                            for this keyword over the last 14 months.
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                          example:
+                          - example.com
+                          - competitor1.com
+                          - competitor2.com
+                        rankingHomepages:
+                          description: Number of domain homepages (root URLs) ranking
+                            within the first 100 organic search results for this keyword.
+                          type: integer
+                          format: int32
+                          nullable: true
+                          example: 8
+                        serpFeaturesCsv:
+                          description: Comma-separated list of SERP features present
+                            for this keyword (e.g., Images, Videos, Maps, Shopping),
+                            indicating competition for organic real estate.
+                          type: string
+                          nullable: true
+                          example: Images,Maps
+                        serpFirstResult:
+                          description: Domain name of the top-ranking organic result
+                            for this keyword, useful for identifying category leaders.
+                          type: string
+                          nullable: true
+                          example: example.com
+                        isQuestion:
+                          description: Indicates whether this keyword is phrased as
+                            a question (who, what, when, where, why, how).
+                          type: boolean
+                          example: false
+                        isNotSafeForWork:
+                          description: Indicates whether this keyword is flagged as
+                            containing adult or inappropriate content.
+                          type: boolean
+                          example: false
+                      additionalProperties: false
+                      description: Represents a PPC keyword with comprehensive advertising
+                        performance metrics including search volume, cost analysis,
+                        competitive intelligence, and SERP characteristics for paid
+                        search campaign optimization.
+                    readOnly: true
+                    nullable: true
+                additionalProperties: false
+        '400':
+          description: Bad Request - Invalid parameters provided (e.g., invalid domain
+            format, search volume ranges, or invalid country code)
+        '401':
+          description: Unauthorized - Invalid API credentials or insufficient permissions
+            to access PPC keyword data
+        '500':
+          description: Internal Server Error - A server-side error occurred while
+            processing the request
+      tags:
+      - PPC Research API
+components:
+  schemas:
+    PublicApiKeywordOverviewOutputDto:
+      description: Response wrapper containing PPC keyword research data with detailed
+        advertising performance metrics and pagination metadata for keyword discovery
+        and optimization.
+      type: object
+      properties:
+        resultCount:
+          description: Number of results returned
+          type: integer
+          format: int32
+          readOnly: true
+          example: 100
+        totalMatchingResults:
+          description: Total number of PPC keywords available that match the query
+            criteria, including results not included in the current page.
+          type: integer
+          format: int64
+          readOnly: true
+          example: 75000
+        results:
+          description: Array of PPC keywords with comprehensive advertising performance
+            metrics including search volume, cost data, and competitive intelligence
+            insights.
+          type: array
+          items:
+            type: object
+            properties:
+              keyword:
+                description: The keyword that shows high performance or profitability
+                  for successful competitors in paid search advertising.
+                type: string
+                nullable: true
+                example: running shoes
+              searchVolume:
+                description: Estimated monthly search volume for this keyword based
+                  on Google search data across the selected country/region, blended
+                  from multiple sources for accuracy.
+                type: integer
+                format: int64
+                nullable: true
+                example: 266000
+              liveSearchVolume:
+                description: Adjusted search volume based on recent trends and real-time
+                  data, providing a more current estimate than historical averages.
+                type: integer
+                format: int64
+                nullable: true
+                example: 82000
+              rankingDifficulty:
+                description: SEO difficulty score (0-100) indicating how challenging
+                  it would be to rank organically for this keyword, with 100 being
+                  most difficult.
+                type: integer
+                format: int32
+                nullable: true
+                example: 98
+              totalMonthlyClicks:
+                description: Total estimated monthly clicks (both organic and paid)
+                  generated from search results for this keyword.
+                type: integer
+                format: int64
+                nullable: true
+                example: 219000
+              percentMobileSearches:
+                description: Percentage of searches for this keyword that originate
+                  from mobile devices (0.0-1.0).
+                type: number
+                format: double
+                nullable: true
+                example: 0.52
+              percentDesktopSearches:
+                description: Percentage of searches for this keyword that originate
+                  from desktop devices (0.0-1.0).
+                type: number
+                format: double
+                nullable: true
+                example: 0.48
+              percentSearchesNotClicked:
+                description: Percentage of searches where users leave the SERP without
+                  clicking any result, often due to sufficient information in featured
+                  snippets or direct answers (0.0-1.0).
+                type: number
+                format: double
+                nullable: true
+                example: 0.18
+              percentPaidClicks:
+                description: Percentage of total SERP clicks that go to paid ad results
+                  (0.0-1.0).
+                type: number
+                format: double
+                nullable: true
+                example: 0.52
+              percentOrganicClicks:
+                description: Percentage of total SERP clicks that go to organic search
+                  results (0.0-1.0).
+                type: number
+                format: double
+                nullable: true
+                example: 0.48
+              broadCostPerClick:
+                description: Average cost-per-click for broad match keyword targeting,
+                  representing what advertisers typically pay when their ads are triggered
+                  by related keywords.
+                type: number
+                format: double
+                nullable: true
+                example: 0.73
+              phraseCostPerClick:
+                description: Average cost-per-click for phrase match keyword targeting,
+                  where ads show for searches that include the keyword phrase in the
+                  same order.
+                type: number
+                format: double
+                nullable: true
+                example: 0.67
+              exactCostPerClick:
+                description: Average cost-per-click for exact match keyword targeting,
+                  the most precise and typically highest-performing match type.
+                type: number
+                format: double
+                nullable: true
+                example: 0.65
+              broadMonthlyClicks:
+                description: Estimated monthly paid clicks for broad match targeting
+                  of this keyword.
+                type: number
+                format: float
+                nullable: true
+                example: 57019.8
+              phraseMonthlyClicks:
+                description: Estimated monthly paid clicks for phrase match targeting
+                  of this keyword.
+                type: number
+                format: float
+                nullable: true
+                example: 38000
+              exactMonthlyClicks:
+                description: Estimated monthly paid clicks for exact match targeting
+                  of this keyword.
+                type: number
+                format: float
+                nullable: true
+                example: 29094.6
+              broadMonthlyCost:
+                description: Estimated monthly advertising spend for broad match targeting
+                  of this keyword.
+                type: number
+                format: double
+                nullable: true
+                example: 41604.9
+              phraseMonthlyCost:
+                description: Estimated monthly advertising spend for phrase match
+                  targeting of this keyword.
+                type: number
+                format: double
+                nullable: true
+                example: 25542
+              exactMonthlyCost:
+                description: Estimated monthly advertising spend for exact match targeting
+                  of this keyword.
+                type: number
+                format: double
+                nullable: true
+                example: 19041.6
+              paidCompetitors:
+                description: Total number of unique advertisers observed purchasing
+                  ads for this keyword over the last 14 months, indicating competitive
+                  intensity.
+                type: integer
+                format: int32
+                nullable: true
+                example: 15
+              distinctCompetitors:
+                description: List of domain names that have purchased ads for this
+                  keyword over the last 14 months.
+                type: array
+                items:
+                  type: string
+                nullable: true
+                example:
+                - example.com
+                - competitor1.com
+                - competitor2.com
+              rankingHomepages:
+                description: Number of domain homepages (root URLs) ranking within
+                  the first 100 organic search results for this keyword.
+                type: integer
+                format: int32
+                nullable: true
+                example: 8
+              serpFeaturesCsv:
+                description: Comma-separated list of SERP features present for this
+                  keyword (e.g., Images, Videos, Maps, Shopping), indicating competition
+                  for organic real estate.
+                type: string
+                nullable: true
+                example: Images,Maps
+              serpFirstResult:
+                description: Domain name of the top-ranking organic result for this
+                  keyword, useful for identifying category leaders.
+                type: string
+                nullable: true
+                example: example.com
+              isQuestion:
+                description: Indicates whether this keyword is phrased as a question
+                  (who, what, when, where, why, how).
+                type: boolean
+                example: false
+              isNotSafeForWork:
+                description: Indicates whether this keyword is flagged as containing
+                  adult or inappropriate content.
+                type: boolean
+                example: false
+            additionalProperties: false
+            description: Represents a PPC keyword with comprehensive advertising performance
+              metrics including search volume, cost analysis, competitive intelligence,
+              and SERP characteristics for paid search campaign optimization.
+          readOnly: true
+          nullable: true
+      additionalProperties: false
+    PublicApiKeywordOverviewOutputItemDto:
+      description: Represents a PPC keyword with comprehensive advertising performance
+        metrics including search volume, cost analysis, competitive intelligence,
+        and SERP characteristics for paid search campaign optimization.
+      type: object
+      properties:
+        keyword:
+          description: The keyword that shows high performance or profitability for
+            successful competitors in paid search advertising.
+          type: string
+          nullable: true
+          example: running shoes
+        searchVolume:
+          description: Estimated monthly search volume for this keyword based on Google
+            search data across the selected country/region, blended from multiple
+            sources for accuracy.
+          type: integer
+          format: int64
+          nullable: true
+          example: 266000
+        liveSearchVolume:
+          description: Adjusted search volume based on recent trends and real-time
+            data, providing a more current estimate than historical averages.
+          type: integer
+          format: int64
+          nullable: true
+          example: 82000
+        rankingDifficulty:
+          description: SEO difficulty score (0-100) indicating how challenging it
+            would be to rank organically for this keyword, with 100 being most difficult.
+          type: integer
+          format: int32
+          nullable: true
+          example: 98
+        totalMonthlyClicks:
+          description: Total estimated monthly clicks (both organic and paid) generated
+            from search results for this keyword.
+          type: integer
+          format: int64
+          nullable: true
+          example: 219000
+        percentMobileSearches:
+          description: Percentage of searches for this keyword that originate from
+            mobile devices (0.0-1.0).
+          type: number
+          format: double
+          nullable: true
+          example: 0.52
+        percentDesktopSearches:
+          description: Percentage of searches for this keyword that originate from
+            desktop devices (0.0-1.0).
+          type: number
+          format: double
+          nullable: true
+          example: 0.48
+        percentSearchesNotClicked:
+          description: Percentage of searches where users leave the SERP without clicking
+            any result, often due to sufficient information in featured snippets or
+            direct answers (0.0-1.0).
+          type: number
+          format: double
+          nullable: true
+          example: 0.18
+        percentPaidClicks:
+          description: Percentage of total SERP clicks that go to paid ad results
+            (0.0-1.0).
+          type: number
+          format: double
+          nullable: true
+          example: 0.52
+        percentOrganicClicks:
+          description: Percentage of total SERP clicks that go to organic search results
+            (0.0-1.0).
+          type: number
+          format: double
+          nullable: true
+          example: 0.48
+        broadCostPerClick:
+          description: Average cost-per-click for broad match keyword targeting, representing
+            what advertisers typically pay when their ads are triggered by related
+            keywords.
+          type: number
+          format: double
+          nullable: true
+          example: 0.73
+        phraseCostPerClick:
+          description: Average cost-per-click for phrase match keyword targeting,
+            where ads show for searches that include the keyword phrase in the same
+            order.
+          type: number
+          format: double
+          nullable: true
+          example: 0.67
+        exactCostPerClick:
+          description: Average cost-per-click for exact match keyword targeting, the
+            most precise and typically highest-performing match type.
+          type: number
+          format: double
+          nullable: true
+          example: 0.65
+        broadMonthlyClicks:
+          description: Estimated monthly paid clicks for broad match targeting of
+            this keyword.
+          type: number
+          format: float
+          nullable: true
+          example: 57019.8
+        phraseMonthlyClicks:
+          description: Estimated monthly paid clicks for phrase match targeting of
+            this keyword.
+          type: number
+          format: float
+          nullable: true
+          example: 38000
+        exactMonthlyClicks:
+          description: Estimated monthly paid clicks for exact match targeting of
+            this keyword.
+          type: number
+          format: float
+          nullable: true
+          example: 29094.6
+        broadMonthlyCost:
+          description: Estimated monthly advertising spend for broad match targeting
+            of this keyword.
+          type: number
+          format: double
+          nullable: true
+          example: 41604.9
+        phraseMonthlyCost:
+          description: Estimated monthly advertising spend for phrase match targeting
+            of this keyword.
+          type: number
+          format: double
+          nullable: true
+          example: 25542
+        exactMonthlyCost:
+          description: Estimated monthly advertising spend for exact match targeting
+            of this keyword.
+          type: number
+          format: double
+          nullable: true
+          example: 19041.6
+        paidCompetitors:
+          description: Total number of unique advertisers observed purchasing ads
+            for this keyword over the last 14 months, indicating competitive intensity.
+          type: integer
+          format: int32
+          nullable: true
+          example: 15
+        distinctCompetitors:
+          description: List of domain names that have purchased ads for this keyword
+            over the last 14 months.
+          type: array
+          items:
+            type: string
+          nullable: true
+          example:
+          - example.com
+          - competitor1.com
+          - competitor2.com
+        rankingHomepages:
+          description: Number of domain homepages (root URLs) ranking within the first
+            100 organic search results for this keyword.
+          type: integer
+          format: int32
+          nullable: true
+          example: 8
+        serpFeaturesCsv:
+          description: Comma-separated list of SERP features present for this keyword
+            (e.g., Images, Videos, Maps, Shopping), indicating competition for organic
+            real estate.
+          type: string
+          nullable: true
+          example: Images,Maps
+        serpFirstResult:
+          description: Domain name of the top-ranking organic result for this keyword,
+            useful for identifying category leaders.
+          type: string
+          nullable: true
+          example: example.com
+        isQuestion:
+          description: Indicates whether this keyword is phrased as a question (who,
+            what, when, where, why, how).
+          type: boolean
+          example: false
+        isNotSafeForWork:
+          description: Indicates whether this keyword is flagged as containing adult
+            or inappropriate content.
+          type: boolean
+          example: false
+      additionalProperties: false
+  securitySchemes:
+    Basic_Authentication_Token:
+      type: http
+      description: '<a href="https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side"
+        target="_blank">Basic Authentication</a> is a standard that involves encoding
+        your <code>SPYFU_API_ID:SECRET_KEY</code> into a Base64 string. Your <b>SpyFu
+        API ID</b> and <b>Secret Key</b> can both be found under the <b><a href="https://www.spyfu.com/account/api"
+        target="_blank">Account Settings -> API Usage</a></b> page. Additionally,
+        you can find the Base64 string has been pre-generated on the same page under
+        <b>Base 64 Key</b>. Finally, this encoded string is sent in the "Authorization"
+        header prefixed with the keyword "Basic":<br>For example, to authorize as
+        <code>00000000-0000-0000-0000-000000000000:AB12WXYZ</code> the client would
+        send<br><pre><code>Authorization: <span class="token keyword">Basic</span>
+        <span class="token constructor-invocation class-name">MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwOkFCMTJXWFla<span></code></pre>'
+      scheme: basic
+    Query_Parameter_Token:
+      type: apiKey
+      description: An API key can be added as a query parameter. Your API key is listed
+        as "Secret Key" found under the <b><a href="https://www.spyfu.com/account/api"
+        target="_blank">Account Settings -> API Usage</a></b> page<br>For example,
+        to authorize with the API key <code>AB12WXY</code><br><pre><code>/apis/example_api/GetExample?domain=spyfu.com<span
+        class="token keyword">&api_key=AB12WXYZ</span></code></pre>
+      name: api_key
+      in: query
+    HMAC_Authentication_Header:
+      type: apiKey
+      description: For even more security, each request can be individually authenticated
+        with a timestamped <a href="https://en.wikipedia.org/wiki/HMAC" target="_blank"><b>HMAC</b></a>
+        <em>(Hash Message Authentication Code)</em> signature. Composed of your secret
+        key, a valid timestamp, the API request path, and all request parameters.
+        <h3>Creating the signature:</h3><br>Combine the pieces that will be converted
+        into the signature.<br><pre><code><span class="token keyword">StringToSign</span>
+        <span class="token operator">=</span><br>&#x09;HTTP-Verb <span class="token
+        operator">+</span> <span class="token string">"\n"</span> <span class="token
+        operator">+</span><br>&#x09;Timestamp <span class="token operator">+</span>
+        <span class="token string">"\n"</span> <span class="token operator">+</span><br>&#x09;UrlPath
+        <span class="token operator">+</span> <span class="token string">"\n"</span><br>&#x09;QueryParameters<span
+        class="token operator">;</span><br></code></pre><br>Create UTF-8 encodings
+        of the above string and of your secret key.<br><pre><code><span class="token
+        keyword">byte</span><span class="token operator">[]</span> SecretKeyBytes
+        <span class="token operator">=</span> <span class="token function">UTF-8-Encoding-Of</span><span
+        class="token operator">(</span> Upper-Case-Of<span class="token operator">(</span>
+        SECRET_KEY <span class="token operator">)</span> <span class="token operator">)</span><span
+        class="token operator">;</span><br><span class="token keyword">byte</span><span
+        class="token operator">[]</span> StringToSignBytes <span class="token operator">=</span>
+        <span class="token function">UTF-8-Encoding-Of</span><span class="token operator">(</span>
+        StringToSign <span class="token operator">)</span><span class="token operator">;</span><br></code></pre><br>Use
+        an implementation of HMAC256 using your UTF-8 secret key to encode the combined
+        string of your request. This should then be converted to Base64 to finish
+        creating your signature.<br><pre><code><span class="token keyword">Signature</span>
+        <span class="token operator">=</span> <span class="token function">Base64</span><span
+        class="token operator">(</span> <span class="token function">HMAC-SHA256</span><span
+        class="token operator">(</span> SecretKeyBytes, StringToSignBytes <span class="token
+        operator">)</span> <span class="token operator">)</span><span class="token
+        operator">;</span><br></code></pre><br><h3>Using the signature:</h3><br>This
+        signature is then sent in through an Authentication header with your username.<br><pre><code>Authentication<span
+        class="token operator">:</span> <span class="token keyword">UserName</span><span
+        class="token operator">:</span><span class="token invocation class-name">Signature</span></code></pre>
+      name: Authentication
+      in: header
+security:
+- Basic_Authentication_Token: []
+- Query_Parameter_Token: []
+- HMAC_Authentication_Header: []

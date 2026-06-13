@@ -1,0 +1,49 @@
+{
+  "examples": [
+    {
+      "operationId": "DomainStatsApi_GetAllDomainStats_GET",
+      "summary": "Get All Domain Stats",
+      "example": {
+        "domain": "example.com",
+        "resultCount": 1
+      }
+    },
+    {
+      "operationId": "DomainStatsApi_GetLatestDomainStats_GET",
+      "summary": "Get Latest Domain Stats",
+      "example": {
+        "domain": "example.com",
+        "resultCount": 1
+      }
+    },
+    {
+      "operationId": "DomainStatsApi_GetDomainStatsForExactDate_GET",
+      "summary": "Get Domain Stats For Exact Date",
+      "example": {
+        "domain": "example.com",
+        "resultCount": 1
+      }
+    },
+    {
+      "operationId": "DomainStatsApi_GetActiveDatesForDomain_GET",
+      "summary": "Get Active Dates For Domain",
+      "example": {
+        "resultCount": 100
+      }
+    },
+    {
+      "operationId": "DomainStatsApi_GetBulkDomainStats_GET",
+      "summary": "Bulk Domain Statistics (Snapshot or History)",
+      "example": {
+        "resultCount": 1
+      }
+    },
+    {
+      "operationId": "DomainStatsApi_GetMatchingDomains_GET",
+      "summary": "Find Domains by Pattern and Metrics",
+      "example": {
+        "resultCount": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SpyFu Ranking History API Schemas",
+  "description": "JSON Schema definitions for SpyFu Ranking History API API responses",
+  "definitions": {
+    "HistoricRanking_GetHistoricRankingsForDomain_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Domain Ranking History",
+      "description": "Returns historical organic ranking data for a domain across multiple keywords within a specified date range. Track position changes, click gains/losses, and ranking trends over time to analyze SEO per",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "historicalRanks": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              },
+              "startRank": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32"
+              },
+              "endRank": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32"
+              },
+              "rankChange": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32"
+              },
+              "endClicks": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "clicksChange": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "searchVolume": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64"
+              }
+            },
+            "additionalProperties": false
+          },
+          "readOnly": true
+        },
+        "totalVolume": {
+          "type": "integer",
+          "format": "int64",
+          "readOnly": true
+        },
+        "totalClicks": {
+          "type": "integer",
+          "format": "int64",
+          "readOnly": true
+        },
+        "totalClicksChange": {
+          "type": "integer",
+          "format": "int64",
+          "readOnly": true
+        },
+        "totalRankChange": {
+          "type": "integer",
+          "format": "int64",
+          "readOnly": true
+        },
+        "rankAverage": {
+          "type": "number",
+          "format": "double",
+          "readOnly": true
+        },
+        "rankAverageChange": {
+          "type": "number",
+          "format": "double",
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "type": "integer",
+          "format": "int64",
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "HistoricRanking_GetHistoricRankingsForKeywordOnDomains_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Keyword Domain Rankings",
+      "description": "Returns historical organic ranking data for a specific keyword across multiple specified domains within a date range. Compare how different domains have performed for the same keyword over time.\n\n[Vis",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "domain": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "keyword": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "results": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "HistoricRanking_GetHistoricRankingsForDomainOnKeywords_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Domain Keyword Rankings",
+      "description": "Returns historical organic ranking data for a specific domain across multiple specified keywords within a date range. Analyze how a domain's positions have changed over time for your target keyword li",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "domain": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "keyword": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "results": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

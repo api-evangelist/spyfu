@@ -1,0 +1,25 @@
+{
+  "examples": [
+    {
+      "operationId": "HistoricRanking_GetHistoricRankingsForDomain_GET",
+      "summary": "Get Domain Ranking History",
+      "example": {
+        "resultCount": 100
+      }
+    },
+    {
+      "operationId": "HistoricRanking_GetHistoricRankingsForKeywordOnDomains_GET",
+      "summary": "Get Keyword Domain Rankings",
+      "example": {
+        "resultCount": 100
+      }
+    },
+    {
+      "operationId": "HistoricRanking_GetHistoricRankingsForDomainOnKeywords_GET",
+      "summary": "Get Domain Keyword Rankings",
+      "example": {
+        "resultCount": 100
+      }
+    }
+  ]
+}

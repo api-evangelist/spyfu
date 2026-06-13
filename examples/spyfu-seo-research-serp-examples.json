@@ -1,0 +1,142 @@
+{
+  "examples": [
+    {
+      "operationId": "OrganicSerpApi_GetMostValuableKeywords_GET",
+      "summary": "Get Most Valuable Keywords",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 75000
+      }
+    },
+    {
+      "operationId": "OrganicSerpApi_GetNewlyRankedKeywords_GET",
+      "summary": "Get Newly Ranked Keywords",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 75000
+      }
+    },
+    {
+      "operationId": "OrganicSerpApi_GetGainedRanksKeywords_GET",
+      "summary": "Get Gained Ranks Keywords",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 75000
+      }
+    },
+    {
+      "operationId": "OrganicSerpApi_GetLostRanksKeywords_GET",
+      "summary": "Get Lost Ranks Keywords",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 75000
+      }
+    },
+    {
+      "operationId": "OrganicSerpApi_GetGainedClicksKeywords_GET",
+      "summary": "Get Gained Clicks Keywords",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 75000
+      }
+    },
+    {
+      "operationId": "OrganicSerpApi_GetLostClicksKeywords_GET",
+      "summary": "Get Lost Clicks Keywords",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 75000
+      }
+    },
+    {
+      "operationId": "OrganicSerpApi_GetJustMadeItKeywords_GET",
+      "summary": "Get Just Made It Keywords",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 75000
+      }
+    },
+    {
+      "operationId": "OrganicSerpApi_GetJustFellOffKeywords_GET",
+      "summary": "Get Just Fell Off Keywords",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 75000
+      }
+    },
+    {
+      "operationId": "OrganicSerpApi_GetSeoKeywords_GET",
+      "summary": "Get SEO Keywords",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 75000
+      }
+    },
+    {
+      "operationId": "OrganicSerpApi_GetOrganicOutrankingKeywords_GET",
+      "summary": "Get Organic Outranking Keywords",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 75000
+      }
+    },
+    {
+      "operationId": "OrganicSerpApi_GetKeywordsWhereTheyOutRankYou_GET",
+      "summary": "Get Where They Outrank You Keywords",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 75000
+      }
+    },
+    {
+      "operationId": "OrganicSerpApi_GetKeywordsWhereTheyJustSurpassedYou_GET",
+      "summary": "Get Where They Just Surpassed You Keywords",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 75000
+      }
+    },
+    {
+      "operationId": "OrganicSerpApi_GetSerpAnalysisKeywords_GET",
+      "summary": "Get SERP Analysis for Keyword ",
+      "example": {
+        "resultCount": 100,
+        "totalMatchingResults": 25000
+      }
+    },
+    {
+      "operationId": "OrganicSerpApi_GetLiveSeoStats_GET",
+      "summary": "Get Live SEO Stats",
+      "example": {
+        "resultCount": 1,
+        "domain": "example.com",
+        "url": "https://example.com/blog",
+        "totalOrganicResults": 15420,
+        "monthlyOrganicClicks": 125000.5,
+        "monthlyOrganicClickValue": 45000.75,
+        "totalSearchVolume": 700000
+      }
+    },
+    {
+      "operationId": "TopPagesApi_GetMostTrafficTopPages_GET",
+      "summary": "Get Highest Traffic Top Pages",
+      "example": {
+        "resultCount": 100
+      }
+    },
+    {
+      "operationId": "TopPagesApi_GetNewTopPages_GET",
+      "summary": "Get New Top Pages",
+      "example": {
+        "resultCount": 100
+      }
+    },
+    {
+      "operationId": "TopPagesApi_GetTopPages_GET",
+      "summary": "Get Top Performing Pages",
+      "example": {
+        "resultCount": 100
+      }
+    }
+  ]
+}

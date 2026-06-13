@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SpyFu Account API Schemas",
+  "description": "JSON Schema definitions for SpyFu Account API API responses",
+  "definitions": {
+    "AccountApi_GetApiUsageForMonth_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "API monthly usage",
+      "description": "Returns stats for API usage.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "month": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "serviceLevelName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "requestCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rowsReturned": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "baseUnits": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unitsUsed": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "finalCost": {
+            "type": "number",
+            "format": "double"
+          },
+          "isPaid": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "AccountApi_GetApiUsageForMonthByDay_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "API daily usage",
+      "description": "Returns stats for API usage.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "month": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "serviceLevelName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "requestCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rowsReturned": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "baseUnits": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unitsUsed": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "finalCost": {
+            "type": "number",
+            "format": "double"
+          },
+          "isPaid": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "AccountApi_GetApiUsageForMonthByMethod_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "API monthly usage by method",
+      "description": "Returns stats for API usage.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "day": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "requestCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rowsReturned": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unitsPerRow": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unitsUsed": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "apiMethod": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

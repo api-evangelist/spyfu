@@ -1,0 +1,653 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SpyFu Kombat API Schemas",
+  "description": "JSON Schema definitions for SpyFu Kombat API API responses",
+  "definitions": {
+    "KombatApi_GetCompetingPpcKeywords_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Competing PPC Keywords",
+      "description": "Response wrapper containing competitive keyword analysis data showing keywords where multiple domains compete in the same search channel with pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of competitive keywords available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            50000
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of competitive keywords with detailed metrics showing overlap between multiple domains in either SEO or PPC search channels.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "description": "The keyword that shows competitive overlap between multiple domains in the same search channel.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "running shoes"
+                ]
+              },
+              "searchVolume": {
+                "description": "Estimated monthly search volume for this keyword based on Google search data across the selected country/region, blended from multiple sources for accuracy.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  266000
+                ]
+              },
+              "liveSearchVolume": {
+                "description": "Adjusted search volume based on recent trends and real-time data, providing a more current estimate than historical averages.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  82000
+                ]
+              },
+              "rankingDifficulty": {
+                "description": "SEO difficulty score (0-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  98
+                ]
+              },
+              "totalMonthlyClicks": {
+                "description": "Total estimated monthly clicks (both organic and paid) generated from search results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  219000
+                ]
+              },
+              "percentMobileSearches": {
+                "description": "Percentage of searches for this keyword that originate from mobile devices (0.0-1.0).",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.52
+                ]
+              },
+              "percentDesktopSearches": {
+                "description": "Percentage of searches for this keyword that originate from desktop devices (0.0-1.0).",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.48
+                ]
+              },
+              "percentSearchesNotClicked": {
+                "description": "Percentage of searches where users leave the SERP without clicking any result, often due to sufficient information in featured snippets or direct answers (0.0-1.0).",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.18
+                ]
+              },
+              "percentPaidClicks": {
+                "description": "Percentage of total SERP clicks that go to paid ad results (0.0-1.0).",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.52
+                ]
+              },
+              "percentOrganicClicks": {
+                "description": "Percentage of total SERP clicks that go to organic search results (0.0-1.0).",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.48
+                ]
+              },
+              "broadCostPerClick": {
+                "description": "Average cost-per-click for broad match keyword targeting, representing what advertisers typically pay when their ads are triggered by related keywords.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.73
+                ]
+              },
+              "phraseCostPerClick": {
+                "description": "Average cost-per-click for phrase match keyword targeting, where ads show for searches that include the keyword phrase in the same order.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.67
+                ]
+              },
+              "exactCostPerClick": {
+                "description": "Average cost-per-click for exact match keyword targeting, the most precise and typically highest-performing match type.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.65
+                ]
+              },
+              "broadMonthlyClicks": {
+                "description": "Estimated monthly paid clicks for broad match targeting of this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "float",
+                "examples": [
+                  57019.8
+                ]
+              },
+              "phraseMonthlyClicks": {
+                "description": "Estimated monthly paid clicks for phrase match targeting of this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "float",
+                "examples": [
+                  38000
+                ]
+              },
+              "exactMonthlyClicks": {
+                "description": "Estimated monthly paid clicks for exact match targeting of this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "float",
+                "examples": [
+                  29094.6
+                ]
+              },
+              "broadMonthlyCost": {
+                "description": "Estimated monthly advertising spend for broad match targeting of this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  41604.9
+                ]
+              },
+              "phraseMonthlyCost": {
+                "description": "Estimated monthly advertising spend for phrase match targeting of this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  25542
+                ]
+              },
+              "exactMonthlyCost": {
+                "description": "Estimated monthly advertising spend for exact match targeting of this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  19041.6
+                ]
+              },
+              "paidCompetitors": {
+                "description": "Total number of unique advertisers observed purchasing ads for this keyword over the last 14 months, indicating competitive intensity.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  15
+                ]
+              },
+              "distinctCompetitors": {
+                "description": "List of domain names that have purchased ads for this keyword over the last 14 months.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "string"
+                },
+                "examples": [
+                  [
+                    "example.com",
+                    "competitor1.com",
+                    "competitor2.com"
+                  ]
+                ]
+              },
+              "rankingHomepages": {
+                "description": "Number of domain homepages (root URLs) ranking within the first 100 organic search results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  8
+                ]
+              },
+              "serpFeaturesCsv": {
+                "description": "Comma-separated list of SERP features present for this keyword (e.g., Images, Videos, Maps, Shopping), indicating competition for organic real estate.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "Images,Maps"
+                ]
+              },
+              "serpFirstResult": {
+                "description": "Domain name of the top-ranking organic result for this keyword, useful for identifying category leaders.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "example.com"
+                ]
+              },
+              "isQuestion": {
+                "description": "Indicates whether this keyword is phrased as a question (who, what, when, where, why, how).",
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "isNotSafeForWork": {
+                "description": "Indicates whether this keyword is flagged as containing adult or inappropriate content.",
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents a competitive keyword with comprehensive metrics including search volume, competition analysis, cost data, and SERP characteristics for competitive intelligence analysis."
+          },
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "KombatApi_GetCompetingSeoKeywords_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Competing SEO Keywords",
+      "description": "Response wrapper containing competitive keyword analysis data showing keywords where multiple domains compete in the same search channel with pagination metadata.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of competitive keywords available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            50000
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of competitive keywords with detailed metrics showing overlap between multiple domains in either SEO or PPC search channels.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "description": "The keyword that shows competitive overlap between multiple domains in the same search channel.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "running shoes"
+                ]
+              },
+              "searchVolume": {
+                "description": "Estimated monthly search volume for this keyword based on Google search data across the selected country/region, blended from multiple sources for accuracy.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  266000
+                ]
+              },
+              "liveSearchVolume": {
+                "description": "Adjusted search volume based on recent trends and real-time data, providing a more current estimate than historical averages.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  82000
+                ]
+              },
+              "rankingDifficulty": {
+                "description": "SEO difficulty score (0-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  98
+                ]
+              },
+              "totalMonthlyClicks": {
+                "description": "Total estimated monthly clicks (both organic and paid) generated from search results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  219000
+                ]
+              },
+              "percentMobileSearches": {
+                "description": "Percentage of searches for this keyword that originate from mobile devices (0.0-1.0).",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.52
+                ]
+              },
+              "percentDesktopSearches": {
+                "description": "Percentage of searches for this keyword that originate from desktop devices (0.0-1.0).",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.48
+                ]
+              },
+              "percentSearchesNotClicked": {
+                "description": "Percentage of searches where users leave the SERP without clicking any result, often due to sufficient information in featured snippets or direct answers (0.0-1.0).",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.18
+                ]
+              },
+              "percentPaidClicks": {
+                "description": "Percentage of total SERP clicks that go to paid ad results (0.0-1.0).",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.52
+                ]
+              },
+              "percentOrganicClicks": {
+                "description": "Percentage of total SERP clicks that go to organic search results (0.0-1.0).",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.48
+                ]
+              },
+              "broadCostPerClick": {
+                "description": "Average cost-per-click for broad match keyword targeting, representing what advertisers typically pay when their ads are triggered by related keywords.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.73
+                ]
+              },
+              "phraseCostPerClick": {
+                "description": "Average cost-per-click for phrase match keyword targeting, where ads show for searches that include the keyword phrase in the same order.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.67
+                ]
+              },
+              "exactCostPerClick": {
+                "description": "Average cost-per-click for exact match keyword targeting, the most precise and typically highest-performing match type.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  0.65
+                ]
+              },
+              "broadMonthlyClicks": {
+                "description": "Estimated monthly paid clicks for broad match targeting of this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "float",
+                "examples": [
+                  57019.8
+                ]
+              },
+              "phraseMonthlyClicks": {
+                "description": "Estimated monthly paid clicks for phrase match targeting of this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "float",
+                "examples": [
+                  38000
+                ]
+              },
+              "exactMonthlyClicks": {
+                "description": "Estimated monthly paid clicks for exact match targeting of this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "float",
+                "examples": [
+                  29094.6
+                ]
+              },
+              "broadMonthlyCost": {
+                "description": "Estimated monthly advertising spend for broad match targeting of this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  41604.9
+                ]
+              },
+              "phraseMonthlyCost": {
+                "description": "Estimated monthly advertising spend for phrase match targeting of this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  25542
+                ]
+              },
+              "exactMonthlyCost": {
+                "description": "Estimated monthly advertising spend for exact match targeting of this keyword.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "double",
+                "examples": [
+                  19041.6
+                ]
+              },
+              "paidCompetitors": {
+                "description": "Total number of unique advertisers observed purchasing ads for this keyword over the last 14 months, indicating competitive intensity.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  15
+                ]
+              },
+              "distinctCompetitors": {
+                "description": "List of domain names that have purchased ads for this keyword over the last 14 months.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "string"
+                },
+                "examples": [
+                  [
+                    "example.com",
+                    "competitor1.com",
+                    "competitor2.com"
+                  ]
+                ]
+              },
+              "rankingHomepages": {
+                "description": "Number of domain homepages (root URLs) ranking within the first 100 organic search results for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  8
+                ]
+              },
+              "serpFeaturesCsv": {
+                "description": "Comma-separated list of SERP features present for this keyword (e.g., Images, Videos, Maps, Shopping), indicating competition for organic real estate.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "Images,Maps"
+                ]
+              },
+              "serpFirstResult": {
+                "description": "Domain name of the top-ranking organic result for this keyword, useful for identifying category leaders.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "example.com"
+                ]
+              },
+              "isQuestion": {
+                "description": "Indicates whether this keyword is phrased as a question (who, what, when, where, why, how).",
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "isNotSafeForWork": {
+                "description": "Indicates whether this keyword is flagged as containing adult or inappropriate content.",
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents a competitive keyword with comprehensive metrics including search volume, competition analysis, cost data, and SERP characteristics for competitive intelligence analysis."
+          },
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

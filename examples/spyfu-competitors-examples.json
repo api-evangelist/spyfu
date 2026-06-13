@@ -1,0 +1,28 @@
+{
+  "examples": [
+    {
+      "operationId": "CompetitorsApi_GetTopPpcCompetitors_GET",
+      "summary": "Get Top PPC Competitors",
+      "example": {
+        "resultCount": 50,
+        "totalMatchingResults": 2500
+      }
+    },
+    {
+      "operationId": "CompetitorsApi_GetTopSeoCompetitors_GET",
+      "summary": "Get Top SEO Competitors",
+      "example": {
+        "resultCount": 50,
+        "totalMatchingResults": 2500
+      }
+    },
+    {
+      "operationId": "CompetitorsApi_GetCombinedTopCompetitors_GET",
+      "summary": "Get Combined Top Competitors",
+      "example": {
+        "resultCount": 50,
+        "totalMatchingResults": 5000
+      }
+    }
+  ]
+}

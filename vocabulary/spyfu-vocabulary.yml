@@ -1,0 +1,506 @@
+name: SpyFu API Vocabulary
+description: Vocabulary of terms used across SpyFu competitive intelligence APIs including
+  SEO, PPC, keyword research, and domain analytics.
+url: https://developer.spyfu.com/
+version: v2
+terms:
+- name: adCount.max
+  description: Filter to keywords where the number of distinct advertisers observed
+    over the last 14 months is ≤ this value.
+  type: number
+- name: adCount.min
+  description: Filter to keywords where the number of distinct advertisers observed
+    over the last 14 months is ≥ this value.
+  type: number
+- name: adultFilter
+  description: Exclude adult keywords considered unsafe for work.
+  type: boolean
+- name: apiMethod
+  description: 'Field: apiMethod'
+  type: string
+- name: averageAdRank.max
+  description: Maximum average ad position filter.
+  type: number
+- name: averageAdRank.min
+  description: Minimum average ad position filter.
+  type: number
+- name: averageOrganicRank.max
+  description: Maximum average organic rank filter.
+  type: number
+- name: averageOrganicRank.min
+  description: Minimum average organic rank filter.
+  type: number
+- name: baseUnits
+  description: 'Field: baseUnits'
+  type: integer
+- name: clicks.max
+  description: Filter by the number of total monthly clicks on the SERP for this keyword--organic
+    and paid.
+  type: number
+- name: clicks.min
+  description: Filter by the number of total monthly clicks on the SERP for this keyword--organic
+    and paid.
+  type: number
+- name: combinedCompetitors
+  description: Array of competitor domains ranked by combined SEO and PPC keyword
+    overlap strength.
+  type: string
+- name: compareDomain
+  description: Domain to compare against when evaluating where it outranks you and
+    where you outrank it.
+  type: string
+- name: costPerClick.max
+  description: Filter to keywords where the average cost per click (CPC) is ≤ this
+    value.
+  type: number
+- name: costPerClick.min
+  description: Filter to keywords where the average cost per click (CPC) is ≥ this
+    value.
+  type: number
+- name: costPerClickOption
+  description: Match type for CPC filtering. Broad = includes variations/related terms;
+    Exact = exact keyword only; Phrase = contains the keyword phrase in order (with
+    additional words allowed).
+  type: string
+- name: countryCode
+  description: Country market to search.  Specifically, this maps to the Google domain
+    version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a
+    href='https://developer.spyfu.com/reference
+  type: string
+- name: day
+  description: 'Field: day'
+  type: string
+- name: desktopSearchesPercentage.max
+  description: Filter by the percentage of searches that are done on desktop devices.
+  type: number
+- name: desktopSearchesPercentage.min
+  description: Filter by the percentage of searches that are done on desktop devices.
+  type: number
+- name: domain
+  description: Advertiser's root domain
+  type: string
+- name: domains
+  description: Array of domains (advertisers) that have purchased ads for the specified
+    keyword, ranked by performance metrics.
+  type: string
+- name: endDate
+  description: Ending date for range
+  type: string
+- name: endRank.max
+  description: Filter to keywords where the domain/URL ending rank position is ≤ this
+    value for the selected date range (1 = best/top organic result).
+  type: number
+- name: endRank.min
+  description: Filter to keywords where the domain/URL ending rank position is ≥ this
+    value for the selected date range (1 = best/top organic result).
+  type: number
+- name: endRankChange.max
+  description: Filter to keywords where the rank change was at most this many positions
+    between the start and end of the date range (end_rank_change ≤ value). Positive
+    values mean moved up; negative values mean move
+  type: number
+- name: endRankChange.min
+  description: Filter to keywords where the rank improved by at least this many positions
+    between the start and end of the date range (end_rank_change ≥ value). Positive
+    values mean moved up; negative values mean mo
+  type: number
+- name: exactMatch
+  description: "Indicates whether to apply exact match filtering for the query.\r\n\
+    This parameter will result in **only** exact matches,\r\nmeaning protocols (http/https)\
+    \ and trailing slashes **must** be included.\r\nFor e"
+  type: boolean
+- name: excludeDomain
+  description: Domain to exclude from keyword results.
+  type: string
+- name: excludeDomainsCsv
+  description: CSV list of domains to exclude in results
+  type: string
+- name: excludeHomepageKeywords
+  description: If true, exclude keywords where the domain/URL's homepage (root domain,
+    e.g., example.com) ranks; if false, include all.
+  type: boolean
+- name: excludeTerms
+  description: Comma-separated list of terms to exclude from results (e.g., branded
+    or irrelevant terms).
+  type: string
+- name: finalCost
+  description: 'Field: finalCost'
+  type: number
+- name: includeAnyTerm
+  description: 'Used with includeTerms. If true: match any term (OR). If false: require
+    all terms (AND).'
+  type: boolean
+- name: includeDomainsCsv
+  description: Comma-separated list of domains to include in keyword analysis.
+  type: string
+- name: includeTerms
+  description: Comma-separated list of terms that must be present in the keyword.
+  type: string
+- name: isIntersection
+  description: Keywords (True:ALL/False:ANY) the domains contain.
+  type: boolean
+- name: isPaid
+  description: 'Field: isPaid'
+  type: boolean
+- name: isQuestion
+  description: Filter on if the keyword is a question.
+  type: boolean
+- name: isTransactionalIntent
+  description: Filter on if the keyword has transactional intent.
+  type: boolean
+- name: keyword
+  description: Keyword to analyze for SERP ranking data.
+  type: string
+- name: keywordDifficulty.max
+  description: Filter to keywords where the keyword difficulty score is ≤ this value
+    (0-100; higher = harder to rank).
+  type: number
+- name: keywordDifficulty.min
+  description: Filter to keywords where the keyword difficulty score is ≥ this value
+    (0-100; higher = harder to rank).
+  type: number
+- name: keywordFilter
+  description: Filter down to keywords containing this value
+  type: string
+- name: keywordSearchType
+  description: 'Required. Selects keyword research method: PhraseMatch=thematically
+    related, Questions=interrogative forms, AlsoBuysAdsFor=keywords co-targeted in
+    ads, AlsoRanksFor=keywords co-ranking organically, Tr'
+  type: string
+- name: keywords
+  description: Comma-separated list of exact keywords to retrieve information for.
+  type: string
+- name: liveSearchVolume.max
+  description: Filter by the number of searches done this past month on Google. This
+    value is refreshed each month.
+  type: number
+- name: liveSearchVolume.min
+  description: Filter by the number of searches done this past month on Google. This
+    value is refreshed each month.
+  type: number
+- name: mobileSearchesPercentage.max
+  description: Filter by the percentage of searches that are done on mobile devices.
+  type: number
+- name: mobileSearchesPercentage.min
+  description: Filter by the percentage of searches that are done on mobile devices.
+  type: number
+- name: month
+  description: 'Field: month'
+  type: string
+- name: monthlyBudget.max
+  description: Maximum monthly ad budget filter.
+  type: number
+- name: monthlyBudget.min
+  description: Minimum monthly ad budget filter.
+  type: number
+- name: monthlyCost.max
+  description: Filter to keywords where the estimated monthly advertising cost is
+    ≤ this value.
+  type: number
+- name: monthlyCost.min
+  description: Filter to keywords where the estimated monthly advertising cost is
+    ≥ this value.
+  type: number
+- name: monthlyCostOption
+  description: Match type for monthly cost filtering. Broad = includes variations/related
+    terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order
+    (with additional words allowed).
+  type: string
+- name: monthlyOrganicClickValue
+  description: The estimated value over a month for ranking on the domain or URL.
+  type: number
+- name: monthlyOrganicClicks
+  description: We estimate that the domain or URL should get this many total clicks
+    to its page (per month).
+  type: number
+- name: monthlyOrganicClicks.max
+  description: Maximum monthly organic traffic filter.
+  type: number
+- name: monthlyOrganicClicks.min
+  description: Minimum monthly organic traffic filter.
+  type: number
+- name: monthlyOrganicValue.max
+  description: Maximum organic traffic value filter.
+  type: number
+- name: monthlyOrganicValue.min
+  description: Minimum organic traffic value filter.
+  type: number
+- name: monthlyPaidClicks.max
+  description: Maximum monthly paid clicks filter.
+  type: number
+- name: monthlyPaidClicks.min
+  description: Minimum monthly paid clicks filter.
+  type: number
+- name: notClickedSearchesPercentage.max
+  description: 'Filter by the percentage of searches that are not clicked.
+
+    Some keyword searches supply clear information in a featured snippet or similar
+    displays. They don''t require a click to get the information. '
+  type: number
+- name: notClickedSearchesPercentage.min
+  description: 'Filter by the percentage of searches that are not clicked.
+
+    Some keyword searches supply clear information in a featured snippet or similar
+    displays. They don''t require a click to get the information. '
+  type: number
+- name: onlyAdultKeywords
+  description: Only include adult keywords considered unsafe for work.
+  type: boolean
+- name: organicClicksSearchPercentage.max
+  description: Filter by the percentage of clicks that go to organic results, not
+    ads.
+  type: number
+- name: organicClicksSearchPercentage.min
+  description: Filter by the percentage of clicks that go to organic results, not
+    ads.
+  type: number
+- name: pageSize
+  description: Number of ad history records to return per page.
+  type: integer
+- name: paidClickSearchPercentage.max
+  description: Filter by the percentage of clicks that go to ads.
+  type: number
+- name: paidClickSearchPercentage.min
+  description: Filter by the percentage of clicks that go to ads.
+  type: number
+- name: paidCompetitors.max
+  description: Filter to keywords where the number of distinct advertisers observed
+    over the last 14 months is ≤ this value.
+  type: number
+- name: paidCompetitors.min
+  description: Filter to keywords where the number of distinct advertisers observed
+    over the last 14 months is ≥ this value.
+  type: number
+- name: pastNMonths
+  description: Returns the latest N months of stats for domain.
+  type: integer
+- name: percentDesktopSearches.max
+  description: Filter to keywords where the desktop search share (%) is ≤ this value
+    (range 0-100).
+  type: number
+- name: percentDesktopSearches.min
+  description: Filter to keywords where the desktop search share (%) is ≥ this value
+    (range 0-100).
+  type: number
+- name: percentMobileSearches.max
+  description: Filter to keywords where the mobile search share (%) is ≤ this value
+    (range 0-100).
+  type: number
+- name: percentMobileSearches.min
+  description: Filter to keywords where the mobile search share (%) is ≥ this value
+    (range 0-100).
+  type: number
+- name: percentNotClicked.max
+  description: Filter to keywords where the percentage of searches with no click is
+    ≤ this value (range 0-100).
+  type: number
+- name: percentNotClicked.min
+  description: Filter to keywords where the percentage of searches with no click is
+    ≥ this value (range 0-100).
+  type: number
+- name: percentOrganicClicks.max
+  description: Filter to keywords where the share of SERP clicks going to organic
+    results (%) is ≤ this value (range 0-100).
+  type: number
+- name: percentOrganicClicks.min
+  description: Filter to keywords where the share of SERP clicks going to organic
+    results (%) is ≥ this value (range 0-100).
+  type: number
+- name: percentPaidClicks.max
+  description: Filter to keywords where the share of SERP clicks going to paid ads
+    (%) is ≤ this value (range 0-100).
+  type: number
+- name: percentPaidClicks.min
+  description: Filter to keywords where the share of SERP clicks going to paid ads
+    (%) is ≥ this value (range 0-100).
+  type: number
+- name: ppcCompetitors
+  description: Array of competitor domains ranked by paid search advertising keyword
+    overlap and competitive strength.
+  type: string
+- name: query
+  description: Domain to analyze for paid search presence.
+  type: string
+- name: queryType
+  description: Type of ranking analysis to perform.
+  type: string
+- name: rank.max
+  description: Filter to keywords where the domain/URL rank position is ≤ this value
+    (1 = best/top organic result).
+  type: number
+- name: rank.min
+  description: Filter to keywords where the domain/URL rank position is ≥ this value
+    (1 = best/top organic result).
+  type: number
+- name: rankAverage
+  description: 'Field: rankAverage'
+  type: number
+- name: rankAverageChange
+  description: 'Field: rankAverageChange'
+  type: number
+- name: rankChange.max
+  description: Filter to keywords where the month-over-month rank change is at most
+    this many positions (rank_change ≤ value). Positive values mean moved up; negative
+    values mean moved down.
+  type: number
+- name: rankChange.min
+  description: Filter to keywords where the domain/URL improved by at least this many
+    positions vs. the previous month (rank_change ≥ value). Positive values mean moved
+    up; negative values mean moved down.
+  type: number
+- name: rankingHomepages.max
+  description: Filter to keywords where the number of homepage/root-domain URLs in
+    the top 100 results is ≤ this value.
+  type: number
+- name: rankingHomepages.min
+  description: Filter to keywords where the number of homepage/root-domain URLs in
+    the top 100 results is ≥ this value.
+  type: number
+- name: requestCount
+  description: 'Field: requestCount'
+  type: integer
+- name: resultCount
+  description: Number of results returned
+  type: integer
+- name: results
+  description: Array of ads with their associated keywords found for the specified
+    domain.
+  type: string
+- name: rowsReturned
+  description: 'Field: rowsReturned'
+  type: integer
+- name: searchType
+  description: Type of SEO keyword analysis to perform. Each type provides different
+    insights into keyword performance and ranking changes.
+  type: string
+- name: searchVolume.max
+  description: Filter to keywords where monthly search volume (Google) is ≤ this value.
+  type: number
+- name: searchVolume.min
+  description: Filter to keywords where monthly search volume (Google) is ≥ this value.
+  type: number
+- name: seoClicks.max
+  description: Filter to keywords where estimated monthly organic clicks (SEO clicks)
+    to the domain/url are ≤ this value.
+  type: number
+- name: seoClicks.min
+  description: Filter to keywords where estimated monthly organic clicks (SEO clicks)
+    to the domain/url are ≥ this value.
+  type: number
+- name: seoClicksChange.max
+  description: Filter to keywords where the month-over-month change in estimated organic
+    clicks is ≤ this value. Positive values indicate click gains; negative values
+    indicate click losses.
+  type: number
+- name: seoClicksChange.min
+  description: Filter to keywords where the month-over-month change in estimated organic
+    clicks is ≥ this value. Positive values indicate click gains; negative values
+    indicate click losses.
+  type: number
+- name: seoCompetitors
+  description: Array of competitor domains ranked by organic search keyword overlap
+    and SEO competitive strength.
+  type: string
+- name: serpFirstResult
+  description: 'Filter to keywords where this specific domain ranks #1 in organic
+    search results. Useful for identifying keywords where a particular competitor
+    dominates.'
+  type: string
+- name: serviceLevelName
+  description: 'Field: serviceLevelName'
+  type: string
+- name: showOnlyLatest
+  description: Controls data scope returned. If true, returns only the most recent
+    statistics for each domain (current snapshot). If false, returns complete historical
+    data showing trends over time for comprehensive
+  type: boolean
+- name: sortBy
+  description: Sort order for ad history results.
+  type: string
+- name: sortOrder
+  description: Order to sort the results.
+  type: string
+- name: startDate
+  description: Beginning date for range
+  type: string
+- name: startRank.max
+  description: Filter to keywords where the domain/URL starting rank position is ≤
+    this value for the selected date range (1 = best/top organic result).
+  type: number
+- name: startRank.min
+  description: Filter to keywords where the domain/URL starting rank position is ≥
+    this value for the selected date range (1 = best/top organic result).
+  type: number
+- name: startingRow
+  description: Starting row number for pagination.
+  type: integer
+- name: strength.max
+  description: Maximum domain strength score filter.
+  type: number
+- name: strength.min
+  description: Minimum domain strength score filter.
+  type: number
+- name: term
+  description: Keyword to retrieve advertising history for.
+  type: string
+- name: topAds
+  description: Array of the most successful ads for the specified keyword, ranked
+    by performance and frequency metrics.
+  type: string
+- name: totalClicks
+  description: 'Field: totalClicks'
+  type: integer
+- name: totalClicksChange
+  description: 'Field: totalClicksChange'
+  type: integer
+- name: totalMatchingResults
+  description: Total number of paid keywords available that match the query criteria,
+    including results not included in the current page.
+  type: integer
+- name: totalMonthlyClicks.max
+  description: Filter to keywords where total monthly SERP clicks (all domains) are
+    ≤ this value. Includes both organic and paid clicks.
+  type: number
+- name: totalMonthlyClicks.min
+  description: Filter to keywords where total monthly SERP clicks (all domains) are
+    ≥ this value. Independent of rank; includes both organic and paid clicks.
+  type: number
+- name: totalOrganicResults
+  description: Total keywords found for domain or URL
+  type: integer
+- name: totalOrganicResults.max
+  description: Maximum organic keyword count filter.
+  type: number
+- name: totalOrganicResults.min
+  description: Minimum organic keyword count filter.
+  type: number
+- name: totalRankChange
+  description: 'Field: totalRankChange'
+  type: integer
+- name: totalSearchVolume
+  description: Sum of monthly search volume across all returned keywords.
+  type: number
+- name: totalVolume
+  description: 'Field: totalVolume'
+  type: integer
+- name: unitsPerRow
+  description: 'Field: unitsPerRow'
+  type: integer
+- name: unitsUsed
+  description: 'Field: unitsUsed'
+  type: integer
+- name: url
+  description: URL for the results
+  type: string
+- name: usageDate
+  description: Date to get API usage for
+  type: string
+- name: wordCount.max
+  description: Filter by the number of words in the keyword.
+  type: number
+- name: wordCount.min
+  description: Filter by the number of words in the keyword.
+  type: number
+- name: year
+  description: Year to retrieve statistics for.
+  type: integer

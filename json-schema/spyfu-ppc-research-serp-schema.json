@@ -1,0 +1,166 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SpyFu PPC Research API Schemas",
+  "description": "JSON Schema definitions for SpyFu PPC Research API API responses",
+  "definitions": {
+    "PaidSerpApi_GetPaidSerps_GET": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Get Ads for Domain",
+      "description": "Response wrapper containing paid SERP keyword results with pagination metadata and total result counts.",
+      "type": "object",
+      "properties": {
+        "resultCount": {
+          "description": "Number of results returned",
+          "type": "integer",
+          "format": "int32",
+          "examples": [
+            100
+          ],
+          "readOnly": true
+        },
+        "results": {
+          "description": "Array of paid search keywords with comprehensive SERP data and performance metrics.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "description": "The keyword that triggers this paid ad result.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "running shoes"
+                ],
+                "readOnly": true
+              },
+              "termId": {
+                "description": "Unique identifier for this keyword in SpyFu's database.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "39100280"
+                ],
+                "readOnly": true
+              },
+              "adPosition": {
+                "description": "Position where the ad appears on the search results page (1 = top position).",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  1
+                ],
+                "readOnly": true
+              },
+              "adCount": {
+                "description": "Total number of ads this domain has for this keyword.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "examples": [
+                  1
+                ],
+                "readOnly": true
+              },
+              "dateSearched": {
+                "description": "Date when this keyword was first discovered and added to SpyFu's database.",
+                "type": "string",
+                "format": "date-time",
+                "examples": [
+                  "2023-12-15T10:30:00Z"
+                ],
+                "readOnly": true
+              },
+              "title": {
+                "description": "Headline text of the paid search result as it appears in SERPs.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "Best Running Shoes 2024 - Free Shipping"
+                ],
+                "readOnly": true
+              },
+              "bodyHtml": {
+                "description": "HTML content of the ad description and additional text displayed in the search result.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "readOnly": true
+              },
+              "domain": {
+                "description": "Domain name of the advertiser placing this paid search ad.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "example.com"
+                ],
+                "readOnly": true
+              },
+              "searchVolume": {
+                "description": "Monthly search volume for this keyword based on Google search data across the selected country/region.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "examples": [
+                  700000
+                ],
+                "readOnly": true
+              },
+              "keywordDifficulty": {
+                "description": "SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.",
+                "type": "integer",
+                "format": "int32",
+                "examples": [
+                  69
+                ],
+                "readOnly": true
+              },
+              "isNsfw": {
+                "description": "Indicates whether the search result contains content that may not be safe for work environments.",
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "examples": [
+                  false
+                ],
+                "readOnly": true
+              }
+            },
+            "additionalProperties": false,
+            "description": "Represents a paid search keyword with comprehensive SERP data including search volume, keyword difficulty, and ad positioning metrics."
+          },
+          "readOnly": true
+        },
+        "totalMatchingResults": {
+          "description": "Total number of paid keywords available that match the query criteria, including results not included in the current page.",
+          "type": "integer",
+          "format": "int64",
+          "examples": [
+            50000
+          ],
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

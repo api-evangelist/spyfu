@@ -1,0 +1,60 @@
+{
+  "examples": [
+    {
+      "operationId": "RelatedKeywordsV2Api_GetKeywordExpansions_GET",
+      "summary": "Get Keywords, All Sorts",
+      "example": {
+        "resultCount": 100
+      }
+    },
+    {
+      "operationId": "RelatedKeywordsV2Api_GetRelatedKeywords_GET",
+      "summary": "Get Related Keywords",
+      "example": {
+        "resultCount": 100
+      }
+    },
+    {
+      "operationId": "RelatedKeywordsV2Api_GetQuestionKeywords_GET",
+      "summary": "Get Question Keywords",
+      "example": {
+        "resultCount": 100
+      }
+    },
+    {
+      "operationId": "RelatedKeywordsV2Api_GetAlsoBuysAdsForKeywords_GET",
+      "summary": "Get Also Buys Ads For Keywords",
+      "example": {
+        "resultCount": 100
+      }
+    },
+    {
+      "operationId": "RelatedKeywordsV2Api_GetAlsoRanksForKeywords_GET",
+      "summary": "Get Also Ranks For Keywords",
+      "example": {
+        "resultCount": 100
+      }
+    },
+    {
+      "operationId": "RelatedKeywordsV2Api_GetTransactionKeywords_GET",
+      "summary": "Get Transactional Keywords",
+      "example": {
+        "resultCount": 100
+      }
+    },
+    {
+      "operationId": "RelatedKeywordsV2Api_GetKeywordsByBulkSearch_GET",
+      "summary": "Get Keyword Information Bulk",
+      "example": {
+        "resultCount": 100
+      }
+    },
+    {
+      "operationId": "RelatedKeywordsV2Api_GetKeywordsByBulkSearchPost_POST",
+      "summary": "Post Keyword Information Bulk",
+      "example": {
+        "resultCount": 100
+      }
+    }
+  ]
+}
