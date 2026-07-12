@@ -1,0 +1,72 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/spyfu-account-openapi.yml, openapi/spyfu-ad-history-openapi.yml, openapi/spyfu-competitors-openapi.yml,
+  openapi/spyfu-domain-stats-openapi.yml, openapi/spyfu-keyword-related-openapi.yml, openapi/spyfu-kombat-openapi.yml,
+  openapi/spyfu-ppc-keyword-openapi.yml, openapi/spyfu-ppc-research-serp-openapi.yml, openapi/spyfu-ranking-history-openapi.yml,
+  openapi/spyfu-seo-research-serp-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: Basic_Authentication_Token
+  type: http
+  scheme: basic
+  description: <a href="https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side"
+    target="_blank">Basic Authentication</a> is a standard that involves encoding your <code>SPYFU_API_ID:SECRET_KEY</code>
+    into a Base64 string. Your <b>SpyFu API ID</b> and <b>Secret Key</b> can both be found under
+    the <b><a href="https://www.spyfu.com/account/api" target="_blank">Account Settings -> API
+    Usage</a></b> pa
+  sources:
+  - openapi/spyfu-account-openapi.yml
+  - openapi/spyfu-ad-history-openapi.yml
+  - openapi/spyfu-competitors-openapi.yml
+  - openapi/spyfu-domain-stats-openapi.yml
+  - openapi/spyfu-keyword-related-openapi.yml
+  - openapi/spyfu-kombat-openapi.yml
+  - openapi/spyfu-ppc-keyword-openapi.yml
+  - openapi/spyfu-ppc-research-serp-openapi.yml
+  - openapi/spyfu-ranking-history-openapi.yml
+  - openapi/spyfu-seo-research-serp-openapi.yml
+- name: Query_Parameter_Token
+  type: apiKey
+  in: query
+  parameter: api_key
+  description: An API key can be added as a query parameter. Your API key is listed as "Secret
+    Key" found under the <b><a href="https://www.spyfu.com/account/api" target="_blank">Account
+    Settings -> API Usage</a></b> page<br>For example, to authorize with the API key <code>AB12WXY</code><br><pre><code>/apis/example_api/GetExample?domain=spyfu.com<span
+    class="token keyword">&api_key=AB12WXYZ</span></code></pre>
+  sources:
+  - openapi/spyfu-account-openapi.yml
+  - openapi/spyfu-ad-history-openapi.yml
+  - openapi/spyfu-competitors-openapi.yml
+  - openapi/spyfu-domain-stats-openapi.yml
+  - openapi/spyfu-keyword-related-openapi.yml
+  - openapi/spyfu-kombat-openapi.yml
+  - openapi/spyfu-ppc-keyword-openapi.yml
+  - openapi/spyfu-ppc-research-serp-openapi.yml
+  - openapi/spyfu-ranking-history-openapi.yml
+  - openapi/spyfu-seo-research-serp-openapi.yml
+- name: HMAC_Authentication_Header
+  type: apiKey
+  in: header
+  parameter: Authentication
+  description: For even more security, each request can be individually authenticated with a
+    timestamped <a href="https://en.wikipedia.org/wiki/HMAC" target="_blank"><b>HMAC</b></a>
+    <em>(Hash Message Authentication Code)</em> signature. Composed of your secret key, a valid
+    timestamp, the API request path, and all request parameters. <h3>Creating the signature:</h3><br>Combine
+    the pieces that will be converted in
+  sources:
+  - openapi/spyfu-account-openapi.yml
+  - openapi/spyfu-ad-history-openapi.yml
+  - openapi/spyfu-competitors-openapi.yml
+  - openapi/spyfu-domain-stats-openapi.yml
+  - openapi/spyfu-keyword-related-openapi.yml
+  - openapi/spyfu-kombat-openapi.yml
+  - openapi/spyfu-ppc-keyword-openapi.yml
+  - openapi/spyfu-ppc-research-serp-openapi.yml
+  - openapi/spyfu-ranking-history-openapi.yml
+  - openapi/spyfu-seo-research-serp-openapi.yml
