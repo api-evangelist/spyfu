@@ -1,0 +1,505 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/spyfu-account-openapi.yml, openapi/spyfu-ad-history-openapi.yml, openapi/spyfu-competitors-openapi.yml,
+  openapi/spyfu-domain-stats-openapi.yml, openapi/spyfu-keyword-related-openapi.yml, openapi/spyfu-kombat-openapi.yml,
+  openapi/spyfu-ppc-keyword-openapi.yml, openapi/spyfu-ppc-research-serp-openapi.yml, openapi/spyfu-ranking-history-openapi.yml,
+  openapi/spyfu-seo-research-serp-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 48
+  by_action_class:
+    connected: 47
+    acting: 1
+  by_consequence:
+    read: 47
+    write: 1
+  human_in_the_loop_required: 0
+operations:
+- path: /v2/usage/month/{usageDate}
+  method: get
+  operationId: AccountApi_GetApiUsageForMonth_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/usage/month/{usageDate}/daily
+  method: get
+  operationId: AccountApi_GetApiUsageForMonthByDay_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/usage/month/{usageDate}/method
+  method: get
+  operationId: AccountApi_GetApiUsageForMonthByMethod_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/domain/getDomainAdHistory
+  method: get
+  operationId: AdHistoryApi_GetDomainAdHistory_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/term/getTermAdHistory
+  method: get
+  operationId: AdHistoryApi_GetTermAdHistory_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/term/getTermAdHistoryWithStats
+  method: get
+  operationId: AdHistoryApi_GetTermAdHistoryWithStats_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/ppc/getTopCompetitors
+  method: get
+  operationId: CompetitorsApi_GetTopPpcCompetitors_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getTopCompetitors
+  method: get
+  operationId: CompetitorsApi_GetTopSeoCompetitors_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/combined/getCombinedTopCompetitors
+  method: get
+  operationId: CompetitorsApi_GetCombinedTopCompetitors_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/getAllDomainStats
+  method: get
+  operationId: DomainStatsApi_GetAllDomainStats_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/getLatestDomainStats
+  method: get
+  operationId: DomainStatsApi_GetLatestDomainStats_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/getDomainStatsForExactDate
+  method: get
+  operationId: DomainStatsApi_GetDomainStatsForExactDate_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/getActiveDatesForDomain
+  method: get
+  operationId: DomainStatsApi_GetActiveDatesForDomain_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/getBulkDomainStats
+  method: get
+  operationId: DomainStatsApi_GetBulkDomainStats_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/getMatchingDomains
+  method: get
+  operationId: DomainStatsApi_GetMatchingDomains_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/related/getKeywordExpansions
+  method: get
+  operationId: RelatedKeywordsV2Api_GetKeywordExpansions_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/related/getRelatedKeywords
+  method: get
+  operationId: RelatedKeywordsV2Api_GetRelatedKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/related/getQuestionKeywords
+  method: get
+  operationId: RelatedKeywordsV2Api_GetQuestionKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/related/getAlsoBuysAdsForKeywords
+  method: get
+  operationId: RelatedKeywordsV2Api_GetAlsoBuysAdsForKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/related/getAlsoRanksForKeywords
+  method: get
+  operationId: RelatedKeywordsV2Api_GetAlsoRanksForKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/related/getTransactionKeywords
+  method: get
+  operationId: RelatedKeywordsV2Api_GetTransactionKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/related/getKeywordInformation
+  method: get
+  operationId: RelatedKeywordsV2Api_GetKeywordsByBulkSearch_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/related/getKeywordInformation
+  method: post
+  operationId: RelatedKeywordsV2Api_GetKeywordsByBulkSearchPost_POST
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/kombat/getCompetingPpcKeywords
+  method: get
+  operationId: KombatApi_GetCompetingPpcKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/kombat/getCompetingSeoKeywords
+  method: get
+  operationId: KombatApi_GetCompetingSeoKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/ppc/getMostSuccessful
+  method: get
+  operationId: PaidSerpApi_GetMostSuccessful_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/ppc/getNewKeywords
+  method: get
+  operationId: PaidSerpApi_GetNewKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/ppc/getPaidSerps
+  method: get
+  operationId: PaidSerpApi_GetPaidSerps_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/historic/getHistoricRankingsForDomain
+  method: get
+  operationId: HistoricRanking_GetHistoricRankingsForDomain_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/historic/getHistoricRankingsForKeywordOnDomains
+  method: get
+  operationId: HistoricRanking_GetHistoricRankingsForKeywordOnDomains_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/historic/getHistoricRankingsForDomainOnKeywords
+  method: get
+  operationId: HistoricRanking_GetHistoricRankingsForDomainOnKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getMostValuableKeywords
+  method: get
+  operationId: OrganicSerpApi_GetMostValuableKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getNewlyRankedKeywords
+  method: get
+  operationId: OrganicSerpApi_GetNewlyRankedKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getGainedRanksKeywords
+  method: get
+  operationId: OrganicSerpApi_GetGainedRanksKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getLostRanksKeywords
+  method: get
+  operationId: OrganicSerpApi_GetLostRanksKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getGainedClicksKeywords
+  method: get
+  operationId: OrganicSerpApi_GetGainedClicksKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getLostClicksKeywords
+  method: get
+  operationId: OrganicSerpApi_GetLostClicksKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getJustMadeItKeywords
+  method: get
+  operationId: OrganicSerpApi_GetJustMadeItKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getJustFellOffKeywords
+  method: get
+  operationId: OrganicSerpApi_GetJustFellOffKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getSeoKeywords
+  method: get
+  operationId: OrganicSerpApi_GetSeoKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getOrganicOutrankingKeywords
+  method: get
+  operationId: OrganicSerpApi_GetOrganicOutrankingKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getWhereTheyOutRankYou
+  method: get
+  operationId: OrganicSerpApi_GetKeywordsWhereTheyOutRankYou_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getWhereTheyJustSurpassedYou
+  method: get
+  operationId: OrganicSerpApi_GetKeywordsWhereTheyJustSurpassedYou_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getSerpAnalysisKeywords
+  method: get
+  operationId: OrganicSerpApi_GetSerpAnalysisKeywords_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getLiveSeoStats
+  method: get
+  operationId: OrganicSerpApi_GetLiveSeoStats_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getMostTrafficTopPages
+  method: get
+  operationId: TopPagesApi_GetMostTrafficTopPages_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getNewTopPages
+  method: get
+  operationId: TopPagesApi_GetNewTopPages_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/seo/getTopPages
+  method: get
+  operationId: TopPagesApi_GetTopPages_GET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

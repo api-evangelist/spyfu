@@ -45,6 +45,8 @@ apis:
       - FN: SpyFu Support
         url: https://www.spyfu.com/contact
 common:
+  - type: AgenticAccess
+    url: agentic-access/spyfu-agentic-access.yml
   - type: DomainSecurity
     url: security/spyfu-domain-security.yml
   - type: Authentication
