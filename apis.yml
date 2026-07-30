@@ -8,7 +8,20 @@ description: >-
   Kombat, Keyword Research, and Ranking History — and is indexed against 1.6
   trillion search results, 8 billion keywords, and 152 million domains.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/spyfu.png
 url: https://raw.githubusercontent.com/api-evangelist/spyfu/refs/heads/main/apis.yml
 created: 2026-06-13
 modified: 2026-06-13
@@ -23,27 +36,114 @@ tags:
   - Domain Analytics
   - SERP
 apis:
-  - aid: spyfu:spyfu-api
-    name: SpyFu API
-    description: >-
-      REST API providing access to SpyFu's full competitive search intelligence
-      dataset, including domain stats, PPC ad history, SEO research, keyword
-      analysis, competitor profiling, and ranking history tracking.
-    humanURL: https://developer.spyfu.com/
-    baseURL: https://api.spyfu.com
-    tags:
-      - SEO
-      - PPC
-      - Keyword Research
-      - Competitive Intelligence
-    properties:
-      - type: Documentation
-        url: https://developer.spyfu.com/docs
-      - type: OpenAPI
-        url: https://developer.spyfu.com/openapi.json
-    contact:
-      - FN: SpyFu Support
-        url: https://www.spyfu.com/contact
+- aid: spyfu:spyfu-account-api-api
+  name: SpyFu Account API API
+  description: The Account API API from SpyFu — 3 operation(s) for account api.
+  humanURL: https://developer.spyfu.com/
+  baseURL: https://api.spyfu.com
+  tags:
+  - Account API
+  properties:
+  - type: OpenAPI
+    url: openapi/spyfu-account-api-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spyfu.com/docs
+- aid: spyfu:spyfu-ad-history-research-api-api
+  name: SpyFu Ad History Research API API
+  description: The Ad History Research API API from SpyFu — 3 operation(s) for ad history research api.
+  humanURL: https://developer.spyfu.com/
+  baseURL: https://api.spyfu.com
+  tags:
+  - Ad History Research API
+  properties:
+  - type: OpenAPI
+    url: openapi/spyfu-ad-history-research-api-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spyfu.com/docs
+- aid: spyfu:spyfu-competitors-api-api
+  name: SpyFu Competitors API API
+  description: The Competitors API API from SpyFu — 3 operation(s) for competitors api.
+  humanURL: https://developer.spyfu.com/
+  baseURL: https://api.spyfu.com
+  tags:
+  - Competitors API
+  properties:
+  - type: OpenAPI
+    url: openapi/spyfu-competitors-api-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spyfu.com/docs
+- aid: spyfu:spyfu-domain-stats-api-api
+  name: SpyFu Domain Stats API API
+  description: The Domain Stats API API from SpyFu — 6 operation(s) for domain stats api.
+  humanURL: https://developer.spyfu.com/
+  baseURL: https://api.spyfu.com
+  tags:
+  - Domain Stats API
+  properties:
+  - type: OpenAPI
+    url: openapi/spyfu-domain-stats-api-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spyfu.com/docs
+- aid: spyfu:spyfu-keyword-research-api-api
+  name: SpyFu Keyword Research API API
+  description: The Keyword Research API API from SpyFu — 7 operation(s) for keyword research api.
+  humanURL: https://developer.spyfu.com/
+  baseURL: https://api.spyfu.com
+  tags:
+  - Keyword Research API
+  properties:
+  - type: OpenAPI
+    url: openapi/spyfu-keyword-research-api-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spyfu.com/docs
+- aid: spyfu:spyfu-kombat-api-api
+  name: SpyFu Kombat API API
+  description: The Kombat API API from SpyFu — 2 operation(s) for kombat api.
+  humanURL: https://developer.spyfu.com/
+  baseURL: https://api.spyfu.com
+  tags:
+  - Kombat API
+  properties:
+  - type: OpenAPI
+    url: openapi/spyfu-kombat-api-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spyfu.com/docs
+- aid: spyfu:spyfu-ppc-research-api-api
+  name: SpyFu PPC Research API API
+  description: The PPC Research API API from SpyFu — 3 operation(s) for ppc research api.
+  humanURL: https://developer.spyfu.com/
+  baseURL: https://api.spyfu.com
+  tags:
+  - PPC Research API
+  properties:
+  - type: OpenAPI
+    url: openapi/spyfu-ppc-research-api-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spyfu.com/docs
+- aid: spyfu:spyfu-ranking-history-api-api
+  name: SpyFu Ranking History API API
+  description: The Ranking History API API from SpyFu — 3 operation(s) for ranking history api.
+  humanURL: https://developer.spyfu.com/
+  baseURL: https://api.spyfu.com
+  tags:
+  - Ranking History API
+  properties:
+  - type: OpenAPI
+    url: openapi/spyfu-ranking-history-api-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spyfu.com/docs
+- aid: spyfu:spyfu-seo-research-api-api
+  name: SpyFu SEO Research API API
+  description: The SEO Research API API from SpyFu — 17 operation(s) for seo research api.
+  humanURL: https://developer.spyfu.com/
+  baseURL: https://api.spyfu.com
+  tags:
+  - SEO Research API
+  properties:
+  - type: OpenAPI
+    url: openapi/spyfu-seo-research-api-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spyfu.com/docs
 common:
   - type: AgenticAccess
     url: agentic-access/spyfu-agentic-access.yml
