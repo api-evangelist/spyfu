@@ -1,0 +1,30 @@
+{
+  "provider": "spyfu",
+  "sources": [
+    "spyfu-account-api-api-openapi.yml",
+    "spyfu-ad-history-research-api-api-openapi.yml",
+    "spyfu-competitors-api-api-openapi.yml",
+    "spyfu-domain-stats-api-api-openapi.yml",
+    "spyfu-keyword-research-api-api-openapi.yml",
+    "spyfu-kombat-api-api-openapi.yml",
+    "spyfu-ppc-research-api-api-openapi.yml",
+    "spyfu-ranking-history-api-api-openapi.yml",
+    "spyfu-seo-research-api-api-openapi.yml"
+  ],
+  "outputs": [
+    "spyfu-account-api-api-openapi.yml",
+    "spyfu-ad-history-research-api-api-openapi.yml",
+    "spyfu-competitors-api-api-openapi.yml",
+    "spyfu-domain-stats-api-api-openapi.yml",
+    "spyfu-keyword-research-api-api-openapi.yml",
+    "spyfu-kombat-api-api-openapi.yml",
+    "spyfu-ppc-research-api-api-openapi.yml",
+    "spyfu-ranking-history-api-api-openapi.yml",
+    "spyfu-seo-research-api-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

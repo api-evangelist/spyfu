@@ -1,0 +1,1405 @@
+openapi: 3.0.3
+info:
+  title: Ad History API
+  version: v2
+  description: 'Access the world''s most comprehensive advertising intelligence database
+    with 18 years of historical ad data spanning tens of billions of ads across millions
+    of advertisers. SpyFu''s Ad History API provides complete campaign timelines from
+    2007 to present, covering 99.93% of advertisers who have ever run Google Ads campaigns.
+
+
+    Unlike competitors who offer limited historical snapshots, SpyFu captures every
+    ad variation, A/B test, and optimization iteration. See how competitors evolved
+    their ad copy over time to maximize conversions, learn from early mistakes they
+    made and later removed, and gain unmatched competitive intelligence that goes
+    back nearly two decades.
+
+
+    With data updated every 15 seconds across 28 countries and processing 40,000 search
+    results per second, SpyFu maintains 20x more paid keyword data than SEMRush or
+    Ahrefs. The closest competitor offers only 5 years of history with 1/20th the
+    data volume.
+
+
+    This API complements SpyFu''s other research APIs by focusing specifically on
+    ad creative and copy history, while the Competitors API handles ranking relationships
+    and the Keyword Research API covers search volume and competition data.
+
+
+    For complete documentation and interactive examples, visit the [SpyFu Developer
+    Portal](https://www.spyfu.com/apis).'
+servers:
+- url: https://api.spyfu.com/apis/cloud_ad_history_api
+paths:
+  /v2/domain/getDomainAdHistory:
+    get:
+      operationId: AdHistoryApi_GetDomainAdHistory_GET
+      summary: Get Domain Ad History
+      description: 'Returns historical ad variations and copy for a specific domain.
+        This endpoint focuses on ads from a particular advertiser across all their
+        keywords and campaigns, unlike term-based endpoints that focus on specific
+        keywords.
+
+
+        [Visualize this API live on SpyFu](https://www.spyfu.com/ppc/ad-history/domain?query=example.com)'
+      parameters:
+      - name: domain
+        in: query
+        description: Advertiser's root domain
+        required: true
+        schema:
+          type: string
+          example: example.com
+        example: example.com
+      - name: keywordFilter
+        in: query
+        description: Filter down to keywords containing this value
+        schema:
+          type: string
+      - name: countryCode
+        in: query
+        description: Country market to search.  Specifically, this maps to the Google
+          domain version to query against (e.g., google.com for US, google.de for
+          Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All
+          Countries</a>
+        schema:
+          type: string
+          default: US
+          enum:
+          - AR
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - DE
+          - DK
+          - ES
+          - FR
+          - IE
+          - IN
+          - IT
+          - JP
+          - MX
+          - NL
+          - 'NO'
+          - NZ
+          - PL
+          - PT
+          - SE
+          - SG
+          - TR
+          - UA
+          - UK
+          - US
+          - ZA
+          example: US
+        example: US
+      - name: sortBy
+        in: query
+        description: Sort order for ad history results.
+        schema:
+          type: string
+          enum:
+          - Best
+          - Worst
+          - KeywordAsc
+          - KeywordDesc
+          x-enumDescriptions:
+            Best: Best performing keywords based on longevity, CPC, and testing frequency
+            Worst: Worst performing keywords that were tested and likely dropped
+            KeywordAsc: Keywords A-Z
+            KeywordDesc: Keywords Z-A
+          example: Best
+        example: Best
+      - name: pageSize
+        in: query
+        description: Number of ad history records to return per page.
+        schema:
+          type: integer
+          format: int32
+          default: 5
+          maximum: 10000
+          minimum: 1
+          example: 5
+        example: 5
+      - name: startingRow
+        in: query
+        description: Starting row number for pagination.
+        schema:
+          type: integer
+          format: int32
+          default: 1
+          maximum: 2147483647
+          minimum: 1
+          example: 1
+        example: 1
+      responses:
+        '200':
+          description: Successfully retrieved ad history data for the specified domain.
+            Returns a paginated list of historical ad variations with copy, keywords,
+            and campaign information.
+          content:
+            application/json:
+              schema:
+                description: Response wrapper containing domain ad history results
+                  with pagination metadata.
+                type: object
+                properties:
+                  resultCount:
+                    description: Number of results returned
+                    type: integer
+                    format: int32
+                    readOnly: true
+                    example: 100
+                  results:
+                    description: Array of ads with their associated keywords found
+                      for the specified domain.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        keywords:
+                          description: List of keywords that triggered this ad to
+                            appear in search results.
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                          example:
+                          - running shoes
+                          - athletic shoes
+                          - sports footwear
+                        position:
+                          description: The ad's position on the search results page
+                            when it was captured (1 = top position).
+                          type: integer
+                          format: int32
+                          example: 1
+                        searchDateId:
+                          description: Date when this ad was captured by SpyFu's crawling
+                            system, formatted as YYYYMMDD (e.g., 20231215 = December
+                            15, 2023).
+                          type: integer
+                          format: int32
+                          example: 20231215
+                        title:
+                          description: The headline text of the ad as it appeared
+                            in search results.
+                          type: string
+                          nullable: true
+                          example: Best Running Shoes 2024 - Free Shipping
+                        body:
+                          description: The description text of the ad providing additional
+                            details about the offer.
+                          type: string
+                          nullable: true
+                          example: Discover premium running shoes with advanced cushioning
+                            technology. Shop now and save 20% on your first order.
+                        url:
+                          description: The landing page URL that the ad directed users
+                            to when clicked.
+                          type: string
+                          nullable: true
+                          example: https://example.com/running-shoes
+                        adId:
+                          description: Unique identifier for this specific ad in SpyFu's
+                            database.
+                          type: integer
+                          format: int32
+                          example: 12345678
+                      additionalProperties: false
+                      description: Represents an ad with associated keywords that
+                        triggered it to appear in search results.
+                    readOnly: true
+                    nullable: true
+                additionalProperties: false
+        '400':
+          description: Bad Request - Invalid parameters provided (e.g., invalid domain
+            format, pageSize exceeds maximum, or invalid country code)
+        '401':
+          description: Unauthorized - Invalid API credentials or insufficient permissions
+            to access ad history data
+        '500':
+          description: Internal Server Error - A server-side error occurred while
+            processing the request
+      tags:
+      - Ad History Research API
+  /v2/term/getTermAdHistory:
+    get:
+      operationId: AdHistoryApi_GetTermAdHistory_GET
+      summary: Get Keyword Ad History
+      description: 'Returns historical advertisers and ad variations for a specific
+        keyword. This endpoint focuses on ads that have appeared for a particular
+        keyword, unlike domain-based endpoints that focus on ads from specific advertisers.
+
+
+        [Visualize this API live on SpyFu](https://www.spyfu.com/keyword/ad-history?query=example%20keyword)'
+      parameters:
+      - name: term
+        in: query
+        description: Keyword to retrieve advertising history for.
+        required: true
+        schema:
+          type: string
+          example: running shoes
+        example: running shoes
+      - name: countryCode
+        in: query
+        description: Country market to search.  Specifically, this maps to the Google
+          domain version to query against (e.g., google.com for US, google.de for
+          Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All
+          Countries</a>
+        schema:
+          type: string
+          default: US
+          enum:
+          - AR
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - DE
+          - DK
+          - ES
+          - FR
+          - IE
+          - IN
+          - IT
+          - JP
+          - MX
+          - NL
+          - 'NO'
+          - NZ
+          - PL
+          - PT
+          - SE
+          - SG
+          - TR
+          - UA
+          - UK
+          - US
+          - ZA
+          example: US
+        example: US
+      - name: pageSize
+        in: query
+        description: Number of ad history records to return per page.
+        schema:
+          type: integer
+          format: int32
+          default: 5
+          maximum: 10000
+          minimum: 1
+          example: 5
+        example: 5
+      - name: startingRow
+        in: query
+        description: Starting row number for pagination.
+        schema:
+          type: integer
+          format: int32
+          default: 1
+          maximum: 2147483647
+          minimum: 1
+          example: 1
+        example: 1
+      responses:
+        '200':
+          description: Successfully retrieved ad history data for the specified keyword.
+            Returns a paginated list of ads that have appeared for this keyword across
+            different advertisers.
+          content:
+            application/json:
+              schema:
+                description: Response wrapper containing term ad history results with
+                  pagination metadata.
+                type: object
+                properties:
+                  resultCount:
+                    description: Number of results returned
+                    type: integer
+                    format: int32
+                    readOnly: true
+                    example: 100
+                  results:
+                    description: Array of ads found for the specified keyword with
+                      associated landing pages and advertiser information.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        domainName:
+                          description: The domain name of the advertiser who placed
+                            this ad.
+                          type: string
+                          nullable: true
+                          example: example.com
+                        urls:
+                          description: List of landing page URLs that this ad directed
+                            users to when clicked.
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                          example:
+                          - https://example.com/running-shoes
+                          - https://example.com/athletic-footwear
+                        position:
+                          description: The ad's position on the search results page
+                            when it was captured (1 = top position).
+                          type: integer
+                          format: int32
+                          example: 1
+                        searchDateId:
+                          description: Date when this ad was captured by SpyFu's crawling
+                            system, formatted as YYYYMMDD (e.g., 20231215 = December
+                            15, 2023).
+                          type: integer
+                          format: int32
+                          example: 20231215
+                        title:
+                          description: The headline text of the ad as it appeared
+                            in search results.
+                          type: string
+                          nullable: true
+                          example: Best Running Shoes 2024 - Free Shipping
+                        body:
+                          description: The description text of the ad providing additional
+                            details about the offer.
+                          type: string
+                          nullable: true
+                          example: Discover premium running shoes with advanced cushioning
+                            technology. Shop now and save 20% on your first order.
+                        adId:
+                          description: Unique identifier for this specific ad in SpyFu's
+                            database.
+                          type: integer
+                          format: int32
+                          example: 12345678
+                      additionalProperties: false
+                      description: Represents ad data for a specific keyword with
+                        associated advertiser information and landing pages.
+                    readOnly: true
+                    nullable: true
+                additionalProperties: false
+        '400':
+          description: Bad Request - Invalid parameters provided (e.g., empty term,
+            pageSize exceeds maximum, or invalid country code)
+        '401':
+          description: Unauthorized - Invalid API credentials or insufficient permissions
+            to access ad history data
+        '500':
+          description: Internal Server Error - A server-side error occurred while
+            processing the request
+      tags:
+      - Ad History Research API
+  /v2/term/getTermAdHistoryWithStats:
+    get:
+      operationId: AdHistoryApi_GetTermAdHistoryWithStats_GET
+      summary: Get Keyword Ad History With Stats
+      description: 'Returns historical ad variations and advertiser performance statistics
+        for a specific keyword. This endpoint includes domain-level metrics alongside
+        ad copy data, unlike the basic ad history endpoint that focuses purely on
+        ad variations.
+
+
+        [Visualize this API live on SpyFu](https://www.spyfu.com/keyword/ad-history?query=example%20keyword)'
+      parameters:
+      - name: term
+        in: query
+        description: Keyword to retrieve advertising history for.
+        required: true
+        schema:
+          type: string
+          example: running shoes
+        example: running shoes
+      - name: countryCode
+        in: query
+        description: Country code to filter results by geographic market.
+        schema:
+          type: string
+          default: US
+          enum:
+          - AR
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - DE
+          - DK
+          - ES
+          - FR
+          - IE
+          - IN
+          - IT
+          - JP
+          - MX
+          - NL
+          - 'NO'
+          - NZ
+          - PL
+          - PT
+          - SE
+          - SG
+          - TR
+          - UA
+          - UK
+          - US
+          - ZA
+          example: US
+        example: US
+      - name: pageSize
+        in: query
+        description: Number of ad history records to return per page.
+        schema:
+          type: integer
+          format: int32
+          default: 5
+          maximum: 10000
+          minimum: 1
+          example: 5
+        example: 5
+      - name: startingRow
+        in: query
+        description: Starting row number for pagination.
+        schema:
+          type: integer
+          format: int32
+          default: 1
+          maximum: 2147483647
+          minimum: 1
+          example: 1
+        example: 1
+      responses:
+        '200':
+          description: Successfully retrieved ad history data with advertiser statistics
+            for the specified keyword. Returns a paginated list of ads with performance
+            metrics and domain-level data.
+          content:
+            application/json:
+              schema:
+                description: Response wrapper containing comprehensive term ad history
+                  statistics including advertiser analysis and top-performing ads.
+                type: object
+                properties:
+                  resultCount:
+                    description: Number of results returned
+                    type: integer
+                    format: int32
+                    readOnly: true
+                    example: 100
+                  domains:
+                    description: Array of domains (advertisers) that have purchased
+                      ads for the specified keyword, ranked by performance metrics.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ads:
+                          description: Collection of ads this domain has purchased
+                            for the specified keyword.
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              searchDateId:
+                                description: Date when this ad was captured by SpyFu's
+                                  crawling system, formatted as YYYYMMDD (e.g., 20231215
+                                  = December 15, 2023).
+                                type: integer
+                                format: int32
+                                example: 20231215
+                              position:
+                                description: The ad's position on the search results
+                                  page when it was captured (1 = top position).
+                                type: integer
+                                format: int32
+                                example: 1
+                              title:
+                                description: The headline text of the ad as it appeared
+                                  in search results.
+                                type: string
+                                nullable: true
+                                example: Best Running Shoes 2024 - Free Shipping
+                              body:
+                                description: The description text of the ad providing
+                                  additional details about the offer.
+                                type: string
+                                nullable: true
+                                example: Discover premium running shoes with advanced
+                                  cushioning technology. Shop now and save 20% on
+                                  your first order.
+                              domainName:
+                                description: The domain name of the advertiser who
+                                  placed this ad.
+                                type: string
+                                nullable: true
+                                example: example.com
+                              fullUrl:
+                                description: The complete landing page URL that the
+                                  ad directed users to when clicked.
+                                type: string
+                                nullable: true
+                                example: https://example.com/running-shoes?utm_source=google&utm_campaign=shoes
+                              term:
+                                description: The search keyword that triggered this
+                                  ad to appear in search results.
+                                type: string
+                                nullable: true
+                                example: running shoes
+                              adCount:
+                                description: The number of times this specific ad
+                                  variation was observed during the capture period.
+                                type: integer
+                                format: int32
+                                example: 45
+                              isLeaderboardAd:
+                                description: Indicates whether this ad appeared in
+                                  the top ad positions (leaderboard) rather than sidebar
+                                  positions.
+                                type: boolean
+                                example: true
+                            additionalProperties: false
+                            description: Represents a single ad from SpyFu's historical
+                              advertising database with complete ad copy and metadata.
+                          nullable: true
+                        budget:
+                          description: Estimated monthly advertising budget this domain
+                            spends on the specified keyword.
+                          type: number
+                          format: double
+                          example: 15000.5
+                        coverage:
+                          description: Percentage of time this domain appears in ads
+                            for the specified keyword (0-100).
+                          type: number
+                          format: double
+                          example: 73.2
+                        domainName:
+                          description: The domain name of the advertiser.
+                          type: string
+                          nullable: true
+                          example: example.com
+                        percentageLeaderboard:
+                          description: Percentage of time this domain's ads appear
+                            in top positions (leaderboard) rather than sidebar positions.
+                          type: number
+                          format: double
+                          example: 85.7
+                        totalAdsPurchased:
+                          description: Total number of ads this domain has purchased
+                            across all keywords in SpyFu's database.
+                          type: integer
+                          format: int32
+                          example: 2847
+                        adCount:
+                          description: Number of ads this domain has purchased specifically
+                            for the requested keyword.
+                          type: integer
+                          format: int32
+                          example: 45
+                      additionalProperties: false
+                      description: Represents an advertiser (domain) that purchases
+                        ads for a specific keyword, including their ad performance
+                        metrics and budget estimates.
+                    nullable: true
+                  topAds:
+                    description: Array of the most successful ads for the specified
+                      keyword, ranked by performance and frequency metrics.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        adId:
+                          description: Unique identifier for this specific ad in SpyFu's
+                            database.
+                          type: integer
+                          format: int32
+                          example: 12345678
+                        averagePosition:
+                          description: Average position where this ad appeared on
+                            search results pages across all observations.
+                          type: number
+                          format: double
+                          example: 2.4
+                        averageAdCount:
+                          description: Average total number of ads per capture period.
+                          type: number
+                          format: double
+                          example: 2.1
+                        body:
+                          description: The description text of the ad providing additional
+                            details about the offer.
+                          type: string
+                          nullable: true
+                          example: Discover premium running shoes with advanced cushioning
+                            technology. Shop now and save 20% on your first order.
+                        title:
+                          description: The headline text of the ad as it appeared
+                            in search results.
+                          type: string
+                          nullable: true
+                          example: Best Running Shoes 2024 - Free Shipping
+                        fullUrl:
+                          description: The complete landing page URL that the ad directed
+                            users to when clicked.
+                          type: string
+                          nullable: true
+                          example: https://example.com/running-shoes?utm_source=google&utm_campaign=shoes
+                        leaderboardCount:
+                          description: Number of times this ad appeared in top ad
+                            positions (leaderboard) rather than sidebar positions.
+                          type: integer
+                          format: int32
+                          example: 42
+                        percentageLeaderboard:
+                          description: Percentage of time this ad appeared in top
+                            ad positions versus sidebar positions.
+                          type: number
+                          format: double
+                          example: 73.5
+                        percentageAdsServed:
+                          description: Percentage of total ad impressions this specific
+                            ad variation represented for the advertiser.
+                          type: number
+                          format: double
+                          example: 28.7
+                      additionalProperties: false
+                      description: Represents a top-performing ad with aggregated
+                        performance metrics across multiple observations.
+                    nullable: true
+                additionalProperties: false
+        '400':
+          description: Bad Request - Invalid parameters provided (e.g., empty term,
+            pageSize exceeds maximum, or invalid country code)
+        '401':
+          description: Unauthorized - Invalid API credentials or insufficient permissions
+            to access ad history data
+        '500':
+          description: Internal Server Error - A server-side error occurred while
+            processing the request
+      tags:
+      - Ad History Research API
+components:
+  schemas:
+    PublicApiAdOutputDto:
+      description: Represents a single ad from SpyFu's historical advertising database
+        with complete ad copy and metadata.
+      type: object
+      properties:
+        searchDateId:
+          description: Date when this ad was captured by SpyFu's crawling system,
+            formatted as YYYYMMDD (e.g., 20231215 = December 15, 2023).
+          type: integer
+          format: int32
+          example: 20231215
+        position:
+          description: The ad's position on the search results page when it was captured
+            (1 = top position).
+          type: integer
+          format: int32
+          example: 1
+        title:
+          description: The headline text of the ad as it appeared in search results.
+          type: string
+          nullable: true
+          example: Best Running Shoes 2024 - Free Shipping
+        body:
+          description: The description text of the ad providing additional details
+            about the offer.
+          type: string
+          nullable: true
+          example: Discover premium running shoes with advanced cushioning technology.
+            Shop now and save 20% on your first order.
+        domainName:
+          description: The domain name of the advertiser who placed this ad.
+          type: string
+          nullable: true
+          example: example.com
+        fullUrl:
+          description: The complete landing page URL that the ad directed users to
+            when clicked.
+          type: string
+          nullable: true
+          example: https://example.com/running-shoes?utm_source=google&utm_campaign=shoes
+        term:
+          description: The search keyword that triggered this ad to appear in search
+            results.
+          type: string
+          nullable: true
+          example: running shoes
+        adCount:
+          description: The number of times this specific ad variation was observed
+            during the capture period.
+          type: integer
+          format: int32
+          example: 45
+        isLeaderboardAd:
+          description: Indicates whether this ad appeared in the top ad positions
+            (leaderboard) rather than sidebar positions.
+          type: boolean
+          example: true
+      additionalProperties: false
+    PublicApiAdWithKeywordOutputDto:
+      description: Represents an ad with associated keywords that triggered it to
+        appear in search results.
+      type: object
+      properties:
+        keywords:
+          description: List of keywords that triggered this ad to appear in search
+            results.
+          type: array
+          items:
+            type: string
+          nullable: true
+          example:
+          - running shoes
+          - athletic shoes
+          - sports footwear
+        position:
+          description: The ad's position on the search results page when it was captured
+            (1 = top position).
+          type: integer
+          format: int32
+          example: 1
+        searchDateId:
+          description: Date when this ad was captured by SpyFu's crawling system,
+            formatted as YYYYMMDD (e.g., 20231215 = December 15, 2023).
+          type: integer
+          format: int32
+          example: 20231215
+        title:
+          description: The headline text of the ad as it appeared in search results.
+          type: string
+          nullable: true
+          example: Best Running Shoes 2024 - Free Shipping
+        body:
+          description: The description text of the ad providing additional details
+            about the offer.
+          type: string
+          nullable: true
+          example: Discover premium running shoes with advanced cushioning technology.
+            Shop now and save 20% on your first order.
+        url:
+          description: The landing page URL that the ad directed users to when clicked.
+          type: string
+          nullable: true
+          example: https://example.com/running-shoes
+        adId:
+          description: Unique identifier for this specific ad in SpyFu's database.
+          type: integer
+          format: int32
+          example: 12345678
+      additionalProperties: false
+    PublicApiDomainAdHistoryWrapperOutputDto:
+      description: Response wrapper containing domain ad history results with pagination
+        metadata.
+      type: object
+      properties:
+        resultCount:
+          description: Number of results returned
+          type: integer
+          format: int32
+          readOnly: true
+          example: 100
+        results:
+          description: Array of ads with their associated keywords found for the specified
+            domain.
+          type: array
+          items:
+            type: object
+            properties:
+              keywords:
+                description: List of keywords that triggered this ad to appear in
+                  search results.
+                type: array
+                items:
+                  type: string
+                nullable: true
+                example:
+                - running shoes
+                - athletic shoes
+                - sports footwear
+              position:
+                description: The ad's position on the search results page when it
+                  was captured (1 = top position).
+                type: integer
+                format: int32
+                example: 1
+              searchDateId:
+                description: Date when this ad was captured by SpyFu's crawling system,
+                  formatted as YYYYMMDD (e.g., 20231215 = December 15, 2023).
+                type: integer
+                format: int32
+                example: 20231215
+              title:
+                description: The headline text of the ad as it appeared in search
+                  results.
+                type: string
+                nullable: true
+                example: Best Running Shoes 2024 - Free Shipping
+              body:
+                description: The description text of the ad providing additional details
+                  about the offer.
+                type: string
+                nullable: true
+                example: Discover premium running shoes with advanced cushioning technology.
+                  Shop now and save 20% on your first order.
+              url:
+                description: The landing page URL that the ad directed users to when
+                  clicked.
+                type: string
+                nullable: true
+                example: https://example.com/running-shoes
+              adId:
+                description: Unique identifier for this specific ad in SpyFu's database.
+                type: integer
+                format: int32
+                example: 12345678
+            additionalProperties: false
+            description: Represents an ad with associated keywords that triggered
+              it to appear in search results.
+          readOnly: true
+          nullable: true
+      additionalProperties: false
+    PublicApiTermAdHistoryOutputDto:
+      description: Represents ad data for a specific keyword with associated advertiser
+        information and landing pages.
+      type: object
+      properties:
+        domainName:
+          description: The domain name of the advertiser who placed this ad.
+          type: string
+          nullable: true
+          example: example.com
+        urls:
+          description: List of landing page URLs that this ad directed users to when
+            clicked.
+          type: array
+          items:
+            type: string
+          nullable: true
+          example:
+          - https://example.com/running-shoes
+          - https://example.com/athletic-footwear
+        position:
+          description: The ad's position on the search results page when it was captured
+            (1 = top position).
+          type: integer
+          format: int32
+          example: 1
+        searchDateId:
+          description: Date when this ad was captured by SpyFu's crawling system,
+            formatted as YYYYMMDD (e.g., 20231215 = December 15, 2023).
+          type: integer
+          format: int32
+          example: 20231215
+        title:
+          description: The headline text of the ad as it appeared in search results.
+          type: string
+          nullable: true
+          example: Best Running Shoes 2024 - Free Shipping
+        body:
+          description: The description text of the ad providing additional details
+            about the offer.
+          type: string
+          nullable: true
+          example: Discover premium running shoes with advanced cushioning technology.
+            Shop now and save 20% on your first order.
+        adId:
+          description: Unique identifier for this specific ad in SpyFu's database.
+          type: integer
+          format: int32
+          example: 12345678
+      additionalProperties: false
+    PublicApiTermAdHistoryStatsWrapperOutputDto:
+      description: Response wrapper containing comprehensive term ad history statistics
+        including advertiser analysis and top-performing ads.
+      type: object
+      properties:
+        resultCount:
+          description: Number of results returned
+          type: integer
+          format: int32
+          readOnly: true
+          example: 100
+        domains:
+          description: Array of domains (advertisers) that have purchased ads for
+            the specified keyword, ranked by performance metrics.
+          type: array
+          items:
+            type: object
+            properties:
+              ads:
+                description: Collection of ads this domain has purchased for the specified
+                  keyword.
+                type: array
+                items:
+                  type: object
+                  properties:
+                    searchDateId:
+                      description: Date when this ad was captured by SpyFu's crawling
+                        system, formatted as YYYYMMDD (e.g., 20231215 = December 15,
+                        2023).
+                      type: integer
+                      format: int32
+                      example: 20231215
+                    position:
+                      description: The ad's position on the search results page when
+                        it was captured (1 = top position).
+                      type: integer
+                      format: int32
+                      example: 1
+                    title:
+                      description: The headline text of the ad as it appeared in search
+                        results.
+                      type: string
+                      nullable: true
+                      example: Best Running Shoes 2024 - Free Shipping
+                    body:
+                      description: The description text of the ad providing additional
+                        details about the offer.
+                      type: string
+                      nullable: true
+                      example: Discover premium running shoes with advanced cushioning
+                        technology. Shop now and save 20% on your first order.
+                    domainName:
+                      description: The domain name of the advertiser who placed this
+                        ad.
+                      type: string
+                      nullable: true
+                      example: example.com
+                    fullUrl:
+                      description: The complete landing page URL that the ad directed
+                        users to when clicked.
+                      type: string
+                      nullable: true
+                      example: https://example.com/running-shoes?utm_source=google&utm_campaign=shoes
+                    term:
+                      description: The search keyword that triggered this ad to appear
+                        in search results.
+                      type: string
+                      nullable: true
+                      example: running shoes
+                    adCount:
+                      description: The number of times this specific ad variation
+                        was observed during the capture period.
+                      type: integer
+                      format: int32
+                      example: 45
+                    isLeaderboardAd:
+                      description: Indicates whether this ad appeared in the top ad
+                        positions (leaderboard) rather than sidebar positions.
+                      type: boolean
+                      example: true
+                  additionalProperties: false
+                  description: Represents a single ad from SpyFu's historical advertising
+                    database with complete ad copy and metadata.
+                nullable: true
+              budget:
+                description: Estimated monthly advertising budget this domain spends
+                  on the specified keyword.
+                type: number
+                format: double
+                example: 15000.5
+              coverage:
+                description: Percentage of time this domain appears in ads for the
+                  specified keyword (0-100).
+                type: number
+                format: double
+                example: 73.2
+              domainName:
+                description: The domain name of the advertiser.
+                type: string
+                nullable: true
+                example: example.com
+              percentageLeaderboard:
+                description: Percentage of time this domain's ads appear in top positions
+                  (leaderboard) rather than sidebar positions.
+                type: number
+                format: double
+                example: 85.7
+              totalAdsPurchased:
+                description: Total number of ads this domain has purchased across
+                  all keywords in SpyFu's database.
+                type: integer
+                format: int32
+                example: 2847
+              adCount:
+                description: Number of ads this domain has purchased specifically
+                  for the requested keyword.
+                type: integer
+                format: int32
+                example: 45
+            additionalProperties: false
+            description: Represents an advertiser (domain) that purchases ads for
+              a specific keyword, including their ad performance metrics and budget
+              estimates.
+          nullable: true
+        topAds:
+          description: Array of the most successful ads for the specified keyword,
+            ranked by performance and frequency metrics.
+          type: array
+          items:
+            type: object
+            properties:
+              adId:
+                description: Unique identifier for this specific ad in SpyFu's database.
+                type: integer
+                format: int32
+                example: 12345678
+              averagePosition:
+                description: Average position where this ad appeared on search results
+                  pages across all observations.
+                type: number
+                format: double
+                example: 2.4
+              averageAdCount:
+                description: Average total number of ads per capture period.
+                type: number
+                format: double
+                example: 2.1
+              body:
+                description: The description text of the ad providing additional details
+                  about the offer.
+                type: string
+                nullable: true
+                example: Discover premium running shoes with advanced cushioning technology.
+                  Shop now and save 20% on your first order.
+              title:
+                description: The headline text of the ad as it appeared in search
+                  results.
+                type: string
+                nullable: true
+                example: Best Running Shoes 2024 - Free Shipping
+              fullUrl:
+                description: The complete landing page URL that the ad directed users
+                  to when clicked.
+                type: string
+                nullable: true
+                example: https://example.com/running-shoes?utm_source=google&utm_campaign=shoes
+              leaderboardCount:
+                description: Number of times this ad appeared in top ad positions
+                  (leaderboard) rather than sidebar positions.
+                type: integer
+                format: int32
+                example: 42
+              percentageLeaderboard:
+                description: Percentage of time this ad appeared in top ad positions
+                  versus sidebar positions.
+                type: number
+                format: double
+                example: 73.5
+              percentageAdsServed:
+                description: Percentage of total ad impressions this specific ad variation
+                  represented for the advertiser.
+                type: number
+                format: double
+                example: 28.7
+            additionalProperties: false
+            description: Represents a top-performing ad with aggregated performance
+              metrics across multiple observations.
+          nullable: true
+      additionalProperties: false
+    PublicApiTermAdHistoryWrapperOutputDto:
+      description: Response wrapper containing term ad history results with pagination
+        metadata.
+      type: object
+      properties:
+        resultCount:
+          description: Number of results returned
+          type: integer
+          format: int32
+          readOnly: true
+          example: 100
+        results:
+          description: Array of ads found for the specified keyword with associated
+            landing pages and advertiser information.
+          type: array
+          items:
+            type: object
+            properties:
+              domainName:
+                description: The domain name of the advertiser who placed this ad.
+                type: string
+                nullable: true
+                example: example.com
+              urls:
+                description: List of landing page URLs that this ad directed users
+                  to when clicked.
+                type: array
+                items:
+                  type: string
+                nullable: true
+                example:
+                - https://example.com/running-shoes
+                - https://example.com/athletic-footwear
+              position:
+                description: The ad's position on the search results page when it
+                  was captured (1 = top position).
+                type: integer
+                format: int32
+                example: 1
+              searchDateId:
+                description: Date when this ad was captured by SpyFu's crawling system,
+                  formatted as YYYYMMDD (e.g., 20231215 = December 15, 2023).
+                type: integer
+                format: int32
+                example: 20231215
+              title:
+                description: The headline text of the ad as it appeared in search
+                  results.
+                type: string
+                nullable: true
+                example: Best Running Shoes 2024 - Free Shipping
+              body:
+                description: The description text of the ad providing additional details
+                  about the offer.
+                type: string
+                nullable: true
+                example: Discover premium running shoes with advanced cushioning technology.
+                  Shop now and save 20% on your first order.
+              adId:
+                description: Unique identifier for this specific ad in SpyFu's database.
+                type: integer
+                format: int32
+                example: 12345678
+            additionalProperties: false
+            description: Represents ad data for a specific keyword with associated
+              advertiser information and landing pages.
+          readOnly: true
+          nullable: true
+      additionalProperties: false
+    PublicApiTermAdvertiserOutputDto:
+      description: Represents an advertiser (domain) that purchases ads for a specific
+        keyword, including their ad performance metrics and budget estimates.
+      type: object
+      properties:
+        ads:
+          description: Collection of ads this domain has purchased for the specified
+            keyword.
+          type: array
+          items:
+            type: object
+            properties:
+              searchDateId:
+                description: Date when this ad was captured by SpyFu's crawling system,
+                  formatted as YYYYMMDD (e.g., 20231215 = December 15, 2023).
+                type: integer
+                format: int32
+                example: 20231215
+              position:
+                description: The ad's position on the search results page when it
+                  was captured (1 = top position).
+                type: integer
+                format: int32
+                example: 1
+              title:
+                description: The headline text of the ad as it appeared in search
+                  results.
+                type: string
+                nullable: true
+                example: Best Running Shoes 2024 - Free Shipping
+              body:
+                description: The description text of the ad providing additional details
+                  about the offer.
+                type: string
+                nullable: true
+                example: Discover premium running shoes with advanced cushioning technology.
+                  Shop now and save 20% on your first order.
+              domainName:
+                description: The domain name of the advertiser who placed this ad.
+                type: string
+                nullable: true
+                example: example.com
+              fullUrl:
+                description: The complete landing page URL that the ad directed users
+                  to when clicked.
+                type: string
+                nullable: true
+                example: https://example.com/running-shoes?utm_source=google&utm_campaign=shoes
+              term:
+                description: The search keyword that triggered this ad to appear in
+                  search results.
+                type: string
+                nullable: true
+                example: running shoes
+              adCount:
+                description: The number of times this specific ad variation was observed
+                  during the capture period.
+                type: integer
+                format: int32
+                example: 45
+              isLeaderboardAd:
+                description: Indicates whether this ad appeared in the top ad positions
+                  (leaderboard) rather than sidebar positions.
+                type: boolean
+                example: true
+            additionalProperties: false
+            description: Represents a single ad from SpyFu's historical advertising
+              database with complete ad copy and metadata.
+          nullable: true
+        budget:
+          description: Estimated monthly advertising budget this domain spends on
+            the specified keyword.
+          type: number
+          format: double
+          example: 15000.5
+        coverage:
+          description: Percentage of time this domain appears in ads for the specified
+            keyword (0-100).
+          type: number
+          format: double
+          example: 73.2
+        domainName:
+          description: The domain name of the advertiser.
+          type: string
+          nullable: true
+          example: example.com
+        percentageLeaderboard:
+          description: Percentage of time this domain's ads appear in top positions
+            (leaderboard) rather than sidebar positions.
+          type: number
+          format: double
+          example: 85.7
+        totalAdsPurchased:
+          description: Total number of ads this domain has purchased across all keywords
+            in SpyFu's database.
+          type: integer
+          format: int32
+          example: 2847
+        adCount:
+          description: Number of ads this domain has purchased specifically for the
+            requested keyword.
+          type: integer
+          format: int32
+          example: 45
+      additionalProperties: false
+    TopAd:
+      description: Represents a top-performing ad with aggregated performance metrics
+        across multiple observations.
+      type: object
+      properties:
+        adId:
+          description: Unique identifier for this specific ad in SpyFu's database.
+          type: integer
+          format: int32
+          example: 12345678
+        averagePosition:
+          description: Average position where this ad appeared on search results pages
+            across all observations.
+          type: number
+          format: double
+          example: 2.4
+        averageAdCount:
+          description: Average total number of ads per capture period.
+          type: number
+          format: double
+          example: 2.1
+        body:
+          description: The description text of the ad providing additional details
+            about the offer.
+          type: string
+          nullable: true
+          example: Discover premium running shoes with advanced cushioning technology.
+            Shop now and save 20% on your first order.
+        title:
+          description: The headline text of the ad as it appeared in search results.
+          type: string
+          nullable: true
+          example: Best Running Shoes 2024 - Free Shipping
+        fullUrl:
+          description: The complete landing page URL that the ad directed users to
+            when clicked.
+          type: string
+          nullable: true
+          example: https://example.com/running-shoes?utm_source=google&utm_campaign=shoes
+        leaderboardCount:
+          description: Number of times this ad appeared in top ad positions (leaderboard)
+            rather than sidebar positions.
+          type: integer
+          format: int32
+          example: 42
+        percentageLeaderboard:
+          description: Percentage of time this ad appeared in top ad positions versus
+            sidebar positions.
+          type: number
+          format: double
+          example: 73.5
+        percentageAdsServed:
+          description: Percentage of total ad impressions this specific ad variation
+            represented for the advertiser.
+          type: number
+          format: double
+          example: 28.7
+      additionalProperties: false
+  securitySchemes:
+    Basic_Authentication_Token:
+      type: http
+      description: '<a href="https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side"
+        target="_blank">Basic Authentication</a> is a standard that involves encoding
+        your <code>SPYFU_API_ID:SECRET_KEY</code> into a Base64 string. Your <b>SpyFu
+        API ID</b> and <b>Secret Key</b> can both be found under the <b><a href="https://www.spyfu.com/account/api"
+        target="_blank">Account Settings -> API Usage</a></b> page. Additionally,
+        you can find the Base64 string has been pre-generated on the same page under
+        <b>Base 64 Key</b>. Finally, this encoded string is sent in the "Authorization"
+        header prefixed with the keyword "Basic":<br>For example, to authorize as
+        <code>00000000-0000-0000-0000-000000000000:AB12WXYZ</code> the client would
+        send<br><pre><code>Authorization: <span class="token keyword">Basic</span>
+        <span class="token constructor-invocation class-name">MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwOkFCMTJXWFla<span></code></pre>'
+      scheme: basic
+    Query_Parameter_Token:
+      type: apiKey
+      description: An API key can be added as a query parameter. Your API key is listed
+        as "Secret Key" found under the <b><a href="https://www.spyfu.com/account/api"
+        target="_blank">Account Settings -> API Usage</a></b> page<br>For example,
+        to authorize with the API key <code>AB12WXY</code><br><pre><code>/apis/example_api/GetExample?domain=spyfu.com<span
+        class="token keyword">&api_key=AB12WXYZ</span></code></pre>
+      name: api_key
+      in: query
+    HMAC_Authentication_Header:
+      type: apiKey
+      description: For even more security, each request can be individually authenticated
+        with a timestamped <a href="https://en.wikipedia.org/wiki/HMAC" target="_blank"><b>HMAC</b></a>
+        <em>(Hash Message Authentication Code)</em> signature. Composed of your secret
+        key, a valid timestamp, the API request path, and all request parameters.
+        <h3>Creating the signature:</h3><br>Combine the pieces that will be converted
+        into the signature.<br><pre><code><span class="token keyword">StringToSign</span>
+        <span class="token operator">=</span><br>&#x09;HTTP-Verb <span class="token
+        operator">+</span> <span class="token string">"\n"</span> <span class="token
+        operator">+</span><br>&#x09;Timestamp <span class="token operator">+</span>
+        <span class="token string">"\n"</span> <span class="token operator">+</span><br>&#x09;UrlPath
+        <span class="token operator">+</span> <span class="token string">"\n"</span><br>&#x09;QueryParameters<span
+        class="token operator">;</span><br></code></pre><br>Create UTF-8 encodings
+        of the above string and of your secret key.<br><pre><code><span class="token
+        keyword">byte</span><span class="token operator">[]</span> SecretKeyBytes
+        <span class="token operator">=</span> <span class="token function">UTF-8-Encoding-Of</span><span
+        class="token operator">(</span> Upper-Case-Of<span class="token operator">(</span>
+        SECRET_KEY <span class="token operator">)</span> <span class="token operator">)</span><span
+        class="token operator">;</span><br><span class="token keyword">byte</span><span
+        class="token operator">[]</span> StringToSignBytes <span class="token operator">=</span>
+        <span class="token function">UTF-8-Encoding-Of</span><span class="token operator">(</span>
+        StringToSign <span class="token operator">)</span><span class="token operator">;</span><br></code></pre><br>Use
+        an implementation of HMAC256 using your UTF-8 secret key to encode the combined
+        string of your request. This should then be converted to Base64 to finish
+        creating your signature.<br><pre><code><span class="token keyword">Signature</span>
+        <span class="token operator">=</span> <span class="token function">Base64</span><span
+        class="token operator">(</span> <span class="token function">HMAC-SHA256</span><span
+        class="token operator">(</span> SecretKeyBytes, StringToSignBytes <span class="token
+        operator">)</span> <span class="token operator">)</span><span class="token
+        operator">;</span><br></code></pre><br><h3>Using the signature:</h3><br>This
+        signature is then sent in through an Authentication header with your username.<br><pre><code>Authentication<span
+        class="token operator">:</span> <span class="token keyword">UserName</span><span
+        class="token operator">:</span><span class="token invocation class-name">Signature</span></code></pre>
+      name: Authentication
+      in: header
+security:
+- Basic_Authentication_Token: []
+- Query_Parameter_Token: []
+- HMAC_Authentication_Header: []

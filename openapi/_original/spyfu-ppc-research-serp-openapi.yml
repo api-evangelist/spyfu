@@ -1,0 +1,647 @@
+openapi: 3.0.3
+info:
+  title: PPC Research API
+  version: v2
+  description: 'Access real-time paid search intelligence and SERP analysis to uncover
+    competitor advertising strategies and identify high-value keyword opportunities.
+    Powered by SpyFu''s unmatched paid search data collection spanning 18 years of
+    continuous advertising intelligence across global markets.
+
+
+    SpyFu''s PPC Research API delivers **20x more paid keywords per domain** than
+    SEMRush or Ahrefs, built on a foundation of **8 billion keywords** with comprehensive
+    advertising metrics and **18 years of historical advertising data**. Our live
+    SERP tracking captures every paid search result with **updates every 15 seconds**,
+    ensuring you have real-time competitive advertising intelligence across all 28
+    supported countries.
+
+
+    While competitors provide basic paid keyword snapshots, SpyFu offers complete
+    advertising timeline data with live updates every 15 seconds. Our database contains
+    18 years of paid search history compared to competitors'' limited 5-year snapshots
+    with 1/20th the data volume per domain.
+
+
+    With this API, you can analyze live paid search results and competitor ad positioning,
+    identify high-converting keywords through SERP analysis, track competitor advertising
+    spend and strategy changes, discover new paid search opportunities before competitors,
+    monitor ad copy variations and testing patterns, and analyze SERP features impact
+    on paid search performance. Access real-time bidding intelligence to understand
+    market competition dynamics and optimize your advertising campaigns based on competitor
+    insights.
+
+
+    The PPC Research API integrates seamlessly with SpyFu''s Ad History API for complete
+    advertising intelligence, combining live SERP data with historical ad copy analysis
+    and campaign evolution tracking.
+
+
+    Get started with comprehensive API documentation and interactive examples at [SpyFu
+    Developer Portal](https://developer.spyfu.com).'
+servers:
+- url: https://api.spyfu.com/apis/serp_api
+paths:
+  /v2/ppc/getPaidSerps:
+    get:
+      operationId: PaidSerpApi_GetPaidSerps_GET
+      summary: Get Ads for Domain
+      description: 'Returns paid search results (ads) that a domain appears in across
+        Google search. This endpoint reveals the competitive paid landscape to identify
+        advertising opportunities and understand competitor PPC strategies.
+
+
+        [Visualize this API live on SpyFu](https://www.spyfu.com/ppc/keywords/domain?query=example.com)'
+      parameters:
+      - name: query
+        in: query
+        description: Domain to analyze for paid search presence.
+        required: true
+        schema:
+          type: string
+          example: example.com
+        example: example.com
+      - name: includeTerms
+        in: query
+        description: Comma-separated list of terms that must be present in the keyword.
+        schema:
+          type: string
+          example: hosting,domain,website
+      - name: includeAnyTerm
+        in: query
+        description: 'Used with includeTerms. If true: match any term (OR). If false:
+          require all terms (AND).'
+        schema:
+          type: boolean
+          default: false
+          example: false
+      - name: excludeTerms
+        in: query
+        description: Comma-separated list of terms to exclude from results (e.g.,
+          branded or irrelevant terms).
+        schema:
+          type: string
+          example: free,cheap,discount
+      - name: searchVolume.min
+        in: query
+        description: Filter to keywords where monthly search volume (Google) is ≥
+          this value.
+        schema:
+          type: number
+          format: float
+          example: 1000
+        example: 1000
+      - name: searchVolume.max
+        in: query
+        description: Filter to keywords where monthly search volume (Google) is ≤
+          this value.
+        schema:
+          type: number
+          format: float
+          example: 50000
+        example: 50000
+      - name: adCount.min
+        in: query
+        description: Filter to keywords where the number of distinct advertisers observed
+          over the last 14 months is ≥ this value.
+        schema:
+          type: number
+          format: float
+          example: 3
+        example: 3
+      - name: adCount.max
+        in: query
+        description: Filter to keywords where the number of distinct advertisers observed
+          over the last 14 months is ≤ this value.
+        schema:
+          type: number
+          format: float
+          example: 25
+        example: 25
+      - name: keywordDifficulty.min
+        in: query
+        description: Filter to keywords where the keyword difficulty score is ≥ this
+          value (0-100; higher = harder to rank).
+        schema:
+          type: number
+          format: float
+          example: 30
+        example: 30
+      - name: keywordDifficulty.max
+        in: query
+        description: Filter to keywords where the keyword difficulty score is ≤ this
+          value (0-100; higher = harder to rank).
+        schema:
+          type: number
+          format: float
+          example: 70
+        example: 70
+      - name: pageSize
+        in: query
+        description: The maximum number of rows returned.
+        schema:
+          type: integer
+          format: int32
+          default: 5
+          maximum: 10000
+          minimum: 1
+          example: 5
+        example: 5
+      - name: excludeHomepageKeywords
+        in: query
+        description: If true, exclude keywords where the domain/URL's homepage (root
+          domain, e.g., example.com) ranks; if false, include all.
+        schema:
+          type: boolean
+          default: false
+          example: false
+        example: false
+      - name: countryCode
+        in: query
+        description: Country market to search.  Specifically, this maps to the Google
+          domain version to query against (e.g., google.com for US, google.de for
+          Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All
+          Countries</a>
+        schema:
+          type: string
+          default: US
+          enum:
+          - AR
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - DE
+          - DK
+          - ES
+          - FR
+          - IE
+          - IN
+          - IT
+          - JP
+          - MX
+          - NL
+          - 'NO'
+          - NZ
+          - PL
+          - PT
+          - SE
+          - SG
+          - TR
+          - UA
+          - UK
+          - US
+          - ZA
+          example: US
+        example: US
+      - name: sortBy
+        in: query
+        description: Column to sort results by.
+        schema:
+          type: string
+          default: SearchVolume
+          enum:
+          - SearchVolume
+          - KeywordDifficulty
+          - AdPosition
+          - AdCount
+          - DateSearched
+          x-enumDescriptions:
+            SearchVolume: Number of searches done this past month on Google (or within
+              selected country). Blended from multiple sources for better snapshot
+              of search activity
+            KeywordDifficulty: PPC ranking difficulty score (0-100 scale, higher =
+              more difficult to rank). Based on advertiser competition, cost-per-click,
+              and bid density for paid search results
+            AdPosition: Average position where the domain's ads appear in paid search
+              results (1 = top ad position)
+            AdCount: Total number of advertisers seen over the last 6 months for this
+              keyword
+            DateSearched: Most recent date this keyword data was updated in SpyFu's
+              database
+          example: SearchVolume
+        example: SearchVolume
+      - name: sortOrder
+        in: query
+        description: Order to sort the results.
+        schema:
+          type: string
+          default: Descending
+          enum:
+          - Ascending
+          - Descending
+          example: Descending
+        example: Descending
+      - name: startingRow
+        in: query
+        description: Row number to start the results with.
+        schema:
+          type: integer
+          format: int32
+          default: 1
+          maximum: 10000
+          minimum: 1
+          example: 1
+        example: 1
+      - name: adultFilter
+        in: query
+        description: Exclude adult keywords considered unsafe for work.
+        schema:
+          type: boolean
+          default: true
+          example: true
+        example: true
+      - name: onlyAdultKeywords
+        in: query
+        description: Only include adult keywords considered unsafe for work.
+        schema:
+          type: boolean
+          default: false
+          example: false
+        example: false
+      responses:
+        '200':
+          description: Successfully retrieved paid search results for the domain.
+            Returns a paginated list of keywords where the domain appears in paid
+            ads with position and competition data.
+          content:
+            application/json:
+              schema:
+                description: Response wrapper containing paid SERP keyword results
+                  with pagination metadata and total result counts.
+                type: object
+                properties:
+                  resultCount:
+                    description: Number of results returned
+                    type: integer
+                    format: int32
+                    readOnly: true
+                    example: 100
+                  results:
+                    description: Array of paid search keywords with comprehensive
+                      SERP data and performance metrics.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        keyword:
+                          description: The keyword that triggers this paid ad result.
+                          type: string
+                          readOnly: true
+                          nullable: true
+                          example: running shoes
+                        termId:
+                          description: Unique identifier for this keyword in SpyFu's
+                            database.
+                          type: string
+                          readOnly: true
+                          nullable: true
+                          example: '39100280'
+                        adPosition:
+                          description: Position where the ad appears on the search
+                            results page (1 = top position).
+                          type: integer
+                          format: int32
+                          readOnly: true
+                          nullable: true
+                          example: 1
+                        adCount:
+                          description: Total number of ads this domain has for this
+                            keyword.
+                          type: integer
+                          format: int32
+                          readOnly: true
+                          nullable: true
+                          example: 1
+                        dateSearched:
+                          description: Date when this keyword was first discovered
+                            and added to SpyFu's database.
+                          type: string
+                          format: date-time
+                          readOnly: true
+                          example: '2023-12-15T10:30:00Z'
+                        title:
+                          description: Headline text of the paid search result as
+                            it appears in SERPs.
+                          type: string
+                          readOnly: true
+                          nullable: true
+                          example: Best Running Shoes 2024 - Free Shipping
+                        bodyHtml:
+                          description: HTML content of the ad description and additional
+                            text displayed in the search result.
+                          type: string
+                          readOnly: true
+                          nullable: true
+                        domain:
+                          description: Domain name of the advertiser placing this
+                            paid search ad.
+                          type: string
+                          readOnly: true
+                          nullable: true
+                          example: example.com
+                        searchVolume:
+                          description: Monthly search volume for this keyword based
+                            on Google search data across the selected country/region.
+                          type: integer
+                          format: int64
+                          readOnly: true
+                          nullable: true
+                          example: 700000
+                        keywordDifficulty:
+                          description: SEO difficulty score (1-100) indicating how
+                            challenging it would be to rank organically for this keyword,
+                            with 100 being most difficult.
+                          type: integer
+                          format: int32
+                          readOnly: true
+                          example: 69
+                        isNsfw:
+                          description: Indicates whether the search result contains
+                            content that may not be safe for work environments.
+                          type: boolean
+                          readOnly: true
+                          nullable: true
+                          example: false
+                      additionalProperties: false
+                      description: Represents a paid search keyword with comprehensive
+                        SERP data including search volume, keyword difficulty, and
+                        ad positioning metrics.
+                    readOnly: true
+                    nullable: true
+                  totalMatchingResults:
+                    description: Total number of paid keywords available that match
+                      the query criteria, including results not included in the current
+                      page.
+                    type: integer
+                    format: int64
+                    readOnly: true
+                    example: 50000
+                additionalProperties: false
+        '400':
+          description: Bad Request - Invalid parameters provided (e.g., invalid domain
+            format, pageSize exceeds maximum, or invalid country code)
+        '401':
+          description: Unauthorized - Invalid API credentials or insufficient permissions
+            to access PPC keyword data
+        '500':
+          description: Internal Server Error - A server-side error occurred while
+            processing the request
+      tags:
+      - PPC Research API
+components:
+  schemas:
+    PublicApiPaidSerpKeywordOutputDto:
+      description: Represents a paid search keyword with comprehensive SERP data including
+        search volume, keyword difficulty, and ad positioning metrics.
+      type: object
+      properties:
+        keyword:
+          description: The keyword that triggers this paid ad result.
+          type: string
+          readOnly: true
+          nullable: true
+          example: running shoes
+        termId:
+          description: Unique identifier for this keyword in SpyFu's database.
+          type: string
+          readOnly: true
+          nullable: true
+          example: '39100280'
+        adPosition:
+          description: Position where the ad appears on the search results page (1
+            = top position).
+          type: integer
+          format: int32
+          readOnly: true
+          nullable: true
+          example: 1
+        adCount:
+          description: Total number of ads this domain has for this keyword.
+          type: integer
+          format: int32
+          readOnly: true
+          nullable: true
+          example: 1
+        dateSearched:
+          description: Date when this keyword was first discovered and added to SpyFu's
+            database.
+          type: string
+          format: date-time
+          readOnly: true
+          example: '2023-12-15T10:30:00Z'
+        title:
+          description: Headline text of the paid search result as it appears in SERPs.
+          type: string
+          readOnly: true
+          nullable: true
+          example: Best Running Shoes 2024 - Free Shipping
+        bodyHtml:
+          description: HTML content of the ad description and additional text displayed
+            in the search result.
+          type: string
+          readOnly: true
+          nullable: true
+        domain:
+          description: Domain name of the advertiser placing this paid search ad.
+          type: string
+          readOnly: true
+          nullable: true
+          example: example.com
+        searchVolume:
+          description: Monthly search volume for this keyword based on Google search
+            data across the selected country/region.
+          type: integer
+          format: int64
+          readOnly: true
+          nullable: true
+          example: 700000
+        keywordDifficulty:
+          description: SEO difficulty score (1-100) indicating how challenging it
+            would be to rank organically for this keyword, with 100 being most difficult.
+          type: integer
+          format: int32
+          readOnly: true
+          example: 69
+        isNsfw:
+          description: Indicates whether the search result contains content that may
+            not be safe for work environments.
+          type: boolean
+          readOnly: true
+          nullable: true
+          example: false
+      additionalProperties: false
+    PublicApiPaidSerpKeywordWrapperOutputDto:
+      description: Response wrapper containing paid SERP keyword results with pagination
+        metadata and total result counts.
+      type: object
+      properties:
+        resultCount:
+          description: Number of results returned
+          type: integer
+          format: int32
+          readOnly: true
+          example: 100
+        results:
+          description: Array of paid search keywords with comprehensive SERP data
+            and performance metrics.
+          type: array
+          items:
+            type: object
+            properties:
+              keyword:
+                description: The keyword that triggers this paid ad result.
+                type: string
+                readOnly: true
+                nullable: true
+                example: running shoes
+              termId:
+                description: Unique identifier for this keyword in SpyFu's database.
+                type: string
+                readOnly: true
+                nullable: true
+                example: '39100280'
+              adPosition:
+                description: Position where the ad appears on the search results page
+                  (1 = top position).
+                type: integer
+                format: int32
+                readOnly: true
+                nullable: true
+                example: 1
+              adCount:
+                description: Total number of ads this domain has for this keyword.
+                type: integer
+                format: int32
+                readOnly: true
+                nullable: true
+                example: 1
+              dateSearched:
+                description: Date when this keyword was first discovered and added
+                  to SpyFu's database.
+                type: string
+                format: date-time
+                readOnly: true
+                example: '2023-12-15T10:30:00Z'
+              title:
+                description: Headline text of the paid search result as it appears
+                  in SERPs.
+                type: string
+                readOnly: true
+                nullable: true
+                example: Best Running Shoes 2024 - Free Shipping
+              bodyHtml:
+                description: HTML content of the ad description and additional text
+                  displayed in the search result.
+                type: string
+                readOnly: true
+                nullable: true
+              domain:
+                description: Domain name of the advertiser placing this paid search
+                  ad.
+                type: string
+                readOnly: true
+                nullable: true
+                example: example.com
+              searchVolume:
+                description: Monthly search volume for this keyword based on Google
+                  search data across the selected country/region.
+                type: integer
+                format: int64
+                readOnly: true
+                nullable: true
+                example: 700000
+              keywordDifficulty:
+                description: SEO difficulty score (1-100) indicating how challenging
+                  it would be to rank organically for this keyword, with 100 being
+                  most difficult.
+                type: integer
+                format: int32
+                readOnly: true
+                example: 69
+              isNsfw:
+                description: Indicates whether the search result contains content
+                  that may not be safe for work environments.
+                type: boolean
+                readOnly: true
+                nullable: true
+                example: false
+            additionalProperties: false
+            description: Represents a paid search keyword with comprehensive SERP
+              data including search volume, keyword difficulty, and ad positioning
+              metrics.
+          readOnly: true
+          nullable: true
+        totalMatchingResults:
+          description: Total number of paid keywords available that match the query
+            criteria, including results not included in the current page.
+          type: integer
+          format: int64
+          readOnly: true
+          example: 50000
+      additionalProperties: false
+  securitySchemes:
+    Basic_Authentication_Token:
+      type: http
+      description: '<a href="https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side"
+        target="_blank">Basic Authentication</a> is a standard that involves encoding
+        your <code>SPYFU_API_ID:SECRET_KEY</code> into a Base64 string. Your <b>SpyFu
+        API ID</b> and <b>Secret Key</b> can both be found under the <b><a href="https://www.spyfu.com/account/api"
+        target="_blank">Account Settings -> API Usage</a></b> page. Additionally,
+        you can find the Base64 string has been pre-generated on the same page under
+        <b>Base 64 Key</b>. Finally, this encoded string is sent in the "Authorization"
+        header prefixed with the keyword "Basic":<br>For example, to authorize as
+        <code>00000000-0000-0000-0000-000000000000:AB12WXYZ</code> the client would
+        send<br><pre><code>Authorization: <span class="token keyword">Basic</span>
+        <span class="token constructor-invocation class-name">MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwOkFCMTJXWFla<span></code></pre>'
+      scheme: basic
+    Query_Parameter_Token:
+      type: apiKey
+      description: An API key can be added as a query parameter. Your API key is listed
+        as "Secret Key" found under the <b><a href="https://www.spyfu.com/account/api"
+        target="_blank">Account Settings -> API Usage</a></b> page<br>For example,
+        to authorize with the API key <code>AB12WXY</code><br><pre><code>/apis/example_api/GetExample?domain=spyfu.com<span
+        class="token keyword">&api_key=AB12WXYZ</span></code></pre>
+      name: api_key
+      in: query
+    HMAC_Authentication_Header:
+      type: apiKey
+      description: For even more security, each request can be individually authenticated
+        with a timestamped <a href="https://en.wikipedia.org/wiki/HMAC" target="_blank"><b>HMAC</b></a>
+        <em>(Hash Message Authentication Code)</em> signature. Composed of your secret
+        key, a valid timestamp, the API request path, and all request parameters.
+        <h3>Creating the signature:</h3><br>Combine the pieces that will be converted
+        into the signature.<br><pre><code><span class="token keyword">StringToSign</span>
+        <span class="token operator">=</span><br>&#x09;HTTP-Verb <span class="token
+        operator">+</span> <span class="token string">"\n"</span> <span class="token
+        operator">+</span><br>&#x09;Timestamp <span class="token operator">+</span>
+        <span class="token string">"\n"</span> <span class="token operator">+</span><br>&#x09;UrlPath
+        <span class="token operator">+</span> <span class="token string">"\n"</span><br>&#x09;QueryParameters<span
+        class="token operator">;</span><br></code></pre><br>Create UTF-8 encodings
+        of the above string and of your secret key.<br><pre><code><span class="token
+        keyword">byte</span><span class="token operator">[]</span> SecretKeyBytes
+        <span class="token operator">=</span> <span class="token function">UTF-8-Encoding-Of</span><span
+        class="token operator">(</span> Upper-Case-Of<span class="token operator">(</span>
+        SECRET_KEY <span class="token operator">)</span> <span class="token operator">)</span><span
+        class="token operator">;</span><br><span class="token keyword">byte</span><span
+        class="token operator">[]</span> StringToSignBytes <span class="token operator">=</span>
+        <span class="token function">UTF-8-Encoding-Of</span><span class="token operator">(</span>
+        StringToSign <span class="token operator">)</span><span class="token operator">;</span><br></code></pre><br>Use
+        an implementation of HMAC256 using your UTF-8 secret key to encode the combined
+        string of your request. This should then be converted to Base64 to finish
+        creating your signature.<br><pre><code><span class="token keyword">Signature</span>
+        <span class="token operator">=</span> <span class="token function">Base64</span><span
+        class="token operator">(</span> <span class="token function">HMAC-SHA256</span><span
+        class="token operator">(</span> SecretKeyBytes, StringToSignBytes <span class="token
+        operator">)</span> <span class="token operator">)</span><span class="token
+        operator">;</span><br></code></pre><br><h3>Using the signature:</h3><br>This
+        signature is then sent in through an Authentication header with your username.<br><pre><code>Authentication<span
+        class="token operator">:</span> <span class="token keyword">UserName</span><span
+        class="token operator">:</span><span class="token invocation class-name">Signature</span></code></pre>
+      name: Authentication
+      in: header
+security:
+- Basic_Authentication_Token: []
+- Query_Parameter_Token: []
+- HMAC_Authentication_Header: []

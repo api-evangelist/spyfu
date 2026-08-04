@@ -1,0 +1,891 @@
+openapi: 3.0.3
+info:
+  title: Competitors API
+  version: v2
+  description: 'Discover and analyze your most significant competitors across both
+    paid and organic search channels to uncover market opportunities and strategic
+    insights. Powered by SpyFu''s comprehensive competitive intelligence database
+    spanning 18 years of cross-channel data collection across global markets.
+
+
+    SpyFu''s Competitors API analyzes **152 million domains** for competitive landscape
+    mapping, built on a foundation of **1.6 trillion search results** and **8 billion
+    keywords** with comprehensive competitive metrics. Our database provides **20x
+    more paid keywords per domain** and **2x more organic keywords per domain** than
+    SEMRush or Ahrefs. **Every competitive relationship updates every 15 seconds**,
+    ensuring you have real-time competitive intelligence across all 28 supported countries.
+
+
+    While competitors provide basic competitor lists, SpyFu delivers complete competitive
+    timeline analysis with 18 years of historical data and live updates every 15 seconds.
+    Our unique cross-channel approach identifies competitors who may challenge you
+    in organic search, paid search, or both channels simultaneously.
+
+
+    With this API, you can identify your top SEO and PPC competitors with overlap
+    analysis, discover emerging competitors before they become threats, analyze competitive
+    strength across multiple search channels, uncover market opportunities through
+    competitor gap analysis, track competitive landscape changes over time, and benchmark
+    your market position against key competitors. Access comprehensive competitor
+    intelligence to understand who competes for your target keywords and how their
+    strategies have evolved over nearly two decades.
+
+
+    The Competitors API integrates seamlessly with SpyFu''s Ad History, SEO Research,
+    and Domain Stats APIs to provide complete competitive intelligence, enabling you
+    to analyze competitor strategies across both advertising campaigns and organic
+    search performance.
+
+
+    Get started with comprehensive API documentation and interactive examples at [SpyFu
+    Developer Portal](https://developer.spyfu.com).'
+servers:
+- url: https://api.spyfu.com/apis/competitors_api
+paths:
+  /v2/ppc/getTopCompetitors:
+    get:
+      operationId: CompetitorsApi_GetTopPpcCompetitors_GET
+      summary: Get Top PPC Competitors
+      description: 'Returns the top paid search (PPC) competitors for a domain based
+        on shared keyword advertising overlap. This endpoint identifies domains that
+        compete for the same paid keywords to reveal direct advertising competition
+        and bidding opportunities.
+
+
+        [Visualize this API live on SpyFu](https://www.spyfu.com/ppc/competitors?query=example.com)'
+      parameters:
+      - name: domain
+        in: query
+        description: Domain to analyze for paid search competitors.
+        required: true
+        schema:
+          type: string
+          example: example.com
+        example: example.com
+      - name: countryCode
+        in: query
+        description: Country market to search.  Specifically, this maps to the Google
+          domain version to query against (e.g., google.com for US, google.de for
+          Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All
+          Countries</a>
+        schema:
+          type: string
+          default: US
+          enum:
+          - AR
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - DE
+          - DK
+          - ES
+          - FR
+          - IE
+          - IN
+          - IT
+          - JP
+          - MX
+          - NL
+          - 'NO'
+          - NZ
+          - PL
+          - PT
+          - SE
+          - SG
+          - TR
+          - UA
+          - UK
+          - US
+          - ZA
+          example: US
+        example: US
+      - name: sortBy
+        in: query
+        description: Column to sort by.
+        schema:
+          type: string
+          default: Rank
+          enum:
+          - Domain
+          - CommonTerms
+          - Rank
+          example: Rank
+        example: Rank
+      - name: sortOrder
+        in: query
+        description: Order to sort results.
+        schema:
+          type: string
+          default: Descending
+          enum:
+          - Ascending
+          - Descending
+          example: Descending
+        example: Descending
+      - name: pageSize
+        in: query
+        description: The maximum number of rows returned.
+        schema:
+          type: integer
+          format: int32
+          default: 5
+          maximum: 550
+          minimum: 1
+          example: 5
+        example: 5
+      - name: startingRow
+        in: query
+        description: Row number to start the results with.
+        schema:
+          type: integer
+          format: int32
+          default: 1
+          maximum: 550
+          minimum: 1
+          example: 1
+        example: 1
+      responses:
+        '200':
+          description: Successfully retrieved PPC competitor data. Returns a paginated
+            list of domains competing for shared paid keywords with overlap metrics
+            and advertising strength indicators.
+          content:
+            application/json:
+              schema:
+                description: Response wrapper containing competitor analysis data
+                  for a specific search channel (SEO or PPC) with pagination metadata.
+                type: object
+                properties:
+                  resultCount:
+                    description: Number of results returned
+                    type: integer
+                    format: int32
+                    readOnly: true
+                    example: 50
+                  totalMatchingResults:
+                    description: Total number of competitor domains available that
+                      match the query criteria, including results not included in
+                      the current page.
+                    type: integer
+                    format: int64
+                    readOnly: true
+                    example: 2500
+                  results:
+                    description: Array of competitor domains ranked by keyword overlap
+                      strength in the specified search channel.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        domain:
+                          description: Domain name of the competitor that shares significant
+                            keyword overlap in the specified search channel (SEO or
+                            PPC).
+                          type: string
+                          nullable: true
+                          example: example.com
+                        commonTerms:
+                          description: Number of unique keywords that both this competitor
+                            domain and the target domain compete for in the same search
+                            channel.
+                          type: integer
+                          format: int32
+                          example: 1432
+                        rank:
+                          description: The rank is a metric for how much overlap there
+                            is between your domain and the competitor
+                          type: number
+                          format: float
+                      additionalProperties: false
+                      description: Represents a competitor domain with shared keyword
+                        overlap data, indicating the strength of competitive relationship
+                        in either paid or organic search.
+                    readOnly: true
+                    nullable: true
+                additionalProperties: false
+        '400':
+          description: Bad Request - Invalid parameters provided (e.g., invalid domain
+            format, pageSize exceeds maximum, or invalid country code)
+        '401':
+          description: Unauthorized - Invalid API credentials or insufficient permissions
+            to access PPC competitor data
+        '500':
+          description: Internal Server Error - A server-side error occurred while
+            processing the request
+      tags:
+      - Competitors API
+  /v2/seo/getTopCompetitors:
+    get:
+      operationId: CompetitorsApi_GetTopSeoCompetitors_GET
+      summary: Get Top SEO Competitors
+      description: 'Returns the top organic search (SEO) competitors for a domain
+        based on shared keyword ranking overlap. This endpoint identifies domains
+        that compete for the same organic keywords to reveal direct SEO competition
+        and content opportunities.
+
+
+        [Visualize this API live on SpyFu](https://www.spyfu.com/seo/competitors?query=example.com)'
+      parameters:
+      - name: domain
+        in: query
+        description: Domain to analyze for organic search competitors.
+        required: true
+        schema:
+          type: string
+          example: example.com
+        example: example.com
+      - name: countryCode
+        in: query
+        description: Country market to search.  Specifically, this maps to the Google
+          domain version to query against (e.g., google.com for US, google.de for
+          Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All
+          Countries</a>
+        schema:
+          type: string
+          default: US
+          enum:
+          - AR
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - DE
+          - DK
+          - ES
+          - FR
+          - IE
+          - IN
+          - IT
+          - JP
+          - MX
+          - NL
+          - 'NO'
+          - NZ
+          - PL
+          - PT
+          - SE
+          - SG
+          - TR
+          - UA
+          - UK
+          - US
+          - ZA
+          example: US
+        example: US
+      - name: sortBy
+        in: query
+        description: Column to sort by.
+        schema:
+          type: string
+          default: Rank
+          enum:
+          - Domain
+          - CommonTerms
+          - Rank
+          example: Rank
+        example: Rank
+      - name: sortOrder
+        in: query
+        description: Order to sort results.
+        schema:
+          type: string
+          default: Descending
+          enum:
+          - Ascending
+          - Descending
+          example: Descending
+        example: Descending
+      - name: pageSize
+        in: query
+        description: The maximum number of rows returned.
+        schema:
+          type: integer
+          format: int32
+          default: 5
+          maximum: 550
+          minimum: 1
+          example: 5
+        example: 5
+      - name: startingRow
+        in: query
+        description: Row number to start the results with.
+        schema:
+          type: integer
+          format: int32
+          default: 1
+          maximum: 550
+          minimum: 1
+          example: 1
+        example: 1
+      responses:
+        '200':
+          description: Successfully retrieved SEO competitor data. Returns a paginated
+            list of domains competing for shared organic keywords with overlap metrics
+            and ranking strength indicators.
+          content:
+            application/json:
+              schema:
+                description: Response wrapper containing competitor analysis data
+                  for a specific search channel (SEO or PPC) with pagination metadata.
+                type: object
+                properties:
+                  resultCount:
+                    description: Number of results returned
+                    type: integer
+                    format: int32
+                    readOnly: true
+                    example: 50
+                  totalMatchingResults:
+                    description: Total number of competitor domains available that
+                      match the query criteria, including results not included in
+                      the current page.
+                    type: integer
+                    format: int64
+                    readOnly: true
+                    example: 2500
+                  results:
+                    description: Array of competitor domains ranked by keyword overlap
+                      strength in the specified search channel.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        domain:
+                          description: Domain name of the competitor that shares significant
+                            keyword overlap in the specified search channel (SEO or
+                            PPC).
+                          type: string
+                          nullable: true
+                          example: example.com
+                        commonTerms:
+                          description: Number of unique keywords that both this competitor
+                            domain and the target domain compete for in the same search
+                            channel.
+                          type: integer
+                          format: int32
+                          example: 1432
+                        rank:
+                          description: The rank is a metric for how much overlap there
+                            is between your domain and the competitor
+                          type: number
+                          format: float
+                      additionalProperties: false
+                      description: Represents a competitor domain with shared keyword
+                        overlap data, indicating the strength of competitive relationship
+                        in either paid or organic search.
+                    readOnly: true
+                    nullable: true
+                additionalProperties: false
+        '400':
+          description: Bad Request - Invalid parameters provided (e.g., invalid domain
+            format, pageSize exceeds maximum, or invalid country code)
+        '401':
+          description: Unauthorized - Invalid API credentials or insufficient permissions
+            to access SEO competitor data
+        '500':
+          description: Internal Server Error - A server-side error occurred while
+            processing the request
+      tags:
+      - Competitors API
+  /v2/combined/getCombinedTopCompetitors:
+    get:
+      operationId: CompetitorsApi_GetCombinedTopCompetitors_GET
+      summary: Get Combined Top Competitors
+      description: 'Returns the top competitors for a domain combining both paid search
+        (PPC) and organic search (SEO) data. This endpoint identifies domains that
+        compete across both advertising and organic rankings to reveal comprehensive
+        competitive landscape insights.
+
+
+        [Visualize this API live on SpyFu](https://www.spyfu.com/competitors?query=example.com)'
+      parameters:
+      - name: domain
+        in: query
+        description: Domain to get competitors for
+        required: true
+        schema:
+          type: string
+          example: example.com
+        example: example.com
+      - name: countryCode
+        in: query
+        description: Country market to search.  Specifically, this maps to the Google
+          domain version to query against (e.g., google.com for US, google.de for
+          Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All
+          Countries</a>
+        schema:
+          type: string
+          default: US
+          enum:
+          - AR
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - DE
+          - DK
+          - ES
+          - FR
+          - IE
+          - IN
+          - IT
+          - JP
+          - MX
+          - NL
+          - 'NO'
+          - NZ
+          - PL
+          - PT
+          - SE
+          - SG
+          - TR
+          - UA
+          - UK
+          - US
+          - ZA
+          example: US
+        example: US
+      - name: sortBy
+        in: query
+        description: Column to sort by.
+        schema:
+          type: string
+          default: Rank
+          enum:
+          - Domain
+          - CommonTerms
+          - Rank
+          example: Rank
+        example: Rank
+      - name: sortOrder
+        in: query
+        description: Order to sort results.
+        schema:
+          type: string
+          default: Descending
+          enum:
+          - Ascending
+          - Descending
+          example: Descending
+        example: Descending
+      - name: pageSize
+        in: query
+        description: The maximum number of rows returned.
+        schema:
+          type: integer
+          format: int32
+          default: 5
+          maximum: 550
+          minimum: 1
+          example: 5
+        example: 5
+      - name: startingRow
+        in: query
+        description: Row number to start the results with.
+        schema:
+          type: integer
+          format: int32
+          default: 1
+          maximum: 550
+          minimum: 1
+          example: 1
+        example: 1
+      responses:
+        '200':
+          description: Successfully retrieved combined competitor data. Returns a
+            paginated list of domains competing in both paid and organic search with
+            overlap metrics and competitive strength indicators.
+          content:
+            application/json:
+              schema:
+                description: Response wrapper containing comprehensive competitor
+                  analysis data across both paid and organic search channels with
+                  pagination metadata.
+                type: object
+                properties:
+                  resultCount:
+                    description: Number of results returned
+                    type: integer
+                    format: int32
+                    readOnly: true
+                    example: 50
+                  totalMatchingResults:
+                    description: Total number of competitor domains available that
+                      match the query criteria, including results not included in
+                      the current page.
+                    type: integer
+                    format: int64
+                    readOnly: true
+                    example: 5000
+                  combinedCompetitors:
+                    description: Array of competitor domains ranked by combined SEO
+                      and PPC keyword overlap strength.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        rank:
+                          description: Competitive ranking score indicating the strength
+                            of overlap between this competitor and the target domain
+                            across both SEO and PPC keywords.
+                          type: number
+                          format: float
+                          example: 1
+                        domain:
+                          description: Domain name of the competitor that shares significant
+                            keyword overlap in both paid and organic search results.
+                          type: string
+                          nullable: true
+                          example: example.com
+                      additionalProperties: false
+                      description: Represents a competitor domain that competes for
+                        similar keywords in both paid and organic search, ranked by
+                        competitive overlap strength.
+                    readOnly: true
+                    nullable: true
+                  ppcCompetitors:
+                    description: Array of competitor domains ranked by paid search
+                      advertising keyword overlap and competitive strength.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        domain:
+                          description: Domain name of the competitor that shares significant
+                            keyword overlap in the specified search channel (SEO or
+                            PPC).
+                          type: string
+                          nullable: true
+                          example: example.com
+                        commonTerms:
+                          description: Number of unique keywords that both this competitor
+                            domain and the target domain compete for in the same search
+                            channel.
+                          type: integer
+                          format: int32
+                          example: 1432
+                        rank:
+                          description: The rank is a metric for how much overlap there
+                            is between your domain and the competitor
+                          type: number
+                          format: float
+                      additionalProperties: false
+                      description: Represents a competitor domain with shared keyword
+                        overlap data, indicating the strength of competitive relationship
+                        in either paid or organic search.
+                    readOnly: true
+                    nullable: true
+                  seoCompetitors:
+                    description: Array of competitor domains ranked by organic search
+                      keyword overlap and SEO competitive strength.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        domain:
+                          description: Domain name of the competitor that shares significant
+                            keyword overlap in the specified search channel (SEO or
+                            PPC).
+                          type: string
+                          nullable: true
+                          example: example.com
+                        commonTerms:
+                          description: Number of unique keywords that both this competitor
+                            domain and the target domain compete for in the same search
+                            channel.
+                          type: integer
+                          format: int32
+                          example: 1432
+                        rank:
+                          description: The rank is a metric for how much overlap there
+                            is between your domain and the competitor
+                          type: number
+                          format: float
+                      additionalProperties: false
+                      description: Represents a competitor domain with shared keyword
+                        overlap data, indicating the strength of competitive relationship
+                        in either paid or organic search.
+                    readOnly: true
+                    nullable: true
+                additionalProperties: false
+        '400':
+          description: Bad Request - Invalid parameters provided (e.g., invalid domain
+            format, pageSize exceeds maximum, or invalid country code)
+        '401':
+          description: Unauthorized - Invalid API credentials or insufficient permissions
+            to access competitor data
+        '500':
+          description: Internal Server Error - A server-side error occurred while
+            processing the request
+      tags:
+      - Competitors API
+components:
+  schemas:
+    PublicApiCombinedCompetitorsOutputDto:
+      description: Represents a competitor domain that competes for similar keywords
+        in both paid and organic search, ranked by competitive overlap strength.
+      type: object
+      properties:
+        rank:
+          description: Competitive ranking score indicating the strength of overlap
+            between this competitor and the target domain across both SEO and PPC
+            keywords.
+          type: number
+          format: float
+          example: 1
+        domain:
+          description: Domain name of the competitor that shares significant keyword
+            overlap in both paid and organic search results.
+          type: string
+          nullable: true
+          example: example.com
+      additionalProperties: false
+    PublicApiCombinedCompetitorsWrapperOutputDto:
+      description: Response wrapper containing comprehensive competitor analysis data
+        across both paid and organic search channels with pagination metadata.
+      type: object
+      properties:
+        resultCount:
+          description: Number of results returned
+          type: integer
+          format: int32
+          readOnly: true
+          example: 50
+        totalMatchingResults:
+          description: Total number of competitor domains available that match the
+            query criteria, including results not included in the current page.
+          type: integer
+          format: int64
+          readOnly: true
+          example: 5000
+        combinedCompetitors:
+          description: Array of competitor domains ranked by combined SEO and PPC
+            keyword overlap strength.
+          type: array
+          items:
+            type: object
+            properties:
+              rank:
+                description: Competitive ranking score indicating the strength of
+                  overlap between this competitor and the target domain across both
+                  SEO and PPC keywords.
+                type: number
+                format: float
+                example: 1
+              domain:
+                description: Domain name of the competitor that shares significant
+                  keyword overlap in both paid and organic search results.
+                type: string
+                nullable: true
+                example: example.com
+            additionalProperties: false
+            description: Represents a competitor domain that competes for similar
+              keywords in both paid and organic search, ranked by competitive overlap
+              strength.
+          readOnly: true
+          nullable: true
+        ppcCompetitors:
+          description: Array of competitor domains ranked by paid search advertising
+            keyword overlap and competitive strength.
+          type: array
+          items:
+            type: object
+            properties:
+              domain:
+                description: Domain name of the competitor that shares significant
+                  keyword overlap in the specified search channel (SEO or PPC).
+                type: string
+                nullable: true
+                example: example.com
+              commonTerms:
+                description: Number of unique keywords that both this competitor domain
+                  and the target domain compete for in the same search channel.
+                type: integer
+                format: int32
+                example: 1432
+              rank:
+                description: The rank is a metric for how much overlap there is between
+                  your domain and the competitor
+                type: number
+                format: float
+            additionalProperties: false
+            description: Represents a competitor domain with shared keyword overlap
+              data, indicating the strength of competitive relationship in either
+              paid or organic search.
+          readOnly: true
+          nullable: true
+        seoCompetitors:
+          description: Array of competitor domains ranked by organic search keyword
+            overlap and SEO competitive strength.
+          type: array
+          items:
+            type: object
+            properties:
+              domain:
+                description: Domain name of the competitor that shares significant
+                  keyword overlap in the specified search channel (SEO or PPC).
+                type: string
+                nullable: true
+                example: example.com
+              commonTerms:
+                description: Number of unique keywords that both this competitor domain
+                  and the target domain compete for in the same search channel.
+                type: integer
+                format: int32
+                example: 1432
+              rank:
+                description: The rank is a metric for how much overlap there is between
+                  your domain and the competitor
+                type: number
+                format: float
+            additionalProperties: false
+            description: Represents a competitor domain with shared keyword overlap
+              data, indicating the strength of competitive relationship in either
+              paid or organic search.
+          readOnly: true
+          nullable: true
+      additionalProperties: false
+    PublicApiCompetitorWrapperOutputDto:
+      description: Response wrapper containing competitor analysis data for a specific
+        search channel (SEO or PPC) with pagination metadata.
+      type: object
+      properties:
+        resultCount:
+          description: Number of results returned
+          type: integer
+          format: int32
+          readOnly: true
+          example: 50
+        totalMatchingResults:
+          description: Total number of competitor domains available that match the
+            query criteria, including results not included in the current page.
+          type: integer
+          format: int64
+          readOnly: true
+          example: 2500
+        results:
+          description: Array of competitor domains ranked by keyword overlap strength
+            in the specified search channel.
+          type: array
+          items:
+            type: object
+            properties:
+              domain:
+                description: Domain name of the competitor that shares significant
+                  keyword overlap in the specified search channel (SEO or PPC).
+                type: string
+                nullable: true
+                example: example.com
+              commonTerms:
+                description: Number of unique keywords that both this competitor domain
+                  and the target domain compete for in the same search channel.
+                type: integer
+                format: int32
+                example: 1432
+              rank:
+                description: The rank is a metric for how much overlap there is between
+                  your domain and the competitor
+                type: number
+                format: float
+            additionalProperties: false
+            description: Represents a competitor domain with shared keyword overlap
+              data, indicating the strength of competitive relationship in either
+              paid or organic search.
+          readOnly: true
+          nullable: true
+      additionalProperties: false
+    PublicApiCompetitorsOutputDto:
+      description: Represents a competitor domain with shared keyword overlap data,
+        indicating the strength of competitive relationship in either paid or organic
+        search.
+      type: object
+      properties:
+        domain:
+          description: Domain name of the competitor that shares significant keyword
+            overlap in the specified search channel (SEO or PPC).
+          type: string
+          nullable: true
+          example: example.com
+        commonTerms:
+          description: Number of unique keywords that both this competitor domain
+            and the target domain compete for in the same search channel.
+          type: integer
+          format: int32
+          example: 1432
+        rank:
+          description: The rank is a metric for how much overlap there is between
+            your domain and the competitor
+          type: number
+          format: float
+      additionalProperties: false
+  securitySchemes:
+    Basic_Authentication_Token:
+      type: http
+      description: '<a href="https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side"
+        target="_blank">Basic Authentication</a> is a standard that involves encoding
+        your <code>SPYFU_API_ID:SECRET_KEY</code> into a Base64 string. Your <b>SpyFu
+        API ID</b> and <b>Secret Key</b> can both be found under the <b><a href="https://www.spyfu.com/account/api"
+        target="_blank">Account Settings -> API Usage</a></b> page. Additionally,
+        you can find the Base64 string has been pre-generated on the same page under
+        <b>Base 64 Key</b>. Finally, this encoded string is sent in the "Authorization"
+        header prefixed with the keyword "Basic":<br>For example, to authorize as
+        <code>00000000-0000-0000-0000-000000000000:AB12WXYZ</code> the client would
+        send<br><pre><code>Authorization: <span class="token keyword">Basic</span>
+        <span class="token constructor-invocation class-name">MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwOkFCMTJXWFla<span></code></pre>'
+      scheme: basic
+    Query_Parameter_Token:
+      type: apiKey
+      description: An API key can be added as a query parameter. Your API key is listed
+        as "Secret Key" found under the <b><a href="https://www.spyfu.com/account/api"
+        target="_blank">Account Settings -> API Usage</a></b> page<br>For example,
+        to authorize with the API key <code>AB12WXY</code><br><pre><code>/apis/example_api/GetExample?domain=spyfu.com<span
+        class="token keyword">&api_key=AB12WXYZ</span></code></pre>
+      name: api_key
+      in: query
+    HMAC_Authentication_Header:
+      type: apiKey
+      description: For even more security, each request can be individually authenticated
+        with a timestamped <a href="https://en.wikipedia.org/wiki/HMAC" target="_blank"><b>HMAC</b></a>
+        <em>(Hash Message Authentication Code)</em> signature. Composed of your secret
+        key, a valid timestamp, the API request path, and all request parameters.
+        <h3>Creating the signature:</h3><br>Combine the pieces that will be converted
+        into the signature.<br><pre><code><span class="token keyword">StringToSign</span>
+        <span class="token operator">=</span><br>&#x09;HTTP-Verb <span class="token
+        operator">+</span> <span class="token string">"\n"</span> <span class="token
+        operator">+</span><br>&#x09;Timestamp <span class="token operator">+</span>
+        <span class="token string">"\n"</span> <span class="token operator">+</span><br>&#x09;UrlPath
+        <span class="token operator">+</span> <span class="token string">"\n"</span><br>&#x09;QueryParameters<span
+        class="token operator">;</span><br></code></pre><br>Create UTF-8 encodings
+        of the above string and of your secret key.<br><pre><code><span class="token
+        keyword">byte</span><span class="token operator">[]</span> SecretKeyBytes
+        <span class="token operator">=</span> <span class="token function">UTF-8-Encoding-Of</span><span
+        class="token operator">(</span> Upper-Case-Of<span class="token operator">(</span>
+        SECRET_KEY <span class="token operator">)</span> <span class="token operator">)</span><span
+        class="token operator">;</span><br><span class="token keyword">byte</span><span
+        class="token operator">[]</span> StringToSignBytes <span class="token operator">=</span>
+        <span class="token function">UTF-8-Encoding-Of</span><span class="token operator">(</span>
+        StringToSign <span class="token operator">)</span><span class="token operator">;</span><br></code></pre><br>Use
+        an implementation of HMAC256 using your UTF-8 secret key to encode the combined
+        string of your request. This should then be converted to Base64 to finish
+        creating your signature.<br><pre><code><span class="token keyword">Signature</span>
+        <span class="token operator">=</span> <span class="token function">Base64</span><span
+        class="token operator">(</span> <span class="token function">HMAC-SHA256</span><span
+        class="token operator">(</span> SecretKeyBytes, StringToSignBytes <span class="token
+        operator">)</span> <span class="token operator">)</span><span class="token
+        operator">;</span><br></code></pre><br><h3>Using the signature:</h3><br>This
+        signature is then sent in through an Authentication header with your username.<br><pre><code>Authentication<span
+        class="token operator">:</span> <span class="token keyword">UserName</span><span
+        class="token operator">:</span><span class="token invocation class-name">Signature</span></code></pre>
+      name: Authentication
+      in: header
+security:
+- Basic_Authentication_Token: []
+- Query_Parameter_Token: []
+- HMAC_Authentication_Header: []
