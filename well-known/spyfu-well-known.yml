@@ -1,0 +1,103 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.spyfu.com/.well-known/agent-skills/index.json
+description: >-
+  Probe of the /.well-known/ discovery surface on every SpyFu host in apis.yml
+  (api.spyfu.com — the OpenAPI servers[] host, developer.spyfu.com — the
+  developer portal, www.spyfu.com — the marketing/app host). Only one document
+  is genuinely served: an Agent Skills discovery index on the developer portal,
+  advertised via an RFC 8288 Link header (rel="agent-skills"). Every classic
+  well-known path (security.txt, OIDC/OAuth discovery, api-catalog,
+  ai-plugin.json) returns 404 on all three hosts. api.spyfu.com and
+  www.spyfu.com answer .well-known paths with an IIS/SPA HTML 404 body.
+hosts:
+  - host: https://developer.spyfu.com
+    documents:
+      - path: /.well-known/agent-skills/index.json
+        status: 200
+        content_type: application/json; charset=utf-8
+        file: spyfu-agent-skills-index.json
+        note: >-
+          Agent Skills discovery document ($schema
+          schemas.agentskills.io/discovery/0.2.0). Declares one skill,
+          read-the-docs, saved verbatim to skills/spyfu-read-the-docs.md.
+          Served by the ReadMe-hosted developer portal.
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+        note: >-
+          Probed because developer.spyfu.com/mcp answers 401 "Authorization
+          required"; no RFC 9728 protected-resource metadata is published, so
+          the MCP auth scheme cannot be discovered anonymously.
+      - path: /.well-known/api-catalog
+        status: 404
+        note: >-
+          Advertised in the response Link header as
+          rel="api-catalog" but the URL itself returns 404 with an empty body —
+          the portal advertises a catalog it does not serve.
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://api.spyfu.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://www.spyfu.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+link_header_advertised:
+  - rel: api-catalog
+    url: https://developer.spyfu.com/.well-known/api-catalog
+    resolves: false
+  - rel: service-doc
+    url: https://developer.spyfu.com
+    resolves: true
+  - rel: agent-skills
+    url: https://developer.spyfu.com/.well-known/agent-skills/index.json
+    resolves: true
+summary:
+  hosts_probed: 3
+  paths_probed: 22
+  documents_served: 1
+  security_txt: false
+  oauth_discovery: false
+  api_catalog: false
+x-evidence:
+  fetched: '2026-08-13'
+  agent_skills_index:
+    url: https://developer.spyfu.com/.well-known/agent-skills/index.json
+    http_status: 200
+    content_type: application/json; charset=utf-8

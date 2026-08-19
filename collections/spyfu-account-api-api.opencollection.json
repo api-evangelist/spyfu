@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Account Account API API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API monthly usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/usage/month/:usageDate",
+            "params": [
+              {
+                "name": "usageDate",
+                "value": "2025-07",
+                "type": "path",
+                "description": "Date to get API usage for"
+              }
+            ]
+          },
+          "docs": "Returns stats for API usage."
+        },
+        {
+          "info": {
+            "name": "API daily usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/usage/month/:usageDate/daily",
+            "params": [
+              {
+                "name": "usageDate",
+                "value": "2025-07",
+                "type": "path",
+                "description": "Date to get API usage for"
+              }
+            ]
+          },
+          "docs": "Returns stats for API usage."
+        },
+        {
+          "info": {
+            "name": "API monthly usage by method",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/usage/month/:usageDate/method",
+            "params": [
+              {
+                "name": "usageDate",
+                "value": "2025-07",
+                "type": "path",
+                "description": "Date to get API usage for"
+              }
+            ]
+          },
+          "docs": "Returns stats for API usage."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

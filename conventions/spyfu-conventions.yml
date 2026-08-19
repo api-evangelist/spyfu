@@ -1,0 +1,151 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developer.spyfu.com/docs/rate-limits,
+  https://developer.spyfu.com/docs/api-pricing,
+  https://github.com/spyfu/spyfu_api_docs (v1.0), openapi/*.yml
+description: >-
+  Cross-cutting request/response semantics for the SpyFu v2 REST APIs. SpyFu is
+  a read-only research API: 47 of its 48 catalogued operations are GET, and the
+  single POST (getKeywordInformation) is a bulk read that accepts a keyword list
+  in the body rather than a write. That shape determines most of what follows —
+  there is no idempotency contract because there is nothing to make idempotent,
+  and no webhooks or events because nothing changes server-side on the caller's
+  behalf.
+authentication:
+  styles:
+    - name: HTTP Basic
+      scheme: basic
+      credential: SPYFU_API_ID:SECRET_KEY base64-encoded
+      note: The documented default.
+    - name: API key in query string
+      in: query
+      parameter: api_key
+      value: the account Secret Key
+      note: >-
+        Convenient but leaks the secret into logs, referrers and browser
+        history. SpyFu documents it as a first-class option with no warning.
+    - name: HMAC signature header
+      in: header
+      parameter: Authentication
+      note: >-
+        Per-request timestamped HMAC over the secret key, timestamp, request
+        path and all request parameters. The strongest of the three; not
+        required.
+  credentials_page: https://www.spyfu.com/account/api
+  detail: authentication/spyfu-authentication.yml
+idempotency:
+  supported: false
+  header:
+  scope:
+  retention:
+  note: >-
+    No idempotency key, no request-replay contract, and none needed: the API is
+    read-only. Retries are naturally safe because every operation is a GET (or,
+    for getKeywordInformation, a body-carrying bulk read with no side effects).
+    Recorded as an explicit false rather than omitted, so it reads as "checked,
+    absent by design" instead of "not checked".
+pagination:
+  style: offset
+  params:
+    - name: startingRow
+      in: query
+      description: 1-based index of the first row to return.
+    - name: pageSize
+      in: query
+      description: >-
+        Number of rows to return. Per-endpoint maximums are enforced; exceeding
+        them returns 400 Bad Request.
+  response_fields:
+    - name: resultCount
+      description: Number of rows in this response.
+    - name: totalMatchingResults
+      description: >-
+        Total rows matching the query across all pages, including rows not
+        returned in this page. The field an agent needs to plan paging.
+  cursor: false
+  link_header: false
+  billing_note: >-
+    Paging is not free. Billing is per row returned, so pageSize is a direct
+    cost lever: (successful rows / 1000) x endpoint CPM. See
+    finops/spyfu-finops.yml.
+sorting_and_filtering:
+  sort_params: [sortBy, sortOrder]
+  filter_convention: >-
+    Range filters use dotted min/max query parameter pairs — searchVolume.min /
+    searchVolume.max, keywordDifficulty.min / .max, costPerClick.min / .max,
+    rank.min / .max, seoClicks.min / .max, and roughly twenty more. Term
+    filters use includeTerms / includeAnyTerm / excludeTerms.
+  localization:
+    param: countryCode
+    description: >-
+      Two-letter country code present on 44 of 48 operations, selecting which
+      Google country instance the data was collected from (DE means google.de).
+      Defaults to US. Each country is a separate data instance, not a
+      translation.
+    reference: https://developer.spyfu.com/reference/country-code-enum
+field_expansion:
+  supported: false
+sparse_fieldsets:
+  supported: false
+metadata:
+  supported: false
+request_tracing:
+  request_id_header:
+  supported: false
+  note: No documented correlation/request-id header on responses.
+versioning:
+  scheme: uri-path
+  current: v2
+  form: https://api.spyfu.com/apis/{service}/v2/{operation}
+  services:
+    - accounts_api
+    - domain_stats_api
+    - cloud_ad_history_api
+    - serp_api
+    - keyword_api
+    - competitors_api
+    - organic_history_api
+  legacy: >-
+    A v1 surface survives for the free "My SpyFu" project-management API,
+    documented separately at https://www.spyfu.com/api/v1/project-manager and
+    not covered by the v2 OpenAPI set.
+  detail: lifecycle/spyfu-lifecycle.yml
+error_envelope:
+  content_type: application/json
+  documented_shape:
+    error: string machine code, e.g. rate_limited
+    message: string human-readable explanation
+  rfc9457: false
+  note: >-
+    The envelope above is published verbatim only in the 429 example in the
+    rate-limits guide. The OpenAPI declares 400 / 401 / 500 on every operation
+    with a description but no response body schema, so the error shape is
+    documented by example rather than by contract.
+  detail: errors/spyfu-problem-types.yml
+rate_limit_signaling:
+  status_on_exhaustion: 429
+  response_headers:
+    - Retry-After
+  quota_headers: []
+  window: rolling 1 second
+  scope: per endpoint
+  note: >-
+    Retry-After is the only runtime signal. There is no RateLimit-Limit /
+    RateLimit-Remaining / RateLimit-Reset family, so a client cannot see how
+    close it is to a limit before hitting one.
+  detail: rate-limits/spyfu-rate-limits.yml
+content_negotiation:
+  request: query parameters (and a JSON body on the single POST)
+  response: application/json
+  formats: [json]
+bulk_operations:
+  - operation: DomainStatsApi_GetBulkDomainStats_GET
+    note: Multiple domains per request.
+  - operation: RelatedKeywordsV2Api_GetKeywordsByBulkSearchPost_POST
+    note: >-
+      POST variant of getKeywordInformation for keyword lists too large for a
+      query string. The only non-GET operation in the API.
+webhooks:
+  supported: false
+  note: No event, webhook, or streaming surface is published.

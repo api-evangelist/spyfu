@@ -1,0 +1,983 @@
+{
+  "item": [
+    {
+      "id": "d8870b77-c870-43c8-9829-9d5e4016a102",
+      "name": "Ad History Research API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9dae922b-b945-4056-9e70-89687e16ef0e",
+          "name": "Get Domain Ad History",
+          "request": {
+            "name": "Get Domain Ad History",
+            "description": {
+              "content": "Returns historical ad variations and copy for a specific domain. This endpoint focuses on ads from a particular advertiser across all their keywords and campaigns, unlike term-based endpoints that focus on specific keywords.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/ppc/ad-history/domain?query=example.com)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "domain",
+                "getDomainAdHistory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "domain",
+                  "value": "<string>",
+                  "description": "(Required) Advertiser's root domain"
+                },
+                {
+                  "disabled": false,
+                  "key": "keywordFilter",
+                  "value": "<string>",
+                  "description": "Filter down to keywords containing this value"
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<string>",
+                  "description": "Sort order for ad history results."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "5",
+                  "description": "Number of ad history records to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "startingRow",
+                  "value": "1",
+                  "description": "Starting row number for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d5d9ce2-d603-4988-b9e9-dd770856b761",
+              "name": "Successfully retrieved ad history data for the specified domain. Returns a paginated list of historical ad variations with copy, keywords, and campaign information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "domain",
+                    "getDomainAdHistory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "keywordFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "Best"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 100,\n  \"results\": [\n    {\n      \"keywords\": [\n        \"running shoes\",\n        \"athletic shoes\",\n        \"sports footwear\"\n      ],\n      \"position\": 1,\n      \"searchDateId\": 20231215,\n      \"title\": \"Best Running Shoes 2024 - Free Shipping\",\n      \"body\": \"Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order.\",\n      \"url\": \"https://example.com/running-shoes\",\n      \"adId\": 12345678\n    },\n    {\n      \"keywords\": [\n        \"running shoes\",\n        \"athletic shoes\",\n        \"sports footwear\"\n      ],\n      \"position\": 1,\n      \"searchDateId\": 20231215,\n      \"title\": \"Best Running Shoes 2024 - Free Shipping\",\n      \"body\": \"Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order.\",\n      \"url\": \"https://example.com/running-shoes\",\n      \"adId\": 12345678\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9770caf2-a589-4c8d-8886-bf487ead8e23",
+              "name": "Bad Request - Invalid parameters provided (e.g., invalid domain format, pageSize exceeds maximum, or invalid country code)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "domain",
+                    "getDomainAdHistory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "keywordFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "Best"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f95942a9-aa58-4b17-b2fb-cdc08bb263b7",
+              "name": "Unauthorized - Invalid API credentials or insufficient permissions to access ad history data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "domain",
+                    "getDomainAdHistory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "keywordFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "Best"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ba22e21b-919a-4941-8191-8a35afcd9db2",
+              "name": "Internal Server Error - A server-side error occurred while processing the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "domain",
+                    "getDomainAdHistory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "keywordFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "Best"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e0a3734-1d58-441a-867c-fef46b15105e",
+          "name": "Get Keyword Ad History",
+          "request": {
+            "name": "Get Keyword Ad History",
+            "description": {
+              "content": "Returns historical advertisers and ad variations for a specific keyword. This endpoint focuses on ads that have appeared for a particular keyword, unlike domain-based endpoints that focus on ads from specific advertisers.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/keyword/ad-history?query=example%20keyword)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "term",
+                "getTermAdHistory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "term",
+                  "value": "<string>",
+                  "description": "(Required) Keyword to retrieve advertising history for."
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "5",
+                  "description": "Number of ad history records to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "startingRow",
+                  "value": "1",
+                  "description": "Starting row number for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "358eb714-1322-4035-a154-c015faa2d809",
+              "name": "Successfully retrieved ad history data for the specified keyword. Returns a paginated list of ads that have appeared for this keyword across different advertisers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "term",
+                    "getTermAdHistory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "term",
+                      "value": "running shoes"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 100,\n  \"results\": [\n    {\n      \"domainName\": \"example.com\",\n      \"urls\": [\n        \"https://example.com/running-shoes\",\n        \"https://example.com/athletic-footwear\"\n      ],\n      \"position\": 1,\n      \"searchDateId\": 20231215,\n      \"title\": \"Best Running Shoes 2024 - Free Shipping\",\n      \"body\": \"Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order.\",\n      \"adId\": 12345678\n    },\n    {\n      \"domainName\": \"example.com\",\n      \"urls\": [\n        \"https://example.com/running-shoes\",\n        \"https://example.com/athletic-footwear\"\n      ],\n      \"position\": 1,\n      \"searchDateId\": 20231215,\n      \"title\": \"Best Running Shoes 2024 - Free Shipping\",\n      \"body\": \"Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order.\",\n      \"adId\": 12345678\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e5af36a-135e-4cc6-8fbd-160ee1f5efb6",
+              "name": "Bad Request - Invalid parameters provided (e.g., empty term, pageSize exceeds maximum, or invalid country code)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "term",
+                    "getTermAdHistory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "term",
+                      "value": "running shoes"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "05d0551a-0a7d-449a-ab01-7dcbb0f6a1f4",
+              "name": "Unauthorized - Invalid API credentials or insufficient permissions to access ad history data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "term",
+                    "getTermAdHistory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "term",
+                      "value": "running shoes"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dc659122-133f-49c4-a33c-0a83ef394f70",
+              "name": "Internal Server Error - A server-side error occurred while processing the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "term",
+                    "getTermAdHistory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "term",
+                      "value": "running shoes"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d64c1ed3-14cb-4919-aba4-324a2c79fcc7",
+          "name": "Get Keyword Ad History With Stats",
+          "request": {
+            "name": "Get Keyword Ad History With Stats",
+            "description": {
+              "content": "Returns historical ad variations and advertiser performance statistics for a specific keyword. This endpoint includes domain-level metrics alongside ad copy data, unlike the basic ad history endpoint that focuses purely on ad variations.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/keyword/ad-history?query=example%20keyword)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "term",
+                "getTermAdHistoryWithStats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "term",
+                  "value": "<string>",
+                  "description": "(Required) Keyword to retrieve advertising history for."
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country code to filter results by geographic market."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "5",
+                  "description": "Number of ad history records to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "startingRow",
+                  "value": "1",
+                  "description": "Starting row number for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc6f330b-76b6-46ae-90f9-c0e145d60882",
+              "name": "Successfully retrieved ad history data with advertiser statistics for the specified keyword. Returns a paginated list of ads with performance metrics and domain-level data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "term",
+                    "getTermAdHistoryWithStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "term",
+                      "value": "running shoes"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 100,\n  \"domains\": [\n    {\n      \"ads\": [\n        {\n          \"searchDateId\": 20231215,\n          \"position\": 1,\n          \"title\": \"Best Running Shoes 2024 - Free Shipping\",\n          \"body\": \"Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order.\",\n          \"domainName\": \"example.com\",\n          \"fullUrl\": \"https://example.com/running-shoes?utm_source=google&utm_campaign=shoes\",\n          \"term\": \"running shoes\",\n          \"adCount\": 45,\n          \"isLeaderboardAd\": true\n        },\n        {\n          \"searchDateId\": 20231215,\n          \"position\": 1,\n          \"title\": \"Best Running Shoes 2024 - Free Shipping\",\n          \"body\": \"Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order.\",\n          \"domainName\": \"example.com\",\n          \"fullUrl\": \"https://example.com/running-shoes?utm_source=google&utm_campaign=shoes\",\n          \"term\": \"running shoes\",\n          \"adCount\": 45,\n          \"isLeaderboardAd\": true\n        }\n      ],\n      \"budget\": 15000.5,\n      \"coverage\": 73.2,\n      \"domainName\": \"example.com\",\n      \"percentageLeaderboard\": 85.7,\n      \"totalAdsPurchased\": 2847,\n      \"adCount\": 45\n    },\n    {\n      \"ads\": [\n        {\n          \"searchDateId\": 20231215,\n          \"position\": 1,\n          \"title\": \"Best Running Shoes 2024 - Free Shipping\",\n          \"body\": \"Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order.\",\n          \"domainName\": \"example.com\",\n          \"fullUrl\": \"https://example.com/running-shoes?utm_source=google&utm_campaign=shoes\",\n          \"term\": \"running shoes\",\n          \"adCount\": 45,\n          \"isLeaderboardAd\": true\n        },\n        {\n          \"searchDateId\": 20231215,\n          \"position\": 1,\n          \"title\": \"Best Running Shoes 2024 - Free Shipping\",\n          \"body\": \"Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order.\",\n          \"domainName\": \"example.com\",\n          \"fullUrl\": \"https://example.com/running-shoes?utm_source=google&utm_campaign=shoes\",\n          \"term\": \"running shoes\",\n          \"adCount\": 45,\n          \"isLeaderboardAd\": true\n        }\n      ],\n      \"budget\": 15000.5,\n      \"coverage\": 73.2,\n      \"domainName\": \"example.com\",\n      \"percentageLeaderboard\": 85.7,\n      \"totalAdsPurchased\": 2847,\n      \"adCount\": 45\n    }\n  ],\n  \"topAds\": [\n    {\n      \"adId\": 12345678,\n      \"averagePosition\": 2.4,\n      \"averageAdCount\": 2.1,\n      \"body\": \"Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order.\",\n      \"title\": \"Best Running Shoes 2024 - Free Shipping\",\n      \"fullUrl\": \"https://example.com/running-shoes?utm_source=google&utm_campaign=shoes\",\n      \"leaderboardCount\": 42,\n      \"percentageLeaderboard\": 73.5,\n      \"percentageAdsServed\": 28.7\n    },\n    {\n      \"adId\": 12345678,\n      \"averagePosition\": 2.4,\n      \"averageAdCount\": 2.1,\n      \"body\": \"Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order.\",\n      \"title\": \"Best Running Shoes 2024 - Free Shipping\",\n      \"fullUrl\": \"https://example.com/running-shoes?utm_source=google&utm_campaign=shoes\",\n      \"leaderboardCount\": 42,\n      \"percentageLeaderboard\": 73.5,\n      \"percentageAdsServed\": 28.7\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57d80696-0c62-49e1-9dfc-f75f58c7244f",
+              "name": "Bad Request - Invalid parameters provided (e.g., empty term, pageSize exceeds maximum, or invalid country code)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "term",
+                    "getTermAdHistoryWithStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "term",
+                      "value": "running shoes"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1bc98c5e-7857-4093-a0b0-c385232850e1",
+              "name": "Unauthorized - Invalid API credentials or insufficient permissions to access ad history data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "term",
+                    "getTermAdHistoryWithStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "term",
+                      "value": "running shoes"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "74338429-9e12-4c7d-82a0-f24c1ab79ee6",
+              "name": "Internal Server Error - A server-side error occurred while processing the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "term",
+                    "getTermAdHistoryWithStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "term",
+                      "value": "running shoes"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spyfu.com/apis/accounts_api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5d0cd352-de29-49fb-9781-adeacd31289c",
+    "name": "Account Account API Ad History Research API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

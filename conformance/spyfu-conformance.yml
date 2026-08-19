@@ -1,0 +1,140 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/*.yml, authentication/spyfu-authentication.yml,
+  conventions/spyfu-conventions.yml, errors/spyfu-problem-types.yml,
+  well-known/spyfu-well-known.yml, https://developer.spyfu.com/docs/rate-limits
+description: >-
+  Which cross-cutting and industry standards the SpyFu APIs actually conform to,
+  derived from the captured specs and artifacts and checked against the
+  provider's published documentation. SpyFu conforms to the baseline HTTP
+  standards it needs for a read-only research API — OpenAPI 3.x, HTTP Basic
+  (RFC 7617), JSON, HMAC signing, RFC 6585 429 with Retry-After — and to
+  essentially nothing above that line. No OAuth, no OIDC, no RFC 9457 problem
+  details, no RFC 9116 security.txt, and no published compliance certification
+  of any kind. No Compliance pointer is emitted, because SpyFu publishes no
+  certification program to point at.
+standards:
+  - id: openapi-3
+    conforms: true
+    evidence: >-
+      Nine OpenAPI documents covering 48 operations, all with operationIds,
+      summaries, descriptions, tags and declared responses. The first-party
+      source at github.com/spyfu/spyfu_api_docs publishes OpenAPI 3.1.0.
+  - id: rest
+    conforms: true
+    evidence: Resource-oriented HTTP over JSON; 47 GET operations and one POST bulk read.
+  - id: json
+    conforms: true
+    evidence: application/json on every 200 response across all 48 operations.
+  - id: rfc7617-http-basic
+    conforms: true
+    evidence: >-
+      securityScheme Basic_Authentication_Token, type http / scheme basic,
+      SPYFU_API_ID:SECRET_KEY base64-encoded.
+  - id: api-key-auth
+    conforms: true
+    evidence: >-
+      securityScheme Query_Parameter_Token, type apiKey in query, parameter
+      api_key.
+    note: >-
+      Conformant as a mechanism, but placing the account Secret Key in the query
+      string exposes it to logs, referrers and browser history. SpyFu documents
+      it without a caveat.
+  - id: hmac-request-signing
+    conforms: true
+    evidence: >-
+      securityScheme HMAC_Authentication_Header, type apiKey in header,
+      parameter Authentication — a timestamped HMAC over the secret key,
+      timestamp, request path and all request parameters.
+  - id: rfc6585-429
+    conforms: true
+    evidence: >-
+      Documented 429 Too Many Requests with Retry-After on rate-limit
+      exhaustion (https://developer.spyfu.com/docs/rate-limits).
+  - id: ratelimit-header-fields
+    conforms: false
+    evidence: >-
+      No RateLimit-Limit / RateLimit-Remaining / RateLimit-Reset (or
+      X-RateLimit-*) family on responses. Retry-After only, and only after the
+      limit is already breached.
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 securityScheme in any spec; no OAuth documented anywhere.
+  - id: oidc
+    conforms: false
+    evidence: /.well-known/openid-configuration returns 404 on all three hosts.
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: false
+    evidence: /.well-known/oauth-authorization-server returns 404 on all three hosts.
+  - id: rfc9728-oauth-protected-resource-metadata
+    conforms: false
+    evidence: >-
+      developer.spyfu.com/mcp answers 401 "Authorization required" but publishes
+      no protected-resource metadata, so its auth scheme is not discoverable.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      No application/problem+json. Error responses are declared with a
+      description and no schema; the only published body is a vendor
+      {error, message} shape in the 429 example.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 404 on api.spyfu.com, developer.spyfu.com and www.spyfu.com.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No Sunset or Deprecation header documented; no deprecation policy published.
+  - id: rfc8288-web-linking
+    conforms: true
+    evidence: >-
+      developer.spyfu.com emits a Link header advertising rel="api-catalog",
+      rel="service-doc" and rel="agent-skills".
+    note: >-
+      The advertised rel="api-catalog" URL itself returns 404, so the link is
+      served but does not resolve.
+  - id: rfc9727-api-catalog
+    conforms: false
+    evidence: /.well-known/api-catalog returns 404 despite being advertised in the Link header.
+  - id: agent-skills-discovery
+    conforms: true
+    evidence: >-
+      /.well-known/agent-skills/index.json returns 200 with
+      $schema schemas.agentskills.io/discovery/0.2.0/schema.json and one
+      declared skill (read-the-docs).
+  - id: mcp
+    conforms: partial
+    evidence: >-
+      Remote MCP endpoint at https://developer.spyfu.com/mcp returns a valid
+      JSON-RPC 2.0 error object, but every method requires authorization
+      (HTTP 401), so protocol conformance beyond the transport could not be
+      verified anonymously.
+  - id: a2a
+    conforms: false
+    evidence: >-
+      /.well-known/agent-card.json and /.well-known/agent.json return 404 on all
+      three hosts.
+  - id: asyncapi
+    conforms: false
+    evidence: No event, webhook or streaming surface exists to describe.
+  - id: llms-txt
+    conforms: true
+    evidence: >-
+      https://developer.spyfu.com/llms.txt returns 200 text/plain with an H1,
+      blockquote summary and Guides / API Reference link sections.
+  - id: idempotency-key
+    conforms: false
+    evidence: >-
+      No idempotency key. Not a defect for this API — every operation is a read.
+      See conventions/spyfu-conventions.yml.
+compliance_certifications:
+  published: false
+  probed:
+    - {url: "https://www.spyfu.com/security", status: 404}
+    - {url: "https://www.spyfu.com/trust", status: 404}
+    - {url: "https://trust.spyfu.com/", status: not resolved}
+  note: >-
+    No SOC 2, ISO 27001, PCI DSS, HIPAA, FedRAMP or GDPR certification page was
+    found on any SpyFu host. SpyFu publishes a privacy policy
+    (https://www.spyfu.com/privacypolicy) and terms
+    (https://www.spyfu.com/termsconditions) but no compliance or trust
+    program, so no Compliance pointer is emitted.

@@ -1,0 +1,146 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  registry.npmjs.org, pypi.org, rubygems.org, packagist.org, crates.io,
+  https://github.com/orgs/spyfu/repositories,
+  https://developer.spyfu.com/llms.txt
+description: >-
+  SpyFu ships NO first-party client library for the SpyFu API in any language.
+  The developer portal, the llms.txt index and the first-party
+  github.com/spyfu/spyfu_api_docs repository all document raw HTTP only —
+  Basic auth, an api_key query parameter, or an HMAC header — with no SDK,
+  wrapper, or generated client offered. Searched npm, PyPI, RubyGems,
+  Packagist, crates.io, Maven Central and pkg.go.dev: no first-party API client
+  exists on any of them. The packages SpyFu does publish under its own npm
+  scope and GitHub org are internal Vue/Vuex front-end utilities for the SpyFu
+  web app, unrelated to the API, and every one of them last shipped between
+  2017 and 2020.
+sdk_count: 0
+api_client_count: 0
+packages:
+  - language: javascript
+    registry: npm
+    name: spyfu-vuex-helpers
+    url: https://www.npmjs.com/package/spyfu-vuex-helpers
+    install: npm install spyfu-vuex-helpers
+    repository: https://github.com/spyfu/spyfu-vuex-helpers
+    official: true
+    api_client: false
+    version: 0.12.4
+    published: '2018-09-17'
+    note: >-
+      First-party (SpyFu npm scope + GitHub org) but an internal Vuex utility
+      library for the SpyFu web app — not a client for the SpyFu API. Last
+      release 2018.
+  - language: javascript
+    registry: npm
+    name: spyfu-vue-utils
+    url: https://www.npmjs.com/package/spyfu-vue-utils
+    install: npm install spyfu-vue-utils
+    repository: https://github.com/spyfu/spyfu-vue-utils
+    official: true
+    api_client: false
+    version: 0.8.0
+    published: '2019-11-07'
+    note: Internal Vue component utilities. Not an API client.
+  - language: javascript
+    registry: npm
+    name: spyfu-vue-functional
+    url: https://www.npmjs.com/package/spyfu-vue-functional
+    install: npm install spyfu-vue-functional
+    repository: https://github.com/spyfu/spyfu-vue-functional
+    official: true
+    api_client: false
+    version: 0.2.7
+    published: '2020-01-23'
+    note: Internal helpers for functional Vue components. Not an API client.
+  - language: javascript
+    registry: npm
+    name: spyfu-vue-analytics
+    url: https://www.npmjs.com/package/spyfu-vue-analytics
+    install: npm install spyfu-vue-analytics
+    repository: https://github.com/spyfu/spyfu-vue-analytics
+    official: true
+    api_client: false
+    version: 0.2.0
+    published: '2019-08-21'
+    note: Internal third-party-analytics event logger. Not an API client.
+  - language: javascript
+    registry: npm
+    name: spyfu-vue-factory
+    url: https://www.npmjs.com/package/spyfu-vue-factory
+    install: npm install spyfu-vue-factory
+    repository: https://github.com/spyfu/spyfu-vue-factory
+    official: true
+    api_client: false
+    version: 0.7.4
+    published: '2018-09-29'
+    note: >-
+      Internal Vue unit-testing factory. Not an API client. The GitHub
+      repository is archived.
+  - language: javascript
+    registry: npm
+    name: spyfu-vue-transitions
+    url: https://www.npmjs.com/package/spyfu-vue-transitions
+    install: npm install spyfu-vue-transitions
+    repository: https://github.com/spyfu/spyfu-vue-transitions
+    official: true
+    api_client: false
+    version: 0.1.1
+    published: '2018-05-31'
+    note: Internal Vue transition components. Not an API client.
+  - language: javascript
+    registry: npm
+    name: underscore-template-strict-loader
+    url: https://www.npmjs.com/package/underscore-template-strict-loader
+    install: npm install underscore-template-strict-loader
+    repository: https://github.com/spyfu/underscore-template-strict-loader
+    official: true
+    api_client: false
+    version: 0.3.0
+    published: '2017-10-09'
+    note: >-
+      Internal webpack loader for Underscore templates. Not an API client. The
+      GitHub repository is archived.
+  - language: ruby
+    registry: rubygems
+    name: spyfu
+    url: https://rubygems.org/gems/spyfu
+    install: gem install spyfu
+    repository: https://github.com/Workman/spyfu-rb
+    official: false
+    api_client: true
+    version: 0.1.0
+    published: '2017-09-28'
+    note: >-
+      The only API client library found on any registry. Third-party — the gem
+      describes itself as "The unofficial ruby gem for Spyfu.com" and is
+      published from github.com/Workman, not the SpyFu org. Last release 2017,
+      predating the v2 API documented at developer.spyfu.com, so it almost
+      certainly targets the retired v1 surface.
+registries_searched:
+  - {registry: npm, first_party_api_client: false}
+  - {registry: pypi, first_party_api_client: false, note: "spyfu, spyfu-api and pyspyfu all return 404"}
+  - {registry: rubygems, first_party_api_client: false, note: one unofficial third-party gem, last released 2017}
+  - {registry: packagist, first_party_api_client: false}
+  - {registry: crates.io, first_party_api_client: false, note: zero results for "spyfu"}
+  - {registry: maven-central, first_party_api_client: false}
+  - {registry: pkg.go.dev, first_party_api_client: false}
+first_party_source_repositories:
+  - url: https://github.com/spyfu/spyfu_api_docs
+    branch: v1.0
+    description: >-
+      SpyFu's own API documentation repository — the source of the ReadMe
+      developer portal. Carries ten OpenAPI 3.1.0 documents under reference/,
+      the guides under docs/documentation/, and an aggregated OpenAPI for the
+      SpyFu Custom GPT under chatgpt/. Not a package; recorded here because it
+      is the only first-party machine-readable distribution SpyFu maintains.
+    last_pushed: '2026-07-13'
+x-findings:
+  - >-
+    No first-party SDK in any language. Integrators write raw HTTP against
+    https://api.spyfu.com/apis/*.
+  - >-
+    Every first-party npm package SpyFu publishes is front-end tooling for its
+    own web app, and the newest of them last shipped 2020-01-23 — more than six
+    years before this probe.

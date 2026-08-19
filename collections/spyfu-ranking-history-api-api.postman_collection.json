@@ -1,0 +1,1423 @@
+{
+  "item": [
+    {
+      "id": "82aae6bc-fd1a-41a7-9a76-c5bd41f01ec6",
+      "name": "Ranking History API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2659e86c-c686-4ec5-ac60-b3c4875fcce7",
+          "name": "Get Domain Ranking History",
+          "request": {
+            "name": "Get Domain Ranking History",
+            "description": {
+              "content": "Returns historical organic ranking data for a domain across multiple keywords within a specified date range. Track position changes, click gains/losses, and ranking trends over time to analyze SEO performance.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/seo/ranking-history/domain?expandChart=false&searchType=MostValuable&includeAnyTerm=true&query=example.com&sidebarContext=topics) _(TODO – verify)_",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "historic",
+                "getHistoricRankingsForDomain"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "domain",
+                  "value": "<string>",
+                  "description": "(Required) Domain to analyze ranking history for."
+                },
+                {
+                  "disabled": false,
+                  "key": "queryType",
+                  "value": "<string>",
+                  "description": "Type of ranking analysis to perform."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "Beginning date for range"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "Ending date for range"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeTerms",
+                  "value": "<string>",
+                  "description": "Comma-separated list of terms that must be present in the keyword."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeAnyTerm",
+                  "value": "false",
+                  "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeTerms",
+                  "value": "<string>",
+                  "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "startRank.min",
+                  "value": "<float>",
+                  "description": "Filter to keywords where the domain/URL starting rank position is ≥ this value for the selected date range (1 = best/top organic result)."
+                },
+                {
+                  "disabled": false,
+                  "key": "startRank.max",
+                  "value": "<float>",
+                  "description": "Filter to keywords where the domain/URL starting rank position is ≤ this value for the selected date range (1 = best/top organic result)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endRank.min",
+                  "value": "<float>",
+                  "description": "Filter to keywords where the domain/URL ending rank position is ≥ this value for the selected date range (1 = best/top organic result)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endRank.max",
+                  "value": "<float>",
+                  "description": "Filter to keywords where the domain/URL ending rank position is ≤ this value for the selected date range (1 = best/top organic result)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endRankChange.min",
+                  "value": "<float>",
+                  "description": "Filter to keywords where the rank improved by at least this many positions between the start and end of the date range (end_rank_change ≥ value). Positive values mean moved up; negative values mean moved down."
+                },
+                {
+                  "disabled": false,
+                  "key": "endRankChange.max",
+                  "value": "<float>",
+                  "description": "Filter to keywords where the rank change was at most this many positions between the start and end of the date range (end_rank_change ≤ value). Positive values mean moved up; negative values mean moved down."
+                },
+                {
+                  "disabled": false,
+                  "key": "seoClicks.min",
+                  "value": "<float>",
+                  "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≥ this value."
+                },
+                {
+                  "disabled": false,
+                  "key": "seoClicks.max",
+                  "value": "<float>",
+                  "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≤ this value."
+                },
+                {
+                  "disabled": false,
+                  "key": "seoClicksChange.min",
+                  "value": "<float>",
+                  "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≥ this value. Positive values indicate click gains; negative values indicate click losses."
+                },
+                {
+                  "disabled": false,
+                  "key": "seoClicksChange.max",
+                  "value": "<float>",
+                  "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≤ this value. Positive values indicate click gains; negative values indicate click losses."
+                },
+                {
+                  "disabled": false,
+                  "key": "searchVolume.min",
+                  "value": "<float>",
+                  "description": "Filter to keywords where monthly search volume (Google) is ≥ this value."
+                },
+                {
+                  "disabled": false,
+                  "key": "searchVolume.max",
+                  "value": "<float>",
+                  "description": "Filter to keywords where monthly search volume (Google) is ≤ this value."
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<string>",
+                  "description": "Field to sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "5",
+                  "description": "The maximum number of rows returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "startingRow",
+                  "value": "1",
+                  "description": "Row number to start the results with."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "<string>",
+                  "description": "Order to sort by"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b80ecbf0-91ed-4c9e-a295-3e41e5f7d434",
+              "name": "Successfully retrieved domain ranking history data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "historic",
+                    "getHistoricRankingsForDomain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "queryType",
+                      "value": "MostValuable"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "includeTerms",
+                      "value": "hosting,domain,website"
+                    },
+                    {
+                      "key": "includeAnyTerm",
+                      "value": "false"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "free,cheap,discount"
+                    },
+                    {
+                      "key": "startRank.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "startRank.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "endRank.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "endRank.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "endRankChange.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "endRankChange.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "seoClicks.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "seoClicks.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "seoClicksChange.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "seoClicksChange.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "searchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "searchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 100,\n  \"results\": [\n    {\n      \"keyword\": \"string\",\n      \"historicalRanks\": {\n        \"key_0\": 2467,\n        \"key_1\": 1074\n      },\n      \"startRank\": 653,\n      \"endRank\": 4973,\n      \"rankChange\": 4428,\n      \"endClicks\": 5414,\n      \"clicksChange\": 7981,\n      \"searchVolume\": 1177\n    },\n    {\n      \"keyword\": \"string\",\n      \"historicalRanks\": {\n        \"key_0\": 2098\n      },\n      \"startRank\": 590,\n      \"endRank\": 5168,\n      \"rankChange\": 8755,\n      \"endClicks\": 2595,\n      \"clicksChange\": 4939,\n      \"searchVolume\": 6971\n    }\n  ],\n  \"totalVolume\": 6772,\n  \"totalClicks\": 421,\n  \"totalClicksChange\": 477,\n  \"totalRankChange\": 6283,\n  \"rankAverage\": 3546.115070648517,\n  \"rankAverageChange\": 9751.279058908047,\n  \"totalMatchingResults\": 8721\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02c037d8-3aa0-4525-998f-b614465eceeb",
+              "name": "Invalid request parameters or date range",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "historic",
+                    "getHistoricRankingsForDomain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "queryType",
+                      "value": "MostValuable"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "includeTerms",
+                      "value": "hosting,domain,website"
+                    },
+                    {
+                      "key": "includeAnyTerm",
+                      "value": "false"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "free,cheap,discount"
+                    },
+                    {
+                      "key": "startRank.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "startRank.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "endRank.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "endRank.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "endRankChange.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "endRankChange.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "seoClicks.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "seoClicks.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "seoClicksChange.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "seoClicksChange.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "searchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "searchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bc367217-ea7a-4ea7-a7d9-c7a19e241014",
+              "name": "User failed authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "historic",
+                    "getHistoricRankingsForDomain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "queryType",
+                      "value": "MostValuable"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "includeTerms",
+                      "value": "hosting,domain,website"
+                    },
+                    {
+                      "key": "includeAnyTerm",
+                      "value": "false"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "free,cheap,discount"
+                    },
+                    {
+                      "key": "startRank.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "startRank.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "endRank.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "endRank.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "endRankChange.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "endRankChange.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "seoClicks.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "seoClicks.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "seoClicksChange.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "seoClicksChange.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "searchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "searchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "94606b5d-ebc1-497d-ac77-0e5e879d3978",
+              "name": "Server error while processing ranking history data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "historic",
+                    "getHistoricRankingsForDomain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "queryType",
+                      "value": "MostValuable"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "includeTerms",
+                      "value": "hosting,domain,website"
+                    },
+                    {
+                      "key": "includeAnyTerm",
+                      "value": "false"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "free,cheap,discount"
+                    },
+                    {
+                      "key": "startRank.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "startRank.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "endRank.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "endRank.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "endRankChange.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "endRankChange.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "seoClicks.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "seoClicks.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "seoClicksChange.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "seoClicksChange.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "searchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "searchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e75e06f3-a1b4-46d7-9d72-4bac69e929b2",
+          "name": "Get Keyword Domain Rankings",
+          "request": {
+            "name": "Get Keyword Domain Rankings",
+            "description": {
+              "content": "Returns historical organic ranking data for a specific keyword across multiple specified domains within a date range. Compare how different domains have performed for the same keyword over time.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/keyword/ranking-history?query=example%20keyword) _(TODO – verify)_",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "historic",
+                "getHistoricRankingsForKeywordOnDomains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "keyword",
+                  "value": "<string>",
+                  "description": "(Required) Keyword to analyze ranking history for."
+                },
+                {
+                  "disabled": false,
+                  "key": "domains",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of domains to compare rankings for."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "Beginning date for range"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "Ending date for range"
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d1a077c9-904d-45a7-85da-e5148b8830e8",
+              "name": "Successfully retrieved keyword ranking history across specified domains",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "historic",
+                    "getHistoricRankingsForKeywordOnDomains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keyword",
+                      "value": "best running shoes"
+                    },
+                    {
+                      "key": "domains",
+                      "value": "example.com,competitor1.com,competitor2.com"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 100,\n  \"results\": [\n    {\n      \"domain\": \"string\",\n      \"keyword\": \"string\",\n      \"results\": {\n        \"key_0\": 6351,\n        \"key_1\": 8550\n      }\n    },\n    {\n      \"domain\": \"string\",\n      \"keyword\": \"string\",\n      \"results\": {\n        \"key_0\": 1332,\n        \"key_1\": 1584\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4cba1f4f-a4ca-45dc-91b2-1966ff354a62",
+              "name": "Invalid request parameters, keyword, or domain list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "historic",
+                    "getHistoricRankingsForKeywordOnDomains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keyword",
+                      "value": "best running shoes"
+                    },
+                    {
+                      "key": "domains",
+                      "value": "example.com,competitor1.com,competitor2.com"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d432abde-592a-4c17-9146-7a1573082bae",
+              "name": "User failed authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "historic",
+                    "getHistoricRankingsForKeywordOnDomains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keyword",
+                      "value": "best running shoes"
+                    },
+                    {
+                      "key": "domains",
+                      "value": "example.com,competitor1.com,competitor2.com"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a0e82dc0-12a9-4526-abae-ee26c2aaebb5",
+              "name": "Server error while processing ranking history data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "historic",
+                    "getHistoricRankingsForKeywordOnDomains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keyword",
+                      "value": "best running shoes"
+                    },
+                    {
+                      "key": "domains",
+                      "value": "example.com,competitor1.com,competitor2.com"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b429f018-43cc-4b73-9aca-7d2cbcbe1d33",
+          "name": "Get Domain Keyword Rankings",
+          "request": {
+            "name": "Get Domain Keyword Rankings",
+            "description": {
+              "content": "Returns historical organic ranking data for a specific domain across multiple specified keywords within a date range. Analyze how a domain's positions have changed over time for your target keyword list.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/seo/ranking-history/domain?expandChart=false&searchType=MostValuable&includeAnyTerm=true&query=example.com&sidebarContext=topics) _(TODO – verify)_",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "historic",
+                "getHistoricRankingsForDomainOnKeywords"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "domain",
+                  "value": "<string>",
+                  "description": "(Required) Domain to analyze ranking history for."
+                },
+                {
+                  "disabled": false,
+                  "key": "keywords",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of keywords to analyze rankings for."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "Beginning date for range"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "Ending date for range"
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country to get results for."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "82c1688a-67c5-4185-9ec0-c905f4163302",
+              "name": "Successfully retrieved domain ranking history for specified keywords",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "historic",
+                    "getHistoricRankingsForDomainOnKeywords"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "keywords",
+                      "value": "best running shoes,nike shoes,athletic footwear"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 100,\n  \"results\": [\n    {\n      \"domain\": \"string\",\n      \"keyword\": \"string\",\n      \"results\": {\n        \"key_0\": 6351,\n        \"key_1\": 8550\n      }\n    },\n    {\n      \"domain\": \"string\",\n      \"keyword\": \"string\",\n      \"results\": {\n        \"key_0\": 1332,\n        \"key_1\": 1584\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6cb9a0b-271a-4116-808e-cbd93b1b5e66",
+              "name": "Invalid request parameters, domain, or keyword list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "historic",
+                    "getHistoricRankingsForDomainOnKeywords"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "keywords",
+                      "value": "best running shoes,nike shoes,athletic footwear"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f47c33a-b384-4bbb-a6df-7ff2865f3373",
+              "name": "User failed authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "historic",
+                    "getHistoricRankingsForDomainOnKeywords"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "keywords",
+                      "value": "best running shoes,nike shoes,athletic footwear"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "66f36b35-b353-4820-a790-3c44e85db4d0",
+              "name": "Server error while processing ranking history data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "historic",
+                    "getHistoricRankingsForDomainOnKeywords"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "keywords",
+                      "value": "best running shoes,nike shoes,athletic footwear"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spyfu.com/apis/accounts_api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f71bde35-fb5b-459f-9c8b-2e78db23f462",
+    "name": "Account Account API Ranking History API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Account Account API Ad History Research API API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ad History Research API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Domain Ad History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/domain/getDomainAdHistory",
+            "params": [
+              {
+                "name": "domain",
+                "value": "example.com",
+                "type": "query",
+                "description": "Advertiser's root domain"
+              },
+              {
+                "name": "keywordFilter",
+                "value": "",
+                "type": "query",
+                "description": "Filter down to keywords containing this value"
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "Best",
+                "type": "query",
+                "description": "Sort order for ad history results."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "Number of ad history records to return per page."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Starting row number for pagination."
+              }
+            ]
+          },
+          "docs": "Returns historical ad variations and copy for a specific domain. This endpoint focuses on ads from a particular advertiser across all their keywords and campaigns, unlike term-based endpoints that focus on specific keywords.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/ppc/ad-history/domain?query=example.com)"
+        },
+        {
+          "info": {
+            "name": "Get Keyword Ad History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/term/getTermAdHistory",
+            "params": [
+              {
+                "name": "term",
+                "value": "running shoes",
+                "type": "query",
+                "description": "Keyword to retrieve advertising history for."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "Number of ad history records to return per page."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Starting row number for pagination."
+              }
+            ]
+          },
+          "docs": "Returns historical advertisers and ad variations for a specific keyword. This endpoint focuses on ads that have appeared for a particular keyword, unlike domain-based endpoints that focus on ads from specific advertisers.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/keyword/ad-history?query=example%20keyword)"
+        },
+        {
+          "info": {
+            "name": "Get Keyword Ad History With Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/term/getTermAdHistoryWithStats",
+            "params": [
+              {
+                "name": "term",
+                "value": "running shoes",
+                "type": "query",
+                "description": "Keyword to retrieve advertising history for."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country code to filter results by geographic market."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "Number of ad history records to return per page."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Starting row number for pagination."
+              }
+            ]
+          },
+          "docs": "Returns historical ad variations and advertiser performance statistics for a specific keyword. This endpoint includes domain-level metrics alongside ad copy data, unlike the basic ad history endpoint that focuses purely on ad variations.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/keyword/ad-history?query=example%20keyword)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

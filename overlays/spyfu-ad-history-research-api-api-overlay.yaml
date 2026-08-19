@@ -1,0 +1,53 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for SpyFu Account Account API Ad History Research API API
+  version: 1.0.0
+extends: openapi/spyfu-ad-history-research-api-api-openapi.yml
+x-generated: '2026-08-13'
+x-method: generated
+x-source: openapi/spyfu-ad-history-research-api-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: spyfu
+    x-apievangelist-artifacts:
+      authentication: authentication/spyfu-authentication.yml
+      conventions: conventions/spyfu-conventions.yml
+      errors: errors/spyfu-problem-types.yml
+      rate-limits: rate-limits/spyfu-rate-limits.yml
+      plans: plans/spyfu-plans-pricing.yml
+      finops: finops/spyfu-finops.yml
+      lifecycle: lifecycle/spyfu-lifecycle.yml
+      data-model: data-model/spyfu-data-model.yml
+      conformance: conformance/spyfu-conformance.yml
+    x-apievangelist-note: Enhancements captured by the API Evangelist enrichment pipeline. The original
+      harvested definition is never mutated; this overlay records what we added on top of it.
+- target: $
+  update:
+    x-billing:
+      model: pay-as-you-go per row returned
+      formula: (successful_rows / 1000) * endpoint_cpm
+      docs: https://developer.spyfu.com/docs/api-pricing
+      note: pageSize is a direct cost lever on every paged operation.
+    x-rate-limit:
+      window: rolling 1 second
+      scope: per endpoint
+      status_on_exhaustion: 429
+      response_headers:
+      - Retry-After
+      docs: https://developer.spyfu.com/docs/rate-limits
+    x-agent-surfaces:
+      llms_txt: https://developer.spyfu.com/llms.txt
+      agent_skills: https://developer.spyfu.com/.well-known/agent-skills/index.json
+      mcp: https://developer.spyfu.com/mcp
+      mcp_gated: true
+- target: $.paths.*.*
+  update:
+    x-apievangelist-read-only: true
+    x-apievangelist-country-partitioned: true
+  description: SpyFu research operations are read-only and partitioned by countryCode; a countryCode selects
+    a distinct data instance, not a translation.
+x-operations-covered:
+- AdHistoryApi_GetDomainAdHistory_GET
+- AdHistoryApi_GetTermAdHistory_GET
+- AdHistoryApi_GetTermAdHistoryWithStats_GET

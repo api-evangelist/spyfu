@@ -1,0 +1,71 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.spyfu.com/mcp
+status: published
+description: >-
+  SpyFu serves a remote Model Context Protocol endpoint from its own developer
+  portal host at https://developer.spyfu.com/mcp. A GET returns HTTP 200 with
+  the plain-text body "This URL can only be accessed with a MCP client"; a
+  JSON-RPC POST (initialize or tools/list) returns HTTP 401 with
+  {"jsonrpc":"2.0","error":{"code":-32001,"message":"Authorization required"}}.
+  The endpoint is provisioned by the ReadMe-hosted developer portal, so it is a
+  documentation/API-reference MCP surface rather than a bespoke SpyFu data
+  server. Because the server requires authorization and publishes no RFC 9728
+  protected-resource metadata, the live tool set and its inputSchemas could not
+  be enumerated anonymously — no tool list is recorded here, and none is
+  guessed.
+deployment:
+  mode: remote
+  endpoint: https://developer.spyfu.com/mcp
+  install:
+  package:
+  auth: unknown
+  verified: probed
+  note: >-
+    auth is "unknown" rather than "oauth" deliberately — the 401 carries no
+    WWW-Authenticate challenge and both
+    /.well-known/oauth-protected-resource and
+    /.well-known/oauth-authorization-server return 404, so the scheme is not
+    anonymously discoverable.
+server:
+  name: spyfu-developer-docs
+  transport: http
+  url: https://developer.spyfu.com/mcp
+  host: developer.spyfu.com
+  platform: ReadMe-hosted developer portal
+tools: []
+tools_note: >-
+  tools/list is auth-gated (HTTP 401). SpyFu's llms.txt publishes no tool list
+  either, so there is no published names+descriptions fallback. Input schemas
+  require authenticated introspection. Deliberately left empty rather than
+  derived from OpenAPI operations, because this is a published server and a
+  derived tool list would misrepresent what it actually exposes.
+related_agent_surfaces:
+  - kind: AgentSkill
+    url: https://developer.spyfu.com/.well-known/agent-skills/index.json
+    note: Provider-published Agent Skill (read-the-docs), saved to skills/.
+  - kind: llms.txt
+    url: https://developer.spyfu.com/llms.txt
+    note: 60-line index of every guide and API reference page.
+  - kind: ChatGPT actions OpenAPI
+    url: https://github.com/spyfu/spyfu_api_docs/blob/v1.0/chatgpt/SpyFuAPI_For_ChatGPT.json
+    note: >-
+      First-party aggregated OpenAPI 3.1.0 (18 paths, server
+      https://api.spyfu.com/apis) that SpyFu publishes for its Custom GPT.
+x-evidence:
+  - url: https://developer.spyfu.com/mcp
+    method: GET
+    http_status: 200
+    body: This URL can only be accessed with a MCP client.
+    fetched: '2026-08-13'
+  - url: https://developer.spyfu.com/mcp
+    method: POST
+    jsonrpc_method: initialize
+    http_status: 401
+    body: '{"jsonrpc":"2.0","error":{"code":-32001,"message":"Authorization required"},"id":null}'
+    fetched: '2026-08-13'
+  - url: https://developer.spyfu.com/mcp
+    method: POST
+    jsonrpc_method: tools/list
+    http_status: 401
+    fetched: '2026-08-13'

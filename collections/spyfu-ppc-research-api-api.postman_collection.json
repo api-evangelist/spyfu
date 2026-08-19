@@ -1,0 +1,3007 @@
+{
+  "item": [
+    {
+      "id": "df1c6433-65b8-4263-b6a6-395be5a7c261",
+      "name": "PPC Research API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "038493d6-862c-4e9b-b3ad-d69da9df4d20",
+          "name": "Get Most Profitable PPC Keywords",
+          "request": {
+            "name": "Get Most Profitable PPC Keywords",
+            "description": {
+              "content": "Returns the most successful paid search keywords for a domain based on search volume and competitive strength. This endpoint provides the highest-performing PPC keywords from the past year to identify proven advertising opportunities and optimize keyword strategy.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/ppc/keywords?query=example.com)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "ppc",
+                "getMostSuccessful"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Domain or URL to analyze for successful PPC keywords."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeTerms",
+                  "value": "<string>",
+                  "description": "Comma-separated list of terms that must be present in the keyword."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeAnyTerm",
+                  "value": "false",
+                  "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeTerms",
+                  "value": "<string>",
+                  "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeDomain",
+                  "value": "<string>",
+                  "description": "Domain to exclude from keyword results."
+                },
+                {
+                  "disabled": false,
+                  "key": "searchVolume.min",
+                  "value": "<float>",
+                  "description": "Filter by the number of searches done this past month on Google."
+                },
+                {
+                  "disabled": false,
+                  "key": "searchVolume.max",
+                  "value": "<float>",
+                  "description": "Filter by the number of searches done this past month on Google."
+                },
+                {
+                  "disabled": false,
+                  "key": "liveSearchVolume.min",
+                  "value": "<float>",
+                  "description": "Filter by the number of searches done this past month on Google. This value is refreshed each month."
+                },
+                {
+                  "disabled": false,
+                  "key": "liveSearchVolume.max",
+                  "value": "<float>",
+                  "description": "Filter by the number of searches done this past month on Google. This value is refreshed each month."
+                },
+                {
+                  "disabled": false,
+                  "key": "adCount.min",
+                  "value": "<float>",
+                  "description": "Filter by the number of total advertisers"
+                },
+                {
+                  "disabled": false,
+                  "key": "adCount.max",
+                  "value": "<float>",
+                  "description": "Filter by the number of total advertisers"
+                },
+                {
+                  "disabled": false,
+                  "key": "keywordDifficulty.min",
+                  "value": "<float>",
+                  "description": "Filter by how difficult it is to rank on this keyword.  This can also be called Ranking Difficulty."
+                },
+                {
+                  "disabled": false,
+                  "key": "keywordDifficulty.max",
+                  "value": "<float>",
+                  "description": "Filter by how difficult it is to rank on this keyword.  This can also be called Ranking Difficulty."
+                },
+                {
+                  "disabled": false,
+                  "key": "costPerClick.min",
+                  "value": "<float>",
+                  "description": "Filter by the average cost per click.  This will use the keyword matching option selected in `costPerClickOption`"
+                },
+                {
+                  "disabled": false,
+                  "key": "costPerClick.max",
+                  "value": "<float>",
+                  "description": "Filter by the average cost per click.  This will use the keyword matching option selected in `costPerClickOption`"
+                },
+                {
+                  "disabled": false,
+                  "key": "costPerClickOption",
+                  "value": "<string>",
+                  "description": "Cost per click keyword matching option to filter results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "clicks.min",
+                  "value": "<float>",
+                  "description": "Filter by the number of total monthly clicks on the SERP for this keyword--organic and paid."
+                },
+                {
+                  "disabled": false,
+                  "key": "clicks.max",
+                  "value": "<float>",
+                  "description": "Filter by the number of total monthly clicks on the SERP for this keyword--organic and paid."
+                },
+                {
+                  "disabled": false,
+                  "key": "isQuestion",
+                  "value": "false",
+                  "description": "Filter on if the keyword is a question."
+                },
+                {
+                  "disabled": false,
+                  "key": "isTransactionalIntent",
+                  "value": "false",
+                  "description": "Filter on if the keyword has transactional intent."
+                },
+                {
+                  "disabled": false,
+                  "key": "mobileSearchesPercentage.min",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of searches that are done on mobile devices."
+                },
+                {
+                  "disabled": false,
+                  "key": "mobileSearchesPercentage.max",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of searches that are done on mobile devices."
+                },
+                {
+                  "disabled": false,
+                  "key": "desktopSearchesPercentage.min",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of searches that are done on desktop devices."
+                },
+                {
+                  "disabled": false,
+                  "key": "desktopSearchesPercentage.max",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of searches that are done on desktop devices."
+                },
+                {
+                  "disabled": false,
+                  "key": "notClickedSearchesPercentage.min",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of searches that are not clicked.\nSome keyword searches supply clear information in a featured snippet or similar displays. They don't require a click to get the information. Those will have higher percentages in this metric."
+                },
+                {
+                  "disabled": false,
+                  "key": "notClickedSearchesPercentage.max",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of searches that are not clicked.\nSome keyword searches supply clear information in a featured snippet or similar displays. They don't require a click to get the information. Those will have higher percentages in this metric."
+                },
+                {
+                  "disabled": false,
+                  "key": "paidClickSearchPercentage.min",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of clicks that go to ads."
+                },
+                {
+                  "disabled": false,
+                  "key": "paidClickSearchPercentage.max",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of clicks that go to ads."
+                },
+                {
+                  "disabled": false,
+                  "key": "organicClicksSearchPercentage.min",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of clicks that go to organic results, not ads."
+                },
+                {
+                  "disabled": false,
+                  "key": "organicClicksSearchPercentage.max",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of clicks that go to organic results, not ads."
+                },
+                {
+                  "disabled": false,
+                  "key": "monthlyCost.min",
+                  "value": "<float>",
+                  "description": "Filter by the monthly cost of the keyword.  This will use the keyword matching option selected in `monthlyCostOption`"
+                },
+                {
+                  "disabled": false,
+                  "key": "monthlyCost.max",
+                  "value": "<float>",
+                  "description": "Filter by the monthly cost of the keyword.  This will use the keyword matching option selected in `monthlyCostOption`"
+                },
+                {
+                  "disabled": false,
+                  "key": "monthlyCostOption",
+                  "value": "<string>",
+                  "description": "Monthly Cost keyword matching option to filter results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "rankingHomepages.min",
+                  "value": "<float>",
+                  "description": "Homepages on the SERP range to filter results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "rankingHomepages.max",
+                  "value": "<float>",
+                  "description": "Homepages on the SERP range to filter results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "wordCount.min",
+                  "value": "<float>",
+                  "description": "Filter by the number of words in the keyword."
+                },
+                {
+                  "disabled": false,
+                  "key": "wordCount.max",
+                  "value": "<float>",
+                  "description": "Filter by the number of words in the keyword."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "5",
+                  "description": "The maximum number of rows returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "SearchVolume",
+                  "description": "Column to sort by."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "Descending",
+                  "description": "Order to sort the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "startingRow",
+                  "value": "1",
+                  "description": "Row number to start the results with."
+                },
+                {
+                  "disabled": false,
+                  "key": "adultFilter",
+                  "value": "true",
+                  "description": "Exclude adult keywords considered unsafe for work."
+                },
+                {
+                  "disabled": false,
+                  "key": "onlyAdultKeywords",
+                  "value": "false",
+                  "description": "Only include adult keywords considered unsafe for work."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e02a219-9406-44fd-b0ca-ca5dde2cf1b3",
+              "name": "Successfully retrieved most successful PPC keywords. Returns keyword data with search metrics, cost estimates, and competitive intelligence showing the domain's highest-performing paid keywords.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ppc",
+                    "getMostSuccessful"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "includeTerms",
+                      "value": "hosting,domain,website"
+                    },
+                    {
+                      "key": "includeAnyTerm",
+                      "value": "false"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "free,cheap,discount"
+                    },
+                    {
+                      "key": "excludeDomain",
+                      "value": "yourdomain.com"
+                    },
+                    {
+                      "key": "searchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "searchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "liveSearchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "liveSearchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "adCount.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "adCount.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "keywordDifficulty.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "keywordDifficulty.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClick.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClick.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClickOption",
+                      "value": "Broad"
+                    },
+                    {
+                      "key": "clicks.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "clicks.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "isQuestion",
+                      "value": "false"
+                    },
+                    {
+                      "key": "isTransactionalIntent",
+                      "value": "false"
+                    },
+                    {
+                      "key": "mobileSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "mobileSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "desktopSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "desktopSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "notClickedSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "notClickedSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "paidClickSearchPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "paidClickSearchPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "organicClicksSearchPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "organicClicksSearchPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCost.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCost.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCostOption",
+                      "value": "Broad"
+                    },
+                    {
+                      "key": "rankingHomepages.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "rankingHomepages.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "wordCount.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "wordCount.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "SearchVolume"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    },
+                    {
+                      "key": "adultFilter",
+                      "value": "true"
+                    },
+                    {
+                      "key": "onlyAdultKeywords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 100,\n  \"totalMatchingResults\": 75000,\n  \"results\": [\n    {\n      \"keyword\": \"running shoes\",\n      \"searchVolume\": 266000,\n      \"liveSearchVolume\": 82000,\n      \"rankingDifficulty\": 98,\n      \"totalMonthlyClicks\": 219000,\n      \"percentMobileSearches\": 0.52,\n      \"percentDesktopSearches\": 0.48,\n      \"percentSearchesNotClicked\": 0.18,\n      \"percentPaidClicks\": 0.52,\n      \"percentOrganicClicks\": 0.48,\n      \"broadCostPerClick\": 0.73,\n      \"phraseCostPerClick\": 0.67,\n      \"exactCostPerClick\": 0.65,\n      \"broadMonthlyClicks\": 57019.8,\n      \"phraseMonthlyClicks\": 38000,\n      \"exactMonthlyClicks\": 29094.6,\n      \"broadMonthlyCost\": 41604.9,\n      \"phraseMonthlyCost\": 25542,\n      \"exactMonthlyCost\": 19041.6,\n      \"paidCompetitors\": 15,\n      \"distinctCompetitors\": [\n        \"example.com\",\n        \"competitor1.com\",\n        \"competitor2.com\"\n      ],\n      \"rankingHomepages\": 8,\n      \"serpFeaturesCsv\": \"Images,Maps\",\n      \"serpFirstResult\": \"example.com\",\n      \"isQuestion\": false,\n      \"isNotSafeForWork\": false\n    },\n    {\n      \"keyword\": \"running shoes\",\n      \"searchVolume\": 266000,\n      \"liveSearchVolume\": 82000,\n      \"rankingDifficulty\": 98,\n      \"totalMonthlyClicks\": 219000,\n      \"percentMobileSearches\": 0.52,\n      \"percentDesktopSearches\": 0.48,\n      \"percentSearchesNotClicked\": 0.18,\n      \"percentPaidClicks\": 0.52,\n      \"percentOrganicClicks\": 0.48,\n      \"broadCostPerClick\": 0.73,\n      \"phraseCostPerClick\": 0.67,\n      \"exactCostPerClick\": 0.65,\n      \"broadMonthlyClicks\": 57019.8,\n      \"phraseMonthlyClicks\": 38000,\n      \"exactMonthlyClicks\": 29094.6,\n      \"broadMonthlyCost\": 41604.9,\n      \"phraseMonthlyCost\": 25542,\n      \"exactMonthlyCost\": 19041.6,\n      \"paidCompetitors\": 15,\n      \"distinctCompetitors\": [\n        \"example.com\",\n        \"competitor1.com\",\n        \"competitor2.com\"\n      ],\n      \"rankingHomepages\": 8,\n      \"serpFeaturesCsv\": \"Images,Maps\",\n      \"serpFirstResult\": \"example.com\",\n      \"isQuestion\": false,\n      \"isNotSafeForWork\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1394bc86-7cc8-4730-b6c3-b36d59d153d0",
+              "name": "Bad Request - Invalid parameters provided (e.g., invalid domain format, search volume ranges, or invalid country code)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ppc",
+                    "getMostSuccessful"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "includeTerms",
+                      "value": "hosting,domain,website"
+                    },
+                    {
+                      "key": "includeAnyTerm",
+                      "value": "false"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "free,cheap,discount"
+                    },
+                    {
+                      "key": "excludeDomain",
+                      "value": "yourdomain.com"
+                    },
+                    {
+                      "key": "searchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "searchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "liveSearchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "liveSearchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "adCount.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "adCount.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "keywordDifficulty.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "keywordDifficulty.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClick.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClick.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClickOption",
+                      "value": "Broad"
+                    },
+                    {
+                      "key": "clicks.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "clicks.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "isQuestion",
+                      "value": "false"
+                    },
+                    {
+                      "key": "isTransactionalIntent",
+                      "value": "false"
+                    },
+                    {
+                      "key": "mobileSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "mobileSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "desktopSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "desktopSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "notClickedSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "notClickedSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "paidClickSearchPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "paidClickSearchPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "organicClicksSearchPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "organicClicksSearchPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCost.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCost.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCostOption",
+                      "value": "Broad"
+                    },
+                    {
+                      "key": "rankingHomepages.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "rankingHomepages.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "wordCount.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "wordCount.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "SearchVolume"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    },
+                    {
+                      "key": "adultFilter",
+                      "value": "true"
+                    },
+                    {
+                      "key": "onlyAdultKeywords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e43dcde4-cc88-455b-8557-a0ea4988b740",
+              "name": "Unauthorized - Invalid API credentials or insufficient permissions to access PPC keyword data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ppc",
+                    "getMostSuccessful"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "includeTerms",
+                      "value": "hosting,domain,website"
+                    },
+                    {
+                      "key": "includeAnyTerm",
+                      "value": "false"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "free,cheap,discount"
+                    },
+                    {
+                      "key": "excludeDomain",
+                      "value": "yourdomain.com"
+                    },
+                    {
+                      "key": "searchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "searchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "liveSearchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "liveSearchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "adCount.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "adCount.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "keywordDifficulty.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "keywordDifficulty.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClick.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClick.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClickOption",
+                      "value": "Broad"
+                    },
+                    {
+                      "key": "clicks.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "clicks.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "isQuestion",
+                      "value": "false"
+                    },
+                    {
+                      "key": "isTransactionalIntent",
+                      "value": "false"
+                    },
+                    {
+                      "key": "mobileSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "mobileSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "desktopSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "desktopSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "notClickedSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "notClickedSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "paidClickSearchPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "paidClickSearchPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "organicClicksSearchPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "organicClicksSearchPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCost.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCost.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCostOption",
+                      "value": "Broad"
+                    },
+                    {
+                      "key": "rankingHomepages.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "rankingHomepages.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "wordCount.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "wordCount.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "SearchVolume"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    },
+                    {
+                      "key": "adultFilter",
+                      "value": "true"
+                    },
+                    {
+                      "key": "onlyAdultKeywords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d8a04459-0b66-4310-aa02-1a69d92b97fc",
+              "name": "Internal Server Error - A server-side error occurred while processing the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ppc",
+                    "getMostSuccessful"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "includeTerms",
+                      "value": "hosting,domain,website"
+                    },
+                    {
+                      "key": "includeAnyTerm",
+                      "value": "false"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "free,cheap,discount"
+                    },
+                    {
+                      "key": "excludeDomain",
+                      "value": "yourdomain.com"
+                    },
+                    {
+                      "key": "searchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "searchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "liveSearchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "liveSearchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "adCount.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "adCount.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "keywordDifficulty.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "keywordDifficulty.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClick.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClick.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClickOption",
+                      "value": "Broad"
+                    },
+                    {
+                      "key": "clicks.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "clicks.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "isQuestion",
+                      "value": "false"
+                    },
+                    {
+                      "key": "isTransactionalIntent",
+                      "value": "false"
+                    },
+                    {
+                      "key": "mobileSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "mobileSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "desktopSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "desktopSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "notClickedSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "notClickedSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "paidClickSearchPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "paidClickSearchPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "organicClicksSearchPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "organicClicksSearchPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCost.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCost.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCostOption",
+                      "value": "Broad"
+                    },
+                    {
+                      "key": "rankingHomepages.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "rankingHomepages.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "wordCount.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "wordCount.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "SearchVolume"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    },
+                    {
+                      "key": "adultFilter",
+                      "value": "true"
+                    },
+                    {
+                      "key": "onlyAdultKeywords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4092d39-2bce-4670-b854-b4d2afb2180e",
+          "name": "Get New PPC Keywords",
+          "request": {
+            "name": "Get New PPC Keywords",
+            "description": {
+              "content": "Returns newly acquired paid search keywords that a domain has started advertising on for the first time. This endpoint identifies recent keyword expansions and emerging advertising strategies to reveal new market opportunities and competitive moves.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/ppc/keywords?query=example.com)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "ppc",
+                "getNewKeywords"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Domain or URL to analyze for new PPC keywords."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeTerms",
+                  "value": "<string>",
+                  "description": "Comma-separated list of terms that must be present in the keyword."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeAnyTerm",
+                  "value": "false",
+                  "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeTerms",
+                  "value": "<string>",
+                  "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeDomain",
+                  "value": "<string>",
+                  "description": "Domain to exclude from keyword results."
+                },
+                {
+                  "disabled": false,
+                  "key": "searchVolume.min",
+                  "value": "<float>",
+                  "description": "Filter by the number of searches done this past month on Google."
+                },
+                {
+                  "disabled": false,
+                  "key": "searchVolume.max",
+                  "value": "<float>",
+                  "description": "Filter by the number of searches done this past month on Google."
+                },
+                {
+                  "disabled": false,
+                  "key": "liveSearchVolume.min",
+                  "value": "<float>",
+                  "description": "Filter by the number of searches done this past month on Google. This value is refreshed each month."
+                },
+                {
+                  "disabled": false,
+                  "key": "liveSearchVolume.max",
+                  "value": "<float>",
+                  "description": "Filter by the number of searches done this past month on Google. This value is refreshed each month."
+                },
+                {
+                  "disabled": false,
+                  "key": "adCount.min",
+                  "value": "<float>",
+                  "description": "Filter by the number of total advertisers"
+                },
+                {
+                  "disabled": false,
+                  "key": "adCount.max",
+                  "value": "<float>",
+                  "description": "Filter by the number of total advertisers"
+                },
+                {
+                  "disabled": false,
+                  "key": "keywordDifficulty.min",
+                  "value": "<float>",
+                  "description": "Filter by how difficult it is to rank on this keyword.  This can also be called Ranking Difficulty."
+                },
+                {
+                  "disabled": false,
+                  "key": "keywordDifficulty.max",
+                  "value": "<float>",
+                  "description": "Filter by how difficult it is to rank on this keyword.  This can also be called Ranking Difficulty."
+                },
+                {
+                  "disabled": false,
+                  "key": "costPerClick.min",
+                  "value": "<float>",
+                  "description": "Filter by the average cost per click.  This will use the keyword matching option selected in `costPerClickOption`"
+                },
+                {
+                  "disabled": false,
+                  "key": "costPerClick.max",
+                  "value": "<float>",
+                  "description": "Filter by the average cost per click.  This will use the keyword matching option selected in `costPerClickOption`"
+                },
+                {
+                  "disabled": false,
+                  "key": "costPerClickOption",
+                  "value": "<string>",
+                  "description": "Cost per click keyword matching option to filter results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "clicks.min",
+                  "value": "<float>",
+                  "description": "Filter by the number of total monthly clicks on the SERP for this keyword--organic and paid."
+                },
+                {
+                  "disabled": false,
+                  "key": "clicks.max",
+                  "value": "<float>",
+                  "description": "Filter by the number of total monthly clicks on the SERP for this keyword--organic and paid."
+                },
+                {
+                  "disabled": false,
+                  "key": "isQuestion",
+                  "value": "false",
+                  "description": "Filter on if the keyword is a question."
+                },
+                {
+                  "disabled": false,
+                  "key": "isTransactionalIntent",
+                  "value": "false",
+                  "description": "Filter on if the keyword has transactional intent."
+                },
+                {
+                  "disabled": false,
+                  "key": "mobileSearchesPercentage.min",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of searches that are done on mobile devices."
+                },
+                {
+                  "disabled": false,
+                  "key": "mobileSearchesPercentage.max",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of searches that are done on mobile devices."
+                },
+                {
+                  "disabled": false,
+                  "key": "desktopSearchesPercentage.min",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of searches that are done on desktop devices."
+                },
+                {
+                  "disabled": false,
+                  "key": "desktopSearchesPercentage.max",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of searches that are done on desktop devices."
+                },
+                {
+                  "disabled": false,
+                  "key": "notClickedSearchesPercentage.min",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of searches that are not clicked.\nSome keyword searches supply clear information in a featured snippet or similar displays. They don't require a click to get the information. Those will have higher percentages in this metric."
+                },
+                {
+                  "disabled": false,
+                  "key": "notClickedSearchesPercentage.max",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of searches that are not clicked.\nSome keyword searches supply clear information in a featured snippet or similar displays. They don't require a click to get the information. Those will have higher percentages in this metric."
+                },
+                {
+                  "disabled": false,
+                  "key": "paidClickSearchPercentage.min",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of clicks that go to ads."
+                },
+                {
+                  "disabled": false,
+                  "key": "paidClickSearchPercentage.max",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of clicks that go to ads."
+                },
+                {
+                  "disabled": false,
+                  "key": "organicClicksSearchPercentage.min",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of clicks that go to organic results, not ads."
+                },
+                {
+                  "disabled": false,
+                  "key": "organicClicksSearchPercentage.max",
+                  "value": "<float>",
+                  "description": "Filter by the percentage of clicks that go to organic results, not ads."
+                },
+                {
+                  "disabled": false,
+                  "key": "monthlyCost.min",
+                  "value": "<float>",
+                  "description": "Filter by the monthly cost of the keyword.  This will use the keyword matching option selected in `monthlyCostOption`"
+                },
+                {
+                  "disabled": false,
+                  "key": "monthlyCost.max",
+                  "value": "<float>",
+                  "description": "Filter by the monthly cost of the keyword.  This will use the keyword matching option selected in `monthlyCostOption`"
+                },
+                {
+                  "disabled": false,
+                  "key": "monthlyCostOption",
+                  "value": "<string>",
+                  "description": "Monthly Cost keyword matching option to filter results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "rankingHomepages.min",
+                  "value": "<float>",
+                  "description": "Homepages on the SERP range to filter results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "rankingHomepages.max",
+                  "value": "<float>",
+                  "description": "Homepages on the SERP range to filter results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "wordCount.min",
+                  "value": "<float>",
+                  "description": "Filter by the number of words in the keyword."
+                },
+                {
+                  "disabled": false,
+                  "key": "wordCount.max",
+                  "value": "<float>",
+                  "description": "Filter by the number of words in the keyword."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "5",
+                  "description": "The maximum number of rows returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country to get results for."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "SearchVolume",
+                  "description": "Column to sort by."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "Descending",
+                  "description": "Sort direction for results."
+                },
+                {
+                  "disabled": false,
+                  "key": "startingRow",
+                  "value": "1",
+                  "description": "Row number to start the results with."
+                },
+                {
+                  "disabled": false,
+                  "key": "adultFilter",
+                  "value": "true",
+                  "description": "Exclude adult keywords considered unsafe for work."
+                },
+                {
+                  "disabled": false,
+                  "key": "onlyAdultKeywords",
+                  "value": "false",
+                  "description": "Only include adult keywords considered unsafe for work."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "860d37cf-9443-47bd-a515-ae99474cfa61",
+              "name": "Successfully retrieved new PPC keywords. Returns keyword data with search metrics, cost estimates, and competitive intelligence showing recently acquired paid keywords for strategic expansion insights.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ppc",
+                    "getNewKeywords"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "includeTerms",
+                      "value": "hosting,domain,website"
+                    },
+                    {
+                      "key": "includeAnyTerm",
+                      "value": "false"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "free,cheap,discount"
+                    },
+                    {
+                      "key": "excludeDomain",
+                      "value": "yourdomain.com"
+                    },
+                    {
+                      "key": "searchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "searchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "liveSearchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "liveSearchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "adCount.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "adCount.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "keywordDifficulty.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "keywordDifficulty.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClick.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClick.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClickOption",
+                      "value": "Broad"
+                    },
+                    {
+                      "key": "clicks.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "clicks.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "isQuestion",
+                      "value": "false"
+                    },
+                    {
+                      "key": "isTransactionalIntent",
+                      "value": "false"
+                    },
+                    {
+                      "key": "mobileSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "mobileSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "desktopSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "desktopSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "notClickedSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "notClickedSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "paidClickSearchPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "paidClickSearchPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "organicClicksSearchPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "organicClicksSearchPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCost.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCost.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCostOption",
+                      "value": "Broad"
+                    },
+                    {
+                      "key": "rankingHomepages.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "rankingHomepages.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "wordCount.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "wordCount.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "SearchVolume"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    },
+                    {
+                      "key": "adultFilter",
+                      "value": "true"
+                    },
+                    {
+                      "key": "onlyAdultKeywords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 100,\n  \"totalMatchingResults\": 75000,\n  \"results\": [\n    {\n      \"keyword\": \"running shoes\",\n      \"searchVolume\": 266000,\n      \"liveSearchVolume\": 82000,\n      \"rankingDifficulty\": 98,\n      \"totalMonthlyClicks\": 219000,\n      \"percentMobileSearches\": 0.52,\n      \"percentDesktopSearches\": 0.48,\n      \"percentSearchesNotClicked\": 0.18,\n      \"percentPaidClicks\": 0.52,\n      \"percentOrganicClicks\": 0.48,\n      \"broadCostPerClick\": 0.73,\n      \"phraseCostPerClick\": 0.67,\n      \"exactCostPerClick\": 0.65,\n      \"broadMonthlyClicks\": 57019.8,\n      \"phraseMonthlyClicks\": 38000,\n      \"exactMonthlyClicks\": 29094.6,\n      \"broadMonthlyCost\": 41604.9,\n      \"phraseMonthlyCost\": 25542,\n      \"exactMonthlyCost\": 19041.6,\n      \"paidCompetitors\": 15,\n      \"distinctCompetitors\": [\n        \"example.com\",\n        \"competitor1.com\",\n        \"competitor2.com\"\n      ],\n      \"rankingHomepages\": 8,\n      \"serpFeaturesCsv\": \"Images,Maps\",\n      \"serpFirstResult\": \"example.com\",\n      \"isQuestion\": false,\n      \"isNotSafeForWork\": false\n    },\n    {\n      \"keyword\": \"running shoes\",\n      \"searchVolume\": 266000,\n      \"liveSearchVolume\": 82000,\n      \"rankingDifficulty\": 98,\n      \"totalMonthlyClicks\": 219000,\n      \"percentMobileSearches\": 0.52,\n      \"percentDesktopSearches\": 0.48,\n      \"percentSearchesNotClicked\": 0.18,\n      \"percentPaidClicks\": 0.52,\n      \"percentOrganicClicks\": 0.48,\n      \"broadCostPerClick\": 0.73,\n      \"phraseCostPerClick\": 0.67,\n      \"exactCostPerClick\": 0.65,\n      \"broadMonthlyClicks\": 57019.8,\n      \"phraseMonthlyClicks\": 38000,\n      \"exactMonthlyClicks\": 29094.6,\n      \"broadMonthlyCost\": 41604.9,\n      \"phraseMonthlyCost\": 25542,\n      \"exactMonthlyCost\": 19041.6,\n      \"paidCompetitors\": 15,\n      \"distinctCompetitors\": [\n        \"example.com\",\n        \"competitor1.com\",\n        \"competitor2.com\"\n      ],\n      \"rankingHomepages\": 8,\n      \"serpFeaturesCsv\": \"Images,Maps\",\n      \"serpFirstResult\": \"example.com\",\n      \"isQuestion\": false,\n      \"isNotSafeForWork\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d388004c-d07b-4668-b170-541b5ca33379",
+              "name": "Bad Request - Invalid parameters provided (e.g., invalid domain format, search volume ranges, or invalid country code)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ppc",
+                    "getNewKeywords"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "includeTerms",
+                      "value": "hosting,domain,website"
+                    },
+                    {
+                      "key": "includeAnyTerm",
+                      "value": "false"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "free,cheap,discount"
+                    },
+                    {
+                      "key": "excludeDomain",
+                      "value": "yourdomain.com"
+                    },
+                    {
+                      "key": "searchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "searchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "liveSearchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "liveSearchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "adCount.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "adCount.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "keywordDifficulty.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "keywordDifficulty.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClick.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClick.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClickOption",
+                      "value": "Broad"
+                    },
+                    {
+                      "key": "clicks.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "clicks.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "isQuestion",
+                      "value": "false"
+                    },
+                    {
+                      "key": "isTransactionalIntent",
+                      "value": "false"
+                    },
+                    {
+                      "key": "mobileSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "mobileSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "desktopSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "desktopSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "notClickedSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "notClickedSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "paidClickSearchPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "paidClickSearchPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "organicClicksSearchPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "organicClicksSearchPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCost.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCost.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCostOption",
+                      "value": "Broad"
+                    },
+                    {
+                      "key": "rankingHomepages.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "rankingHomepages.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "wordCount.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "wordCount.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "SearchVolume"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    },
+                    {
+                      "key": "adultFilter",
+                      "value": "true"
+                    },
+                    {
+                      "key": "onlyAdultKeywords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ca25faa-8452-4c6a-aa51-aaa8f85268af",
+              "name": "Unauthorized - Invalid API credentials or insufficient permissions to access PPC keyword data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ppc",
+                    "getNewKeywords"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "includeTerms",
+                      "value": "hosting,domain,website"
+                    },
+                    {
+                      "key": "includeAnyTerm",
+                      "value": "false"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "free,cheap,discount"
+                    },
+                    {
+                      "key": "excludeDomain",
+                      "value": "yourdomain.com"
+                    },
+                    {
+                      "key": "searchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "searchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "liveSearchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "liveSearchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "adCount.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "adCount.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "keywordDifficulty.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "keywordDifficulty.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClick.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClick.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClickOption",
+                      "value": "Broad"
+                    },
+                    {
+                      "key": "clicks.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "clicks.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "isQuestion",
+                      "value": "false"
+                    },
+                    {
+                      "key": "isTransactionalIntent",
+                      "value": "false"
+                    },
+                    {
+                      "key": "mobileSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "mobileSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "desktopSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "desktopSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "notClickedSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "notClickedSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "paidClickSearchPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "paidClickSearchPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "organicClicksSearchPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "organicClicksSearchPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCost.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCost.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCostOption",
+                      "value": "Broad"
+                    },
+                    {
+                      "key": "rankingHomepages.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "rankingHomepages.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "wordCount.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "wordCount.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "SearchVolume"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    },
+                    {
+                      "key": "adultFilter",
+                      "value": "true"
+                    },
+                    {
+                      "key": "onlyAdultKeywords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "26cc9cb4-5ca4-41c3-a3b1-fe3b0daf51a7",
+              "name": "Internal Server Error - A server-side error occurred while processing the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ppc",
+                    "getNewKeywords"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "includeTerms",
+                      "value": "hosting,domain,website"
+                    },
+                    {
+                      "key": "includeAnyTerm",
+                      "value": "false"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "free,cheap,discount"
+                    },
+                    {
+                      "key": "excludeDomain",
+                      "value": "yourdomain.com"
+                    },
+                    {
+                      "key": "searchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "searchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "liveSearchVolume.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "liveSearchVolume.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "adCount.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "adCount.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "keywordDifficulty.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "keywordDifficulty.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClick.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClick.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "costPerClickOption",
+                      "value": "Broad"
+                    },
+                    {
+                      "key": "clicks.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "clicks.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "isQuestion",
+                      "value": "false"
+                    },
+                    {
+                      "key": "isTransactionalIntent",
+                      "value": "false"
+                    },
+                    {
+                      "key": "mobileSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "mobileSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "desktopSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "desktopSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "notClickedSearchesPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "notClickedSearchesPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "paidClickSearchPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "paidClickSearchPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "organicClicksSearchPercentage.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "organicClicksSearchPercentage.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCost.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCost.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "monthlyCostOption",
+                      "value": "Broad"
+                    },
+                    {
+                      "key": "rankingHomepages.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "rankingHomepages.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "wordCount.min",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "wordCount.max",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "SearchVolume"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    },
+                    {
+                      "key": "adultFilter",
+                      "value": "true"
+                    },
+                    {
+                      "key": "onlyAdultKeywords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "532297ea-4d2c-4103-b4f5-5d660fe4feb1",
+          "name": "Get Ads for Domain",
+          "request": {
+            "name": "Get Ads for Domain",
+            "description": {
+              "content": "Returns paid search results (ads) that a domain appears in across Google search. This endpoint reveals the competitive paid landscape to identify advertising opportunities and understand competitor PPC strategies.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/ppc/keywords/domain?query=example.com)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "ppc",
+                "getPaidSerps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Domain to analyze for paid search presence."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeTerms",
+                  "value": "<string>",
+                  "description": "Comma-separated list of terms that must be present in the keyword."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeAnyTerm",
+                  "value": "false",
+                  "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeTerms",
+                  "value": "<string>",
+                  "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "searchVolume.min",
+                  "value": "<float>",
+                  "description": "Filter to keywords where monthly search volume (Google) is ≥ this value."
+                },
+                {
+                  "disabled": false,
+                  "key": "searchVolume.max",
+                  "value": "<float>",
+                  "description": "Filter to keywords where monthly search volume (Google) is ≤ this value."
+                },
+                {
+                  "disabled": false,
+                  "key": "adCount.min",
+                  "value": "<float>",
+                  "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+                },
+                {
+                  "disabled": false,
+                  "key": "adCount.max",
+                  "value": "<float>",
+                  "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+                },
+                {
+                  "disabled": false,
+                  "key": "keywordDifficulty.min",
+                  "value": "<float>",
+                  "description": "Filter to keywords where the keyword difficulty score is ≥ this value (0-100; higher = harder to rank)."
+                },
+                {
+                  "disabled": false,
+                  "key": "keywordDifficulty.max",
+                  "value": "<float>",
+                  "description": "Filter to keywords where the keyword difficulty score is ≤ this value (0-100; higher = harder to rank)."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "5",
+                  "description": "The maximum number of rows returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeHomepageKeywords",
+                  "value": "false",
+                  "description": "If true, exclude keywords where the domain/URL's homepage (root domain, e.g., example.com) ranks; if false, include all."
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "SearchVolume",
+                  "description": "Column to sort results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "Descending",
+                  "description": "Order to sort the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "startingRow",
+                  "value": "1",
+                  "description": "Row number to start the results with."
+                },
+                {
+                  "disabled": false,
+                  "key": "adultFilter",
+                  "value": "true",
+                  "description": "Exclude adult keywords considered unsafe for work."
+                },
+                {
+                  "disabled": false,
+                  "key": "onlyAdultKeywords",
+                  "value": "false",
+                  "description": "Only include adult keywords considered unsafe for work."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "639d4e0a-2855-4d19-b816-9d49099f6661",
+              "name": "Successfully retrieved paid search results for the domain. Returns a paginated list of keywords where the domain appears in paid ads with position and competition data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ppc",
+                    "getPaidSerps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "includeTerms",
+                      "value": "hosting,domain,website"
+                    },
+                    {
+                      "key": "includeAnyTerm",
+                      "value": "false"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "free,cheap,discount"
+                    },
+                    {
+                      "key": "searchVolume.min",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "searchVolume.max",
+                      "value": "50000"
+                    },
+                    {
+                      "key": "adCount.min",
+                      "value": "3"
+                    },
+                    {
+                      "key": "adCount.max",
+                      "value": "25"
+                    },
+                    {
+                      "key": "keywordDifficulty.min",
+                      "value": "30"
+                    },
+                    {
+                      "key": "keywordDifficulty.max",
+                      "value": "70"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "excludeHomepageKeywords",
+                      "value": "false"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "SearchVolume"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    },
+                    {
+                      "key": "adultFilter",
+                      "value": "true"
+                    },
+                    {
+                      "key": "onlyAdultKeywords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 100,\n  \"results\": [\n    {\n      \"keyword\": \"running shoes\",\n      \"termId\": \"39100280\",\n      \"adPosition\": 1,\n      \"adCount\": 1,\n      \"dateSearched\": \"2023-12-15T10:30:00Z\",\n      \"title\": \"Best Running Shoes 2024 - Free Shipping\",\n      \"bodyHtml\": \"string\",\n      \"domain\": \"example.com\",\n      \"searchVolume\": 700000,\n      \"keywordDifficulty\": 69,\n      \"isNsfw\": false\n    },\n    {\n      \"keyword\": \"running shoes\",\n      \"termId\": \"39100280\",\n      \"adPosition\": 1,\n      \"adCount\": 1,\n      \"dateSearched\": \"2023-12-15T10:30:00Z\",\n      \"title\": \"Best Running Shoes 2024 - Free Shipping\",\n      \"bodyHtml\": \"string\",\n      \"domain\": \"example.com\",\n      \"searchVolume\": 700000,\n      \"keywordDifficulty\": 69,\n      \"isNsfw\": false\n    }\n  ],\n  \"totalMatchingResults\": 50000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03c19619-960a-454f-a17a-7f769bfe3ed1",
+              "name": "Bad Request - Invalid parameters provided (e.g., invalid domain format, pageSize exceeds maximum, or invalid country code)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ppc",
+                    "getPaidSerps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "includeTerms",
+                      "value": "hosting,domain,website"
+                    },
+                    {
+                      "key": "includeAnyTerm",
+                      "value": "false"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "free,cheap,discount"
+                    },
+                    {
+                      "key": "searchVolume.min",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "searchVolume.max",
+                      "value": "50000"
+                    },
+                    {
+                      "key": "adCount.min",
+                      "value": "3"
+                    },
+                    {
+                      "key": "adCount.max",
+                      "value": "25"
+                    },
+                    {
+                      "key": "keywordDifficulty.min",
+                      "value": "30"
+                    },
+                    {
+                      "key": "keywordDifficulty.max",
+                      "value": "70"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "excludeHomepageKeywords",
+                      "value": "false"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "SearchVolume"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    },
+                    {
+                      "key": "adultFilter",
+                      "value": "true"
+                    },
+                    {
+                      "key": "onlyAdultKeywords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "23195d5e-e3d5-4f1c-b4db-6ca9fb2c1eb3",
+              "name": "Unauthorized - Invalid API credentials or insufficient permissions to access PPC keyword data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ppc",
+                    "getPaidSerps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "includeTerms",
+                      "value": "hosting,domain,website"
+                    },
+                    {
+                      "key": "includeAnyTerm",
+                      "value": "false"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "free,cheap,discount"
+                    },
+                    {
+                      "key": "searchVolume.min",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "searchVolume.max",
+                      "value": "50000"
+                    },
+                    {
+                      "key": "adCount.min",
+                      "value": "3"
+                    },
+                    {
+                      "key": "adCount.max",
+                      "value": "25"
+                    },
+                    {
+                      "key": "keywordDifficulty.min",
+                      "value": "30"
+                    },
+                    {
+                      "key": "keywordDifficulty.max",
+                      "value": "70"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "excludeHomepageKeywords",
+                      "value": "false"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "SearchVolume"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    },
+                    {
+                      "key": "adultFilter",
+                      "value": "true"
+                    },
+                    {
+                      "key": "onlyAdultKeywords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "57586e12-cc60-4a5c-8465-1158f66993d1",
+              "name": "Internal Server Error - A server-side error occurred while processing the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ppc",
+                    "getPaidSerps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "includeTerms",
+                      "value": "hosting,domain,website"
+                    },
+                    {
+                      "key": "includeAnyTerm",
+                      "value": "false"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "free,cheap,discount"
+                    },
+                    {
+                      "key": "searchVolume.min",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "searchVolume.max",
+                      "value": "50000"
+                    },
+                    {
+                      "key": "adCount.min",
+                      "value": "3"
+                    },
+                    {
+                      "key": "adCount.max",
+                      "value": "25"
+                    },
+                    {
+                      "key": "keywordDifficulty.min",
+                      "value": "30"
+                    },
+                    {
+                      "key": "keywordDifficulty.max",
+                      "value": "70"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "excludeHomepageKeywords",
+                      "value": "false"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "SearchVolume"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    },
+                    {
+                      "key": "adultFilter",
+                      "value": "true"
+                    },
+                    {
+                      "key": "onlyAdultKeywords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spyfu.com/apis/accounts_api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "05021cd0-927f-413c-9b80-2d21275c1d11",
+    "name": "Account Account API PPC Research API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

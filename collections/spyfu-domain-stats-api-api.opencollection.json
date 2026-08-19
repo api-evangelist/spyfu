@@ -1,0 +1,319 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Account Account API Domain Stats API API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Domain Stats API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Domain Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/getAllDomainStats",
+            "params": [
+              {
+                "name": "domain",
+                "value": "example.com",
+                "type": "query",
+                "description": "Domain to retrieve comprehensive statistics for."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              }
+            ]
+          },
+          "docs": "Returns comprehensive domain statistics for all available historical periods. This endpoint provides time-series data showing SEO and PPC performance trends to analyze domain growth, competitive positioning, and marketing effectiveness over time.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/domain-overview?query=example.com)"
+        },
+        {
+          "info": {
+            "name": "Get Latest Domain Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/getLatestDomainStats",
+            "params": [
+              {
+                "name": "domain",
+                "value": "example.com",
+                "type": "query",
+                "description": "Domain to retrieve latest statistics for."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google version to query against (google.de for Germany, etc).  Google.com (US) is the default.      [See full list of supported Countries](https://developer.spyfu.com/update/reference/country-code-enum#/)"
+              },
+              {
+                "name": "pastNMonths",
+                "value": "",
+                "type": "query",
+                "description": "Returns the latest N months of stats for domain."
+              }
+            ]
+          },
+          "docs": "Returns the most recent domain statistics available in SpyFu's database. This endpoint provides current SEO and PPC performance metrics to analyze the domain's latest competitive position and marketing activity.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/domain-overview?query=example.com)"
+        },
+        {
+          "info": {
+            "name": "Get Domain Stats For Exact Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/getDomainStatsForExactDate",
+            "params": [
+              {
+                "name": "domain",
+                "value": "example.com",
+                "type": "query",
+                "description": "Domain to retrieve statistics for."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google version to query against (google.de for Germany, etc).  Google.com (US) is the default.      [See full list of supported Countries](https://developer.spyfu.com/update/reference/country-code-enum#/)"
+              },
+              {
+                "name": "year",
+                "value": "2020",
+                "type": "query",
+                "description": "Year to retrieve statistics for."
+              },
+              {
+                "name": "month",
+                "value": "6",
+                "type": "query",
+                "description": "Month to retrieve statistics for (1-12)."
+              }
+            ]
+          },
+          "docs": "Returns domain statistics for a specific month and year. This endpoint provides point-in-time snapshots of SEO and PPC performance metrics to analyze historical domain activity and compare performance across different time periods.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/domain-overview?query=example.com)"
+        },
+        {
+          "info": {
+            "name": "Get Active Dates For Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/getActiveDatesForDomain",
+            "params": [
+              {
+                "name": "domain",
+                "value": "example.com",
+                "type": "query",
+                "description": "Domain to retrieve data coverage dates for."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google version to query against (google.de for Germany, etc).  Google.com (US) is the default.      [See full list of supported Countries](https://developer.spyfu.com/update/reference/country-code-enum#/)"
+              }
+            ]
+          },
+          "docs": "Returns a chronological list of dates for which SpyFu has collected domain statistics data. This endpoint helps identify data coverage periods and historical tracking availability for domain analysis and competitive research.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/domain-overview?query=example.com)"
+        },
+        {
+          "info": {
+            "name": "Bulk Domain Statistics (Snapshot or History)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/getBulkDomainStats",
+            "params": [
+              {
+                "name": "domains",
+                "value": "example.com,competitor.com,industry-leader.com",
+                "type": "query",
+                "description": "Comma-separated list of domains to analyze. Each domain should be provided as a root domain (example.com) without protocol or paths. Maximum of 1000 domains per request."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to analyze. Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.)."
+              },
+              {
+                "name": "showOnlyLatest",
+                "value": "true",
+                "type": "query",
+                "description": "Controls data scope returned. If true, returns only the most recent statistics for each domain (current snapshot). If false, returns complete historical data showing trends over time for comprehensive analysis."
+              }
+            ]
+          },
+          "docs": "Returns SEO and PPC metrics for multiple domains in one request. Suitable for batch enrichment, benchmarking, and portfolio monitoring."
+        },
+        {
+          "info": {
+            "name": "Find Domains by Pattern and Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/getMatchingDomains",
+            "params": [
+              {
+                "name": "query",
+                "value": "*blog*",
+                "type": "query",
+                "description": "A wildcard(*) used to find any domain that matches the pattern. `*blog*` will find any domain with the word blog appearing anywhere within it."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country to get results for."
+              },
+              {
+                "name": "sortBy",
+                "value": "MonthlyOrganicClicks",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "monthlyBudget.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Minimum monthly ad budget filter."
+              },
+              {
+                "name": "monthlyBudget.max",
+                "value": "50000",
+                "type": "query",
+                "description": "Maximum monthly ad budget filter."
+              },
+              {
+                "name": "monthlyOrganicClicks.min",
+                "value": "10000",
+                "type": "query",
+                "description": "Minimum monthly organic traffic filter."
+              },
+              {
+                "name": "monthlyOrganicClicks.max",
+                "value": "500000",
+                "type": "query",
+                "description": "Maximum monthly organic traffic filter."
+              },
+              {
+                "name": "totalOrganicResults.min",
+                "value": "100",
+                "type": "query",
+                "description": "Minimum organic keyword count filter."
+              },
+              {
+                "name": "totalOrganicResults.max",
+                "value": "10000",
+                "type": "query",
+                "description": "Maximum organic keyword count filter."
+              },
+              {
+                "name": "monthlyOrganicValue.min",
+                "value": "5000",
+                "type": "query",
+                "description": "Minimum organic traffic value filter."
+              },
+              {
+                "name": "monthlyOrganicValue.max",
+                "value": "100000",
+                "type": "query",
+                "description": "Maximum organic traffic value filter."
+              },
+              {
+                "name": "strength.min",
+                "value": "30",
+                "type": "query",
+                "description": "Minimum domain strength score filter."
+              },
+              {
+                "name": "strength.max",
+                "value": "90",
+                "type": "query",
+                "description": "Maximum domain strength score filter."
+              },
+              {
+                "name": "monthlyPaidClicks.min",
+                "value": "500",
+                "type": "query",
+                "description": "Minimum monthly paid clicks filter."
+              },
+              {
+                "name": "monthlyPaidClicks.max",
+                "value": "100000",
+                "type": "query",
+                "description": "Maximum monthly paid clicks filter."
+              },
+              {
+                "name": "averageOrganicRank.min",
+                "value": "1",
+                "type": "query",
+                "description": "Minimum average organic rank filter."
+              },
+              {
+                "name": "averageOrganicRank.max",
+                "value": "50",
+                "type": "query",
+                "description": "Maximum average organic rank filter."
+              },
+              {
+                "name": "averageAdRank.min",
+                "value": "1",
+                "type": "query",
+                "description": "Minimum average ad position filter."
+              },
+              {
+                "name": "averageAdRank.max",
+                "value": "4",
+                "type": "query",
+                "description": "Maximum average ad position filter."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              }
+            ]
+          },
+          "docs": "Discovers domains matching wildcard patterns and performance criteria for lead generation and competitive prospecting. Use wildcards like `*car*` to find automotive domains or filter by traffic, budget, and ranking metrics to identify high-value prospects."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

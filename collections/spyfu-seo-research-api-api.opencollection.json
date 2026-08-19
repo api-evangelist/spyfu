@@ -1,0 +1,4056 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Account Account API SEO Research API API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SEO Research API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Most Valuable Keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getMostValuableKeywords",
+            "params": [
+              {
+                "name": "query",
+                "value": "example.com/blog",
+                "type": "query",
+                "description": "Domain, URL, subdomain, or path to analyze. Accepts full domains (example.com), complete URLs (https://example.com/blog), subdomains (blog.example.com), specific paths (example.com/products/), or individual pages."
+              },
+              {
+                "name": "compareDomain",
+                "value": "competitor.com",
+                "type": "query",
+                "description": "Domain to compare against when evaluating where it outranks you and where you outrank it."
+              },
+              {
+                "name": "includeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms that must be present in the keyword."
+              },
+              {
+                "name": "includeAnyTerm",
+                "value": "",
+                "type": "query",
+                "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+              },
+              {
+                "name": "excludeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+              },
+              {
+                "name": "excludeHomepageKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "If true, exclude keywords where the domain/URL's homepage (root domain, e.g., example.com) ranks; if false, include all."
+              },
+              {
+                "name": "searchVolume.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≥ this value."
+              },
+              {
+                "name": "searchVolume.max",
+                "value": "50000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≤ this value."
+              },
+              {
+                "name": "keywordDifficulty.min",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≥ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "keywordDifficulty.max",
+                "value": "70",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≤ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "rank.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≥ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rank.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≤ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rankChange.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL improved by at least this many positions vs. the previous month (rank_change ≥ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "rankChange.max",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month rank change is at most this many positions (rank_change ≤ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "costPerClick.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≥ this value."
+              },
+              {
+                "name": "costPerClick.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≤ this value."
+              },
+              {
+                "name": "costPerClickOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for CPC filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "seoClicks.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≥ this value."
+              },
+              {
+                "name": "seoClicks.max",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≤ this value."
+              },
+              {
+                "name": "seoClicksChange.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≥ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "seoClicksChange.max",
+                "value": "500",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≤ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "percentMobileSearches.min",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentMobileSearches.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.max",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.max",
+                "value": "60",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.min",
+                "value": "40",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "monthlyCost.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≥ this value."
+              },
+              {
+                "name": "monthlyCost.max",
+                "value": "5000",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≤ this value."
+              },
+              {
+                "name": "monthlyCostOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for monthly cost filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "paidCompetitors.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+              },
+              {
+                "name": "paidCompetitors.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+              },
+              {
+                "name": "rankingHomepages.min",
+                "value": "2",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≥ this value."
+              },
+              {
+                "name": "rankingHomepages.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≤ this value."
+              },
+              {
+                "name": "totalMonthlyClicks.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≥ this value. Independent of rank; includes both organic and paid clicks."
+              },
+              {
+                "name": "totalMonthlyClicks.max",
+                "value": "10000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≤ this value. Includes both organic and paid clicks."
+              },
+              {
+                "name": "adCount.min",
+                "value": "3",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+              },
+              {
+                "name": "adCount.max",
+                "value": "25",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SearchVolume",
+                "type": "query",
+                "description": "Column to sort results by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              },
+              {
+                "name": "adultFilter",
+                "value": "true",
+                "type": "query",
+                "description": "Exclude adult keywords considered unsafe for work."
+              },
+              {
+                "name": "onlyAdultKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "Only include adult keywords considered unsafe for work."
+              },
+              {
+                "name": "exactMatch",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+              }
+            ]
+          },
+          "docs": "Returns keywords that generate the highest organic click volume for a domain. This endpoint identifies the most traffic-driving keywords to reveal a domain's most valuable SEO assets and content opportunities.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?includeAnyTerm=true&includeAnyUrl=true&searchType=mostvaluable&sidebarContext=filters&query=example.com)"
+        },
+        {
+          "info": {
+            "name": "Get Newly Ranked Keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getNewlyRankedKeywords",
+            "params": [
+              {
+                "name": "query",
+                "value": "example.com/blog",
+                "type": "query",
+                "description": "Domain, URL, subdomain, or path to analyze. Accepts full domains (example.com), complete URLs (https://example.com/blog), subdomains (blog.example.com), specific paths (example.com/products/), or individual pages."
+              },
+              {
+                "name": "compareDomain",
+                "value": "competitor.com",
+                "type": "query",
+                "description": "Domain to compare against when evaluating where it outranks you and where you outrank it."
+              },
+              {
+                "name": "includeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms that must be present in the keyword."
+              },
+              {
+                "name": "includeAnyTerm",
+                "value": "",
+                "type": "query",
+                "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+              },
+              {
+                "name": "excludeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+              },
+              {
+                "name": "excludeHomepageKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "If true, exclude keywords where the domain/URL's homepage (root domain, e.g., example.com) ranks; if false, include all."
+              },
+              {
+                "name": "searchVolume.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≥ this value."
+              },
+              {
+                "name": "searchVolume.max",
+                "value": "50000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≤ this value."
+              },
+              {
+                "name": "keywordDifficulty.min",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≥ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "keywordDifficulty.max",
+                "value": "70",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≤ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "rank.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≥ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rank.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≤ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rankChange.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL improved by at least this many positions vs. the previous month (rank_change ≥ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "rankChange.max",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month rank change is at most this many positions (rank_change ≤ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "costPerClick.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≥ this value."
+              },
+              {
+                "name": "costPerClick.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≤ this value."
+              },
+              {
+                "name": "costPerClickOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for CPC filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "seoClicks.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≥ this value."
+              },
+              {
+                "name": "seoClicks.max",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≤ this value."
+              },
+              {
+                "name": "seoClicksChange.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≥ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "seoClicksChange.max",
+                "value": "500",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≤ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "percentMobileSearches.min",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentMobileSearches.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.max",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.max",
+                "value": "60",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.min",
+                "value": "40",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "monthlyCost.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≥ this value."
+              },
+              {
+                "name": "monthlyCost.max",
+                "value": "5000",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≤ this value."
+              },
+              {
+                "name": "monthlyCostOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for monthly cost filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "paidCompetitors.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+              },
+              {
+                "name": "paidCompetitors.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+              },
+              {
+                "name": "rankingHomepages.min",
+                "value": "2",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≥ this value."
+              },
+              {
+                "name": "rankingHomepages.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≤ this value."
+              },
+              {
+                "name": "totalMonthlyClicks.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≥ this value. Independent of rank; includes both organic and paid clicks."
+              },
+              {
+                "name": "totalMonthlyClicks.max",
+                "value": "10000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≤ this value. Includes both organic and paid clicks."
+              },
+              {
+                "name": "adCount.min",
+                "value": "3",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+              },
+              {
+                "name": "adCount.max",
+                "value": "25",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SearchVolume",
+                "type": "query",
+                "description": "Column to sort results by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              },
+              {
+                "name": "adultFilter",
+                "value": "true",
+                "type": "query",
+                "description": "Exclude adult keywords considered unsafe for work."
+              },
+              {
+                "name": "onlyAdultKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "Only include adult keywords considered unsafe for work."
+              },
+              {
+                "name": "exactMatch",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+              }
+            ]
+          },
+          "docs": "Returns keywords where a domain recently achieved rankings in the top 100 organic search results. This endpoint identifies fresh ranking opportunities to reveal new content successes and emerging SEO momentum.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?includeAnyTerm=true&includeAnyUrl=true&searchType=newlyranked&sidebarContext=filters&query=example.com)"
+        },
+        {
+          "info": {
+            "name": "Get Gained Ranks Keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getGainedRanksKeywords",
+            "params": [
+              {
+                "name": "query",
+                "value": "example.com/blog",
+                "type": "query",
+                "description": "Domain, URL, subdomain, or path to analyze. Accepts full domains (example.com), complete URLs (https://example.com/blog), subdomains (blog.example.com), specific paths (example.com/products/), or individual pages."
+              },
+              {
+                "name": "compareDomain",
+                "value": "competitor.com",
+                "type": "query",
+                "description": "Domain to compare against when evaluating where it outranks you and where you outrank it."
+              },
+              {
+                "name": "includeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms that must be present in the keyword."
+              },
+              {
+                "name": "includeAnyTerm",
+                "value": "",
+                "type": "query",
+                "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+              },
+              {
+                "name": "excludeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+              },
+              {
+                "name": "excludeHomepageKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "If true, exclude keywords where the domain/URL's homepage (root domain, e.g., example.com) ranks; if false, include all."
+              },
+              {
+                "name": "searchVolume.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≥ this value."
+              },
+              {
+                "name": "searchVolume.max",
+                "value": "50000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≤ this value."
+              },
+              {
+                "name": "keywordDifficulty.min",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≥ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "keywordDifficulty.max",
+                "value": "70",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≤ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "rank.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≥ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rank.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≤ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rankChange.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL improved by at least this many positions vs. the previous month (rank_change ≥ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "rankChange.max",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month rank change is at most this many positions (rank_change ≤ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "costPerClick.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≥ this value."
+              },
+              {
+                "name": "costPerClick.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≤ this value."
+              },
+              {
+                "name": "costPerClickOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for CPC filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "seoClicks.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≥ this value."
+              },
+              {
+                "name": "seoClicks.max",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≤ this value."
+              },
+              {
+                "name": "seoClicksChange.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≥ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "seoClicksChange.max",
+                "value": "500",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≤ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "percentMobileSearches.min",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentMobileSearches.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.max",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.max",
+                "value": "60",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.min",
+                "value": "40",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "monthlyCost.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≥ this value."
+              },
+              {
+                "name": "monthlyCost.max",
+                "value": "5000",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≤ this value."
+              },
+              {
+                "name": "monthlyCostOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for monthly cost filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "paidCompetitors.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+              },
+              {
+                "name": "paidCompetitors.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+              },
+              {
+                "name": "rankingHomepages.min",
+                "value": "2",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≥ this value."
+              },
+              {
+                "name": "rankingHomepages.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≤ this value."
+              },
+              {
+                "name": "totalMonthlyClicks.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≥ this value. Independent of rank; includes both organic and paid clicks."
+              },
+              {
+                "name": "totalMonthlyClicks.max",
+                "value": "10000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≤ this value. Includes both organic and paid clicks."
+              },
+              {
+                "name": "adCount.min",
+                "value": "3",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+              },
+              {
+                "name": "adCount.max",
+                "value": "25",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SearchVolume",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              },
+              {
+                "name": "adultFilter",
+                "value": "true",
+                "type": "query",
+                "description": "Exclude adult keywords considered unsafe for work."
+              },
+              {
+                "name": "onlyAdultKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "Only include adult keywords considered unsafe for work."
+              },
+              {
+                "name": "exactMatch",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+              }
+            ]
+          },
+          "docs": "Returns keywords where a domain, path, subdomain, page or full URL improved its organic search ranking positions compared to the previous month. This endpoint identifies the biggest ranking gains to reveal successful SEO efforts and content optimizations.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?includeAnyTerm=true&includeAnyUrl=true&searchType=gainedranks&sidebarContext=filters&query=example.com)"
+        },
+        {
+          "info": {
+            "name": "Get Lost Ranks Keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getLostRanksKeywords",
+            "params": [
+              {
+                "name": "query",
+                "value": "example.com/blog",
+                "type": "query",
+                "description": "Domain, URL, subdomain, or path to analyze. Accepts full domains (example.com), complete URLs (https://example.com/blog), subdomains (blog.example.com), specific paths (example.com/products/), or individual pages."
+              },
+              {
+                "name": "compareDomain",
+                "value": "competitor.com",
+                "type": "query",
+                "description": "Domain to compare against when evaluating where it outranks you and where you outrank it."
+              },
+              {
+                "name": "includeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms that must be present in the keyword."
+              },
+              {
+                "name": "includeAnyTerm",
+                "value": "",
+                "type": "query",
+                "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+              },
+              {
+                "name": "excludeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+              },
+              {
+                "name": "excludeHomepageKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "If true, exclude keywords where the domain/URL's homepage (root domain, e.g., example.com) ranks; if false, include all."
+              },
+              {
+                "name": "searchVolume.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≥ this value."
+              },
+              {
+                "name": "searchVolume.max",
+                "value": "50000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≤ this value."
+              },
+              {
+                "name": "keywordDifficulty.min",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≥ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "keywordDifficulty.max",
+                "value": "70",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≤ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "rank.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≥ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rank.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≤ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rankChange.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL improved by at least this many positions vs. the previous month (rank_change ≥ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "rankChange.max",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month rank change is at most this many positions (rank_change ≤ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "costPerClick.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≥ this value."
+              },
+              {
+                "name": "costPerClick.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≤ this value."
+              },
+              {
+                "name": "costPerClickOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for CPC filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "seoClicks.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≥ this value."
+              },
+              {
+                "name": "seoClicks.max",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≤ this value."
+              },
+              {
+                "name": "seoClicksChange.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≥ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "seoClicksChange.max",
+                "value": "500",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≤ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "percentMobileSearches.min",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentMobileSearches.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.max",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.max",
+                "value": "60",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.min",
+                "value": "40",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "monthlyCost.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≥ this value."
+              },
+              {
+                "name": "monthlyCost.max",
+                "value": "5000",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≤ this value."
+              },
+              {
+                "name": "monthlyCostOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for monthly cost filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "paidCompetitors.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+              },
+              {
+                "name": "paidCompetitors.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+              },
+              {
+                "name": "rankingHomepages.min",
+                "value": "2",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≥ this value."
+              },
+              {
+                "name": "rankingHomepages.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≤ this value."
+              },
+              {
+                "name": "totalMonthlyClicks.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≥ this value. Independent of rank; includes both organic and paid clicks."
+              },
+              {
+                "name": "totalMonthlyClicks.max",
+                "value": "10000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≤ this value. Includes both organic and paid clicks."
+              },
+              {
+                "name": "adCount.min",
+                "value": "3",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+              },
+              {
+                "name": "adCount.max",
+                "value": "25",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SearchVolume",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              },
+              {
+                "name": "adultFilter",
+                "value": "true",
+                "type": "query",
+                "description": "Exclude adult keywords considered unsafe for work."
+              },
+              {
+                "name": "onlyAdultKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "Only include adult keywords considered unsafe for work."
+              },
+              {
+                "name": "exactMatch",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+              }
+            ]
+          },
+          "docs": "Returns keywords where a domain's organic search ranking positions declined compared to the previous month. This endpoint identifies ranking losses that remain within the top 100 results to reveal content that needs SEO attention.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?includeAnyTerm=true&includeAnyUrl=true&searchType=lostranks&sidebarContext=filters&query=example.com)"
+        },
+        {
+          "info": {
+            "name": "Get Gained Clicks Keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getGainedClicksKeywords",
+            "params": [
+              {
+                "name": "query",
+                "value": "example.com/blog",
+                "type": "query",
+                "description": "Domain, URL, subdomain, or path to analyze. Accepts full domains (example.com), complete URLs (https://example.com/blog), subdomains (blog.example.com), specific paths (example.com/products/), or individual pages."
+              },
+              {
+                "name": "compareDomain",
+                "value": "competitor.com",
+                "type": "query",
+                "description": "Domain to compare against when evaluating where it outranks you and where you outrank it."
+              },
+              {
+                "name": "includeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms that must be present in the keyword."
+              },
+              {
+                "name": "includeAnyTerm",
+                "value": "",
+                "type": "query",
+                "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+              },
+              {
+                "name": "excludeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+              },
+              {
+                "name": "excludeHomepageKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "If true, exclude keywords where the domain/URL's homepage (root domain, e.g., example.com) ranks; if false, include all."
+              },
+              {
+                "name": "searchVolume.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≥ this value."
+              },
+              {
+                "name": "searchVolume.max",
+                "value": "50000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≤ this value."
+              },
+              {
+                "name": "keywordDifficulty.min",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≥ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "keywordDifficulty.max",
+                "value": "70",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≤ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "rank.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≥ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rank.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≤ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rankChange.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL improved by at least this many positions vs. the previous month (rank_change ≥ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "rankChange.max",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month rank change is at most this many positions (rank_change ≤ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "costPerClick.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≥ this value."
+              },
+              {
+                "name": "costPerClick.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≤ this value."
+              },
+              {
+                "name": "costPerClickOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for CPC filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "seoClicks.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≥ this value."
+              },
+              {
+                "name": "seoClicks.max",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≤ this value."
+              },
+              {
+                "name": "seoClicksChange.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≥ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "seoClicksChange.max",
+                "value": "500",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≤ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "percentMobileSearches.min",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentMobileSearches.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.max",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.max",
+                "value": "60",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.min",
+                "value": "40",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "monthlyCost.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≥ this value."
+              },
+              {
+                "name": "monthlyCost.max",
+                "value": "5000",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≤ this value."
+              },
+              {
+                "name": "monthlyCostOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for monthly cost filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "paidCompetitors.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+              },
+              {
+                "name": "paidCompetitors.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+              },
+              {
+                "name": "rankingHomepages.min",
+                "value": "2",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≥ this value."
+              },
+              {
+                "name": "rankingHomepages.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≤ this value."
+              },
+              {
+                "name": "totalMonthlyClicks.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≥ this value. Independent of rank; includes both organic and paid clicks."
+              },
+              {
+                "name": "totalMonthlyClicks.max",
+                "value": "10000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≤ this value. Includes both organic and paid clicks."
+              },
+              {
+                "name": "adCount.min",
+                "value": "3",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+              },
+              {
+                "name": "adCount.max",
+                "value": "25",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SearchVolume",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              },
+              {
+                "name": "adultFilter",
+                "value": "true",
+                "type": "query",
+                "description": "Exclude adult keywords considered unsafe for work."
+              },
+              {
+                "name": "onlyAdultKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "Only include adult keywords considered unsafe for work."
+              },
+              {
+                "name": "exactMatch",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+              }
+            ]
+          },
+          "docs": "Returns keywords where a domain, path, subdomain, page or full URL experienced increased organic clicks compared to the previous month. This endpoint identifies the biggest click improvements to reveal rising content opportunities and successful SEO changes.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?includeAnyTerm=true&includeAnyUrl=true&searchType=gainedclicks&sidebarContext=filters&query=example.com)"
+        },
+        {
+          "info": {
+            "name": "Get Lost Clicks Keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getLostClicksKeywords",
+            "params": [
+              {
+                "name": "query",
+                "value": "example.com/blog",
+                "type": "query",
+                "description": "Domain, URL, subdomain, or path to analyze. Accepts full domains (example.com), complete URLs (https://example.com/blog), subdomains (blog.example.com), specific paths (example.com/products/), or individual pages."
+              },
+              {
+                "name": "compareDomain",
+                "value": "competitor.com",
+                "type": "query",
+                "description": "Domain to compare against when evaluating where it outranks you and where you outrank it."
+              },
+              {
+                "name": "includeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms that must be present in the keyword."
+              },
+              {
+                "name": "includeAnyTerm",
+                "value": "",
+                "type": "query",
+                "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+              },
+              {
+                "name": "excludeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+              },
+              {
+                "name": "excludeHomepageKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "If true, exclude keywords where the domain/URL's homepage (root domain, e.g., example.com) ranks; if false, include all."
+              },
+              {
+                "name": "searchVolume.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≥ this value."
+              },
+              {
+                "name": "searchVolume.max",
+                "value": "50000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≤ this value."
+              },
+              {
+                "name": "keywordDifficulty.min",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≥ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "keywordDifficulty.max",
+                "value": "70",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≤ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "rank.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≥ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rank.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≤ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rankChange.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL improved by at least this many positions vs. the previous month (rank_change ≥ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "rankChange.max",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month rank change is at most this many positions (rank_change ≤ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "costPerClick.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≥ this value."
+              },
+              {
+                "name": "costPerClick.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≤ this value."
+              },
+              {
+                "name": "costPerClickOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for CPC filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "seoClicks.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≥ this value."
+              },
+              {
+                "name": "seoClicks.max",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≤ this value."
+              },
+              {
+                "name": "seoClicksChange.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≥ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "seoClicksChange.max",
+                "value": "500",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≤ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "percentMobileSearches.min",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentMobileSearches.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.max",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.max",
+                "value": "60",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.min",
+                "value": "40",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "monthlyCost.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≥ this value."
+              },
+              {
+                "name": "monthlyCost.max",
+                "value": "5000",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≤ this value."
+              },
+              {
+                "name": "monthlyCostOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for monthly cost filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "paidCompetitors.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+              },
+              {
+                "name": "paidCompetitors.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+              },
+              {
+                "name": "rankingHomepages.min",
+                "value": "2",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≥ this value."
+              },
+              {
+                "name": "rankingHomepages.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≤ this value."
+              },
+              {
+                "name": "totalMonthlyClicks.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≥ this value. Independent of rank; includes both organic and paid clicks."
+              },
+              {
+                "name": "totalMonthlyClicks.max",
+                "value": "10000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≤ this value. Includes both organic and paid clicks."
+              },
+              {
+                "name": "adCount.min",
+                "value": "3",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+              },
+              {
+                "name": "adCount.max",
+                "value": "25",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SearchVolume",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              },
+              {
+                "name": "adultFilter",
+                "value": "true",
+                "type": "query",
+                "description": "Exclude adult keywords considered unsafe for work."
+              },
+              {
+                "name": "onlyAdultKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "Only include adult keywords considered unsafe for work."
+              },
+              {
+                "name": "exactMatch",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+              }
+            ]
+          },
+          "docs": "Returns keywords where a domain experienced decreased organic clicks compared to the previous month. This endpoint identifies the biggest click losses to reveal content that needs attention or competitive pressure points.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?includeAnyTerm=true&includeAnyUrl=true&searchType=lostclicks&sidebarContext=filters&query=example.com)"
+        },
+        {
+          "info": {
+            "name": "Get Just Made It Keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getJustMadeItKeywords",
+            "params": [
+              {
+                "name": "query",
+                "value": "example.com/blog",
+                "type": "query",
+                "description": "Domain, URL, subdomain, or path to analyze. Accepts full domains (example.com), complete URLs (https://example.com/blog), subdomains (blog.example.com), specific paths (example.com/products/), or individual pages."
+              },
+              {
+                "name": "compareDomain",
+                "value": "competitor.com",
+                "type": "query",
+                "description": "Domain to compare against when evaluating where it outranks you and where you outrank it."
+              },
+              {
+                "name": "includeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms that must be present in the keyword."
+              },
+              {
+                "name": "includeAnyTerm",
+                "value": "",
+                "type": "query",
+                "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+              },
+              {
+                "name": "excludeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+              },
+              {
+                "name": "excludeHomepageKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "If true, exclude keywords where the domain/URL's homepage (root domain, e.g., example.com) ranks; if false, include all."
+              },
+              {
+                "name": "searchVolume.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≥ this value."
+              },
+              {
+                "name": "searchVolume.max",
+                "value": "50000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≤ this value."
+              },
+              {
+                "name": "keywordDifficulty.min",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≥ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "keywordDifficulty.max",
+                "value": "70",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≤ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "rank.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≥ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rank.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≤ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rankChange.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL improved by at least this many positions vs. the previous month (rank_change ≥ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "rankChange.max",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month rank change is at most this many positions (rank_change ≤ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "costPerClick.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≥ this value."
+              },
+              {
+                "name": "costPerClick.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≤ this value."
+              },
+              {
+                "name": "costPerClickOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for CPC filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "seoClicks.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≥ this value."
+              },
+              {
+                "name": "seoClicks.max",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≤ this value."
+              },
+              {
+                "name": "seoClicksChange.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≥ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "seoClicksChange.max",
+                "value": "500",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≤ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "percentMobileSearches.min",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentMobileSearches.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.max",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.max",
+                "value": "60",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.min",
+                "value": "40",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "monthlyCost.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≥ this value."
+              },
+              {
+                "name": "monthlyCost.max",
+                "value": "5000",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≤ this value."
+              },
+              {
+                "name": "monthlyCostOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for monthly cost filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "paidCompetitors.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+              },
+              {
+                "name": "paidCompetitors.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+              },
+              {
+                "name": "rankingHomepages.min",
+                "value": "2",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≥ this value."
+              },
+              {
+                "name": "rankingHomepages.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≤ this value."
+              },
+              {
+                "name": "totalMonthlyClicks.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≥ this value. Independent of rank; includes both organic and paid clicks."
+              },
+              {
+                "name": "totalMonthlyClicks.max",
+                "value": "10000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≤ this value. Includes both organic and paid clicks."
+              },
+              {
+                "name": "adCount.min",
+                "value": "3",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+              },
+              {
+                "name": "adCount.max",
+                "value": "25",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SearchVolume",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              },
+              {
+                "name": "adultFilter",
+                "value": "true",
+                "type": "query",
+                "description": "Exclude adult keywords considered unsafe for work."
+              },
+              {
+                "name": "onlyAdultKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "Only include adult keywords considered unsafe for work."
+              },
+              {
+                "name": "exactMatch",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+              }
+            ]
+          },
+          "docs": "Returns keywords where a domain achieved first page rankings (top 10 results) this month after not ranking there previously. This endpoint identifies new ranking successes to reveal effective content strategies and emerging opportunities.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?includeAnyTerm=true&includeAnyUrl=true&searchType=justmadeit&sidebarContext=filters&query=example.com)"
+        },
+        {
+          "info": {
+            "name": "Get Just Fell Off Keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getJustFellOffKeywords",
+            "params": [
+              {
+                "name": "query",
+                "value": "example.com/blog",
+                "type": "query",
+                "description": "Domain, URL, subdomain, or path to analyze. Accepts full domains (example.com), complete URLs (https://example.com/blog), subdomains (blog.example.com), specific paths (example.com/products/), or individual pages."
+              },
+              {
+                "name": "compareDomain",
+                "value": "competitor.com",
+                "type": "query",
+                "description": "Domain to compare against when evaluating where it outranks you and where you outrank it."
+              },
+              {
+                "name": "includeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms that must be present in the keyword."
+              },
+              {
+                "name": "includeAnyTerm",
+                "value": "",
+                "type": "query",
+                "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+              },
+              {
+                "name": "excludeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+              },
+              {
+                "name": "excludeHomepageKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "If true, exclude keywords where the domain/URL's homepage (root domain, e.g., example.com) ranks; if false, include all."
+              },
+              {
+                "name": "searchVolume.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≥ this value."
+              },
+              {
+                "name": "searchVolume.max",
+                "value": "50000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≤ this value."
+              },
+              {
+                "name": "keywordDifficulty.min",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≥ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "keywordDifficulty.max",
+                "value": "70",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≤ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "rank.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≥ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rank.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≤ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rankChange.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL improved by at least this many positions vs. the previous month (rank_change ≥ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "rankChange.max",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month rank change is at most this many positions (rank_change ≤ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "costPerClick.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≥ this value."
+              },
+              {
+                "name": "costPerClick.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≤ this value."
+              },
+              {
+                "name": "costPerClickOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for CPC filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "seoClicks.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≥ this value."
+              },
+              {
+                "name": "seoClicks.max",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≤ this value."
+              },
+              {
+                "name": "seoClicksChange.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≥ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "seoClicksChange.max",
+                "value": "500",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≤ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "percentMobileSearches.min",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentMobileSearches.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.max",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.max",
+                "value": "60",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.min",
+                "value": "40",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "monthlyCost.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≥ this value."
+              },
+              {
+                "name": "monthlyCost.max",
+                "value": "5000",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≤ this value."
+              },
+              {
+                "name": "monthlyCostOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for monthly cost filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "paidCompetitors.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+              },
+              {
+                "name": "paidCompetitors.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+              },
+              {
+                "name": "rankingHomepages.min",
+                "value": "2",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≥ this value."
+              },
+              {
+                "name": "rankingHomepages.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≤ this value."
+              },
+              {
+                "name": "totalMonthlyClicks.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≥ this value. Independent of rank; includes both organic and paid clicks."
+              },
+              {
+                "name": "totalMonthlyClicks.max",
+                "value": "10000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≤ this value. Includes both organic and paid clicks."
+              },
+              {
+                "name": "adCount.min",
+                "value": "3",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≥ this value."
+              },
+              {
+                "name": "adCount.max",
+                "value": "25",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 14 months is ≤ this value."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SearchVolume",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              },
+              {
+                "name": "adultFilter",
+                "value": "true",
+                "type": "query",
+                "description": "Exclude adult keywords considered unsafe for work."
+              },
+              {
+                "name": "onlyAdultKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "Only include adult keywords considered unsafe for work."
+              },
+              {
+                "name": "exactMatch",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+              }
+            ]
+          },
+          "docs": "Returns keywords where a domain dropped from the first page (top 10 results) compared to the previous month. This endpoint identifies recent ranking losses to reveal content that needs attention or competitive threats.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?includeAnyTerm=true&includeAnyUrl=true&searchType=justfelloff&sidebarContext=filters&query=example.com)"
+        },
+        {
+          "info": {
+            "name": "Get SEO Keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getSeoKeywords",
+            "params": [
+              {
+                "name": "query",
+                "value": "example.com",
+                "type": "query",
+                "description": "Domain, URL, subdomain, or path to analyze. Accepts full domains (example.com), complete URLs (https://example.com/blog), subdomains (blog.example.com), specific paths (example.com/products/), or individual pages."
+              },
+              {
+                "name": "searchType",
+                "value": "MostValuable",
+                "type": "query",
+                "description": "Type of SEO keyword analysis to perform. Each type provides different insights into keyword performance and ranking changes."
+              },
+              {
+                "name": "compareDomain",
+                "value": "competitor.com",
+                "type": "query",
+                "description": "Domain to compare against when evaluating where it outranks you and where you outrank it."
+              },
+              {
+                "name": "includeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms that must be present in the keyword."
+              },
+              {
+                "name": "includeAnyTerm",
+                "value": "",
+                "type": "query",
+                "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+              },
+              {
+                "name": "excludeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+              },
+              {
+                "name": "excludeHomepageKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "If true, exclude keywords where the domain/URL's homepage (root domain, e.g., example.com) ranks; if false, include all."
+              },
+              {
+                "name": "searchVolume.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≥ this value."
+              },
+              {
+                "name": "searchVolume.max",
+                "value": "50000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≤ this value."
+              },
+              {
+                "name": "keywordDifficulty.min",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≥ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "keywordDifficulty.max",
+                "value": "70",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≤ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "rank.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≥ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rank.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL rank position is ≤ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rankChange.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL improved by at least this many positions vs. the previous month (rank_change ≥ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "rankChange.max",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month rank change is at most this many positions (rank_change ≤ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "costPerClick.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≥ this value."
+              },
+              {
+                "name": "costPerClick.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≤ this value."
+              },
+              {
+                "name": "costPerClickOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for CPC filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "seoClicks.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) are ≥ this value."
+              },
+              {
+                "name": "seoClicks.max",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) are ≤ this value."
+              },
+              {
+                "name": "seoClicksChange.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≥ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "seoClicksChange.max",
+                "value": "500",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≤ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "percentMobileSearches.min",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentMobileSearches.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.max",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.max",
+                "value": "60",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.min",
+                "value": "40",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "monthlyCost.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≥ this value."
+              },
+              {
+                "name": "monthlyCost.max",
+                "value": "5000",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≤ this value."
+              },
+              {
+                "name": "monthlyCostOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for monthly cost filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "paidCompetitors.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 6 months is ≥ this value."
+              },
+              {
+                "name": "paidCompetitors.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 6 months is ≤ this value."
+              },
+              {
+                "name": "rankingHomepages.min",
+                "value": "2",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≥ this value."
+              },
+              {
+                "name": "rankingHomepages.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≤ this value."
+              },
+              {
+                "name": "totalMonthlyClicks.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≥ this value. Independent of rank; includes both organic and paid clicks."
+              },
+              {
+                "name": "totalMonthlyClicks.max",
+                "value": "10000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≤ this value. Includes both organic and paid clicks."
+              },
+              {
+                "name": "adCount.min",
+                "value": "3",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 6 months is ≥ this value."
+              },
+              {
+                "name": "adCount.max",
+                "value": "25",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 6 months is ≤ this value."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search. Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SearchVolume",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              },
+              {
+                "name": "adultFilter",
+                "value": "true",
+                "type": "query",
+                "description": "Exclude adult keywords considered unsafe for work."
+              },
+              {
+                "name": "onlyAdultKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "Only include adult keywords considered unsafe for work."
+              },
+              {
+                "name": "exactMatch",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+              }
+            ]
+          },
+          "docs": "Unified endpoint for SEO keyword analyses. Select an analysis via `searchType` to return gains/losses in clicks, rank movers, page-one entries/exits, newly ranked terms, or top-value keywords -- without switching endpoints."
+        },
+        {
+          "info": {
+            "name": "Get Organic Outranking Keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getOrganicOutrankingKeywords",
+            "params": [
+              {
+                "name": "query",
+                "value": "competitor.com",
+                "type": "query",
+                "description": "Primary domain to analyze. This domain's ranking data appears in the main response fields (rank, rankChange, seoClicks, etc.). Accepts full domains (example.com), complete URLs, subdomains, or specific paths."
+              },
+              {
+                "name": "searchType",
+                "value": "TheyOutrankYou",
+                "type": "query",
+                "description": "Required. Chooses the ranking scenario for the query/compareDomain pair and governs how results are interpreted. TheyOutrankYou: keywords where query ranks above compareDomain. TheyJustSurpassedYou: recent crossovers where query moved ahead."
+              },
+              {
+                "name": "compareDomain",
+                "value": "yourdomain.com",
+                "type": "query",
+                "description": "Domain to compare against. This domain's ranking data appears in the 'your' response fields (yourRank, yourRankChange, yourUrl). The endpoint shows where the query domain currently outranks this comparison domain."
+              },
+              {
+                "name": "includeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms that must be present in the keyword."
+              },
+              {
+                "name": "includeAnyTerm",
+                "value": "",
+                "type": "query",
+                "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+              },
+              {
+                "name": "excludeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+              },
+              {
+                "name": "excludeHomepageKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "If true, exclude keywords where the query domain's homepage (root domain, e.g., example.com) ranks; if false, include all."
+              },
+              {
+                "name": "searchVolume.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≥ this value."
+              },
+              {
+                "name": "searchVolume.max",
+                "value": "50000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≤ this value."
+              },
+              {
+                "name": "keywordDifficulty.min",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≥ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "keywordDifficulty.max",
+                "value": "70",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≤ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "rank.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the query domain's rank position is ≥ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rank.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the query domain's rank position is ≤ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rankChange.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the query domain improved by at least this many positions vs. the previous month (rank_change ≥ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "rankChange.max",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the query domain's month-over-month rank change is at most this many positions (rank_change ≤ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "costPerClick.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≥ this value."
+              },
+              {
+                "name": "costPerClick.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≤ this value."
+              },
+              {
+                "name": "costPerClickOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for CPC filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "seoClicks.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the query domain are ≥ this value."
+              },
+              {
+                "name": "seoClicks.max",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the query domain are ≤ this value."
+              },
+              {
+                "name": "seoClicksChange.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the query domain's month-over-month change in estimated organic clicks is ≥ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "seoClicksChange.max",
+                "value": "500",
+                "type": "query",
+                "description": "Filter to keywords where the query domain's month-over-month change in estimated organic clicks is ≤ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "percentMobileSearches.min",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentMobileSearches.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.max",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.max",
+                "value": "60",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.min",
+                "value": "40",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "monthlyCost.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≥ this value."
+              },
+              {
+                "name": "monthlyCost.max",
+                "value": "5000",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≤ this value."
+              },
+              {
+                "name": "monthlyCostOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for monthly cost filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "paidCompetitors.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 6 months is ≥ this value."
+              },
+              {
+                "name": "paidCompetitors.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 6 months is ≤ this value."
+              },
+              {
+                "name": "rankingHomepages.min",
+                "value": "2",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≥ this value."
+              },
+              {
+                "name": "rankingHomepages.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≤ this value."
+              },
+              {
+                "name": "totalMonthlyClicks.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≥ this value. Independent of rank; includes both organic and paid clicks."
+              },
+              {
+                "name": "totalMonthlyClicks.max",
+                "value": "10000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≤ this value. Includes both organic and paid clicks."
+              },
+              {
+                "name": "adCount.min",
+                "value": "3",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 6 months is ≥ this value."
+              },
+              {
+                "name": "adCount.max",
+                "value": "25",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 6 months is ≤ this value."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search. Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SearchVolume",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              },
+              {
+                "name": "adultFilter",
+                "value": "true",
+                "type": "query",
+                "description": "Exclude adult keywords considered unsafe for work."
+              },
+              {
+                "name": "onlyAdultKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "Only include adult keywords considered unsafe for work."
+              },
+              {
+                "name": "exactMatch",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+              }
+            ]
+          },
+          "docs": "Compare two domains' organic rankings in one call. Returns keywords where one domain outranks the other or has just overtaken it, with both sites' ranks, changes, clicks, and URLs. The comparison domain's metrics appear in the your* fields. Choose the mode with keywordSearchType."
+        },
+        {
+          "info": {
+            "name": "Get Where They Outrank You Keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getWhereTheyOutRankYou",
+            "params": [
+              {
+                "name": "query",
+                "value": "competitor.com",
+                "type": "query",
+                "description": "Primary domain to analyze. This domain's ranking data appears in the main response fields (rank, rankChange, seoClicks, etc.). Accepts full domains (example.com), complete URLs, subdomains, or specific paths."
+              },
+              {
+                "name": "compareDomain",
+                "value": "yourdomain.com",
+                "type": "query",
+                "description": "Domain to compare against. This domain's ranking data appears in the 'your' response fields (yourRank, yourRankChange, yourUrl). The endpoint shows where the query domain currently outranks this comparison domain."
+              },
+              {
+                "name": "includeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms that must be present in the keyword."
+              },
+              {
+                "name": "includeAnyTerm",
+                "value": "",
+                "type": "query",
+                "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+              },
+              {
+                "name": "excludeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+              },
+              {
+                "name": "excludeHomepageKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "If true, exclude keywords where the query domain's homepage (root domain, e.g., example.com) ranks; if false, include all."
+              },
+              {
+                "name": "searchVolume.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≥ this value."
+              },
+              {
+                "name": "searchVolume.max",
+                "value": "50000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≤ this value."
+              },
+              {
+                "name": "keywordDifficulty.min",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≥ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "keywordDifficulty.max",
+                "value": "70",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≤ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "rank.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the query domain's rank position is ≥ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rank.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the query domain's rank position is ≤ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rankChange.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the query domain improved by at least this many positions vs. the previous month (rank_change ≥ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "rankChange.max",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the query domain's month-over-month rank change is at most this many positions (rank_change ≤ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "costPerClick.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≥ this value."
+              },
+              {
+                "name": "costPerClick.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≤ this value."
+              },
+              {
+                "name": "costPerClickOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for CPC filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "seoClicks.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the query domain are ≥ this value."
+              },
+              {
+                "name": "seoClicks.max",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the query domain are ≤ this value."
+              },
+              {
+                "name": "seoClicksChange.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the query domain's month-over-month change in estimated organic clicks is ≥ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "seoClicksChange.max",
+                "value": "500",
+                "type": "query",
+                "description": "Filter to keywords where the query domain's month-over-month change in estimated organic clicks is ≤ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "percentMobileSearches.min",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentMobileSearches.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.max",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.max",
+                "value": "60",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.min",
+                "value": "40",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "monthlyCost.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≥ this value."
+              },
+              {
+                "name": "monthlyCost.max",
+                "value": "5000",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≤ this value."
+              },
+              {
+                "name": "monthlyCostOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for monthly cost filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "paidCompetitors.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 6 months is ≥ this value."
+              },
+              {
+                "name": "paidCompetitors.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 6 months is ≤ this value."
+              },
+              {
+                "name": "rankingHomepages.min",
+                "value": "2",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≥ this value."
+              },
+              {
+                "name": "rankingHomepages.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≤ this value."
+              },
+              {
+                "name": "totalMonthlyClicks.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≥ this value. Independent of rank; includes both organic and paid clicks."
+              },
+              {
+                "name": "totalMonthlyClicks.max",
+                "value": "10000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≤ this value. Includes both organic and paid clicks."
+              },
+              {
+                "name": "adCount.min",
+                "value": "3",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 6 months is ≥ this value."
+              },
+              {
+                "name": "adCount.max",
+                "value": "25",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 6 months is ≤ this value."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search. Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SearchVolume",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              },
+              {
+                "name": "adultFilter",
+                "value": "true",
+                "type": "query",
+                "description": "Exclude adult keywords considered unsafe for work."
+              },
+              {
+                "name": "onlyAdultKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "Only include adult keywords considered unsafe for work."
+              },
+              {
+                "name": "exactMatch",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+              }
+            ]
+          },
+          "docs": "Returns keywords where the query domain currently outranks the comparison domain in organic search results. This endpoint identifies competitive gaps where one domain holds a better position than another, providing insights into competitor strengths and opportunities for improvement.\n\nThe response includes both domains' ranking data, with the comparison domain's metrics appearing in the 'your' fields (yourRank, yourRankChange, yourUrl). Use this to analyze competitive positioning, identify conte"
+        },
+        {
+          "info": {
+            "name": "Get Where They Just Surpassed You Keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getWhereTheyJustSurpassedYou",
+            "params": [
+              {
+                "name": "query",
+                "value": "competitor.com",
+                "type": "query",
+                "description": "Primary domain to analyze. This domain's ranking data appears in the main response fields (rank, rankChange, seoClicks, etc.). Accepts full domains (example.com), complete URLs, subdomains, or specific paths."
+              },
+              {
+                "name": "compareDomain",
+                "value": "yourdomain.com",
+                "type": "query",
+                "description": "Domain to compare against. This domain's ranking data appears in the 'your' response fields (yourRank, yourRankChange, yourUrl). The endpoint shows where the query domain just surpassed this comparison domain."
+              },
+              {
+                "name": "includeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms that must be present in the keyword."
+              },
+              {
+                "name": "includeAnyTerm",
+                "value": "",
+                "type": "query",
+                "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+              },
+              {
+                "name": "excludeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+              },
+              {
+                "name": "excludeHomepageKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "If true, exclude keywords where the query domain's homepage (root domain, e.g., example.com) ranks; if false, include all."
+              },
+              {
+                "name": "searchVolume.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≥ this value."
+              },
+              {
+                "name": "searchVolume.max",
+                "value": "50000",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≤ this value."
+              },
+              {
+                "name": "keywordDifficulty.min",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≥ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "keywordDifficulty.max",
+                "value": "70",
+                "type": "query",
+                "description": "Filter to keywords where the keyword difficulty score is ≤ this value (0-100; higher = harder to rank)."
+              },
+              {
+                "name": "rank.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the query domain's rank position is ≥ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rank.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the query domain's rank position is ≤ this value (1 = best/top organic result)."
+              },
+              {
+                "name": "rankChange.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the query domain improved by at least this many positions vs. the previous month (rank_change ≥ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "rankChange.max",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the query domain's month-over-month rank change is at most this many positions (rank_change ≤ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "costPerClick.min",
+                "value": "1",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≥ this value."
+              },
+              {
+                "name": "costPerClick.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the average cost per click (CPC) is ≤ this value."
+              },
+              {
+                "name": "costPerClickOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for CPC filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "seoClicks.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the query domain are ≥ this value."
+              },
+              {
+                "name": "seoClicks.max",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the query domain are ≤ this value."
+              },
+              {
+                "name": "seoClicksChange.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the query domain's month-over-month change in estimated organic clicks is ≥ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "seoClicksChange.max",
+                "value": "500",
+                "type": "query",
+                "description": "Filter to keywords where the query domain's month-over-month change in estimated organic clicks is ≤ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "percentMobileSearches.min",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentMobileSearches.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the mobile search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentDesktopSearches.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the desktop search share (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.min",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentNotClicked.max",
+                "value": "30",
+                "type": "query",
+                "description": "Filter to keywords where the percentage of searches with no click is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.min",
+                "value": "20",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentPaidClicks.max",
+                "value": "60",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to paid ads (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.min",
+                "value": "40",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≥ this value (range 0-100)."
+              },
+              {
+                "name": "percentOrganicClicks.max",
+                "value": "80",
+                "type": "query",
+                "description": "Filter to keywords where the share of SERP clicks going to organic results (%) is ≤ this value (range 0-100)."
+              },
+              {
+                "name": "monthlyCost.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≥ this value."
+              },
+              {
+                "name": "monthlyCost.max",
+                "value": "5000",
+                "type": "query",
+                "description": "Filter to keywords where the estimated monthly advertising cost is ≤ this value."
+              },
+              {
+                "name": "monthlyCostOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Match type for monthly cost filtering. Broad = includes variations/related terms; Exact = exact keyword only; Phrase = contains the keyword phrase in order (with additional words allowed)."
+              },
+              {
+                "name": "paidCompetitors.min",
+                "value": "5",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 6 months is ≥ this value."
+              },
+              {
+                "name": "paidCompetitors.max",
+                "value": "50",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 6 months is ≤ this value."
+              },
+              {
+                "name": "rankingHomepages.min",
+                "value": "2",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≥ this value."
+              },
+              {
+                "name": "rankingHomepages.max",
+                "value": "10",
+                "type": "query",
+                "description": "Filter to keywords where the number of homepage/root-domain URLs in the top 100 results is ≤ this value."
+              },
+              {
+                "name": "totalMonthlyClicks.min",
+                "value": "1000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≥ this value. Independent of rank; includes both organic and paid clicks."
+              },
+              {
+                "name": "totalMonthlyClicks.max",
+                "value": "10000",
+                "type": "query",
+                "description": "Filter to keywords where total monthly SERP clicks (all domains) are ≤ this value. Includes both organic and paid clicks."
+              },
+              {
+                "name": "adCount.min",
+                "value": "3",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 6 months is ≥ this value."
+              },
+              {
+                "name": "adCount.max",
+                "value": "25",
+                "type": "query",
+                "description": "Filter to keywords where the number of distinct advertisers observed over the last 6 months is ≤ this value."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search. Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SearchVolume",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              },
+              {
+                "name": "adultFilter",
+                "value": "true",
+                "type": "query",
+                "description": "Exclude adult keywords considered unsafe for work."
+              },
+              {
+                "name": "onlyAdultKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "Only include adult keywords considered unsafe for work."
+              },
+              {
+                "name": "exactMatch",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+              }
+            ]
+          },
+          "docs": "Returns keywords where the query domain recently surpassed the comparison domain in organic search rankings. This endpoint identifies competitive shifts where one domain has overtaken another, either through ranking improvements, competitor declines, or both.\n\nThe response includes both domains' ranking data, with the comparison domain's metrics appearing in the 'your' fields (yourRank, yourRankChange, yourUrl). Use this to monitor competitive threats or analyze successful competitor strategies."
+        },
+        {
+          "info": {
+            "name": "Get SERP Analysis for Keyword ",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getSerpAnalysisKeywords",
+            "params": [
+              {
+                "name": "keyword",
+                "value": "electric car",
+                "type": "query",
+                "description": "Keyword to analyze for SERP ranking data."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of ranking results to return (maximum 105 for top 100+ positions)."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              }
+            ]
+          },
+          "docs": "Returns detailed search engine results page (SERP) analysis for a specific keyword, showing all domains ranking in positions 1-100. This endpoint provides comprehensive ranking data updated monthly to reveal the competitive landscape for any keyword.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/keyword/serp-analysis?query=example%20keyword)"
+        },
+        {
+          "info": {
+            "name": "Get Live SEO Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getLiveSeoStats",
+            "params": [
+              {
+                "name": "query",
+                "value": "domain.com",
+                "type": "query",
+                "description": "Domain, URL, subdomain, or path to analyze. Accepts full domains (example.com), complete URLs (https://example.com/blog), subdomains (blog.example.com), specific paths (example.com/products/), or individual pages."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country to get results for."
+              }
+            ]
+          },
+          "docs": "Returns live, aggregated SEO metrics for a given domain, subdomain, path, or URL. Results summarize current organic visibility and traffic estimates derived from up-to-date SERP data. Updated continuously (~every 15 seconds), 24/7/365."
+        },
+        {
+          "info": {
+            "name": "Get Highest Traffic Top Pages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getMostTrafficTopPages",
+            "params": [
+              {
+                "name": "query",
+                "value": "example.com",
+                "type": "query",
+                "description": "Domain or URL to analyze. Accepts full domains (example.com), complete URLs (https://example.com/blog), subdomains (blog.example.com), or specific paths (example.com/products/)."
+              },
+              {
+                "name": "keywordFilter",
+                "value": "hosting",
+                "type": "query",
+                "description": "Filter to pages that rank for keywords containing this term. Helps narrow results to specific topics or content themes."
+              },
+              {
+                "name": "seoClicks.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to pages where estimated monthly organic clicks are ≥ this value."
+              },
+              {
+                "name": "seoClicks.max",
+                "value": "10000",
+                "type": "query",
+                "description": "Filter to pages where estimated monthly organic clicks are ≤ this value."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search. Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SeoClicks",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              }
+            ]
+          },
+          "docs": "Returns the pages that generate the most organic traffic for a domain. This endpoint identifies the highest-performing content by estimated monthly organic clicks, revealing which pages drive the most SEO value and traffic to the site.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/seo/top-pages?query=example.com)"
+        },
+        {
+          "info": {
+            "name": "Get New Top Pages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getNewTopPages",
+            "params": [
+              {
+                "name": "query",
+                "value": "example.com",
+                "type": "query",
+                "description": "Domain or URL to analyze. Accepts full domains (example.com), complete URLs (https://example.com/blog), subdomains (blog.example.com), or specific paths (example.com/products/)."
+              },
+              {
+                "name": "keywordFilter",
+                "value": "hosting",
+                "type": "query",
+                "description": "Filter to pages that rank for keywords containing this term. Helps narrow results to specific topics or content themes."
+              },
+              {
+                "name": "seoClicks.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to pages where estimated monthly organic clicks are ≥ this value."
+              },
+              {
+                "name": "seoClicks.max",
+                "value": "10000",
+                "type": "query",
+                "description": "Filter to pages where estimated monthly organic clicks are ≤ this value."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search. Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SeoClicks",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              }
+            ]
+          },
+          "docs": "Returns pages that have recently started generating significant organic traffic for a domain. This endpoint identifies newly discovered high-performing content, revealing fresh opportunities and emerging content strategies that are driving SEO success.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/seo/top-pages/domain?query=example.com) _(TODO - verify)_"
+        },
+        {
+          "info": {
+            "name": "Get Top Performing Pages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getTopPages",
+            "params": [
+              {
+                "name": "query",
+                "value": "example.com",
+                "type": "query",
+                "description": "Domain or URL to analyze. Accepts full domains (example.com), complete URLs (https://example.com/blog), subdomains (blog.example.com), or specific paths (example.com/products/)."
+              },
+              {
+                "name": "searchType",
+                "value": "MostTraffic",
+                "type": "query",
+                "description": "Required. Selects page analysis type: MostTraffic=pages generating most organic traffic overall, New=pages recently discovered with significant traffic. Determines whether to return established top performers or emerging high-traffic pages."
+              },
+              {
+                "name": "keywordFilter",
+                "value": "hosting",
+                "type": "query",
+                "description": "Filter to pages that rank for keywords containing this term. Helps narrow results to specific topics or content themes."
+              },
+              {
+                "name": "seoClicks.min",
+                "value": "100",
+                "type": "query",
+                "description": "Filter to pages where estimated monthly organic clicks are ≥ this value."
+              },
+              {
+                "name": "seoClicks.max",
+                "value": "10000",
+                "type": "query",
+                "description": "Filter to pages where estimated monthly organic clicks are ≤ this value."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search. Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SeoClicks",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              }
+            ]
+          },
+          "docs": "Returns top organic pages for a domain, subdomain, path, or full URL. Use searchType to choose: MostTraffic (highest estimated SEO clicks) or New (newly gaining traffic). Results include page URL and monthly SEO clicks; optional keywordFilter narrows by ranked keywords."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

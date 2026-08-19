@@ -1,5 +1,13 @@
-generated: '2026-07-11'
+generated: '2026-08-13'
 method: derived
+docs: https://developer.spyfu.com/reference
+credentials_url: https://www.spyfu.com/account/api
+note: >-
+  Three coexisting schemes, all key-based: HTTP Basic over SPYFU_API_ID:SECRET_KEY,
+  the same secret as an api_key query parameter, and a timestamped HMAC signature in
+  an Authentication header. No OAuth, no OIDC, and therefore no scopes — see
+  conformance/spyfu-conformance.yml. The query-parameter option puts the account
+  secret into URLs, logs and referrers; SpyFu documents it without a caveat.
 source: openapi/spyfu-account-openapi.yml, openapi/spyfu-ad-history-openapi.yml, openapi/spyfu-competitors-openapi.yml,
   openapi/spyfu-domain-stats-openapi.yml, openapi/spyfu-keyword-related-openapi.yml, openapi/spyfu-kombat-openapi.yml,
   openapi/spyfu-ppc-keyword-openapi.yml, openapi/spyfu-ppc-research-serp-openapi.yml, openapi/spyfu-ranking-history-openapi.yml,

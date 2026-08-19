@@ -1,0 +1,114 @@
+generated: '2026-08-13'
+method: derived
+source: mcp/spyfu-mcp.yml, openapi/*.yml
+description: >-
+  Crosswalk between SpyFu's published MCP surface and its OpenAPI operations.
+  SpyFu has both — a remote MCP endpoint at https://developer.spyfu.com/mcp and
+  nine OpenAPI 3.x documents covering 48 operations — but the two cannot be
+  bound today: the MCP server answers tools/list with HTTP 401 "Authorization
+  required", and no tool names are published anywhere else (llms.txt carries
+  documentation links only, not a tool manifest). Every crosswalk row is
+  therefore left unwritten rather than guessed. What IS recordable is the
+  divergence: 48 REST operations exist with no observable MCP tool bound to any
+  of them.
+surfaces:
+  openapi:
+    files:
+      - openapi/spyfu-account-api-api-openapi.yml
+      - openapi/spyfu-ad-history-research-api-api-openapi.yml
+      - openapi/spyfu-competitors-api-api-openapi.yml
+      - openapi/spyfu-domain-stats-api-api-openapi.yml
+      - openapi/spyfu-keyword-research-api-api-openapi.yml
+      - openapi/spyfu-kombat-api-api-openapi.yml
+      - openapi/spyfu-ppc-research-api-api-openapi.yml
+      - openapi/spyfu-ranking-history-api-api-openapi.yml
+      - openapi/spyfu-seo-research-api-api-openapi.yml
+    base: https://api.spyfu.com/apis
+    gated: false
+    operations: 48
+  graphql:
+    endpoint:
+    present: false
+    note: SpyFu publishes no GraphQL surface.
+  mcp:
+    url: https://developer.spyfu.com/mcp
+    gated: true
+    gate: HTTP 401 -32001 "Authorization required" on both initialize and tools/list
+crosswalk: []
+mcp_only: []
+rest_only:
+  - capability: Domain statistics
+    operations:
+      - DomainStatsApi_GetAllDomainStats_GET
+      - DomainStatsApi_GetLatestDomainStats_GET
+      - DomainStatsApi_GetDomainStatsForExactDate_GET
+      - DomainStatsApi_GetActiveDatesForDomain_GET
+      - DomainStatsApi_GetBulkDomainStats_GET
+      - DomainStatsApi_GetMatchingDomains_GET
+  - capability: Ad history
+    operations:
+      - AdHistoryApi_GetDomainAdHistory_GET
+      - AdHistoryApi_GetTermAdHistory_GET
+      - AdHistoryApi_GetTermAdHistoryWithStats_GET
+  - capability: PPC research
+    operations:
+      - PaidSerpApi_GetPaidSerps_GET
+      - PaidSerpApi_GetMostSuccessful_GET
+      - PaidSerpApi_GetNewKeywords_GET
+  - capability: SEO research and top pages
+    operations:
+      - OrganicSerpApi_GetSeoKeywords_GET
+      - OrganicSerpApi_GetMostValuableKeywords_GET
+      - OrganicSerpApi_GetNewlyRankedKeywords_GET
+      - OrganicSerpApi_GetGainedRanksKeywords_GET
+      - OrganicSerpApi_GetLostRanksKeywords_GET
+      - OrganicSerpApi_GetGainedClicksKeywords_GET
+      - OrganicSerpApi_GetLostClicksKeywords_GET
+      - OrganicSerpApi_GetJustMadeItKeywords_GET
+      - OrganicSerpApi_GetJustFellOffKeywords_GET
+      - OrganicSerpApi_GetSerpAnalysisKeywords_GET
+      - OrganicSerpApi_GetKeywordsWhereTheyOutRankYou_GET
+      - OrganicSerpApi_GetKeywordsWhereTheyJustSurpassedYou_GET
+      - OrganicSerpApi_GetOrganicOutrankingKeywords_GET
+      - OrganicSerpApi_GetLiveSeoStats_GET
+      - TopPagesApi_GetMostTrafficTopPages_GET
+      - TopPagesApi_GetNewTopPages_GET
+      - TopPagesApi_GetTopPages_GET
+  - capability: Competitors
+    operations:
+      - CompetitorsApi_GetTopPpcCompetitors_GET
+      - CompetitorsApi_GetTopSeoCompetitors_GET
+      - CompetitorsApi_GetCombinedTopCompetitors_GET
+  - capability: Kombat (shared keyword comparison)
+    operations:
+      - KombatApi_GetCompetingPpcKeywords_GET
+      - KombatApi_GetCompetingSeoKeywords_GET
+  - capability: Keyword research
+    operations:
+      - RelatedKeywordsV2Api_GetRelatedKeywords_GET
+      - RelatedKeywordsV2Api_GetQuestionKeywords_GET
+      - RelatedKeywordsV2Api_GetAlsoBuysAdsForKeywords_GET
+      - RelatedKeywordsV2Api_GetAlsoRanksForKeywords_GET
+      - RelatedKeywordsV2Api_GetTransactionKeywords_GET
+      - RelatedKeywordsV2Api_GetKeywordExpansions_GET
+      - RelatedKeywordsV2Api_GetKeywordsByBulkSearch_GET
+      - RelatedKeywordsV2Api_GetKeywordsByBulkSearchPost_POST
+  - capability: Ranking history
+    operations:
+      - HistoricRanking_GetHistoricRankingsForDomain_GET
+      - HistoricRanking_GetHistoricRankingsForKeywordOnDomains_GET
+      - HistoricRanking_GetHistoricRankingsForDomainOnKeywords_GET
+  - capability: Account / API usage metering
+    operations:
+      - AccountApi_GetApiUsageForMonth_GET
+      - AccountApi_GetApiUsageForMonthByDay_GET
+      - AccountApi_GetApiUsageForMonthByMethod_GET
+coverage:
+  tools_named: 0
+  tools_bound: 0
+  mcp_only: 0
+  rest_operations_total: 48
+  rest_operations_with_tool: 0
+  note: >-
+    tools_named is 0 because the server's tools/list is auth-gated and no
+    published manifest exists — not because the server exposes no tools.

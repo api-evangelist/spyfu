@@ -1,0 +1,99 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/*.yml (48 operations), https://developer.spyfu.com/docs/rate-limits
+description: >-
+  Error catalogue for the SpyFu v2 REST APIs. Derived from the 4xx/5xx responses
+  declared on every operation in the nine catalogued OpenAPI documents, enriched
+  with the one error body SpyFu publishes verbatim (the 429 example in the
+  rate-limits guide). SpyFu declares 400, 401 and 500 uniformly on all 48
+  operations — but declares no response schema or example for any of them, so
+  the body shape below comes from the rate-limits guide rather than the
+  contract. 429 is documented in the guide and absent from every OpenAPI
+  document; 403 and 404 are not documented at all.
+format: vendor-json
+rfc9457: false
+envelope:
+  content_type: application/json
+  fields:
+    - name: error
+      type: string
+      description: Machine-readable error code (observed value, rate_limited).
+    - name: message
+      type: string
+      description: Human-readable explanation.
+  source: https://developer.spyfu.com/docs/rate-limits
+  note: >-
+    Only ever published in the 429 example. Whether 400/401/500 use the same
+    envelope is undocumented and was not verified against the live API, which
+    requires credentials.
+problems:
+  - status: 400
+    code: bad_request
+    title: Bad Request
+    description: >-
+      Invalid parameters — malformed domain or domain list, empty or malformed
+      keyword term, pageSize above the endpoint maximum, invalid boolean value,
+      or a countryCode outside the supported enum.
+    declared_on: 48
+    schema_declared: false
+    remediation: >-
+      Validate the domain/keyword format, keep pageSize within the endpoint
+      maximum, and use a countryCode from
+      https://developer.spyfu.com/reference/country-code-enum.
+    source: openapi/*.yml
+  - status: 401
+    code: unauthorized
+    title: User failed authorization
+    description: >-
+      Invalid API credentials, or credentials without permission for the
+      requested data set. API access requires a Pro + AI or Team/Agency
+      subscription, so a valid login on a Basic plan still fails here.
+    declared_on: 48
+    schema_declared: false
+    remediation: >-
+      Check the API ID and Secret Key at https://www.spyfu.com/account/api. Use
+      HTTP Basic (SPYFU_API_ID:SECRET_KEY), the api_key query parameter, or a
+      timestamped HMAC Authentication header. Confirm the plan includes API
+      access.
+    source: openapi/*.yml
+  - status: 429
+    code: rate_limited
+    title: Too Many Requests
+    description: >-
+      Per-endpoint requests-per-second allowance exceeded on the rolling
+      1-second window. Limits are per endpoint and vary from 2 r/s (getTopPages)
+      to 1000 r/s (Domain Stats, Competitors).
+    declared_on: 0
+    schema_declared: false
+    example_body: '{"error": "rate_limited", "message": "Too many requests. Please retry after 1 second."}'
+    response_headers: [Retry-After]
+    remediation: >-
+      Wait the number of seconds in Retry-After (typically 1) and retry. Cap
+      client concurrency per endpoint; see rate-limits/spyfu-rate-limits.yml.
+    source: https://developer.spyfu.com/docs/rate-limits
+    note: >-
+      Documented in the guide but declared on zero OpenAPI operations — a
+      machine reading only the spec would never expect it.
+  - status: 500
+    code: internal_server_error
+    title: Internal Server Error
+    description: A server-side error occurred while processing the request.
+    declared_on: 48
+    schema_declared: false
+    remediation: >-
+      Retry with backoff. All operations are reads, so retries are safe. No
+      status page or incident feed is published to check against.
+    source: openapi/*.yml
+gaps:
+  - >-
+    No error response schema on any of the 144 declared 4xx/5xx responses across
+    48 operations — descriptions only.
+  - >-
+    No error code reference page. The only machine-readable code observed
+    anywhere in SpyFu's documentation is rate_limited.
+  - 429 is documented in prose but missing from every OpenAPI document.
+  - No 403 or 404 semantics documented.
+  - >-
+    Billing-related failures (monthly API credit exhausted, spending cap
+    reached — a feature shipped 2026-05-13) map to no documented status code.

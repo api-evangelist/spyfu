@@ -1,86 +1,145 @@
 name: SpyFu API Rate Limits
 description: >-
-  SpyFu enforces per-endpoint rate limits on rolling 1-second windows. When a
-  limit is exceeded the API returns HTTP 429 Too Many Requests with a
-  Retry-After header. There are no separate daily or monthly request quotas;
-  usage is metered through the monthly API credit system.
+  SpyFu enforces per-endpoint rate limits on a rolling 1-second window. Limits
+  vary by endpoint according to relative compute cost, from 2 requests/second on
+  the Top Pages endpoints to 1000 requests/second on Domain Stats and
+  Competitors. Exceeding a limit returns HTTP 429 Too Many Requests with a
+  Retry-After header (typically 1) and a JSON body of
+  {"error":"rate_limited","message":"Too many requests. Please retry after 1
+  second."}. There are no RateLimit-* / X-RateLimit-* quota headers on
+  successful responses, so a client cannot observe how close it is to a limit —
+  the only runtime signal arrives after the limit is already breached. There are
+  no daily or monthly request quotas; volume is metered commercially through the
+  per-row API credit system instead (see finops/spyfu-finops.yml).
 specificationVersion: "0.1"
-url: https://developer.spyfu.com/docs
+generated: '2026-08-13'
+method: searched
+source: https://developer.spyfu.com/docs/rate-limits
+source_mirror: https://github.com/spyfu/spyfu_api_docs/blob/v1.0/docs/documentation/rate-limits.md
+url: https://developer.spyfu.com/docs/rate-limits
+limit_count: 40
 enforcement:
-  window: 1 second (rolling)
-  errorCode: 429
-  retryHeader: Retry-After
-  retryBehavior: Retry after the number of seconds indicated by Retry-After
+  window: rolling 1 second
+  scope: per endpoint
+  status_code: 429
+  response_headers:
+    - name: Retry-After
+      value: "1"
+      description: Seconds to wait before retrying. The only rate-limit header SpyFu returns.
+  quota_headers: []
+  error_body: '{"error": "rate_limited", "message": "Too many requests. Please retry after 1 second."}'
+  retry_behavior: Wait the number of seconds in Retry-After, then retry. All operations are reads, so retry is always safe.
+  increase_process: >-
+    Contact SpyFu support with the API and endpoint, expected sustained RPS and
+    burst behaviour, and the use case and time window.
 limits:
   - api: Domain Stats API
+    service: domain_stats_api
     endpoints:
-      - path: /getBulkDomainStats
-        limit: 333
-        unit: requests/second
-      - path: /getMatchingDomains
-        limit: 10
-        unit: requests/second
-      - path: "*"
-        limit: 1000
-        unit: requests/second
-
-  - api: Ad History Research API
+      - {path: /domain_stats_api/v2/getAllDomainStats, operationId: DomainStatsApi_GetAllDomainStats_GET, limit: 1000, unit: requests/second}
+      - {path: /domain_stats_api/v2/getLatestDomainStats, operationId: DomainStatsApi_GetLatestDomainStats_GET, limit: 1000, unit: requests/second}
+      - {path: /domain_stats_api/v2/getDomainStatsForExactDate, operationId: DomainStatsApi_GetDomainStatsForExactDate_GET, limit: 1000, unit: requests/second}
+      - {path: /domain_stats_api/v2/getActiveDatesForDomain, operationId: DomainStatsApi_GetActiveDatesForDomain_GET, limit: 1000, unit: requests/second}
+      - {path: /domain_stats_api/v2/getBulkDomainStats, operationId: DomainStatsApi_GetBulkDomainStats_GET, limit: 333, unit: requests/second}
+      - {path: /domain_stats_api/v2/getMatchingDomains, operationId: DomainStatsApi_GetMatchingDomains_GET, limit: 10, unit: requests/second}
+  - api: Ad History API
+    service: cloud_ad_history_api
+    uniform: 10
     endpoints:
-      - path: "*"
-        limit: 10
-        unit: requests/second
-
+      - {path: /cloud_ad_history_api/v2/domain/getDomainAdHistory, operationId: AdHistoryApi_GetDomainAdHistory_GET, limit: 10, unit: requests/second}
+      - {path: /cloud_ad_history_api/v2/domain/getDomainAdHistoryByDate, operationId: null, limit: 10, unit: requests/second, note: "Shipped 2026-07-15; documented upstream but not present in the OpenAPI captured in this repo."}
+      - {path: /cloud_ad_history_api/v2/term/getTermAdHistory, operationId: AdHistoryApi_GetTermAdHistory_GET, limit: 10, unit: requests/second}
+      - {path: /cloud_ad_history_api/v2/term/getTermAdHistoryWithStats, operationId: AdHistoryApi_GetTermAdHistoryWithStats_GET, limit: 10, unit: requests/second}
   - api: PPC Research API
+    service: serp_api, keyword_api
     endpoints:
-      - path: /getPaidSerps
-        limit: 12
-        unit: requests/second
-      - path: "*"
-        limit: 10
-        unit: requests/second
-
+      - {path: /serp_api/v2/ppc/getPaidSerps, operationId: PaidSerpApi_GetPaidSerps_GET, limit: 12, unit: requests/second}
+      - {path: /keyword_api/v2/ppc/getMostSuccessful, operationId: PaidSerpApi_GetMostSuccessful_GET, limit: 10, unit: requests/second}
+      - {path: /keyword_api/v2/ppc/getNewKeywords, operationId: PaidSerpApi_GetNewKeywords_GET, limit: 10, unit: requests/second}
   - api: SEO Research API
+    service: serp_api
+    uniform: 10
+    note: Covers both the Organic SERP and Top Pages endpoints. getTopPages is the one exception at 2 r/s.
     endpoints:
-      - path: /getTopPages
-        limit: 2
-        unit: requests/second
-      - path: "*"
-        limit: 10
-        unit: requests/second
-
+      - {path: /serp_api/v2/seo/getSeoKeywords, operationId: OrganicSerpApi_GetSeoKeywords_GET, limit: 10, unit: requests/second}
+      - {path: /serp_api/v2/seo/getMostValuableKeywords, operationId: OrganicSerpApi_GetMostValuableKeywords_GET, limit: 10, unit: requests/second}
+      - {path: /serp_api/v2/seo/getNewlyRankedKeywords, operationId: OrganicSerpApi_GetNewlyRankedKeywords_GET, limit: 10, unit: requests/second}
+      - {path: /serp_api/v2/seo/getGainedRanksKeywords, operationId: OrganicSerpApi_GetGainedRanksKeywords_GET, limit: 10, unit: requests/second}
+      - {path: /serp_api/v2/seo/getLostRanksKeywords, operationId: OrganicSerpApi_GetLostRanksKeywords_GET, limit: 10, unit: requests/second}
+      - {path: /serp_api/v2/seo/getGainedClicksKeywords, operationId: OrganicSerpApi_GetGainedClicksKeywords_GET, limit: 10, unit: requests/second}
+      - {path: /serp_api/v2/seo/getLostClicksKeywords, operationId: OrganicSerpApi_GetLostClicksKeywords_GET, limit: 10, unit: requests/second}
+      - {path: /serp_api/v2/seo/getJustMadeItKeywords, operationId: OrganicSerpApi_GetJustMadeItKeywords_GET, limit: 10, unit: requests/second}
+      - {path: /serp_api/v2/seo/getJustFellOffKeywords, operationId: OrganicSerpApi_GetJustFellOffKeywords_GET, limit: 10, unit: requests/second}
+      - {path: /serp_api/v2/seo/getSerpAnalysisKeywords, operationId: OrganicSerpApi_GetSerpAnalysisKeywords_GET, limit: 10, unit: requests/second}
+      - {path: /serp_api/v2/seo/getWhereTheyOutRankYou, operationId: OrganicSerpApi_GetKeywordsWhereTheyOutRankYou_GET, limit: 10, unit: requests/second}
+      - {path: /serp_api/v2/seo/getWhereTheyJustSurpassedYou, operationId: OrganicSerpApi_GetKeywordsWhereTheyJustSurpassedYou_GET, limit: 10, unit: requests/second}
+      - {path: /serp_api/v2/seo/getLiveSeoStats, operationId: OrganicSerpApi_GetLiveSeoStats_GET, limit: 10, unit: requests/second}
+      - {path: /serp_api/v2/seo/getOrganicOutrankingKeywords, operationId: OrganicSerpApi_GetOrganicOutrankingKeywords_GET, limit: 10, unit: requests/second}
+      - {path: /serp_api/v2/seo/getMostTrafficTopPages, operationId: TopPagesApi_GetMostTrafficTopPages_GET, limit: 10, unit: requests/second}
+      - {path: /serp_api/v2/seo/getNewTopPages, operationId: TopPagesApi_GetNewTopPages_GET, limit: 10, unit: requests/second}
+      - {path: /serp_api/v2/seo/getTopPages, operationId: TopPagesApi_GetTopPages_GET, limit: 2, unit: requests/second}
   - api: Competitors API
+    service: competitors_api
+    uniform: 1000
     endpoints:
-      - path: "*"
-        limit: 1000
-        unit: requests/second
-
+      - {path: /competitors_api/v2/ppc/getTopCompetitors, operationId: CompetitorsApi_GetTopPpcCompetitors_GET, limit: 1000, unit: requests/second}
+      - {path: /competitors_api/v2/seo/getTopCompetitors, operationId: CompetitorsApi_GetTopSeoCompetitors_GET, limit: 1000, unit: requests/second}
+      - {path: /competitors_api/v2/combined/getCombinedTopCompetitors, operationId: CompetitorsApi_GetCombinedTopCompetitors_GET, limit: 1000, unit: requests/second}
   - api: Kombat API
+    service: keyword_api
     endpoints:
-      - path: "*"
-        limit: 10
-        unit: requests/second
-
+      - {path: /keyword_api/v2/kombat/getCompetingPpcKeywords, operationId: KombatApi_GetCompetingPpcKeywords_GET, limit: 10, unit: requests/second}
+      - {path: /keyword_api/v2/kombat/getCompetingSeoKeywords, operationId: KombatApi_GetCompetingSeoKeywords_GET, limit: 8, unit: requests/second}
   - api: Keyword Research API
+    service: keyword_api
     endpoints:
-      - path: /getRelatedKeywords
-        limit: 5
-        unit: requests/second
-      - path: /getKeywordInformation
-        limit: 100
-        unit: requests/second
-      - path: "*"
-        limit: 10
-        unit: requests/second
-
-  - api: Ranking History Research API
+      - {path: /keyword_api/v2/related/getRelatedKeywords, operationId: RelatedKeywordsV2Api_GetRelatedKeywords_GET, limit: 5, unit: requests/second}
+      - {path: /keyword_api/v2/related/getQuestionKeywords, operationId: RelatedKeywordsV2Api_GetQuestionKeywords_GET, limit: 10, unit: requests/second}
+      - {path: /keyword_api/v2/related/getAlsoBuysAdsForKeywords, operationId: RelatedKeywordsV2Api_GetAlsoBuysAdsForKeywords_GET, limit: 10, unit: requests/second}
+      - {path: /keyword_api/v2/related/getAlsoRanksForKeywords, operationId: RelatedKeywordsV2Api_GetAlsoRanksForKeywords_GET, limit: 10, unit: requests/second}
+      - {path: /keyword_api/v2/related/getTransactionKeywords, operationId: RelatedKeywordsV2Api_GetTransactionKeywords_GET, limit: 10, unit: requests/second}
+      - {path: /keyword_api/v2/related/getKeywordInformation, operationId: RelatedKeywordsV2Api_GetKeywordsByBulkSearch_GET, method: GET, limit: 100, unit: requests/second}
+      - {path: /keyword_api/v2/related/getKeywordInformation, operationId: RelatedKeywordsV2Api_GetKeywordsByBulkSearchPost_POST, method: POST, limit: 10, unit: requests/second}
+      - {path: /keyword_api/v2/related/getKeywordExpansions, operationId: RelatedKeywordsV2Api_GetKeywordExpansions_GET, limit: 100, unit: requests/second}
+  - api: Ranking History API
+    service: organic_history_api
+    uniform: 10
     endpoints:
-      - path: "*"
-        limit: 10
-        unit: requests/second
-
+      - {path: /organic_history_api/v2/historic/getHistoricRankingsForDomain, operationId: HistoricRanking_GetHistoricRankingsForDomain_GET, limit: 10, unit: requests/second}
+      - {path: /organic_history_api/v2/historic/getHistoricRankingsForKeywordOnDomains, operationId: HistoricRanking_GetHistoricRankingsForKeywordOnDomains_GET, limit: 10, unit: requests/second}
+      - {path: /organic_history_api/v2/historic/getHistoricRankingsForDomainOnKeywords, operationId: HistoricRanking_GetHistoricRankingsForDomainOnKeywords_GET, limit: 10, unit: requests/second}
+  - api: Account API
+    service: accounts_api
+    endpoints: []
+    note: SpyFu publishes no rate limit for the Account API usage endpoints.
 bestPractices:
-  - Batch requests where possible to reduce total call volume
-  - Cache API responses to avoid redundant queries
-  - Limit concurrency to stay within per-endpoint thresholds
-  - Monitor usage at spyfu.com/account/api
-  - Contact SpyFu support to request higher limits for specific workloads
+  - Back off on 429 for the number of seconds in Retry-After (typically 1).
+  - Batch or paginate where supported to reduce total call volume.
+  - Cache responses; the underlying data updates monthly for most endpoints.
+  - Cap concurrency per endpoint — there are no headers to react to, so limits must be respected proactively.
+  - Monitor usage at https://www.spyfu.com/account/api and via the Account API.
+x-evidence:
+  - url: https://developer.spyfu.com/docs/rate-limits
+    http_status: 429
+    fetched: '2026-08-13'
+    note: >-
+      The live docs host bot-challenged this pass (HTTP 429, "Hello there,
+      human!"). The identical content was read from SpyFu's own first-party
+      mirror at github.com/spyfu/spyfu_api_docs, branch v1.0, path
+      docs/documentation/rate-limits.md, and that is the text this artifact
+      records.
+  - url: https://raw.githubusercontent.com/spyfu/spyfu_api_docs/v1.0/docs/documentation/rate-limits.md
+    http_status: 200
+    fetched: '2026-08-13'
+x-corrections:
+  - >-
+    Prior revision recorded a blanket "*: 1000 r/s" for Domain Stats and
+    "*: 10 r/s" wildcards elsewhere. Replaced with the published per-endpoint
+    table.
+  - >-
+    Prior revision gave Kombat getCompetingSeoKeywords 10 r/s; SpyFu publishes
+    8 r/s.
+  - >-
+    Prior revision omitted getKeywordExpansions (100 r/s) and did not
+    distinguish the GET and POST forms of getKeywordInformation, which carry
+    different limits (100 vs 10 r/s).

@@ -4,6 +4,12 @@ description: >-
   Team/Agency plans. Each plan bundles monthly API credits on a pay-as-you-go
   CPM model billed per row of data returned.
 specificationVersion: "0.1"
+generated: '2026-08-13'
+method: searched
+source: https://www.spyfu.com/pricing
+source_secondary: https://developer.spyfu.com/docs/api-pricing
+plan_count: 3
+api_plan_count: 2
 url: https://www.spyfu.com/pricing
 plans:
   - name: Basic

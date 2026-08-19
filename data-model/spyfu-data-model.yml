@@ -1,0 +1,218 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/_original/*.yml (components.schemas, 37 schemas across 10 documents)
+description: >-
+  Entity-relationship graph for the SpyFu v2 research APIs, derived from the
+  component schemas in the captured OpenAPI documents. SpyFu's data model has no
+  resource identifiers and no persistent objects — it is an analytics API, not a
+  CRUD API. Entities are joined by natural keys carried as plain string fields
+  (domain, keyword/term, url) plus a time key (searchDateId, or the
+  searchMonth/searchYear pair). There is no /{id} path anywhere in the API and
+  no schema declares an id property except adId and termId, which are opaque
+  internal handles that no other operation accepts as input. Every relationship
+  below is therefore a value join, not a reference.
+identifiers:
+  primary_keys:
+    - name: domain
+      type: string
+      example: example.com
+      description: >-
+        The dominant join key. Present on domain stats, competitors, ad history,
+        SERP analysis, live SEO stats, ranking history and top pages.
+    - name: keyword
+      type: string
+      aliases: [term, query]
+      description: >-
+        The second join key. Called keyword in output schemas, term in the ad
+        history path segment, and query in the request parameter.
+    - name: url
+      type: string
+      description: >-
+        Page-level key on top pages, SERP analysis and organic SERP results.
+        SpyFu treats domain, subdomain, path and full URL as interchangeable
+        granularities of the same key on several SEO endpoints.
+  time_keys:
+    - name: searchDateId
+      type: integer
+      description: >-
+        Opaque month identifier used by ad history and range filters
+        (minSearchDateId / maxSearchDateId).
+    - name: searchMonth + searchYear
+      type: integer pair
+      description: Human-readable time key on domain stats.
+    - name: SearchDate
+      type: object
+      properties: [dateString, month, year]
+      description: The only schema that models time as an entity.
+  opaque_handles:
+    - {name: adId, scope: ad history, note: Returned only; accepted by no operation.}
+    - {name: termId, scope: paid SERP, note: Returned only; accepted by no operation.}
+  id_prefixes: []
+  note: No prefixed or globally-unique object ids exist in this API.
+envelope:
+  description: >-
+    Almost every response is a wrapper carrying paging counters plus a results
+    array. This is the model's single most consistent structure.
+  common_fields:
+    - {name: resultCount, description: Rows in this response.}
+    - {name: totalMatchingResults, description: Total rows matching the query across all pages.}
+    - {name: results, description: The row array.}
+  wrappers:
+    - PublicApiDomainStatsWrapperOutputDto
+    - PublicApiBulkDomainStatsWrapperOutputDto
+    - PublicApiSearchDateListOutputDto
+    - PublicApiDomainAdHistoryWrapperOutputDto
+    - PublicApiTermAdHistoryWrapperOutputDto
+    - PublicApiTermAdHistoryStatsWrapperOutputDto
+    - PublicApiCompetitorWrapperOutputDto
+    - PublicApiCombinedCompetitorsWrapperOutputDto
+    - PublicApiKeywordOverviewOutputDto
+    - PublicApiPaidSerpKeywordWrapperOutputDto
+    - PublicApiOrganicSerpKeywordWrapperOutputDto
+    - PublicSerpAnalysisKeywordWrapperOutputDto
+    - PublicApiTopPagesWrapperOutputDto
+    - PublicApiLiveSeoStatsWrapperOutputDto
+    - PublicApiHistoricRankingWrapperOutputDto
+    - PublicApiDomainAndKeywordWrapperOutputDto
+entities:
+  - name: Domain
+    description: >-
+      A website tracked by SpyFu. The root entity of the model, but never
+      materialised as its own resource — it exists only as the domain string
+      carried on other rows.
+    key: domain
+    schemas: [PublicApiDomainStatsWrapper, PublicApiDomainStatsWrapperOutputDto]
+    domain_area: Domain Stats
+  - name: DomainStatsPeriod
+    description: >-
+      One month of SEO and PPC performance for a domain — organic rank, paid
+      clicks, ad rank, budget, organic value, ads purchased, strength.
+    key: domain + searchMonth + searchYear
+    schemas: [PublicApiDomainStatsOutputItemDto]
+    domain_area: Domain Stats
+  - name: SearchDate
+    description: A month SpyFu collected data for; the coverage calendar for a domain.
+    key: dateString
+    schemas: [SearchDate, PublicApiSearchDateListOutputDto]
+    domain_area: Domain Stats
+  - name: Keyword
+    description: >-
+      A search term with volume, difficulty, click distribution and CPC metrics
+      across broad/phrase/exact match.
+    key: keyword
+    schemas: [PublicApiKeywordOverviewOutputItemDto]
+    domain_area: Keyword Research / Kombat / PPC
+  - name: Ad
+    description: >-
+      A single paid ad variation observed on a SERP — title, body, position,
+      destination URL, observation month.
+    key: adId (opaque) or domainName + term + searchDateId
+    schemas: [PublicApiAdOutputDto, PublicApiAdWithKeywordOutputDto, TopAd]
+    domain_area: Ad History
+  - name: TermAdvertiser
+    description: >-
+      A domain advertising on a given keyword, with budget, coverage and
+      leaderboard share.
+    key: term + domainName
+    schemas: [PublicApiTermAdvertiserOutputDto, PublicApiTermAdHistoryOutputDto]
+    domain_area: Ad History
+  - name: Competitor
+    description: >-
+      A domain competing with the query domain, ranked by shared-keyword
+      overlap. Split into ppc, seo and combined variants.
+    key: domain + rank
+    schemas: [PublicApiCompetitorsOutputDto, PublicApiCombinedCompetitorsOutputDto]
+    domain_area: Competitors
+  - name: PaidSerpKeyword
+    description: A keyword a domain bought an ad on, with ad position, ad copy and volume.
+    key: keyword + domain + dateSearched
+    schemas: [PublicApiPaidSerpKeywordOutputDto]
+    domain_area: PPC Research
+  - name: OrganicSerpKeyword
+    description: >-
+      A keyword a domain ranks for organically, with rank, rank change, SEO
+      clicks, click change and CPC benchmarks.
+    key: keyword + domain
+    schemas: [PublicApiOrganicSerpKeywordOutputDto]
+    domain_area: SEO Research
+  - name: SerpAnalysisRow
+    description: One ranking position (1-100) on a keyword's SERP, held by a domain and URL.
+    key: keyword + rank
+    schemas: [PublicSerpAnalysisKeywordOutputDto]
+    domain_area: SEO Research
+  - name: TopPage
+    description: A page on a domain ranked by estimated monthly organic clicks.
+    key: url
+    schemas: [PublicApiTopPageOutputDto]
+    domain_area: SEO Research / Top Pages
+  - name: LiveSeoStats
+    description: >-
+      Continuously-updated aggregate organic visibility for a domain, subdomain,
+      path or URL.
+    key: domain or url
+    schemas: [PublicApiLiveSeoStatsWrapperOutputDto]
+    domain_area: SEO Research
+  - name: HistoricRank
+    description: >-
+      A keyword's rank trajectory on a domain over a date range, with start/end
+      rank, rank change and click change.
+    key: domain + keyword
+    schemas: [PublicApiHistoricRankOutputDto, PublicApiDomainOnKeywordOutputDto]
+    domain_area: Ranking History
+  - name: ApiMonthlyUsage
+    description: >-
+      The caller's own metered API consumption for a month — requests, rows
+      returned, units used, final cost, paid flag. The only account-scoped
+      entity in the API.
+    key: month
+    schemas: [ApiMonthlyUsage]
+    domain_area: Account
+  - name: ApiMethodDailyUsage
+    description: Per-day, per-method breakdown of the caller's API consumption.
+    key: day + apiMethod
+    schemas: [ApiMethodDailyUsage]
+    domain_area: Account
+relationships:
+  - {from: Domain, to: DomainStatsPeriod, type: has_many, via: domain, note: One row per month of history.}
+  - {from: Domain, to: SearchDate, type: has_many, via: domain, note: getActiveDatesForDomain returns the coverage calendar.}
+  - {from: Domain, to: Ad, type: has_many, via: domainName, note: getDomainAdHistory.}
+  - {from: Domain, to: Competitor, type: has_many, via: domain, note: Ranked by shared-keyword overlap; PPC, SEO or combined.}
+  - {from: Domain, to: PaidSerpKeyword, type: has_many, via: domain}
+  - {from: Domain, to: OrganicSerpKeyword, type: has_many, via: domain}
+  - {from: Domain, to: TopPage, type: has_many, via: domain, note: Pages joined by URL prefix, not by an explicit foreign key.}
+  - {from: Domain, to: LiveSeoStats, type: has_one, via: domain}
+  - {from: Domain, to: HistoricRank, type: has_many, via: domain}
+  - {from: Keyword, to: Ad, type: has_many, via: term, note: getTermAdHistory — ads observed on this keyword.}
+  - {from: Keyword, to: TermAdvertiser, type: has_many, via: term, note: getTermAdHistoryWithStats.}
+  - {from: Keyword, to: SerpAnalysisRow, type: has_many, via: keyword, note: Positions 1-100 for the keyword.}
+  - {from: Keyword, to: Keyword, type: has_many, via: query, note: "Self-referential expansion: related, question, also-buys-ads-for, also-ranks-for and transactional keywords all return Keyword rows seeded by a Keyword."}
+  - {from: SerpAnalysisRow, to: Domain, type: belongs_to, via: domain}
+  - {from: SerpAnalysisRow, to: TopPage, type: belongs_to, via: url}
+  - {from: TermAdvertiser, to: Domain, type: belongs_to, via: domainName}
+  - {from: TermAdvertiser, to: Ad, type: has_many, via: ads}
+  - {from: Competitor, to: Domain, type: belongs_to, via: domain}
+  - {from: TopPage, to: Keyword, type: has_one, via: topKeyword, note: The single highest-value keyword for the page.}
+  - {from: HistoricRank, to: Keyword, type: belongs_to, via: keyword}
+  - {from: DomainStatsPeriod, to: SearchDate, type: belongs_to, via: searchMonth + searchYear}
+  - {from: Ad, to: SearchDate, type: belongs_to, via: searchDateId}
+  - {from: ApiMonthlyUsage, to: ApiMethodDailyUsage, type: has_many, via: month}
+cross_cutting_dimensions:
+  - name: countryCode
+    description: >-
+      Every entity above is partitioned by country. A countryCode is not a
+      filter over one data set — it selects a distinct SpyFu data instance
+      pulled from that country's Google (DE means google.de), so the same
+      domain+keyword pair returns unrelated rows across countries.
+    applies_to: 44 of 48 operations
+    reference: https://developer.spyfu.com/reference/country-code-enum
+notes:
+  - >-
+    No write operations exist, so there are no create/update relationships and
+    no lifecycle states on any entity.
+  - >-
+    PublicApiKeywordOverviewOutputItemDto is declared identically in three
+    separate documents (keyword-related, kombat, ppc-keyword) rather than shared
+    — the same entity, defined three times.
+  - >-
+    The refined per-tag specs in openapi/ inline all of these schemas; the named
+    component definitions survive only in openapi/_original/.

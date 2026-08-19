@@ -1,0 +1,1071 @@
+{
+  "item": [
+    {
+      "id": "d9676276-472f-4786-98ce-b605d915d9a2",
+      "name": "Competitors API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c2222375-4e6b-48c8-a34c-0b9407625eba",
+          "name": "Get Top PPC Competitors",
+          "request": {
+            "name": "Get Top PPC Competitors",
+            "description": {
+              "content": "Returns the top paid search (PPC) competitors for a domain based on shared keyword advertising overlap. This endpoint identifies domains that compete for the same paid keywords to reveal direct advertising competition and bidding opportunities.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/ppc/competitors?query=example.com)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "ppc",
+                "getTopCompetitors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "domain",
+                  "value": "<string>",
+                  "description": "(Required) Domain to analyze for paid search competitors."
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "Rank",
+                  "description": "Column to sort by."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "Descending",
+                  "description": "Order to sort results."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "5",
+                  "description": "The maximum number of rows returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "startingRow",
+                  "value": "1",
+                  "description": "Row number to start the results with."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "768f9275-defe-41e1-b746-26fec576bad3",
+              "name": "Successfully retrieved PPC competitor data. Returns a paginated list of domains competing for shared paid keywords with overlap metrics and advertising strength indicators.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ppc",
+                    "getTopCompetitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "Rank"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 50,\n  \"totalMatchingResults\": 2500,\n  \"results\": [\n    {\n      \"domain\": \"example.com\",\n      \"commonTerms\": 1432,\n      \"rank\": 4085.843879997805\n    },\n    {\n      \"domain\": \"example.com\",\n      \"commonTerms\": 1432,\n      \"rank\": 5704.109937000406\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3208cc9-c016-45d5-8df1-146d27cf4be1",
+              "name": "Bad Request - Invalid parameters provided (e.g., invalid domain format, pageSize exceeds maximum, or invalid country code)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ppc",
+                    "getTopCompetitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "Rank"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b621c98-f0e7-452d-9609-9e4e98defd7a",
+              "name": "Unauthorized - Invalid API credentials or insufficient permissions to access PPC competitor data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ppc",
+                    "getTopCompetitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "Rank"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7c2fe584-da03-497c-a4e4-71f642a3f846",
+              "name": "Internal Server Error - A server-side error occurred while processing the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ppc",
+                    "getTopCompetitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "Rank"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91bf7b71-1874-4b7f-ab93-122abac2fe22",
+          "name": "Get Top SEO Competitors",
+          "request": {
+            "name": "Get Top SEO Competitors",
+            "description": {
+              "content": "Returns the top organic search (SEO) competitors for a domain based on shared keyword ranking overlap. This endpoint identifies domains that compete for the same organic keywords to reveal direct SEO competition and content opportunities.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/seo/competitors?query=example.com)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "seo",
+                "getTopCompetitors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "domain",
+                  "value": "<string>",
+                  "description": "(Required) Domain to analyze for organic search competitors."
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "Rank",
+                  "description": "Column to sort by."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "Descending",
+                  "description": "Order to sort results."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "5",
+                  "description": "The maximum number of rows returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "startingRow",
+                  "value": "1",
+                  "description": "Row number to start the results with."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b4505d7-b968-4026-a3e9-7c925926cc98",
+              "name": "Successfully retrieved SEO competitor data. Returns a paginated list of domains competing for shared organic keywords with overlap metrics and ranking strength indicators.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "seo",
+                    "getTopCompetitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "Rank"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 50,\n  \"totalMatchingResults\": 2500,\n  \"results\": [\n    {\n      \"domain\": \"example.com\",\n      \"commonTerms\": 1432,\n      \"rank\": 4085.843879997805\n    },\n    {\n      \"domain\": \"example.com\",\n      \"commonTerms\": 1432,\n      \"rank\": 5704.109937000406\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7b88502-1317-4503-90d3-a6a19442e5ee",
+              "name": "Bad Request - Invalid parameters provided (e.g., invalid domain format, pageSize exceeds maximum, or invalid country code)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "seo",
+                    "getTopCompetitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "Rank"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1e64e620-9101-44a0-81a5-fdccaae432c0",
+              "name": "Unauthorized - Invalid API credentials or insufficient permissions to access SEO competitor data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "seo",
+                    "getTopCompetitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "Rank"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9fc6372f-0362-42be-a8b7-7a9017c458eb",
+              "name": "Internal Server Error - A server-side error occurred while processing the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "seo",
+                    "getTopCompetitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "Rank"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fba66f35-7ac1-42eb-95ab-67c07c5918f4",
+          "name": "Get Combined Top Competitors",
+          "request": {
+            "name": "Get Combined Top Competitors",
+            "description": {
+              "content": "Returns the top competitors for a domain combining both paid search (PPC) and organic search (SEO) data. This endpoint identifies domains that compete across both advertising and organic rankings to reveal comprehensive competitive landscape insights.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/competitors?query=example.com)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "combined",
+                "getCombinedTopCompetitors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "domain",
+                  "value": "<string>",
+                  "description": "(Required) Domain to get competitors for"
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "Rank",
+                  "description": "Column to sort by."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "Descending",
+                  "description": "Order to sort results."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "5",
+                  "description": "The maximum number of rows returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "startingRow",
+                  "value": "1",
+                  "description": "Row number to start the results with."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7510f1aa-1602-477b-83e4-d536d3665a07",
+              "name": "Successfully retrieved combined competitor data. Returns a paginated list of domains competing in both paid and organic search with overlap metrics and competitive strength indicators.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "combined",
+                    "getCombinedTopCompetitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "Rank"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 50,\n  \"totalMatchingResults\": 5000,\n  \"combinedCompetitors\": [\n    {\n      \"rank\": 1,\n      \"domain\": \"example.com\"\n    },\n    {\n      \"rank\": 1,\n      \"domain\": \"example.com\"\n    }\n  ],\n  \"ppcCompetitors\": [\n    {\n      \"domain\": \"example.com\",\n      \"commonTerms\": 1432,\n      \"rank\": 5455.806641743699\n    },\n    {\n      \"domain\": \"example.com\",\n      \"commonTerms\": 1432,\n      \"rank\": 5719.09734935039\n    }\n  ],\n  \"seoCompetitors\": [\n    {\n      \"domain\": \"example.com\",\n      \"commonTerms\": 1432,\n      \"rank\": 8707.305901780559\n    },\n    {\n      \"domain\": \"example.com\",\n      \"commonTerms\": 1432,\n      \"rank\": 2436.831930454253\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a9294cb-794e-4564-81dc-19d7914168c5",
+              "name": "Bad Request - Invalid parameters provided (e.g., invalid domain format, pageSize exceeds maximum, or invalid country code)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "combined",
+                    "getCombinedTopCompetitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "Rank"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e91ca148-188e-47dc-9e0e-802b63408906",
+              "name": "Unauthorized - Invalid API credentials or insufficient permissions to access competitor data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "combined",
+                    "getCombinedTopCompetitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "Rank"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c4b950d8-2488-441c-b075-3ac146d8360c",
+              "name": "Internal Server Error - A server-side error occurred while processing the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "combined",
+                    "getCombinedTopCompetitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "Rank"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spyfu.com/apis/accounts_api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5d8f16f2-ab79-4132-bf34-78fe110678cd",
+    "name": "Account Account API Competitors API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

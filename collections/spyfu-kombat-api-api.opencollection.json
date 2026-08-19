@@ -1,0 +1,555 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Account Account API Kombat API API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Kombat API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Competing PPC Keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/kombat/getCompetingPpcKeywords",
+            "params": [
+              {
+                "name": "includeDomainsCsv",
+                "value": "domain.com,anotherdomain.com",
+                "type": "query",
+                "description": "Comma-separated list of domains to include in keyword analysis."
+              },
+              {
+                "name": "excludeDomainsCsv",
+                "value": "excludedomain.com",
+                "type": "query",
+                "description": "CSV list of domains to exclude in results"
+              },
+              {
+                "name": "isIntersection",
+                "value": "true",
+                "type": "query",
+                "description": "Keywords (True:ALL/False:ANY) the domains contain."
+              },
+              {
+                "name": "searchVolume.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of searches done this past month on Google."
+              },
+              {
+                "name": "searchVolume.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of searches done this past month on Google."
+              },
+              {
+                "name": "liveSearchVolume.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of searches done this past month on Google. This value is refreshed each month."
+              },
+              {
+                "name": "liveSearchVolume.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of searches done this past month on Google. This value is refreshed each month."
+              },
+              {
+                "name": "keywordDifficulty.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by how difficult it is to rank on this keyword.  This can also be called Ranking Difficulty."
+              },
+              {
+                "name": "keywordDifficulty.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by how difficult it is to rank on this keyword.  This can also be called Ranking Difficulty."
+              },
+              {
+                "name": "clicks.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of total monthly clicks on the SERP for this keyword--organic and paid."
+              },
+              {
+                "name": "clicks.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of total monthly clicks on the SERP for this keyword--organic and paid."
+              },
+              {
+                "name": "costPerClickOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Cost per click keyword matching option to filter results by."
+              },
+              {
+                "name": "costPerClick.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the average cost per click.  This will use the keyword matching option selected in `costPerClickOption`"
+              },
+              {
+                "name": "costPerClick.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the average cost per click.  This will use the keyword matching option selected in `costPerClickOption`"
+              },
+              {
+                "name": "isQuestion",
+                "value": "false",
+                "type": "query",
+                "description": "Filter on if the keyword is a question."
+              },
+              {
+                "name": "isTransactionalIntent",
+                "value": "false",
+                "type": "query",
+                "description": "Filter on if the keyword has transactional intent."
+              },
+              {
+                "name": "mobileSearchesPercentage.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of searches that are done on mobile devices."
+              },
+              {
+                "name": "mobileSearchesPercentage.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of searches that are done on mobile devices."
+              },
+              {
+                "name": "desktopSearchesPercentage.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of searches that are done on desktop devices."
+              },
+              {
+                "name": "desktopSearchesPercentage.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of searches that are done on desktop devices."
+              },
+              {
+                "name": "notClickedSearchesPercentage.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of searches that are not clicked.\nSome keyword searches supply clear information in a featured snippet or similar displays. They don't require a click to get the information. Those will have higher percentages in this metric."
+              },
+              {
+                "name": "notClickedSearchesPercentage.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of searches that are not clicked.\nSome keyword searches supply clear information in a featured snippet or similar displays. They don't require a click to get the information. Those will have higher percentages in this metric."
+              },
+              {
+                "name": "paidClickSearchPercentage.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of clicks that go to ads."
+              },
+              {
+                "name": "paidClickSearchPercentage.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of clicks that go to ads."
+              },
+              {
+                "name": "organicClicksSearchPercentage.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of clicks that go to organic results, not ads."
+              },
+              {
+                "name": "organicClicksSearchPercentage.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of clicks that go to organic results, not ads."
+              },
+              {
+                "name": "monthlyCost.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the monthly cost of the keyword.  This will use the keyword matching option selected in `monthlyCostOption`"
+              },
+              {
+                "name": "monthlyCost.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the monthly cost of the keyword.  This will use the keyword matching option selected in `monthlyCostOption`"
+              },
+              {
+                "name": "monthlyCostOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Monthly Cost keyword matching option to filter results by."
+              },
+              {
+                "name": "rankingHomepages.min",
+                "value": "",
+                "type": "query",
+                "description": "Homepages on the SERP range to filter results by."
+              },
+              {
+                "name": "rankingHomepages.max",
+                "value": "",
+                "type": "query",
+                "description": "Homepages on the SERP range to filter results by."
+              },
+              {
+                "name": "adCount.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of total advertisers"
+              },
+              {
+                "name": "adCount.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of total advertisers"
+              },
+              {
+                "name": "wordCount.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of words in the keyword."
+              },
+              {
+                "name": "wordCount.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of words in the keyword."
+              },
+              {
+                "name": "onlyAdultKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "Only include adult keywords considered unsafe for work."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SearchVolume",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              },
+              {
+                "name": "adultFilter",
+                "value": "true",
+                "type": "query",
+                "description": "Exclude adult keywords considered unsafe for work."
+              }
+            ]
+          },
+          "docs": "Returns paid search keywords shared across multiple competitor domains. The process selects keywords from the includedDomains, then removes any keywords that belong to domains in the excludedDomains list.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/kombat?query=example.com,example.org)"
+        },
+        {
+          "info": {
+            "name": "Get Competing SEO Keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/kombat/getCompetingSeoKeywords",
+            "params": [
+              {
+                "name": "includeDomainsCsv",
+                "value": "domain.com,anotherdomain.com",
+                "type": "query",
+                "description": "CSV list of domains to include in results"
+              },
+              {
+                "name": "excludeDomainsCsv",
+                "value": "excludedomain.com",
+                "type": "query",
+                "description": "CSV list of domains to exclude in results"
+              },
+              {
+                "name": "isIntersection",
+                "value": "true",
+                "type": "query",
+                "description": "Keywords (True:ALL/False:ANY) the domains contain."
+              },
+              {
+                "name": "searchVolume.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of searches done this past month on Google."
+              },
+              {
+                "name": "searchVolume.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of searches done this past month on Google."
+              },
+              {
+                "name": "liveSearchVolume.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of searches done this past month on Google. This value is refreshed each month."
+              },
+              {
+                "name": "liveSearchVolume.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of searches done this past month on Google. This value is refreshed each month."
+              },
+              {
+                "name": "keywordDifficulty.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by how difficult it is to rank on this keyword.  This can also be called Ranking Difficulty."
+              },
+              {
+                "name": "keywordDifficulty.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by how difficult it is to rank on this keyword.  This can also be called Ranking Difficulty."
+              },
+              {
+                "name": "clicks.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of total monthly clicks on the SERP for this keyword--organic and paid."
+              },
+              {
+                "name": "clicks.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of total monthly clicks on the SERP for this keyword--organic and paid."
+              },
+              {
+                "name": "costPerClickOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Cost per click keyword matching option to filter results by."
+              },
+              {
+                "name": "costPerClick.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the average cost per click.  This will use the keyword matching option selected in `costPerClickOption`"
+              },
+              {
+                "name": "costPerClick.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the average cost per click.  This will use the keyword matching option selected in `costPerClickOption`"
+              },
+              {
+                "name": "isQuestion",
+                "value": "false",
+                "type": "query",
+                "description": "Filter on if the keyword is a question."
+              },
+              {
+                "name": "isTransactionalIntent",
+                "value": "false",
+                "type": "query",
+                "description": "Filter on if the keyword has transactional intent."
+              },
+              {
+                "name": "mobileSearchesPercentage.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of searches that are done on mobile devices."
+              },
+              {
+                "name": "mobileSearchesPercentage.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of searches that are done on mobile devices."
+              },
+              {
+                "name": "desktopSearchesPercentage.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of searches that are done on desktop devices."
+              },
+              {
+                "name": "desktopSearchesPercentage.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of searches that are done on desktop devices."
+              },
+              {
+                "name": "notClickedSearchesPercentage.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of searches that are not clicked.\nSome keyword searches supply clear information in a featured snippet or similar displays. They don't require a click to get the information. Those will have higher percentages in this metric."
+              },
+              {
+                "name": "notClickedSearchesPercentage.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of searches that are not clicked.\nSome keyword searches supply clear information in a featured snippet or similar displays. They don't require a click to get the information. Those will have higher percentages in this metric."
+              },
+              {
+                "name": "paidClickSearchPercentage.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of clicks that go to ads."
+              },
+              {
+                "name": "paidClickSearchPercentage.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of clicks that go to ads."
+              },
+              {
+                "name": "organicClicksSearchPercentage.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of clicks that go to organic results, not ads."
+              },
+              {
+                "name": "organicClicksSearchPercentage.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the percentage of clicks that go to organic results, not ads."
+              },
+              {
+                "name": "monthlyCost.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the monthly cost of the keyword.  This will use the keyword matching option selected in `monthlyCostOption`"
+              },
+              {
+                "name": "monthlyCost.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the monthly cost of the keyword.  This will use the keyword matching option selected in `monthlyCostOption`"
+              },
+              {
+                "name": "monthlyCostOption",
+                "value": "Broad",
+                "type": "query",
+                "description": "Monthly Cost keyword matching option to filter results by."
+              },
+              {
+                "name": "rankingHomepages.min",
+                "value": "",
+                "type": "query",
+                "description": "Homepages on the SERP range to filter results by."
+              },
+              {
+                "name": "rankingHomepages.max",
+                "value": "",
+                "type": "query",
+                "description": "Homepages on the SERP range to filter results by."
+              },
+              {
+                "name": "adCount.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of total advertisers"
+              },
+              {
+                "name": "adCount.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of total advertisers"
+              },
+              {
+                "name": "wordCount.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of words in the keyword."
+              },
+              {
+                "name": "wordCount.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the number of words in the keyword."
+              },
+              {
+                "name": "onlyAdultKeywords",
+                "value": "false",
+                "type": "query",
+                "description": "Only include adult keywords considered unsafe for work."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "Number of rows of data to return."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "SearchVolume",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort the results."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              },
+              {
+                "name": "adultFilter",
+                "value": "true",
+                "type": "query",
+                "description": "Exclude adult keywords considered unsafe for work."
+              }
+            ]
+          },
+          "docs": "Returns organic search keywords shared across multiple competitor domains. The process selects keywords from the includedDomains, then removes any keywords that belong to domains in the excludedDomains list.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/kombat?query=example.com,example.org)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,95 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developer.spyfu.com/, https://developer.spyfu.com/llms.txt,
+  https://help.spyfu.com/en/articles/5640863-what-s-new-on-spyfu,
+  https://github.com/spyfu/spyfu_api_docs, openapi/*.yml
+description: >-
+  Versioning, deprecation and operational-transparency posture for the SpyFu
+  APIs. SpyFu versions in the URI path and is currently on v2 across every
+  research service. What it does not publish is the operational half: there is
+  no status page, no incident history, no SLA, no deprecation policy, and no
+  Sunset/Deprecation header support. A v1 surface is still alive for the free My
+  SpyFu project-management API, with no stated end-of-life.
+versioning:
+  scheme: uri-path
+  current: v2
+  form: https://api.spyfu.com/apis/{service}/v2/{operation}
+  docs: https://developer.spyfu.com/
+  services:
+    - {service: accounts_api, base: https://api.spyfu.com/apis/accounts_api}
+    - {service: domain_stats_api, base: https://api.spyfu.com/apis/domain_stats_api}
+    - {service: cloud_ad_history_api, base: https://api.spyfu.com/apis/cloud_ad_history_api}
+    - {service: serp_api, base: https://api.spyfu.com/apis/serp_api}
+    - {service: keyword_api, base: https://api.spyfu.com/apis/keyword_api}
+    - {service: competitors_api, base: https://api.spyfu.com/apis/competitors_api}
+    - {service: organic_history_api, base: https://api.spyfu.com/apis/organic_history_api}
+  legacy_versions:
+    - version: v1
+      surface: My SpyFu Project Management API
+      url: https://www.spyfu.com/api/v1/project-manager
+      status: active
+      note: >-
+        SpyFu's own reference page describes it as "free to use, and part of our
+        version 1 API", documented outside the v2 developer portal. No
+        end-of-life is stated, and it carries no OpenAPI.
+    - version: legacy portal
+      surface: spyfu.com/api
+      status: superseded
+      note: >-
+        The internal overview page in spyfu_api_docs states developer.spyfu.com
+        was built to replace the existing spyfu.com/api. No migration deadline
+        or shutdown date is published.
+deprecation:
+  policy_url:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  notice_period:
+  note: >-
+    No deprecation policy exists on the developer portal, in llms.txt, or in the
+    first-party spyfu_api_docs repository. No RFC 8594 Sunset or Deprecation
+    header is documented. The ReadMe front matter across every reference page
+    carries deprecated:false, and no operation in any of the nine OpenAPI
+    documents is marked deprecated.
+deprecated_operations: []
+sla:
+  url:
+  uptime_target:
+  published: false
+  note: >-
+    No SLA or uptime commitment is published for the API. The Domain Stats
+    documentation advertises data freshness ("every domain metric updates every
+    15 seconds") but freshness is not availability.
+status_page:
+  url:
+  published: false
+  probed:
+    - {url: "https://status.spyfu.com/", result: DNS does not resolve}
+    - {url: "https://spyfu.statuspage.io/", result: "redirects to the generic Atlassian Statuspage marketing site; not a SpyFu status page"}
+  note: >-
+    No status page, incident history, or uptime feed found on any SpyFu host.
+    Recorded as an explicit absence — no StatusPage pointer is emitted.
+support:
+  channels:
+    - {type: HelpCenter, url: "https://help.spyfu.com/en/"}
+    - {type: Contact, url: "https://www.spyfu.com/company?section=contactUs"}
+    - {type: Email, url: "mailto:support@spyfu.com"}
+    - {type: LiveChat, note: In-app live chat, referenced from the API pricing guide}
+change_communication:
+  changelog: https://help.spyfu.com/en/articles/5640863-what-s-new-on-spyfu
+  cadence: weekly release notes, product-wide
+  api_specific_feed: false
+  detail: changelog/spyfu-changelog.yml
+spec_currency:
+  catalogued_operations: 48
+  first_party_spec_repo: https://github.com/spyfu/spyfu_api_docs
+  first_party_spec_branch: v1.0
+  first_party_spec_last_pushed: '2026-07-13'
+  drift:
+    - >-
+      AdHistoryApi_GetDomainAdHistoryByDate_GET shipped 2026-07-15 and is
+      present in the first-party spec at
+      reference/SpyFu.AdHistory.Research.Api.json, but not in the Ad History
+      definition captured in this repo, which holds three operations to the
+      upstream four.

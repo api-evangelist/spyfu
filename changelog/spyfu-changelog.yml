@@ -1,0 +1,106 @@
+generated: '2026-08-13'
+method: searched
+source: https://help.spyfu.com/en/articles/5640863-what-s-new-on-spyfu
+description: >-
+  SpyFu publishes dated release notes as a single continuously-updated
+  "What's New on SpyFu" article in its Intercom-hosted help centre, not as a
+  developer-portal changelog. Entries are product-wide (web app, billing,
+  account) with API changes mixed in; each bullet carries an internal Jira-style
+  issue key (SF-*, BLOG-*). There is no per-API version history, no RSS/Atom
+  feed, no API-only changelog view, and the developer portal's own /changelog
+  path returns 404. Only entries with API relevance are structured below, from
+  the most recent window.
+scheme: dated-release-notes
+cadence: weekly (Wednesdays)
+current_api_version: v2
+changelog_url: https://help.spyfu.com/en/articles/5640863-what-s-new-on-spyfu
+api_changelog_url:
+feed_url:
+developer_portal_changelog:
+  url: https://developer.spyfu.com/changelog
+  status: 404
+  note: >-
+    The ReadMe portal supports a changelog section; SpyFu has not enabled it.
+    Its own llms.txt index lists Guides and API Reference only.
+entries:
+  - version:
+    date: '2026-07-15'
+    type: addition
+    breaking: false
+    api_affected: Ad History API
+    highlights:
+      - >-
+        Added the getDomainAdHistoryByDate endpoint so a domain's ad URL history
+        can be pulled across a specific date range (minSearchDateId /
+        maxSearchDateId) with complete, consistent results, replacing the
+        non-deterministic record sets the grouped endpoint returned.
+    issues: [SF-23651]
+  - version:
+    date: '2026-05-20'
+    type: improvement
+    breaking: false
+    api_affected: SpyFu Custom GPT
+    highlights:
+      - >-
+        Added a "Launch in ChatGPT" call-to-action inside the app for the SpyFu
+        Custom GPT, the agent surface backed by the aggregated OpenAPI in
+        github.com/spyfu/spyfu_api_docs/chatgpt/.
+    issues: [SF-23576]
+  - version:
+    date: '2026-05-13'
+    type: improvement
+    breaking: false
+    api_affected: API billing / account
+    highlights:
+      - >-
+        Added a maximum API spending cap with alerts and an account-level record
+        when the limit is reached, to prevent runaway pay-as-you-go charges.
+    issues: [SF-23518]
+  - version:
+    date: '2026-05-06'
+    type: improvement
+    breaking: false
+    api_affected: Account API / usage reporting
+    highlights:
+      - >-
+        Added an API usage screen in the account and subscription area for
+        per-endpoint consumption and cost tracking — the UI counterpart of the
+        Account API usage endpoints.
+    issues: [SF-23494]
+  - version:
+    date: '2026-04-15'
+    type: improvement
+    breaking: false
+    api_affected: API billing
+    highlights:
+      - >-
+        Clearer messaging about how bundled plan API credits work, plus an
+        explicit disclosure that usage charges apply beyond the credit.
+    issues: [SF-23493]
+  - version:
+    date: '2026-03-25'
+    type: addition
+    breaking: false
+    api_affected: All research APIs (countryCode)
+    highlights:
+      - >-
+        Added data coverage for Czechia and Finland — new values for the
+        countryCode enum shared by most SpyFu endpoints.
+    issues: []
+observations:
+  - >-
+    Spec drift: the 2026-07-15 entry ships getDomainAdHistoryByDate, and the
+    first-party OpenAPI at github.com/spyfu/spyfu_api_docs (v1.0 branch, pushed
+    2026-07-13) carries it as a fourth Ad History path. The captured Ad History
+    definition in this repo holds three operations and predates that release, so
+    the catalogued spec is one operation behind the shipped API.
+  - >-
+    Breaking changes are not signalled as such. No deprecation notices, sunset
+    dates, or version-bump announcements appear anywhere in the recent window.
+x-evidence:
+  - url: https://help.spyfu.com/en/articles/5640863-what-s-new-on-spyfu
+    http_status: 200
+    fetched: '2026-08-13'
+  - url: https://developer.spyfu.com/changelog
+    http_status: 404
+    fetched: '2026-08-13'

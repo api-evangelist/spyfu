@@ -1,0 +1,268 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Account Account API Ranking History API API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ranking History API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Domain Ranking History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/historic/getHistoricRankingsForDomain",
+            "params": [
+              {
+                "name": "domain",
+                "value": "example.com",
+                "type": "query",
+                "description": "Domain to analyze ranking history for."
+              },
+              {
+                "name": "queryType",
+                "value": "MostValuable",
+                "type": "query",
+                "description": "Type of ranking analysis to perform."
+              },
+              {
+                "name": "startDate",
+                "value": "2025-01",
+                "type": "query",
+                "description": "Beginning date for range"
+              },
+              {
+                "name": "endDate",
+                "value": "2025-07",
+                "type": "query",
+                "description": "Ending date for range"
+              },
+              {
+                "name": "includeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms that must be present in the keyword."
+              },
+              {
+                "name": "includeAnyTerm",
+                "value": "",
+                "type": "query",
+                "description": "Used with includeTerms. If true: match any term (OR). If false: require all terms (AND)."
+              },
+              {
+                "name": "excludeTerms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of terms to exclude from results (e.g., branded or irrelevant terms)."
+              },
+              {
+                "name": "startRank.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL starting rank position is ≥ this value for the selected date range (1 = best/top organic result)."
+              },
+              {
+                "name": "startRank.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL starting rank position is ≤ this value for the selected date range (1 = best/top organic result)."
+              },
+              {
+                "name": "endRank.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL ending rank position is ≥ this value for the selected date range (1 = best/top organic result)."
+              },
+              {
+                "name": "endRank.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter to keywords where the domain/URL ending rank position is ≤ this value for the selected date range (1 = best/top organic result)."
+              },
+              {
+                "name": "endRankChange.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter to keywords where the rank improved by at least this many positions between the start and end of the date range (end_rank_change ≥ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "endRankChange.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter to keywords where the rank change was at most this many positions between the start and end of the date range (end_rank_change ≤ value). Positive values mean moved up; negative values mean moved down."
+              },
+              {
+                "name": "seoClicks.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≥ this value."
+              },
+              {
+                "name": "seoClicks.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter to keywords where estimated monthly organic clicks (SEO clicks) to the domain/url are ≤ this value."
+              },
+              {
+                "name": "seoClicksChange.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≥ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "seoClicksChange.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter to keywords where the month-over-month change in estimated organic clicks is ≤ this value. Positive values indicate click gains; negative values indicate click losses."
+              },
+              {
+                "name": "searchVolume.min",
+                "value": "",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≥ this value."
+              },
+              {
+                "name": "searchVolume.max",
+                "value": "",
+                "type": "query",
+                "description": "Filter to keywords where monthly search volume (Google) is ≤ this value."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Order to sort by"
+              }
+            ]
+          },
+          "docs": "Returns historical organic ranking data for a domain across multiple keywords within a specified date range. Track position changes, click gains/losses, and ranking trends over time to analyze SEO performance.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/seo/ranking-history/domain?expandChart=false&searchType=MostValuable&includeAnyTerm=true&query=example.com&sidebarContext=topics) _(TODO – verify)_"
+        },
+        {
+          "info": {
+            "name": "Get Keyword Domain Rankings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/historic/getHistoricRankingsForKeywordOnDomains",
+            "params": [
+              {
+                "name": "keyword",
+                "value": "",
+                "type": "query",
+                "description": "Keyword to analyze ranking history for."
+              },
+              {
+                "name": "domains",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of domains to compare rankings for."
+              },
+              {
+                "name": "startDate",
+                "value": "2025-01",
+                "type": "query",
+                "description": "Beginning date for range"
+              },
+              {
+                "name": "endDate",
+                "value": "2025-07",
+                "type": "query",
+                "description": "Ending date for range"
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              }
+            ]
+          },
+          "docs": "Returns historical organic ranking data for a specific keyword across multiple specified domains within a date range. Compare how different domains have performed for the same keyword over time.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/keyword/ranking-history?query=example%20keyword) _(TODO – verify)_"
+        },
+        {
+          "info": {
+            "name": "Get Domain Keyword Rankings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/historic/getHistoricRankingsForDomainOnKeywords",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "query",
+                "description": "Domain to analyze ranking history for."
+              },
+              {
+                "name": "keywords",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of keywords to analyze rankings for."
+              },
+              {
+                "name": "startDate",
+                "value": "2025-01",
+                "type": "query",
+                "description": "Beginning date for range"
+              },
+              {
+                "name": "endDate",
+                "value": "2025-07",
+                "type": "query",
+                "description": "Ending date for range"
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country to get results for."
+              }
+            ]
+          },
+          "docs": "Returns historical organic ranking data for a specific domain across multiple specified keywords within a date range. Analyze how a domain's positions have changed over time for your target keyword list.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/seo/ranking-history/domain?expandChart=false&searchType=MostValuable&includeAnyTerm=true&query=example.com&sidebarContext=topics) _(TODO – verify)_"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,71 +1,128 @@
 name: SpyFu API FinOps
 description: >-
   FinOps Framework 1.0 FOCUS-aligned cost visibility profile for SpyFu API
-  consumption. SpyFu uses a hybrid model: a flat monthly subscription fee
-  includes a bundled API credit allowance, and overage is billed on a
-  pay-as-you-go CPM basis per row of data returned.
+  consumption. SpyFu uses a hybrid model: a flat monthly subscription includes a
+  bundled API credit allowance, and everything beyond it is billed
+  pay-as-you-go on a CPM basis per ROW of data returned — not per request. Every
+  endpoint carries its own CPM, from $0.20 to $5.00, so the cost of a call is a
+  function of the endpoint AND the pageSize the caller chose.
 specificationVersion: "1.0"
+generated: '2026-08-13'
+method: searched
+source: https://developer.spyfu.com/docs/api-pricing
+source_mirror: https://github.com/spyfu/spyfu_api_docs/blob/v1.0/docs/documentation/api-pricing.md
 url: https://developer.spyfu.com/docs/api-pricing
 
 costModel:
   type: Hybrid (Subscription + Usage-Based Overage)
-  billingGranularity: Per row of data returned
-  formula: "(successful_rows / 1000) * cpm_rate"
-  billingCycle: Monthly (1st to last day of calendar month, UTC)
+  billingGranularity: Per successful row of data returned
+  formula: "(successful_rows / 1000) * endpoint_cpm"
+  billingCycle: Monthly, 1st 00:00 UTC to last day 23:59 UTC
   currency: USD
-  overage: Charged to account payment method when monthly credit is exhausted
+  overage: Charged to the account payment method once the monthly credit is exhausted
+  spendCap:
+    available: true
+    shipped: '2026-05-13'
+    configured_in: https://www.spyfu.com/account/api
+    api_configurable: false
+    note: >-
+      Account-level maximum API spend with alerts and an account record when the
+      limit is reached. Configured in the UI only — there is no API to set it,
+      so an agent cannot cap its own spend programmatically.
 
 includedCredits:
+  - plan: Basic
+    monthlyCredit: 0.00
+    apiAccess: false
   - plan: Pro + AI
     monthlyCredit: 40.00
+    apiAccess: true
   - plan: Team / Agency
     monthlyCredit: 100.00
+    apiAccess: true
+
+rowsReturnedLegend:
+  Single: Returns one result row by default.
+  Multiple: Returns multiple rows by default unless only one is available.
+  Single/Multiple: >-
+    Returns a single row by default (one domain or keyword submitted); can be
+    configured to submit several and receive multiple rows.
+  "Single/Multiple*": Returns multiple rows by default but can be configured to return one.
 
 endpointPricing:
   - api: Domain Stats API
     endpoints:
-      - name: getDomainStatsForQuery
-        cpm: 0.50
-      - name: getBulkDomainStats
-        cpm: 0.50
-  - api: Ad History Research API
+      - {path: /domain_stats_api/v2/getAllDomainStats, operationId: DomainStatsApi_GetAllDomainStats_GET, rowsReturned: Multiple, cpm: 0.50}
+      - {path: /domain_stats_api/v2/getLatestDomainStats, operationId: DomainStatsApi_GetLatestDomainStats_GET, rowsReturned: "Single/Multiple*", cpm: 0.50}
+      - {path: /domain_stats_api/v2/getDomainStatsForExactDate, operationId: DomainStatsApi_GetDomainStatsForExactDate_GET, rowsReturned: Single, cpm: 0.50}
+      - {path: /domain_stats_api/v2/getActiveDatesForDomain, operationId: DomainStatsApi_GetActiveDatesForDomain_GET, rowsReturned: Multiple, cpm: 0.50}
+      - {path: /domain_stats_api/v2/getBulkDomainStats, operationId: DomainStatsApi_GetBulkDomainStats_GET, rowsReturned: Single/Multiple, cpm: 0.40}
+      - {path: /domain_stats_api/v2/getMatchingDomains, operationId: DomainStatsApi_GetMatchingDomains_GET, rowsReturned: Multiple, cpm: 1.00}
+  - api: Ad History API
     endpoints:
-      - name: getAdHistoryForDomain
-        cpm: 2.00
-      - name: getAdHistoryForKeyword
-        cpm: 2.00
+      - {path: /cloud_ad_history_api/v2/domain/getDomainAdHistory, operationId: AdHistoryApi_GetDomainAdHistory_GET, rowsReturned: Multiple, cpm: 3.00}
+      - {path: /cloud_ad_history_api/v2/domain/getDomainAdHistoryByDate, operationId: null, rowsReturned: Multiple, cpm: 3.00, note: "Shipped 2026-07-15; not present in the OpenAPI captured in this repo."}
+      - {path: /cloud_ad_history_api/v2/term/getTermAdHistory, operationId: AdHistoryApi_GetTermAdHistory_GET, rowsReturned: Multiple, cpm: 3.00}
+      - {path: /cloud_ad_history_api/v2/term/getTermAdHistoryWithStats, operationId: AdHistoryApi_GetTermAdHistoryWithStats_GET, rowsReturned: Multiple, cpm: 3.00}
   - api: PPC Research API
     endpoints:
-      - name: getPaidKeywords
-        cpm: 1.00
-      - name: getPaidSerps
-        cpm: 1.00
+      - {path: /serp_api/v2/ppc/getPaidSerps, operationId: PaidSerpApi_GetPaidSerps_GET, rowsReturned: "Single/Multiple*", cpm: 2.00}
+      - {path: /keyword_api/v2/ppc/getMostSuccessful, operationId: PaidSerpApi_GetMostSuccessful_GET, rowsReturned: "Single/Multiple*", cpm: 2.00}
+      - {path: /keyword_api/v2/ppc/getNewKeywords, operationId: PaidSerpApi_GetNewKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 2.00}
   - api: SEO Research API
     endpoints:
-      - name: getTopPages
-        cpm: 5.00
-      - name: getOrganicKeywords
-        cpm: 1.00
+      - {path: /serp_api/v2/seo/getSeoKeywords, operationId: OrganicSerpApi_GetSeoKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 0.50}
+      - {path: /serp_api/v2/seo/getMostValuableKeywords, operationId: OrganicSerpApi_GetMostValuableKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 0.50}
+      - {path: /serp_api/v2/seo/getNewlyRankedKeywords, operationId: OrganicSerpApi_GetNewlyRankedKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 0.50}
+      - {path: /serp_api/v2/seo/getGainedRanksKeywords, operationId: OrganicSerpApi_GetGainedRanksKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 0.50}
+      - {path: /serp_api/v2/seo/getLostRanksKeywords, operationId: OrganicSerpApi_GetLostRanksKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 0.50}
+      - {path: /serp_api/v2/seo/getGainedClicksKeywords, operationId: OrganicSerpApi_GetGainedClicksKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 0.50}
+      - {path: /serp_api/v2/seo/getLostClicksKeywords, operationId: OrganicSerpApi_GetLostClicksKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 0.50}
+      - {path: /serp_api/v2/seo/getJustMadeItKeywords, operationId: OrganicSerpApi_GetJustMadeItKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 0.50}
+      - {path: /serp_api/v2/seo/getJustFellOffKeywords, operationId: OrganicSerpApi_GetJustFellOffKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 0.50}
+      - {path: /serp_api/v2/seo/getSerpAnalysisKeywords, operationId: OrganicSerpApi_GetSerpAnalysisKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 0.50}
+      - {path: /serp_api/v2/seo/getWhereTheyOutRankYou, operationId: OrganicSerpApi_GetKeywordsWhereTheyOutRankYou_GET, rowsReturned: "Single/Multiple*", cpm: 2.00}
+      - {path: /serp_api/v2/seo/getWhereTheyJustSurpassedYou, operationId: OrganicSerpApi_GetKeywordsWhereTheyJustSurpassedYou_GET, rowsReturned: "Single/Multiple*", cpm: 2.00}
+      - {path: /serp_api/v2/seo/getLiveSeoStats, operationId: OrganicSerpApi_GetLiveSeoStats_GET, rowsReturned: Single, cpm: 1.00}
+      - {path: /serp_api/v2/seo/getMostTrafficTopPages, operationId: TopPagesApi_GetMostTrafficTopPages_GET, rowsReturned: "Single/Multiple*", cpm: 5.00}
+      - {path: /serp_api/v2/seo/getNewTopPages, operationId: TopPagesApi_GetNewTopPages_GET, rowsReturned: "Single/Multiple*", cpm: 5.00}
+      - {path: /serp_api/v2/seo/getOrganicOutrankingKeywords, operationId: OrganicSerpApi_GetOrganicOutrankingKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 2.00}
+      - {path: /serp_api/v2/seo/getTopPages, operationId: TopPagesApi_GetTopPages_GET, rowsReturned: "Single/Multiple*", cpm: 5.00}
   - api: Competitors API
     endpoints:
-      - name: getCompetitors
-        cpm: 0.20
-      - name: getKeywordInformation
-        cpm: 0.20
+      - {path: /competitors_api/v2/ppc/getTopCompetitors, operationId: CompetitorsApi_GetTopPpcCompetitors_GET, rowsReturned: "Single/Multiple*", cpm: 0.20}
+      - {path: /competitors_api/v2/seo/getTopCompetitors, operationId: CompetitorsApi_GetTopSeoCompetitors_GET, rowsReturned: "Single/Multiple*", cpm: 0.20}
+      - {path: /competitors_api/v2/combined/getCombinedTopCompetitors, operationId: CompetitorsApi_GetCombinedTopCompetitors_GET, rowsReturned: "Single/Multiple*", cpm: 0.20}
   - api: Kombat API
     endpoints:
-      - name: getDomainKombat
-        cpm: 1.00
+      - {path: /keyword_api/v2/kombat/getCompetingPpcKeywords, operationId: KombatApi_GetCompetingPpcKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 1.00}
+      - {path: /keyword_api/v2/kombat/getCompetingSeoKeywords, operationId: KombatApi_GetCompetingSeoKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 1.00}
   - api: Keyword Research API
     endpoints:
-      - name: getRelatedKeywords
-        cpm: 1.00
-      - name: getKeywordInformation
-        cpm: 0.20
-  - api: Ranking History Research API
+      - {path: /keyword_api/v2/related/getRelatedKeywords, operationId: RelatedKeywordsV2Api_GetRelatedKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 2.50}
+      - {path: /keyword_api/v2/related/getQuestionKeywords, operationId: RelatedKeywordsV2Api_GetQuestionKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 1.00}
+      - {path: /keyword_api/v2/related/getAlsoBuysAdsForKeywords, operationId: RelatedKeywordsV2Api_GetAlsoBuysAdsForKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 1.00}
+      - {path: /keyword_api/v2/related/getAlsoRanksForKeywords, operationId: RelatedKeywordsV2Api_GetAlsoRanksForKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 1.00}
+      - {path: /keyword_api/v2/related/getTransactionKeywords, operationId: RelatedKeywordsV2Api_GetTransactionKeywords_GET, rowsReturned: "Single/Multiple*", cpm: 1.00}
+      - {path: /keyword_api/v2/related/getKeywordInformation, operationId: RelatedKeywordsV2Api_GetKeywordsByBulkSearch_GET, method: GET, rowsReturned: Single/Multiple, cpm: 0.20}
+      - {path: /keyword_api/v2/related/getKeywordInformation, operationId: RelatedKeywordsV2Api_GetKeywordsByBulkSearchPost_POST, method: POST, rowsReturned: Single/Multiple, cpm: 0.20}
+      - {path: /keyword_api/v2/related/getKeywordExpansions, operationId: RelatedKeywordsV2Api_GetKeywordExpansions_GET, rowsReturned: "Single/Multiple*", cpm: 1.00}
+  - api: Ranking History API
     endpoints:
-      - name: getRankingHistory
-        cpm: 1.00
+      - {path: /organic_history_api/v2/historic/getHistoricRankingsForDomain, operationId: HistoricRanking_GetHistoricRankingsForDomain_GET, rowsReturned: "Single/Multiple*", cpm: 3.00}
+      - {path: /organic_history_api/v2/historic/getHistoricRankingsForKeywordOnDomains, operationId: HistoricRanking_GetHistoricRankingsForKeywordOnDomains_GET, rowsReturned: Single/Multiple, cpm: 3.00}
+      - {path: /organic_history_api/v2/historic/getHistoricRankingsForDomainOnKeywords, operationId: HistoricRanking_GetHistoricRankingsForDomainOnKeywords_GET, rowsReturned: Single/Multiple, cpm: 3.00}
+  - api: Account API
+    endpoints: []
+    note: >-
+      SpyFu publishes no CPM for the Account API usage endpoints. Whether
+      reading your own usage is billable is undocumented.
+
+cpmRange:
+  min: 0.20
+  max: 5.00
+  cheapest: [getKeywordInformation, getTopCompetitors, getCombinedTopCompetitors]
+  most_expensive: [getTopPages, getMostTrafficTopPages, getNewTopPages]
 
 focusAlignment:
   chargeType: Usage
@@ -75,13 +132,33 @@ focusAlignment:
   provider: SpyFu
 
 costOptimization:
-  - strategy: Cache API responses to eliminate duplicate row charges
-  - strategy: Use bulk endpoints (e.g., getBulkDomainStats) to consolidate calls
-  - strategy: Prioritize low-CPM Competitors API endpoints when only basic data is needed
-  - strategy: Avoid getTopPages ($5.00 CPM) unless page-level data is strictly required
-  - strategy: Monitor monthly consumption at spyfu.com/account/api before credit exhaustion
-  - strategy: Choose the Team/Agency plan if monthly API spend consistently exceeds $40
+  - strategy: Treat pageSize as a cost lever — it is the direct multiplier on every billed call.
+  - strategy: Cache responses; most underlying data updates monthly, so repeat pulls buy nothing.
+  - strategy: Call getActiveDatesForDomain before a full history pull, to avoid paying for an empty or short calendar.
+  - strategy: Use getKeywordExpansions ($1.00) instead of looping getRelatedKeywords ($2.50) for the same expansion types.
+  - strategy: Score shortlists with getKeywordInformation ($0.20), the cheapest endpoint in the API.
+  - strategy: Use getCombinedTopCompetitors ($0.20) rather than separate PPC and SEO competitor calls.
+  - strategy: Budget Ad History ($3.00) and Top Pages ($5.00) deliberately; they are 15x the cheapest endpoint.
+  - strategy: Move to Team/Agency if monthly spend consistently exceeds the $40 Pro + AI credit.
 
 monitoring:
   dashboard: https://www.spyfu.com/account/api
-  alertRecommendation: Set internal spend alerts at 75% and 90% of monthly credit allowance
+  api:
+    - AccountApi_GetApiUsageForMonth_GET
+    - AccountApi_GetApiUsageForMonthByDay_GET
+    - AccountApi_GetApiUsageForMonthByMethod_GET
+  runtime_headers: []
+  runtime_header_note: >-
+    No billing, quota or credit headers are returned on API responses. Spend is
+    observable only by polling the Account API or the dashboard.
+  alertRecommendation: Set the account spending cap, plus internal alerts at 75% and 90% of the monthly credit.
+
+x-corrections:
+  - >-
+    Prior revision listed invented endpoint names (getDomainStatsForQuery,
+    getAdHistoryForDomain, getPaidKeywords, getOrganicKeywords, getCompetitors,
+    getDomainKombat, getRankingHistory) with CPMs that did not match SpyFu's
+    published table — Ad History at $2.00 instead of $3.00, PPC at $1.00
+    instead of $2.00, Ranking History at $1.00 instead of $3.00. Replaced with
+    the full 47-row published pricing table, keyed to real paths and
+    operationIds.

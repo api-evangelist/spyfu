@@ -1,0 +1,2067 @@
+{
+  "item": [
+    {
+      "id": "90ba7c0a-b464-46fe-9b7d-996501a62943",
+      "name": "Domain Stats API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "55612c22-1ecb-4a5a-982c-70ff42468906",
+          "name": "Get All Domain Stats",
+          "request": {
+            "name": "Get All Domain Stats",
+            "description": {
+              "content": "Returns comprehensive domain statistics for all available historical periods. This endpoint provides time-series data showing SEO and PPC performance trends to analyze domain growth, competitive positioning, and marketing effectiveness over time.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/domain-overview?query=example.com)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "getAllDomainStats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "domain",
+                  "value": "<string>",
+                  "description": "(Required) Domain to retrieve comprehensive statistics for."
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79d5a990-4eae-4f29-ae91-755f926d31c3",
+              "name": "Successfully retrieved comprehensive domain statistics across all time periods. Returns historical data showing SEO/PPC trends, keyword counts, traffic estimates, and competitive metrics.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getAllDomainStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"domain\": \"example.com\",\n  \"results\": [\n    {\n      \"searchMonth\": 5,\n      \"searchYear\": 2021,\n      \"averageOrganicRank\": 41.08,\n      \"monthlyPaidClicks\": 61181.88,\n      \"averageAdRank\": 1.03,\n      \"totalOrganicResults\": 302731,\n      \"monthlyBudget\": 6721.39,\n      \"monthlyOrganicValue\": 384233.16,\n      \"totalAdsPurchased\": 599,\n      \"monthlyOrganicClicks\": 290145,\n      \"strength\": 75,\n      \"totalInverseRank\": 4971564,\n      \"areStatsNormalized\": true\n    },\n    {\n      \"searchMonth\": 5,\n      \"searchYear\": 2021,\n      \"averageOrganicRank\": 41.08,\n      \"monthlyPaidClicks\": 61181.88,\n      \"averageAdRank\": 1.03,\n      \"totalOrganicResults\": 302731,\n      \"monthlyBudget\": 6721.39,\n      \"monthlyOrganicValue\": 384233.16,\n      \"totalAdsPurchased\": 599,\n      \"monthlyOrganicClicks\": 290145,\n      \"strength\": 75,\n      \"totalInverseRank\": 4971564,\n      \"areStatsNormalized\": true\n    }\n  ],\n  \"resultCount\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "908bc002-17e4-4970-96d9-db1088705dd0",
+              "name": "Bad Request - Invalid parameters provided (e.g., invalid domain format or invalid country code)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getAllDomainStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d2ed66e6-3055-42f6-99fc-5c41399c9ee0",
+              "name": "Unauthorized - Invalid API credentials or insufficient permissions to access domain statistics data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getAllDomainStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a5c8869d-6077-4b07-9b4a-6e02c0d64f90",
+              "name": "Internal Server Error - A server-side error occurred while processing the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getAllDomainStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a9e12d7-59ae-49fb-b686-325f3987f821",
+          "name": "Get Latest Domain Stats",
+          "request": {
+            "name": "Get Latest Domain Stats",
+            "description": {
+              "content": "Returns the most recent domain statistics available in SpyFu's database. This endpoint provides current SEO and PPC performance metrics to analyze the domain's latest competitive position and marketing activity.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/domain-overview?query=example.com)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "getLatestDomainStats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "domain",
+                  "value": "<string>",
+                  "description": "(Required) Domain to retrieve latest statistics for."
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country market to search.  Specifically, this maps to the Google version to query against (google.de for Germany, etc).  Google.com (US) is the default.      [See full list of supported Countries](https://developer.spyfu.com/update/reference/country-code-enum#/)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pastNMonths",
+                  "value": "<integer>",
+                  "description": "Returns the latest N months of stats for domain."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fea64a4c-106d-4df1-b9cb-0a9e606d2457",
+              "name": "Successfully retrieved latest domain statistics. Returns the most recent SEO and PPC metrics including keyword counts, traffic estimates, and competitive positioning data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getLatestDomainStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "pastNMonths",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"domain\": \"example.com\",\n  \"results\": [\n    {\n      \"searchMonth\": 5,\n      \"searchYear\": 2021,\n      \"averageOrganicRank\": 41.08,\n      \"monthlyPaidClicks\": 61181.88,\n      \"averageAdRank\": 1.03,\n      \"totalOrganicResults\": 302731,\n      \"monthlyBudget\": 6721.39,\n      \"monthlyOrganicValue\": 384233.16,\n      \"totalAdsPurchased\": 599,\n      \"monthlyOrganicClicks\": 290145,\n      \"strength\": 75,\n      \"totalInverseRank\": 4971564,\n      \"areStatsNormalized\": true\n    },\n    {\n      \"searchMonth\": 5,\n      \"searchYear\": 2021,\n      \"averageOrganicRank\": 41.08,\n      \"monthlyPaidClicks\": 61181.88,\n      \"averageAdRank\": 1.03,\n      \"totalOrganicResults\": 302731,\n      \"monthlyBudget\": 6721.39,\n      \"monthlyOrganicValue\": 384233.16,\n      \"totalAdsPurchased\": 599,\n      \"monthlyOrganicClicks\": 290145,\n      \"strength\": 75,\n      \"totalInverseRank\": 4971564,\n      \"areStatsNormalized\": true\n    }\n  ],\n  \"resultCount\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2038bce1-025a-4329-a5e1-31c3681b6a13",
+              "name": "Bad Request - Invalid parameters provided (e.g., invalid domain format or invalid country code)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getLatestDomainStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "pastNMonths",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "865f21d9-de23-44cf-9e2f-f5b430f5ea41",
+              "name": "Unauthorized - Invalid API credentials or insufficient permissions to access domain statistics data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getLatestDomainStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "pastNMonths",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "53539789-775c-45fb-9435-243f812c0321",
+              "name": "Internal Server Error - A server-side error occurred while processing the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getLatestDomainStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "pastNMonths",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac8cb3c8-577c-4d13-8984-37efd9777566",
+          "name": "Get Domain Stats For Exact Date",
+          "request": {
+            "name": "Get Domain Stats For Exact Date",
+            "description": {
+              "content": "Returns domain statistics for a specific month and year. This endpoint provides point-in-time snapshots of SEO and PPC performance metrics to analyze historical domain activity and compare performance across different time periods.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/domain-overview?query=example.com)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "getDomainStatsForExactDate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "domain",
+                  "value": "<string>",
+                  "description": "(Required) Domain to retrieve statistics for."
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country market to search.  Specifically, this maps to the Google version to query against (google.de for Germany, etc).  Google.com (US) is the default.      [See full list of supported Countries](https://developer.spyfu.com/update/reference/country-code-enum#/)"
+                },
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<integer>",
+                  "description": "(Required) Year to retrieve statistics for."
+                },
+                {
+                  "disabled": false,
+                  "key": "month",
+                  "value": "<integer>",
+                  "description": "(Required) Month to retrieve statistics for (1-12)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7b512103-2825-4bed-900d-36d791504286",
+              "name": "Successfully retrieved domain statistics for the specified date. Returns SEO and PPC metrics including keyword counts, traffic estimates, and competitive positioning data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getDomainStatsForExactDate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "year",
+                      "value": "2020"
+                    },
+                    {
+                      "key": "month",
+                      "value": "6"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"domain\": \"example.com\",\n  \"results\": [\n    {\n      \"searchMonth\": 5,\n      \"searchYear\": 2021,\n      \"averageOrganicRank\": 41.08,\n      \"monthlyPaidClicks\": 61181.88,\n      \"averageAdRank\": 1.03,\n      \"totalOrganicResults\": 302731,\n      \"monthlyBudget\": 6721.39,\n      \"monthlyOrganicValue\": 384233.16,\n      \"totalAdsPurchased\": 599,\n      \"monthlyOrganicClicks\": 290145,\n      \"strength\": 75,\n      \"totalInverseRank\": 4971564,\n      \"areStatsNormalized\": true\n    },\n    {\n      \"searchMonth\": 5,\n      \"searchYear\": 2021,\n      \"averageOrganicRank\": 41.08,\n      \"monthlyPaidClicks\": 61181.88,\n      \"averageAdRank\": 1.03,\n      \"totalOrganicResults\": 302731,\n      \"monthlyBudget\": 6721.39,\n      \"monthlyOrganicValue\": 384233.16,\n      \"totalAdsPurchased\": 599,\n      \"monthlyOrganicClicks\": 290145,\n      \"strength\": 75,\n      \"totalInverseRank\": 4971564,\n      \"areStatsNormalized\": true\n    }\n  ],\n  \"resultCount\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "005575bc-2f9a-41ed-a886-d6da1c3172c9",
+              "name": "Bad Request - Invalid parameters provided (e.g., invalid domain format, date out of range, or invalid country code)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getDomainStatsForExactDate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "year",
+                      "value": "2020"
+                    },
+                    {
+                      "key": "month",
+                      "value": "6"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "521c2c46-19b1-4d87-bcad-fc5d7e724762",
+              "name": "Unauthorized - Invalid API credentials or insufficient permissions to access domain statistics data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getDomainStatsForExactDate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "year",
+                      "value": "2020"
+                    },
+                    {
+                      "key": "month",
+                      "value": "6"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "141be124-2439-439f-a6be-0b9824be1b4f",
+              "name": "Internal Server Error - A server-side error occurred while processing the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getDomainStatsForExactDate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "year",
+                      "value": "2020"
+                    },
+                    {
+                      "key": "month",
+                      "value": "6"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3d558fd-c110-4ec8-bf01-8c52f721db7d",
+          "name": "Get Active Dates For Domain",
+          "request": {
+            "name": "Get Active Dates For Domain",
+            "description": {
+              "content": "Returns a chronological list of dates for which SpyFu has collected domain statistics data. This endpoint helps identify data coverage periods and historical tracking availability for domain analysis and competitive research.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/domain-overview?query=example.com)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "getActiveDatesForDomain"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "domain",
+                  "value": "<string>",
+                  "description": "(Required) Domain to retrieve data coverage dates for."
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country market to search.  Specifically, this maps to the Google version to query against (google.de for Germany, etc).  Google.com (US) is the default.      [See full list of supported Countries](https://developer.spyfu.com/update/reference/country-code-enum#/)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86442d4d-0a1e-4b7d-9b74-8f15220661c7",
+              "name": "Successfully retrieved list of active data collection dates for the domain. Returns chronological dates showing when SpyFu collected statistics data for historical analysis.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getActiveDatesForDomain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 100,\n  \"results\": [\n    {\n      \"dateString\": \"string\",\n      \"month\": 2331,\n      \"year\": 299\n    },\n    {\n      \"dateString\": \"string\",\n      \"month\": 7087,\n      \"year\": 5465\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5674e775-daf2-4b2c-9b85-2fb8bea27a40",
+              "name": "Bad Request - Invalid parameters provided (e.g., invalid domain format or invalid country code)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getActiveDatesForDomain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6a4291b0-d052-408a-96ea-1aadd4519480",
+              "name": "Unauthorized - Invalid API credentials or insufficient permissions to access domain statistics data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getActiveDatesForDomain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ed884487-4c35-4ab9-89be-9ba44711bc4a",
+              "name": "Internal Server Error - A server-side error occurred while processing the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getActiveDatesForDomain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "example.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24e4d4db-aabb-4d5c-8ce1-f1973289bb32",
+          "name": "Bulk Domain Statistics (Snapshot or History)",
+          "request": {
+            "name": "Bulk Domain Statistics (Snapshot or History)",
+            "description": {
+              "content": "Returns SEO and PPC metrics for multiple domains in one request. Suitable for batch enrichment, benchmarking, and portfolio monitoring.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "getBulkDomainStats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "domains",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of domains to analyze. Each domain should be provided as a root domain (example.com) without protocol or paths. Maximum of 1000 domains per request."
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country market to analyze. Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.)."
+                },
+                {
+                  "disabled": false,
+                  "key": "showOnlyLatest",
+                  "value": "true",
+                  "description": "(Required) Controls data scope returned. If true, returns only the most recent statistics for each domain (current snapshot). If false, returns complete historical data showing trends over time for comprehensive analysis."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66023cc0-d2df-4f6b-bf6d-9976002fca09",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getBulkDomainStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domains",
+                      "value": "example.com,competitor.com,industry-leader.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "showOnlyLatest",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 1,\n  \"totalMatchingResults\": 8165,\n  \"results\": [\n    {\n      \"domain\": \"domain.com\",\n      \"results\": [\n        {\n          \"searchMonth\": 5,\n          \"searchYear\": 2021,\n          \"averageOrganicRank\": 41.08,\n          \"monthlyPaidClicks\": 61181.88,\n          \"averageAdRank\": 1.03,\n          \"totalOrganicResults\": 302731,\n          \"monthlyBudget\": 6721.39,\n          \"monthlyOrganicValue\": 384233.16,\n          \"totalAdsPurchased\": 599,\n          \"monthlyOrganicClicks\": 290145,\n          \"strength\": 75,\n          \"totalInverseRank\": 4971564,\n          \"areStatsNormalized\": true\n        },\n        {\n          \"searchMonth\": 5,\n          \"searchYear\": 2021,\n          \"averageOrganicRank\": 41.08,\n          \"monthlyPaidClicks\": 61181.88,\n          \"averageAdRank\": 1.03,\n          \"totalOrganicResults\": 302731,\n          \"monthlyBudget\": 6721.39,\n          \"monthlyOrganicValue\": 384233.16,\n          \"totalAdsPurchased\": 599,\n          \"monthlyOrganicClicks\": 290145,\n          \"strength\": 75,\n          \"totalInverseRank\": 4971564,\n          \"areStatsNormalized\": true\n        }\n      ]\n    },\n    {\n      \"domain\": \"domain.com\",\n      \"results\": [\n        {\n          \"searchMonth\": 5,\n          \"searchYear\": 2021,\n          \"averageOrganicRank\": 41.08,\n          \"monthlyPaidClicks\": 61181.88,\n          \"averageAdRank\": 1.03,\n          \"totalOrganicResults\": 302731,\n          \"monthlyBudget\": 6721.39,\n          \"monthlyOrganicValue\": 384233.16,\n          \"totalAdsPurchased\": 599,\n          \"monthlyOrganicClicks\": 290145,\n          \"strength\": 75,\n          \"totalInverseRank\": 4971564,\n          \"areStatsNormalized\": true\n        },\n        {\n          \"searchMonth\": 5,\n          \"searchYear\": 2021,\n          \"averageOrganicRank\": 41.08,\n          \"monthlyPaidClicks\": 61181.88,\n          \"averageAdRank\": 1.03,\n          \"totalOrganicResults\": 302731,\n          \"monthlyBudget\": 6721.39,\n          \"monthlyOrganicValue\": 384233.16,\n          \"totalAdsPurchased\": 599,\n          \"monthlyOrganicClicks\": 290145,\n          \"strength\": 75,\n          \"totalInverseRank\": 4971564,\n          \"areStatsNormalized\": true\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f62e791-7a36-4d42-aef6-715127265e8c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getBulkDomainStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domains",
+                      "value": "example.com,competitor.com,industry-leader.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "showOnlyLatest",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "afa47749-91dd-453d-9c20-da25ccf1955a",
+              "name": "User failed authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getBulkDomainStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domains",
+                      "value": "example.com,competitor.com,industry-leader.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "showOnlyLatest",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "faa6ebea-8a7d-4e62-b040-1165c362c779",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getBulkDomainStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domains",
+                      "value": "example.com,competitor.com,industry-leader.com"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "showOnlyLatest",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b657e8eb-e48f-40e1-b580-7808ffe5ea8e",
+          "name": "Find Domains by Pattern and Metrics",
+          "request": {
+            "name": "Find Domains by Pattern and Metrics",
+            "description": {
+              "content": "Discovers domains matching wildcard patterns and performance criteria for lead generation and competitive prospecting. Use wildcards like `*car*` to find automotive domains or filter by traffic, budget, and ranking metrics to identify high-value prospects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "getMatchingDomains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) A wildcard(*) used to find any domain that matches the pattern. `*blog*` will find any domain with the word blog appearing anywhere within it."
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "US",
+                  "description": "Country to get results for."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "MonthlyOrganicClicks",
+                  "description": "Column to sort by."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "Descending",
+                  "description": "Order to sort the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "monthlyBudget.min",
+                  "value": "<float>",
+                  "description": "Minimum monthly ad budget filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "monthlyBudget.max",
+                  "value": "<float>",
+                  "description": "Maximum monthly ad budget filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "monthlyOrganicClicks.min",
+                  "value": "<float>",
+                  "description": "Minimum monthly organic traffic filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "monthlyOrganicClicks.max",
+                  "value": "<float>",
+                  "description": "Maximum monthly organic traffic filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "totalOrganicResults.min",
+                  "value": "<float>",
+                  "description": "Minimum organic keyword count filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "totalOrganicResults.max",
+                  "value": "<float>",
+                  "description": "Maximum organic keyword count filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "monthlyOrganicValue.min",
+                  "value": "<float>",
+                  "description": "Minimum organic traffic value filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "monthlyOrganicValue.max",
+                  "value": "<float>",
+                  "description": "Maximum organic traffic value filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "strength.min",
+                  "value": "<float>",
+                  "description": "Minimum domain strength score filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "strength.max",
+                  "value": "<float>",
+                  "description": "Maximum domain strength score filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "monthlyPaidClicks.min",
+                  "value": "<float>",
+                  "description": "Minimum monthly paid clicks filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "monthlyPaidClicks.max",
+                  "value": "<float>",
+                  "description": "Maximum monthly paid clicks filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "averageOrganicRank.min",
+                  "value": "<float>",
+                  "description": "Minimum average organic rank filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "averageOrganicRank.max",
+                  "value": "<float>",
+                  "description": "Maximum average organic rank filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "averageAdRank.min",
+                  "value": "<float>",
+                  "description": "Minimum average ad position filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "averageAdRank.max",
+                  "value": "<float>",
+                  "description": "Maximum average ad position filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "5",
+                  "description": "The maximum number of rows returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "startingRow",
+                  "value": "1",
+                  "description": "Row number to start the results with."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c70e418-1c8e-40a7-aadf-4943173af0ce",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getMatchingDomains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "*blog*"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "MonthlyOrganicClicks"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "monthlyBudget.min",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "monthlyBudget.max",
+                      "value": "50000"
+                    },
+                    {
+                      "key": "monthlyOrganicClicks.min",
+                      "value": "10000"
+                    },
+                    {
+                      "key": "monthlyOrganicClicks.max",
+                      "value": "500000"
+                    },
+                    {
+                      "key": "totalOrganicResults.min",
+                      "value": "100"
+                    },
+                    {
+                      "key": "totalOrganicResults.max",
+                      "value": "10000"
+                    },
+                    {
+                      "key": "monthlyOrganicValue.min",
+                      "value": "5000"
+                    },
+                    {
+                      "key": "monthlyOrganicValue.max",
+                      "value": "100000"
+                    },
+                    {
+                      "key": "strength.min",
+                      "value": "30"
+                    },
+                    {
+                      "key": "strength.max",
+                      "value": "90"
+                    },
+                    {
+                      "key": "monthlyPaidClicks.min",
+                      "value": "500"
+                    },
+                    {
+                      "key": "monthlyPaidClicks.max",
+                      "value": "100000"
+                    },
+                    {
+                      "key": "averageOrganicRank.min",
+                      "value": "1"
+                    },
+                    {
+                      "key": "averageOrganicRank.max",
+                      "value": "50"
+                    },
+                    {
+                      "key": "averageAdRank.min",
+                      "value": "1"
+                    },
+                    {
+                      "key": "averageAdRank.max",
+                      "value": "4"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 1,\n  \"totalMatchingResults\": 8165,\n  \"results\": [\n    {\n      \"domain\": \"domain.com\",\n      \"results\": [\n        {\n          \"searchMonth\": 5,\n          \"searchYear\": 2021,\n          \"averageOrganicRank\": 41.08,\n          \"monthlyPaidClicks\": 61181.88,\n          \"averageAdRank\": 1.03,\n          \"totalOrganicResults\": 302731,\n          \"monthlyBudget\": 6721.39,\n          \"monthlyOrganicValue\": 384233.16,\n          \"totalAdsPurchased\": 599,\n          \"monthlyOrganicClicks\": 290145,\n          \"strength\": 75,\n          \"totalInverseRank\": 4971564,\n          \"areStatsNormalized\": true\n        },\n        {\n          \"searchMonth\": 5,\n          \"searchYear\": 2021,\n          \"averageOrganicRank\": 41.08,\n          \"monthlyPaidClicks\": 61181.88,\n          \"averageAdRank\": 1.03,\n          \"totalOrganicResults\": 302731,\n          \"monthlyBudget\": 6721.39,\n          \"monthlyOrganicValue\": 384233.16,\n          \"totalAdsPurchased\": 599,\n          \"monthlyOrganicClicks\": 290145,\n          \"strength\": 75,\n          \"totalInverseRank\": 4971564,\n          \"areStatsNormalized\": true\n        }\n      ]\n    },\n    {\n      \"domain\": \"domain.com\",\n      \"results\": [\n        {\n          \"searchMonth\": 5,\n          \"searchYear\": 2021,\n          \"averageOrganicRank\": 41.08,\n          \"monthlyPaidClicks\": 61181.88,\n          \"averageAdRank\": 1.03,\n          \"totalOrganicResults\": 302731,\n          \"monthlyBudget\": 6721.39,\n          \"monthlyOrganicValue\": 384233.16,\n          \"totalAdsPurchased\": 599,\n          \"monthlyOrganicClicks\": 290145,\n          \"strength\": 75,\n          \"totalInverseRank\": 4971564,\n          \"areStatsNormalized\": true\n        },\n        {\n          \"searchMonth\": 5,\n          \"searchYear\": 2021,\n          \"averageOrganicRank\": 41.08,\n          \"monthlyPaidClicks\": 61181.88,\n          \"averageAdRank\": 1.03,\n          \"totalOrganicResults\": 302731,\n          \"monthlyBudget\": 6721.39,\n          \"monthlyOrganicValue\": 384233.16,\n          \"totalAdsPurchased\": 599,\n          \"monthlyOrganicClicks\": 290145,\n          \"strength\": 75,\n          \"totalInverseRank\": 4971564,\n          \"areStatsNormalized\": true\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02bc7501-7600-427f-b842-65fc7fbe9235",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getMatchingDomains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "*blog*"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "MonthlyOrganicClicks"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "monthlyBudget.min",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "monthlyBudget.max",
+                      "value": "50000"
+                    },
+                    {
+                      "key": "monthlyOrganicClicks.min",
+                      "value": "10000"
+                    },
+                    {
+                      "key": "monthlyOrganicClicks.max",
+                      "value": "500000"
+                    },
+                    {
+                      "key": "totalOrganicResults.min",
+                      "value": "100"
+                    },
+                    {
+                      "key": "totalOrganicResults.max",
+                      "value": "10000"
+                    },
+                    {
+                      "key": "monthlyOrganicValue.min",
+                      "value": "5000"
+                    },
+                    {
+                      "key": "monthlyOrganicValue.max",
+                      "value": "100000"
+                    },
+                    {
+                      "key": "strength.min",
+                      "value": "30"
+                    },
+                    {
+                      "key": "strength.max",
+                      "value": "90"
+                    },
+                    {
+                      "key": "monthlyPaidClicks.min",
+                      "value": "500"
+                    },
+                    {
+                      "key": "monthlyPaidClicks.max",
+                      "value": "100000"
+                    },
+                    {
+                      "key": "averageOrganicRank.min",
+                      "value": "1"
+                    },
+                    {
+                      "key": "averageOrganicRank.max",
+                      "value": "50"
+                    },
+                    {
+                      "key": "averageAdRank.min",
+                      "value": "1"
+                    },
+                    {
+                      "key": "averageAdRank.max",
+                      "value": "4"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24bc215f-5407-470f-8f43-1a479efeee0a",
+              "name": "User failed authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getMatchingDomains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "*blog*"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "MonthlyOrganicClicks"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "monthlyBudget.min",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "monthlyBudget.max",
+                      "value": "50000"
+                    },
+                    {
+                      "key": "monthlyOrganicClicks.min",
+                      "value": "10000"
+                    },
+                    {
+                      "key": "monthlyOrganicClicks.max",
+                      "value": "500000"
+                    },
+                    {
+                      "key": "totalOrganicResults.min",
+                      "value": "100"
+                    },
+                    {
+                      "key": "totalOrganicResults.max",
+                      "value": "10000"
+                    },
+                    {
+                      "key": "monthlyOrganicValue.min",
+                      "value": "5000"
+                    },
+                    {
+                      "key": "monthlyOrganicValue.max",
+                      "value": "100000"
+                    },
+                    {
+                      "key": "strength.min",
+                      "value": "30"
+                    },
+                    {
+                      "key": "strength.max",
+                      "value": "90"
+                    },
+                    {
+                      "key": "monthlyPaidClicks.min",
+                      "value": "500"
+                    },
+                    {
+                      "key": "monthlyPaidClicks.max",
+                      "value": "100000"
+                    },
+                    {
+                      "key": "averageOrganicRank.min",
+                      "value": "1"
+                    },
+                    {
+                      "key": "averageOrganicRank.max",
+                      "value": "50"
+                    },
+                    {
+                      "key": "averageAdRank.min",
+                      "value": "1"
+                    },
+                    {
+                      "key": "averageAdRank.max",
+                      "value": "4"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f94860b6-e65b-487a-a672-9d8c92490bbb",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "getMatchingDomains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "*blog*"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "US"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "MonthlyOrganicClicks"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Descending"
+                    },
+                    {
+                      "key": "monthlyBudget.min",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "monthlyBudget.max",
+                      "value": "50000"
+                    },
+                    {
+                      "key": "monthlyOrganicClicks.min",
+                      "value": "10000"
+                    },
+                    {
+                      "key": "monthlyOrganicClicks.max",
+                      "value": "500000"
+                    },
+                    {
+                      "key": "totalOrganicResults.min",
+                      "value": "100"
+                    },
+                    {
+                      "key": "totalOrganicResults.max",
+                      "value": "10000"
+                    },
+                    {
+                      "key": "monthlyOrganicValue.min",
+                      "value": "5000"
+                    },
+                    {
+                      "key": "monthlyOrganicValue.max",
+                      "value": "100000"
+                    },
+                    {
+                      "key": "strength.min",
+                      "value": "30"
+                    },
+                    {
+                      "key": "strength.max",
+                      "value": "90"
+                    },
+                    {
+                      "key": "monthlyPaidClicks.min",
+                      "value": "500"
+                    },
+                    {
+                      "key": "monthlyPaidClicks.max",
+                      "value": "100000"
+                    },
+                    {
+                      "key": "averageOrganicRank.min",
+                      "value": "1"
+                    },
+                    {
+                      "key": "averageOrganicRank.max",
+                      "value": "50"
+                    },
+                    {
+                      "key": "averageAdRank.min",
+                      "value": "1"
+                    },
+                    {
+                      "key": "averageAdRank.max",
+                      "value": "4"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "startingRow",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spyfu.com/apis/accounts_api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4d7aea26-e373-4813-8e3b-e810fe4a7798",
+    "name": "Account Account API Domain Stats API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

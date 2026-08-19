@@ -1,0 +1,172 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Account Account API Competitors API API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Competitors API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Top PPC Competitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/ppc/getTopCompetitors",
+            "params": [
+              {
+                "name": "domain",
+                "value": "example.com",
+                "type": "query",
+                "description": "Domain to analyze for paid search competitors."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "Rank",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort results."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              }
+            ]
+          },
+          "docs": "Returns the top paid search (PPC) competitors for a domain based on shared keyword advertising overlap. This endpoint identifies domains that compete for the same paid keywords to reveal direct advertising competition and bidding opportunities.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/ppc/competitors?query=example.com)"
+        },
+        {
+          "info": {
+            "name": "Get Top SEO Competitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/seo/getTopCompetitors",
+            "params": [
+              {
+                "name": "domain",
+                "value": "example.com",
+                "type": "query",
+                "description": "Domain to analyze for organic search competitors."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "Rank",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort results."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              }
+            ]
+          },
+          "docs": "Returns the top organic search (SEO) competitors for a domain based on shared keyword ranking overlap. This endpoint identifies domains that compete for the same organic keywords to reveal direct SEO competition and content opportunities.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/seo/competitors?query=example.com)"
+        },
+        {
+          "info": {
+            "name": "Get Combined Top Competitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spyfu.com/apis/accounts_api/v2/combined/getCombinedTopCompetitors",
+            "params": [
+              {
+                "name": "domain",
+                "value": "example.com",
+                "type": "query",
+                "description": "Domain to get competitors for"
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Country market to search.  Specifically, this maps to the Google domain version to query against (e.g., google.com for US, google.de for Germany, etc.).  <a href='https://developer.spyfu.com/reference/adhistoryapi_getdomainadhistory_get#/'>All Countries</a>"
+              },
+              {
+                "name": "sortBy",
+                "value": "Rank",
+                "type": "query",
+                "description": "Column to sort by."
+              },
+              {
+                "name": "sortOrder",
+                "value": "Descending",
+                "type": "query",
+                "description": "Order to sort results."
+              },
+              {
+                "name": "pageSize",
+                "value": "5",
+                "type": "query",
+                "description": "The maximum number of rows returned."
+              },
+              {
+                "name": "startingRow",
+                "value": "1",
+                "type": "query",
+                "description": "Row number to start the results with."
+              }
+            ]
+          },
+          "docs": "Returns the top competitors for a domain combining both paid search (PPC) and organic search (SEO) data. This endpoint identifies domains that compete across both advertising and organic rankings to reveal comprehensive competitive landscape insights.\n\n[Visualize this API live on SpyFu](https://www.spyfu.com/competitors?query=example.com)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
