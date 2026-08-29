@@ -8,6 +8,19 @@ description: >-
   Kombat, Keyword Research, and Ranking History — and is indexed against 1.6
   trillion search results, 8 billion keywords, and 152 million domains.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
