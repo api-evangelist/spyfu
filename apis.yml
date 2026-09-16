@@ -1,12 +1,10 @@
 aid: spyfu
 name: SpyFu
-description: >-
-  SpyFu is a competitive SEO and PPC intelligence platform that gives marketers
-  and agencies programmatic access to competitor keyword rankings, ad history,
-  backlinks, and domain performance data. The REST API covers eight research
-  domains — Domain Stats, Ad History, PPC Research, SEO Research, Competitors,
-  Kombat, Keyword Research, and Ranking History — and is indexed against 1.6
-  trillion search results, 8 billion keywords, and 152 million domains.
+description: SpyFu is a competitive SEO and PPC intelligence platform that gives marketers and agencies
+  programmatic access to competitor keyword rankings, ad history, backlinks, and domain performance data.
+  The REST API covers eight research domains — Domain Stats, Ad History, PPC Research, SEO Research, Competitors,
+  Kombat, Keyword Research, and Ranking History — and is indexed against 1.6 trillion search results,
+  8 billion keywords, and 152 million domains.
 type: Index
 deliveryModel:
   model: unknown
@@ -39,20 +37,20 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/spyfu.png
 url: https://raw.githubusercontent.com/api-evangelist/spyfu/refs/heads/main/apis.yml
 created: 2026-06-13
-modified: 2026-08-13
+modified: '2026-09-16'
 specificationVersion: '0.23'
 tags:
-  - SEO
-  - PPC
-  - Competitive Intelligence
-  - Keyword Research
-  - Ad History
-  - Backlinks
-  - Domain Analytics
-  - SERP
+- SEO
+- PPC
+- Competitive Intelligence
+- Keyword Research
+- Ad History
+- Backlinks
+- Domain Analytics
+- SERP
 apis:
 - aid: spyfu:spyfu-account-api-api
-  name: SpyFu Account API API
+  name: SpyFu Account API
   description: The Account API API from SpyFu — 3 operation(s) for account api.
   humanURL: https://developer.spyfu.com/
   baseURL: https://api.spyfu.com
@@ -70,7 +68,7 @@ apis:
   - type: Overlay
     url: overlays/spyfu-account-api-api-overlay.yaml
 - aid: spyfu:spyfu-ad-history-research-api-api
-  name: SpyFu Ad History Research API API
+  name: SpyFu Ad History Research API
   description: The Ad History Research API API from SpyFu — 3 operation(s) for ad history research api.
   humanURL: https://developer.spyfu.com/
   baseURL: https://api.spyfu.com
@@ -90,7 +88,7 @@ apis:
   - type: Overlay
     url: overlays/spyfu-ad-history-research-api-api-overlay.yaml
 - aid: spyfu:spyfu-competitors-api-api
-  name: SpyFu Competitors API API
+  name: SpyFu Competitors API
   description: The Competitors API API from SpyFu — 3 operation(s) for competitors api.
   humanURL: https://developer.spyfu.com/
   baseURL: https://api.spyfu.com
@@ -110,7 +108,7 @@ apis:
   - type: Overlay
     url: overlays/spyfu-competitors-api-api-overlay.yaml
 - aid: spyfu:spyfu-domain-stats-api-api
-  name: SpyFu Domain Stats API API
+  name: SpyFu Domain Stats API
   description: The Domain Stats API API from SpyFu — 6 operation(s) for domain stats api.
   humanURL: https://developer.spyfu.com/
   baseURL: https://api.spyfu.com
@@ -130,7 +128,7 @@ apis:
   - type: Overlay
     url: overlays/spyfu-domain-stats-api-api-overlay.yaml
 - aid: spyfu:spyfu-keyword-research-api-api
-  name: SpyFu Keyword Research API API
+  name: SpyFu Keyword Research API
   description: The Keyword Research API API from SpyFu — 7 operation(s) for keyword research api.
   humanURL: https://developer.spyfu.com/
   baseURL: https://api.spyfu.com
@@ -150,7 +148,7 @@ apis:
   - type: Overlay
     url: overlays/spyfu-keyword-research-api-api-overlay.yaml
 - aid: spyfu:spyfu-kombat-api-api
-  name: SpyFu Kombat API API
+  name: SpyFu Kombat API
   description: The Kombat API API from SpyFu — 2 operation(s) for kombat api.
   humanURL: https://developer.spyfu.com/
   baseURL: https://api.spyfu.com
@@ -170,7 +168,7 @@ apis:
   - type: Overlay
     url: overlays/spyfu-kombat-api-api-overlay.yaml
 - aid: spyfu:spyfu-ppc-research-api-api
-  name: SpyFu PPC Research API API
+  name: SpyFu PPC Research API
   description: The PPC Research API API from SpyFu — 3 operation(s) for ppc research api.
   humanURL: https://developer.spyfu.com/
   baseURL: https://api.spyfu.com
@@ -190,7 +188,7 @@ apis:
   - type: Overlay
     url: overlays/spyfu-ppc-research-api-api-overlay.yaml
 - aid: spyfu:spyfu-ranking-history-api-api
-  name: SpyFu Ranking History API API
+  name: SpyFu Ranking History API
   description: The Ranking History API API from SpyFu — 3 operation(s) for ranking history api.
   humanURL: https://developer.spyfu.com/
   baseURL: https://api.spyfu.com
@@ -210,7 +208,7 @@ apis:
   - type: Overlay
     url: overlays/spyfu-ranking-history-api-api-overlay.yaml
 - aid: spyfu:spyfu-seo-research-api-api
-  name: SpyFu SEO Research API API
+  name: SpyFu SEO Research API
   description: The SEO Research API API from SpyFu — 17 operation(s) for seo research api.
   humanURL: https://developer.spyfu.com/
   baseURL: https://api.spyfu.com
@@ -230,84 +228,83 @@ apis:
   - type: Overlay
     url: overlays/spyfu-seo-research-api-api-overlay.yaml
 common:
-  - type: AgenticAccess
-    url: agentic-access/spyfu-agentic-access.yml
-  - type: DomainSecurity
-    url: security/spyfu-domain-security.yml
-  - type: Authentication
-    url: authentication/spyfu-authentication.yml
-  - type: Website
-    url: https://www.spyfu.com/
-  - type: Documentation
-    url: https://developer.spyfu.com/
-  - type: GitHubOrg
-    url: https://github.com/spyfu
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/spyfu
-  - type: X
-    url: https://x.com/spyfu
-  - type: Blog
-    url: https://www.spyfu.com/blog/
-  - type: Pricing
-    url: https://www.spyfu.com/pricing
-  - type: Plans
-    url: plans/spyfu-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/spyfu-rate-limits.yml
-  - type: FinOps
-    url: finops/spyfu-finops.yml
-  - type: LLMsTxt
-    url: llms/spyfu-llms.txt
-  - type: WellKnown
-    url: well-known/spyfu-well-known.yml
-  - type: MCPServer
-    url: mcp/spyfu-mcp.yml
-  - type: ToolCrosswalk
-    url: mcp/spyfu-tool-crosswalk.yml
-  - type: AgentSkill
-    url: skills/_index.yml
-  - type: Packages
-    url: packages/spyfu-packages.yml
-  - type: Conventions
-    url: conventions/spyfu-conventions.yml
-  - type: ErrorCatalog
-    url: errors/spyfu-problem-types.yml
-  - type: Lifecycle
-    url: lifecycle/spyfu-lifecycle.yml
-  - type: Conformance
-    url: conformance/spyfu-conformance.yml
-  - type: DataModel
-    url: data-model/spyfu-data-model.yml
-  - type: ChangeLog
-    url: changelog/spyfu-changelog.yml
-  - type: Vocabulary
-    url: vocabulary/spyfu-vocabulary.yml
-  - type: Rules
-    url: rules/spyfu-jsonschema-spectral-rules.yml
-  - type: JSONLD
-    url: json-ld/spyfu-context.jsonld
-  - type: DeveloperPortal
-    url: https://developer.spyfu.com/
-  - type: APIReference
-    url: https://developer.spyfu.com/reference
-  - type: ChangeLog
-    url: https://help.spyfu.com/en/articles/5640863-what-s-new-on-spyfu
-  - type: Support
-    url: https://help.spyfu.com/en/
-  - type: TermsOfService
-    url: https://www.spyfu.com/termsconditions
-  - type: PrivacyPolicy
-    url: https://www.spyfu.com/privacypolicy
-  - type: Login
-    url: https://www.spyfu.com/login
-  - type: GitHubOrganization
-    url: https://github.com/spyfu
-  - type: SourceCode
-    url: https://github.com/spyfu/spyfu_api_docs
+- type: AgenticAccess
+  url: agentic-access/spyfu-agentic-access.yml
+- type: DomainSecurity
+  url: security/spyfu-domain-security.yml
+- type: Authentication
+  url: authentication/spyfu-authentication.yml
+- type: Website
+  url: https://www.spyfu.com/
+- type: Documentation
+  url: https://developer.spyfu.com/
+- type: GitHubOrg
+  url: https://github.com/spyfu
+- type: LinkedIn
+  url: https://www.linkedin.com/company/spyfu
+- type: X
+  url: https://x.com/spyfu
+- type: Blog
+  url: https://www.spyfu.com/blog/
+- type: Pricing
+  url: https://www.spyfu.com/pricing
+- type: Plans
+  url: plans/spyfu-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/spyfu-rate-limits.yml
+- type: FinOps
+  url: finops/spyfu-finops.yml
+- type: LLMsTxt
+  url: llms/spyfu-llms.txt
+- type: WellKnown
+  url: well-known/spyfu-well-known.yml
+- type: MCPServer
+  url: mcp/spyfu-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/spyfu-tool-crosswalk.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Packages
+  url: packages/spyfu-packages.yml
+- type: Conventions
+  url: conventions/spyfu-conventions.yml
+- type: ErrorCatalog
+  url: errors/spyfu-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/spyfu-lifecycle.yml
+- type: Conformance
+  url: conformance/spyfu-conformance.yml
+- type: DataModel
+  url: data-model/spyfu-data-model.yml
+- type: ChangeLog
+  url: changelog/spyfu-changelog.yml
+- type: Vocabulary
+  url: vocabulary/spyfu-vocabulary.yml
+- type: Rules
+  url: rules/spyfu-jsonschema-spectral-rules.yml
+- type: JSONLD
+  url: json-ld/spyfu-context.jsonld
+- type: DeveloperPortal
+  url: https://developer.spyfu.com/
+- type: APIReference
+  url: https://developer.spyfu.com/reference
+- type: ChangeLog
+  url: https://help.spyfu.com/en/articles/5640863-what-s-new-on-spyfu
+- type: Support
+  url: https://help.spyfu.com/en/
+- type: TermsOfService
+  url: https://www.spyfu.com/termsconditions
+- type: PrivacyPolicy
+  url: https://www.spyfu.com/privacypolicy
+- type: Login
+  url: https://www.spyfu.com/login
+- type: GitHubOrganization
+  url: https://github.com/spyfu
+- type: SourceCode
+  url: https://github.com/spyfu/spyfu_api_docs
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
-
+- FN: Kin Lane
+  email: kin@apievangelist.com
 x-enrichment:
   date: '2026-08-13'
   status: enriched
