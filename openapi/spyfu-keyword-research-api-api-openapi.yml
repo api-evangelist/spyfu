@@ -1,9 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Account Account API Keyword Research API API
+  title: Keyword Research API
   version: v2
+  description: Expand your keyword portfolio through semantic keyword discovery, related term analysis, and comprehensive keyword intelligence to uncover hidden opportunities and optimize content strategy.
 servers:
-- url: https://api.spyfu.com/apis/accounts_api
+- url: https://api.spyfu.com/apis/keyword_api
 security:
 - Basic_Authentication_Token: []
 - Query_Parameter_Token: []
@@ -432,155 +433,195 @@ paths:
                     readOnly: true
                     example: 100
                   totalMatchingResults:
-                    description: "The total number of results available that matches the query including\r\nitems that might not be included in the returned results/page."
+                    description: 'The total number of results available that matches the query including
+
+                      items that might not be included in the returned results/page.'
                     type: integer
                     format: int64
                     readOnly: true
                   results:
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: By looking at strong competitors in this niche and their most trusted keywords over time, we suggest similar keywords here that we found to be profitable for your competition.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: red shoes
                         searchVolume:
                           description: This is the estimated number of times this past month that people have searched this keyword. The numbers reflect searches done in the US on Google.com (or in the UK on Google.co.uk if you are looking at UK data). We blend data from multiple sources to give a truer snapshot of activity on this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 266000
                         liveSearchVolume:
                           description: This metric displays a more likely SV based on recent trends or out-of-date estimates. The original volume remains unchanged in any domain's rolled-up metrics.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 82000
                         rankingDifficulty:
                           description: We've calculated how difficult it would be to rank on this keyword. The score is based on a scale of 0-100 (with 100 being the most difficult to rank for). Compare this number to other keywords you're targeting to get an idea of how to prioritize your SEO campaign.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 98
                         totalMonthlyClicks:
                           description: This is the total number of all clicks (organic and paid) made on the SERP over the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 219000
                         percentMobileSearches:
                           description: When we have a breakdown of how many of the searches for this keyword come from mobile vs desktop, we will show it here.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52009505
                         percentDesktopSearches:
                           description: When we have a breakdown of how many of the searches for this keyword come from desktop vs mobile, we will show it here.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.47990492
                         percentSearchesNotClicked:
                           description: Some SERPs return enough information that the user does not have to click any results. There might also be unexpected results that cause the user to abandon the SERP without any clicks. This is the rate that searchers leave the page without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.1792681
                         percentPaidClicks:
                           description: Of all clicks made to this keyword's SERP, this percentage measures how many went to the paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52188635
                         percentOrganicClicks:
                           description: Of all clicks made to this keyword's SERP, this percentage measures how many went to organic results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.47811362
                         broadCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.73
                         phraseCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.67
                         exactCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.65
                         broadMonthlyClicks:
                           description: Estimated monthly clicks for broad match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 57019.8
                         phraseMonthlyClicks:
                           description: Estimated monthly clicks for phrase match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 42150.3
                         exactMonthlyClicks:
                           description: Estimated monthly clicks for exact match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 29094.6
                         broadMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 41604.9
                         phraseMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 25542
                         exactMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 19041.6
                         paidCompetitors:
                           description: This is the total number of advertisers we've seen over the last 14 months for this keyword. It's helpful to know how competitive the field is and how many advertisers have tested this keyword over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 15
                         distinctCompetitors:
                           description: This is the list of distinct advertisers we've seen over the last 14 months for this keyword.
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: string
-                          nullable: true
                         rankingHomepages:
                           description: We roll up the number of home pages that rank within the first 50 results for this keyword. (It doesn't count ads, only organic results.) A homepage might be "https://webmd.com" vs a longer path like "https://www.webmd.com/fitness-exercise".
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 8
                         serpFeaturesCsv:
                           description: Comma-separated list of SERP features present for this keyword (e.g., Images, Videos, Maps, Shopping), indicating competition for organic real estate.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Images,Maps
                         serpFirstResult:
                           description: Domain name of the top-ranking organic result for this keyword, useful for identifying category leaders.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         isQuestion:
                           description: Indicates whether this keyword is phrased as a question (who, what, when, where, why, how).
@@ -592,7 +633,6 @@ paths:
                           example: false
                       additionalProperties: false
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request
@@ -609,7 +649,7 @@ paths:
       description: 'Returns thematically related keywords that share similar categories and themes with your seed keyword. This endpoint helps expand your keyword reach with relevant, competitive terms to broaden your content strategy and advertising opportunities.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/keyword/related?query=running+shoes)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: query
         in: query
@@ -1005,155 +1045,195 @@ paths:
                     readOnly: true
                     example: 100
                   totalMatchingResults:
-                    description: "The total number of results available that matches the query including\r\nitems that might not be included in the returned results/page."
+                    description: 'The total number of results available that matches the query including
+
+                      items that might not be included in the returned results/page.'
                     type: integer
                     format: int64
                     readOnly: true
                   results:
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: By looking at strong competitors in this niche and their most trusted keywords over time, we suggest similar keywords here that we found to be profitable for your competition.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: red shoes
                         searchVolume:
                           description: This is the estimated number of times this past month that people have searched this keyword. The numbers reflect searches done in the US on Google.com (or in the UK on Google.co.uk if you are looking at UK data). We blend data from multiple sources to give a truer snapshot of activity on this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 266000
                         liveSearchVolume:
                           description: This metric displays a more likely SV based on recent trends or out-of-date estimates. The original volume remains unchanged in any domain's rolled-up metrics.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 82000
                         rankingDifficulty:
                           description: We've calculated how difficult it would be to rank on this keyword. The score is based on a scale of 0-100 (with 100 being the most difficult to rank for). Compare this number to other keywords you're targeting to get an idea of how to prioritize your SEO campaign.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 98
                         totalMonthlyClicks:
                           description: This is the total number of all clicks (organic and paid) made on the SERP over the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 219000
                         percentMobileSearches:
                           description: When we have a breakdown of how many of the searches for this keyword come from mobile vs desktop, we will show it here.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52009505
                         percentDesktopSearches:
                           description: When we have a breakdown of how many of the searches for this keyword come from desktop vs mobile, we will show it here.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.47990492
                         percentSearchesNotClicked:
                           description: Some SERPs return enough information that the user does not have to click any results. There might also be unexpected results that cause the user to abandon the SERP without any clicks. This is the rate that searchers leave the page without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.1792681
                         percentPaidClicks:
                           description: Of all clicks made to this keyword's SERP, this percentage measures how many went to the paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52188635
                         percentOrganicClicks:
                           description: Of all clicks made to this keyword's SERP, this percentage measures how many went to organic results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.47811362
                         broadCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.73
                         phraseCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.67
                         exactCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.65
                         broadMonthlyClicks:
                           description: Estimated monthly clicks for broad match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 57019.8
                         phraseMonthlyClicks:
                           description: Estimated monthly clicks for phrase match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 42150.3
                         exactMonthlyClicks:
                           description: Estimated monthly clicks for exact match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 29094.6
                         broadMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 41604.9
                         phraseMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 25542
                         exactMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 19041.6
                         paidCompetitors:
                           description: This is the total number of advertisers we've seen over the last 14 months for this keyword. It's helpful to know how competitive the field is and how many advertisers have tested this keyword over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 15
                         distinctCompetitors:
                           description: This is the list of distinct advertisers we've seen over the last 14 months for this keyword.
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: string
-                          nullable: true
                         rankingHomepages:
                           description: We roll up the number of home pages that rank within the first 50 results for this keyword. (It doesn't count ads, only organic results.) A homepage might be "https://webmd.com" vs a longer path like "https://www.webmd.com/fitness-exercise".
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 8
                         serpFeaturesCsv:
                           description: Comma-separated list of SERP features present for this keyword (e.g., Images, Videos, Maps, Shopping), indicating competition for organic real estate.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Images,Maps
                         serpFirstResult:
                           description: Domain name of the top-ranking organic result for this keyword, useful for identifying category leaders.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         isQuestion:
                           description: Indicates whether this keyword is phrased as a question (who, what, when, where, why, how).
@@ -1165,7 +1245,6 @@ paths:
                           example: false
                       additionalProperties: false
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request - Invalid parameters provided (e.g., malformed keyword query or invalid country code)
@@ -1182,7 +1261,7 @@ paths:
       description: 'Returns question-based keywords related to your seed topic to inspire content creation and FAQ development. This endpoint identifies what people are asking about your subject matter, revealing content opportunities that answer common user questions and drive organic traffic.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/keyword/related?query=running+shoes)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: query
         in: query
@@ -1578,155 +1657,195 @@ paths:
                     readOnly: true
                     example: 100
                   totalMatchingResults:
-                    description: "The total number of results available that matches the query including\r\nitems that might not be included in the returned results/page."
+                    description: 'The total number of results available that matches the query including
+
+                      items that might not be included in the returned results/page.'
                     type: integer
                     format: int64
                     readOnly: true
                   results:
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: By looking at strong competitors in this niche and their most trusted keywords over time, we suggest similar keywords here that we found to be profitable for your competition.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: red shoes
                         searchVolume:
                           description: This is the estimated number of times this past month that people have searched this keyword. The numbers reflect searches done in the US on Google.com (or in the UK on Google.co.uk if you are looking at UK data). We blend data from multiple sources to give a truer snapshot of activity on this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 266000
                         liveSearchVolume:
                           description: This metric displays a more likely SV based on recent trends or out-of-date estimates. The original volume remains unchanged in any domain's rolled-up metrics.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 82000
                         rankingDifficulty:
                           description: We've calculated how difficult it would be to rank on this keyword. The score is based on a scale of 0-100 (with 100 being the most difficult to rank for). Compare this number to other keywords you're targeting to get an idea of how to prioritize your SEO campaign.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 98
                         totalMonthlyClicks:
                           description: This is the total number of all clicks (organic and paid) made on the SERP over the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 219000
                         percentMobileSearches:
                           description: When we have a breakdown of how many of the searches for this keyword come from mobile vs desktop, we will show it here.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52009505
                         percentDesktopSearches:
                           description: When we have a breakdown of how many of the searches for this keyword come from desktop vs mobile, we will show it here.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.47990492
                         percentSearchesNotClicked:
                           description: Some SERPs return enough information that the user does not have to click any results. There might also be unexpected results that cause the user to abandon the SERP without any clicks. This is the rate that searchers leave the page without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.1792681
                         percentPaidClicks:
                           description: Of all clicks made to this keyword's SERP, this percentage measures how many went to the paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52188635
                         percentOrganicClicks:
                           description: Of all clicks made to this keyword's SERP, this percentage measures how many went to organic results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.47811362
                         broadCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.73
                         phraseCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.67
                         exactCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.65
                         broadMonthlyClicks:
                           description: Estimated monthly clicks for broad match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 57019.8
                         phraseMonthlyClicks:
                           description: Estimated monthly clicks for phrase match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 42150.3
                         exactMonthlyClicks:
                           description: Estimated monthly clicks for exact match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 29094.6
                         broadMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 41604.9
                         phraseMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 25542
                         exactMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 19041.6
                         paidCompetitors:
                           description: This is the total number of advertisers we've seen over the last 14 months for this keyword. It's helpful to know how competitive the field is and how many advertisers have tested this keyword over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 15
                         distinctCompetitors:
                           description: This is the list of distinct advertisers we've seen over the last 14 months for this keyword.
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: string
-                          nullable: true
                         rankingHomepages:
                           description: We roll up the number of home pages that rank within the first 50 results for this keyword. (It doesn't count ads, only organic results.) A homepage might be "https://webmd.com" vs a longer path like "https://www.webmd.com/fitness-exercise".
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 8
                         serpFeaturesCsv:
                           description: Comma-separated list of SERP features present for this keyword (e.g., Images, Videos, Maps, Shopping), indicating competition for organic real estate.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Images,Maps
                         serpFirstResult:
                           description: Domain name of the top-ranking organic result for this keyword, useful for identifying category leaders.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         isQuestion:
                           description: Indicates whether this keyword is phrased as a question (who, what, when, where, why, how).
@@ -1738,7 +1857,6 @@ paths:
                           example: false
                       additionalProperties: false
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request - Invalid parameters provided (e.g., malformed keyword query or invalid country code)
@@ -1755,7 +1873,7 @@ paths:
       description: 'Returns related keywords that top advertisers also buy when targeting your seed keyword. This endpoint reveals cross-advertising patterns and keyword expansion opportunities by analyzing what other successful campaigns target alongside your keyword.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/keyword/related?query=running+shoes)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: query
         in: query
@@ -2151,155 +2269,195 @@ paths:
                     readOnly: true
                     example: 100
                   totalMatchingResults:
-                    description: "The total number of results available that matches the query including\r\nitems that might not be included in the returned results/page."
+                    description: 'The total number of results available that matches the query including
+
+                      items that might not be included in the returned results/page.'
                     type: integer
                     format: int64
                     readOnly: true
                   results:
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: By looking at strong competitors in this niche and their most trusted keywords over time, we suggest similar keywords here that we found to be profitable for your competition.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: red shoes
                         searchVolume:
                           description: This is the estimated number of times this past month that people have searched this keyword. The numbers reflect searches done in the US on Google.com (or in the UK on Google.co.uk if you are looking at UK data). We blend data from multiple sources to give a truer snapshot of activity on this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 266000
                         liveSearchVolume:
                           description: This metric displays a more likely SV based on recent trends or out-of-date estimates. The original volume remains unchanged in any domain's rolled-up metrics.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 82000
                         rankingDifficulty:
                           description: We've calculated how difficult it would be to rank on this keyword. The score is based on a scale of 0-100 (with 100 being the most difficult to rank for). Compare this number to other keywords you're targeting to get an idea of how to prioritize your SEO campaign.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 98
                         totalMonthlyClicks:
                           description: This is the total number of all clicks (organic and paid) made on the SERP over the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 219000
                         percentMobileSearches:
                           description: When we have a breakdown of how many of the searches for this keyword come from mobile vs desktop, we will show it here.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52009505
                         percentDesktopSearches:
                           description: When we have a breakdown of how many of the searches for this keyword come from desktop vs mobile, we will show it here.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.47990492
                         percentSearchesNotClicked:
                           description: Some SERPs return enough information that the user does not have to click any results. There might also be unexpected results that cause the user to abandon the SERP without any clicks. This is the rate that searchers leave the page without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.1792681
                         percentPaidClicks:
                           description: Of all clicks made to this keyword's SERP, this percentage measures how many went to the paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52188635
                         percentOrganicClicks:
                           description: Of all clicks made to this keyword's SERP, this percentage measures how many went to organic results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.47811362
                         broadCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.73
                         phraseCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.67
                         exactCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.65
                         broadMonthlyClicks:
                           description: Estimated monthly clicks for broad match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 57019.8
                         phraseMonthlyClicks:
                           description: Estimated monthly clicks for phrase match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 42150.3
                         exactMonthlyClicks:
                           description: Estimated monthly clicks for exact match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 29094.6
                         broadMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 41604.9
                         phraseMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 25542
                         exactMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 19041.6
                         paidCompetitors:
                           description: This is the total number of advertisers we've seen over the last 14 months for this keyword. It's helpful to know how competitive the field is and how many advertisers have tested this keyword over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 15
                         distinctCompetitors:
                           description: This is the list of distinct advertisers we've seen over the last 14 months for this keyword.
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: string
-                          nullable: true
                         rankingHomepages:
                           description: We roll up the number of home pages that rank within the first 50 results for this keyword. (It doesn't count ads, only organic results.) A homepage might be "https://webmd.com" vs a longer path like "https://www.webmd.com/fitness-exercise".
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 8
                         serpFeaturesCsv:
                           description: Comma-separated list of SERP features present for this keyword (e.g., Images, Videos, Maps, Shopping), indicating competition for organic real estate.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Images,Maps
                         serpFirstResult:
                           description: Domain name of the top-ranking organic result for this keyword, useful for identifying category leaders.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         isQuestion:
                           description: Indicates whether this keyword is phrased as a question (who, what, when, where, why, how).
@@ -2311,7 +2469,6 @@ paths:
                           example: false
                       additionalProperties: false
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request - Invalid parameters provided (e.g., malformed keyword query or invalid country code)
@@ -2328,7 +2485,7 @@ paths:
       description: 'Returns related keywords that top-ranking domains for your seed keyword also rank for organically. This endpoint reveals SEO content opportunities and keyword expansion ideas by analyzing what successful sites target alongside your keyword.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/keyword/related?query=running+shoes)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: query
         in: query
@@ -2724,155 +2881,195 @@ paths:
                     readOnly: true
                     example: 100
                   totalMatchingResults:
-                    description: "The total number of results available that matches the query including\r\nitems that might not be included in the returned results/page."
+                    description: 'The total number of results available that matches the query including
+
+                      items that might not be included in the returned results/page.'
                     type: integer
                     format: int64
                     readOnly: true
                   results:
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: By looking at strong competitors in this niche and their most trusted keywords over time, we suggest similar keywords here that we found to be profitable for your competition.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: red shoes
                         searchVolume:
                           description: This is the estimated number of times this past month that people have searched this keyword. The numbers reflect searches done in the US on Google.com (or in the UK on Google.co.uk if you are looking at UK data). We blend data from multiple sources to give a truer snapshot of activity on this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 266000
                         liveSearchVolume:
                           description: This metric displays a more likely SV based on recent trends or out-of-date estimates. The original volume remains unchanged in any domain's rolled-up metrics.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 82000
                         rankingDifficulty:
                           description: We've calculated how difficult it would be to rank on this keyword. The score is based on a scale of 0-100 (with 100 being the most difficult to rank for). Compare this number to other keywords you're targeting to get an idea of how to prioritize your SEO campaign.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 98
                         totalMonthlyClicks:
                           description: This is the total number of all clicks (organic and paid) made on the SERP over the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 219000
                         percentMobileSearches:
                           description: When we have a breakdown of how many of the searches for this keyword come from mobile vs desktop, we will show it here.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52009505
                         percentDesktopSearches:
                           description: When we have a breakdown of how many of the searches for this keyword come from desktop vs mobile, we will show it here.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.47990492
                         percentSearchesNotClicked:
                           description: Some SERPs return enough information that the user does not have to click any results. There might also be unexpected results that cause the user to abandon the SERP without any clicks. This is the rate that searchers leave the page without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.1792681
                         percentPaidClicks:
                           description: Of all clicks made to this keyword's SERP, this percentage measures how many went to the paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52188635
                         percentOrganicClicks:
                           description: Of all clicks made to this keyword's SERP, this percentage measures how many went to organic results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.47811362
                         broadCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.73
                         phraseCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.67
                         exactCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.65
                         broadMonthlyClicks:
                           description: Estimated monthly clicks for broad match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 57019.8
                         phraseMonthlyClicks:
                           description: Estimated monthly clicks for phrase match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 42150.3
                         exactMonthlyClicks:
                           description: Estimated monthly clicks for exact match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 29094.6
                         broadMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 41604.9
                         phraseMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 25542
                         exactMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 19041.6
                         paidCompetitors:
                           description: This is the total number of advertisers we've seen over the last 14 months for this keyword. It's helpful to know how competitive the field is and how many advertisers have tested this keyword over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 15
                         distinctCompetitors:
                           description: This is the list of distinct advertisers we've seen over the last 14 months for this keyword.
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: string
-                          nullable: true
                         rankingHomepages:
                           description: We roll up the number of home pages that rank within the first 50 results for this keyword. (It doesn't count ads, only organic results.) A homepage might be "https://webmd.com" vs a longer path like "https://www.webmd.com/fitness-exercise".
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 8
                         serpFeaturesCsv:
                           description: Comma-separated list of SERP features present for this keyword (e.g., Images, Videos, Maps, Shopping), indicating competition for organic real estate.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Images,Maps
                         serpFirstResult:
                           description: Domain name of the top-ranking organic result for this keyword, useful for identifying category leaders.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         isQuestion:
                           description: Indicates whether this keyword is phrased as a question (who, what, when, where, why, how).
@@ -2884,7 +3081,6 @@ paths:
                           example: false
                       additionalProperties: false
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request - Invalid parameters provided (e.g., malformed keyword query or invalid country code)
@@ -2901,7 +3097,7 @@ paths:
       description: 'Returns high-intent keywords with strong buying signals related to your seed topic. This endpoint identifies commercial keywords that indicate users are ready to purchase, perfect for targeting conversion-focused campaigns and capturing bottom-funnel traffic.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/keyword/related?query=running+shoes)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: query
         in: query
@@ -3297,155 +3493,195 @@ paths:
                     readOnly: true
                     example: 100
                   totalMatchingResults:
-                    description: "The total number of results available that matches the query including\r\nitems that might not be included in the returned results/page."
+                    description: 'The total number of results available that matches the query including
+
+                      items that might not be included in the returned results/page.'
                     type: integer
                     format: int64
                     readOnly: true
                   results:
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: By looking at strong competitors in this niche and their most trusted keywords over time, we suggest similar keywords here that we found to be profitable for your competition.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: red shoes
                         searchVolume:
                           description: This is the estimated number of times this past month that people have searched this keyword. The numbers reflect searches done in the US on Google.com (or in the UK on Google.co.uk if you are looking at UK data). We blend data from multiple sources to give a truer snapshot of activity on this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 266000
                         liveSearchVolume:
                           description: This metric displays a more likely SV based on recent trends or out-of-date estimates. The original volume remains unchanged in any domain's rolled-up metrics.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 82000
                         rankingDifficulty:
                           description: We've calculated how difficult it would be to rank on this keyword. The score is based on a scale of 0-100 (with 100 being the most difficult to rank for). Compare this number to other keywords you're targeting to get an idea of how to prioritize your SEO campaign.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 98
                         totalMonthlyClicks:
                           description: This is the total number of all clicks (organic and paid) made on the SERP over the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 219000
                         percentMobileSearches:
                           description: When we have a breakdown of how many of the searches for this keyword come from mobile vs desktop, we will show it here.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52009505
                         percentDesktopSearches:
                           description: When we have a breakdown of how many of the searches for this keyword come from desktop vs mobile, we will show it here.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.47990492
                         percentSearchesNotClicked:
                           description: Some SERPs return enough information that the user does not have to click any results. There might also be unexpected results that cause the user to abandon the SERP without any clicks. This is the rate that searchers leave the page without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.1792681
                         percentPaidClicks:
                           description: Of all clicks made to this keyword's SERP, this percentage measures how many went to the paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52188635
                         percentOrganicClicks:
                           description: Of all clicks made to this keyword's SERP, this percentage measures how many went to organic results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.47811362
                         broadCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.73
                         phraseCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.67
                         exactCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.65
                         broadMonthlyClicks:
                           description: Estimated monthly clicks for broad match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 57019.8
                         phraseMonthlyClicks:
                           description: Estimated monthly clicks for phrase match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 42150.3
                         exactMonthlyClicks:
                           description: Estimated monthly clicks for exact match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 29094.6
                         broadMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 41604.9
                         phraseMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 25542
                         exactMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 19041.6
                         paidCompetitors:
                           description: This is the total number of advertisers we've seen over the last 14 months for this keyword. It's helpful to know how competitive the field is and how many advertisers have tested this keyword over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 15
                         distinctCompetitors:
                           description: This is the list of distinct advertisers we've seen over the last 14 months for this keyword.
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: string
-                          nullable: true
                         rankingHomepages:
                           description: We roll up the number of home pages that rank within the first 50 results for this keyword. (It doesn't count ads, only organic results.) A homepage might be "https://webmd.com" vs a longer path like "https://www.webmd.com/fitness-exercise".
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 8
                         serpFeaturesCsv:
                           description: Comma-separated list of SERP features present for this keyword (e.g., Images, Videos, Maps, Shopping), indicating competition for organic real estate.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Images,Maps
                         serpFirstResult:
                           description: Domain name of the top-ranking organic result for this keyword, useful for identifying category leaders.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         isQuestion:
                           description: Indicates whether this keyword is phrased as a question (who, what, when, where, why, how).
@@ -3457,7 +3693,6 @@ paths:
                           example: false
                       additionalProperties: false
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request - Invalid parameters provided (e.g., malformed keyword query or invalid country code)
@@ -3474,7 +3709,7 @@ paths:
       description: 'Returns comprehensive keyword metrics and intelligence for a list of exact keywords. This endpoint provides search volume, competition data, cost estimates, and performance insights for specific keywords you want to analyze in bulk.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/keyword/overview?query=running+shoes)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: keywords
         in: query
@@ -3762,155 +3997,195 @@ paths:
                     readOnly: true
                     example: 100
                   totalMatchingResults:
-                    description: "The total number of results available that matches the query including\r\nitems that might not be included in the returned results/page."
+                    description: 'The total number of results available that matches the query including
+
+                      items that might not be included in the returned results/page.'
                     type: integer
                     format: int64
                     readOnly: true
                   results:
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: By looking at strong competitors in this niche and their most trusted keywords over time, we suggest similar keywords here that we found to be profitable for your competition.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: red shoes
                         searchVolume:
                           description: This is the estimated number of times this past month that people have searched this keyword. The numbers reflect searches done in the US on Google.com (or in the UK on Google.co.uk if you are looking at UK data). We blend data from multiple sources to give a truer snapshot of activity on this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 266000
                         liveSearchVolume:
                           description: This metric displays a more likely SV based on recent trends or out-of-date estimates. The original volume remains unchanged in any domain's rolled-up metrics.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 82000
                         rankingDifficulty:
                           description: We've calculated how difficult it would be to rank on this keyword. The score is based on a scale of 0-100 (with 100 being the most difficult to rank for). Compare this number to other keywords you're targeting to get an idea of how to prioritize your SEO campaign.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 98
                         totalMonthlyClicks:
                           description: This is the total number of all clicks (organic and paid) made on the SERP over the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 219000
                         percentMobileSearches:
                           description: When we have a breakdown of how many of the searches for this keyword come from mobile vs desktop, we will show it here.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52009505
                         percentDesktopSearches:
                           description: When we have a breakdown of how many of the searches for this keyword come from desktop vs mobile, we will show it here.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.47990492
                         percentSearchesNotClicked:
                           description: Some SERPs return enough information that the user does not have to click any results. There might also be unexpected results that cause the user to abandon the SERP without any clicks. This is the rate that searchers leave the page without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.1792681
                         percentPaidClicks:
                           description: Of all clicks made to this keyword's SERP, this percentage measures how many went to the paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52188635
                         percentOrganicClicks:
                           description: Of all clicks made to this keyword's SERP, this percentage measures how many went to organic results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.47811362
                         broadCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.73
                         phraseCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.67
                         exactCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.65
                         broadMonthlyClicks:
                           description: Estimated monthly clicks for broad match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 57019.8
                         phraseMonthlyClicks:
                           description: Estimated monthly clicks for phrase match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 42150.3
                         exactMonthlyClicks:
                           description: Estimated monthly clicks for exact match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 29094.6
                         broadMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 41604.9
                         phraseMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 25542
                         exactMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 19041.6
                         paidCompetitors:
                           description: This is the total number of advertisers we've seen over the last 14 months for this keyword. It's helpful to know how competitive the field is and how many advertisers have tested this keyword over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 15
                         distinctCompetitors:
                           description: This is the list of distinct advertisers we've seen over the last 14 months for this keyword.
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: string
-                          nullable: true
                         rankingHomepages:
                           description: We roll up the number of home pages that rank within the first 50 results for this keyword. (It doesn't count ads, only organic results.) A homepage might be "https://webmd.com" vs a longer path like "https://www.webmd.com/fitness-exercise".
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 8
                         serpFeaturesCsv:
                           description: Comma-separated list of SERP features present for this keyword (e.g., Images, Videos, Maps, Shopping), indicating competition for organic real estate.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Images,Maps
                         serpFirstResult:
                           description: Domain name of the top-ranking organic result for this keyword, useful for identifying category leaders.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         isQuestion:
                           description: Indicates whether this keyword is phrased as a question (who, what, when, where, why, how).
@@ -3922,7 +4197,6 @@ paths:
                           example: false
                       additionalProperties: false
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request - Invalid parameters provided (e.g., malformed keyword list or invalid country code)
@@ -3938,7 +4212,7 @@ paths:
       description: 'Returns comprehensive keyword metrics and intelligence for a large list of exact keywords via POST request. This endpoint supports larger keyword lists and provides search volume, competition data, cost estimates, and performance insights for bulk keyword analysis.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/keyword/overview?query=running+shoes)'
+        Visualize this API live on SpyFu'
       requestBody:
         description: Bulk keyword analysis request containing the list of keywords and country settings.
         required: true
@@ -3987,198 +4261,230 @@ paths:
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 liveSearchVolume:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 keywordDifficulty:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 wordCount:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 clicks:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 costPerClickOption:
                   description: Cost per click keyword matching option to filter results by.
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   enum:
                   - Broad
                   - Exact
                   - Phrase
-                  nullable: true
                   example: Broad
                 costPerClick:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 mobileSearchesPercentage:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 desktopSearchesPercentage:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 notClickedSearchesPercentage:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 paidClickSearchPercentage:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 organicClicksSearchPercentage:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 monthlyCostOption:
                   description: Monthly Cost keyword matching option to filter results by.
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   enum:
                   - Broad
                   - Exact
                   - Phrase
-                  nullable: true
                   example: Broad
                 monthlyCost:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 adCount:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 rankingHomepages:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 adultFilter:
                   description: Exclude adult keywords considered unsafe for work.
-                  type: boolean
+                  type:
+                  - boolean
+                  - 'null'
                   default: true
-                  nullable: true
                   example: true
                 onlyAdultKeywords:
                   description: Only include adult keywords considered unsafe for work.
-                  type: boolean
+                  type:
+                  - boolean
+                  - 'null'
                   default: false
-                  nullable: true
                   example: false
                 isQuestion:
                   description: Filter on if the keyword is a question.
@@ -4241,198 +4547,230 @@ paths:
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 liveSearchVolume:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 keywordDifficulty:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 wordCount:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 clicks:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 costPerClickOption:
                   description: Cost per click keyword matching option to filter results by.
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   enum:
                   - Broad
                   - Exact
                   - Phrase
-                  nullable: true
                   example: Broad
                 costPerClick:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 mobileSearchesPercentage:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 desktopSearchesPercentage:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 notClickedSearchesPercentage:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 paidClickSearchPercentage:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 organicClicksSearchPercentage:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 monthlyCostOption:
                   description: Monthly Cost keyword matching option to filter results by.
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   enum:
                   - Broad
                   - Exact
                   - Phrase
-                  nullable: true
                   example: Broad
                 monthlyCost:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 adCount:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 rankingHomepages:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 adultFilter:
                   description: Exclude adult keywords considered unsafe for work.
-                  type: boolean
+                  type:
+                  - boolean
+                  - 'null'
                   default: true
-                  nullable: true
                   example: true
                 onlyAdultKeywords:
                   description: Only include adult keywords considered unsafe for work.
-                  type: boolean
+                  type:
+                  - boolean
+                  - 'null'
                   default: false
-                  nullable: true
                   example: false
                 isQuestion:
                   description: Filter on if the keyword is a question.
@@ -4495,198 +4833,230 @@ paths:
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 liveSearchVolume:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 keywordDifficulty:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 wordCount:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 clicks:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 costPerClickOption:
                   description: Cost per click keyword matching option to filter results by.
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   enum:
                   - Broad
                   - Exact
                   - Phrase
-                  nullable: true
                   example: Broad
                 costPerClick:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 mobileSearchesPercentage:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 desktopSearchesPercentage:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 notClickedSearchesPercentage:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 paidClickSearchPercentage:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 organicClicksSearchPercentage:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 monthlyCostOption:
                   description: Monthly Cost keyword matching option to filter results by.
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   enum:
                   - Broad
                   - Exact
                   - Phrase
-                  nullable: true
                   example: Broad
                 monthlyCost:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 adCount:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 rankingHomepages:
                   type: object
                   additionalProperties: false
                   properties:
                     min:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                     max:
-                      type: number
+                      type:
+                      - number
+                      - 'null'
                       format: float
-                      nullable: true
                 adultFilter:
                   description: Exclude adult keywords considered unsafe for work.
-                  type: boolean
+                  type:
+                  - boolean
+                  - 'null'
                   default: true
-                  nullable: true
                   example: true
                 onlyAdultKeywords:
                   description: Only include adult keywords considered unsafe for work.
-                  type: boolean
+                  type:
+                  - boolean
+                  - 'null'
                   default: false
-                  nullable: true
                   example: false
                 isQuestion:
                   description: Filter on if the keyword is a question.
@@ -4720,155 +5090,195 @@ paths:
                     readOnly: true
                     example: 100
                   totalMatchingResults:
-                    description: "The total number of results available that matches the query including\r\nitems that might not be included in the returned results/page."
+                    description: 'The total number of results available that matches the query including
+
+                      items that might not be included in the returned results/page.'
                     type: integer
                     format: int64
                     readOnly: true
                   results:
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: By looking at strong competitors in this niche and their most trusted keywords over time, we suggest similar keywords here that we found to be profitable for your competition.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: red shoes
                         searchVolume:
                           description: This is the estimated number of times this past month that people have searched this keyword. The numbers reflect searches done in the US on Google.com (or in the UK on Google.co.uk if you are looking at UK data). We blend data from multiple sources to give a truer snapshot of activity on this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 266000
                         liveSearchVolume:
                           description: This metric displays a more likely SV based on recent trends or out-of-date estimates. The original volume remains unchanged in any domain's rolled-up metrics.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 82000
                         rankingDifficulty:
                           description: We've calculated how difficult it would be to rank on this keyword. The score is based on a scale of 0-100 (with 100 being the most difficult to rank for). Compare this number to other keywords you're targeting to get an idea of how to prioritize your SEO campaign.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 98
                         totalMonthlyClicks:
                           description: This is the total number of all clicks (organic and paid) made on the SERP over the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 219000
                         percentMobileSearches:
                           description: When we have a breakdown of how many of the searches for this keyword come from mobile vs desktop, we will show it here.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52009505
                         percentDesktopSearches:
                           description: When we have a breakdown of how many of the searches for this keyword come from desktop vs mobile, we will show it here.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.47990492
                         percentSearchesNotClicked:
                           description: Some SERPs return enough information that the user does not have to click any results. There might also be unexpected results that cause the user to abandon the SERP without any clicks. This is the rate that searchers leave the page without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.1792681
                         percentPaidClicks:
                           description: Of all clicks made to this keyword's SERP, this percentage measures how many went to the paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52188635
                         percentOrganicClicks:
                           description: Of all clicks made to this keyword's SERP, this percentage measures how many went to organic results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.47811362
                         broadCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.73
                         phraseCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.67
                         exactCostPerClick:
-                          description: "This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'This is the average amount an advertiser pays Google anytime someone clicks their ad on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.65
                         broadMonthlyClicks:
                           description: Estimated monthly clicks for broad match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 57019.8
                         phraseMonthlyClicks:
                           description: Estimated monthly clicks for phrase match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 42150.3
                         exactMonthlyClicks:
                           description: Estimated monthly clicks for exact match advertising on this keyword, calculated from search volume and expected click-through rates.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 29094.6
                         broadMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 41604.9
                         phraseMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 25542
                         exactMonthlyCost:
-                          description: "Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.\r\n<p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>"
-                          type: number
+                          description: 'Our estimate of what an advertiser would spend, on average, to advertise on this keyword each month.
+
+                            <p>These costs can vary depending on how specific (exact match vs. phrase match vs. broad match) the search is.</p>'
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 19041.6
                         paidCompetitors:
                           description: This is the total number of advertisers we've seen over the last 14 months for this keyword. It's helpful to know how competitive the field is and how many advertisers have tested this keyword over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 15
                         distinctCompetitors:
                           description: This is the list of distinct advertisers we've seen over the last 14 months for this keyword.
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: string
-                          nullable: true
                         rankingHomepages:
                           description: We roll up the number of home pages that rank within the first 50 results for this keyword. (It doesn't count ads, only organic results.) A homepage might be "https://webmd.com" vs a longer path like "https://www.webmd.com/fitness-exercise".
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 8
                         serpFeaturesCsv:
                           description: Comma-separated list of SERP features present for this keyword (e.g., Images, Videos, Maps, Shopping), indicating competition for organic real estate.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Images,Maps
                         serpFirstResult:
                           description: Domain name of the top-ranking organic result for this keyword, useful for identifying category leaders.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         isQuestion:
                           description: Indicates whether this keyword is phrased as a question (who, what, when, where, why, how).
@@ -4880,7 +5290,6 @@ paths:
                           example: false
                       additionalProperties: false
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request - Invalid request body or parameters provided (e.g., malformed keyword list or invalid country code)

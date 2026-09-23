@@ -1,15 +1,16 @@
 {
   "provider": "spyfu",
   "sources": [
-    "spyfu-account-api-api-openapi.yml",
-    "spyfu-ad-history-research-api-api-openapi.yml",
-    "spyfu-competitors-api-api-openapi.yml",
-    "spyfu-domain-stats-api-api-openapi.yml",
-    "spyfu-keyword-research-api-api-openapi.yml",
-    "spyfu-kombat-api-api-openapi.yml",
-    "spyfu-ppc-research-api-api-openapi.yml",
-    "spyfu-ranking-history-api-api-openapi.yml",
-    "spyfu-seo-research-api-api-openapi.yml"
+    "_original/spyfu-account-openapi.yml",
+    "_original/spyfu-ad-history-openapi.yml",
+    "_original/spyfu-competitors-openapi.yml",
+    "_original/spyfu-domain-stats-openapi.yml",
+    "_original/spyfu-keyword-related-openapi.yml",
+    "_original/spyfu-kombat-openapi.yml",
+    "_original/spyfu-ppc-keyword-openapi.yml",
+    "_original/spyfu-ppc-research-serp-openapi.yml",
+    "_original/spyfu-ranking-history-openapi.yml",
+    "_original/spyfu-seo-research-serp-openapi.yml"
   ],
   "outputs": [
     "spyfu-account-api-api-openapi.yml",
@@ -25,6 +26,40 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (10 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "spyfu-account-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spyfu-account-openapi.yml: declared missing tag: Account API",
+    "spyfu-ad-history-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spyfu-ad-history-openapi.yml: declared missing tag: Ad History Research API",
+    "spyfu-competitors-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spyfu-competitors-openapi.yml: declared missing tag: Competitors API",
+    "spyfu-domain-stats-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spyfu-domain-stats-openapi.yml: declared missing tag: Domain Stats API",
+    "spyfu-keyword-related-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spyfu-keyword-related-openapi.yml: declared missing tag: Keyword Research API",
+    "spyfu-kombat-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spyfu-kombat-openapi.yml: declared missing tag: Kombat API",
+    "spyfu-ppc-keyword-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spyfu-ppc-keyword-openapi.yml: declared missing tag: PPC Research API",
+    "spyfu-ppc-research-serp-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spyfu-ppc-research-serp-openapi.yml: declared missing tag: PPC Research API",
+    "spyfu-ranking-history-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spyfu-ranking-history-openapi.yml: declared missing tag: Ranking History API",
+    "spyfu-seo-research-serp-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spyfu-seo-research-serp-openapi.yml: declared missing tag: SEO Research API",
+    "tag 'PPC Research API' spans 2 source specs (spyfu-ppc-keyword-openapi.yml, spyfu-ppc-research-serp-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "spyfu-account-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spyfu-ad-history-research-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spyfu-competitors-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spyfu-domain-stats-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spyfu-keyword-research-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spyfu-kombat-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spyfu-ppc-research-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spyfu-ranking-history-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spyfu-seo-research-api-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

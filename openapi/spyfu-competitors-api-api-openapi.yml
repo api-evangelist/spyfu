@@ -1,9 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Account Account API Competitors API API
+  title: Competitors API
   version: v2
+  description: Discover and analyze your most significant competitors across both paid and organic search channels to uncover market opportunities and strategic insights.
 servers:
-- url: https://api.spyfu.com/apis/accounts_api
+- url: https://api.spyfu.com/apis/competitors_api
 security:
 - Basic_Authentication_Token: []
 - Query_Parameter_Token: []
@@ -18,7 +19,7 @@ paths:
       description: 'Returns the top paid search (PPC) competitors for a domain based on shared keyword advertising overlap. This endpoint identifies domains that compete for the same paid keywords to reveal direct advertising competition and bidding opportunities.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/ppc/competitors?query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: domain
         in: query
@@ -133,14 +134,17 @@ paths:
                     example: 2500
                   results:
                     description: Array of competitor domains ranked by keyword overlap strength in the specified search channel.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         domain:
                           description: Domain name of the competitor that shares significant keyword overlap in the specified search channel (SEO or PPC).
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         commonTerms:
                           description: Number of unique keywords that both this competitor domain and the target domain compete for in the same search channel.
@@ -154,7 +158,6 @@ paths:
                       additionalProperties: false
                       description: Represents a competitor domain with shared keyword overlap data, indicating the strength of competitive relationship in either paid or organic search.
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request - Invalid parameters provided (e.g., invalid domain format, pageSize exceeds maximum, or invalid country code)
@@ -171,7 +174,7 @@ paths:
       description: 'Returns the top organic search (SEO) competitors for a domain based on shared keyword ranking overlap. This endpoint identifies domains that compete for the same organic keywords to reveal direct SEO competition and content opportunities.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/seo/competitors?query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: domain
         in: query
@@ -286,14 +289,17 @@ paths:
                     example: 2500
                   results:
                     description: Array of competitor domains ranked by keyword overlap strength in the specified search channel.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         domain:
                           description: Domain name of the competitor that shares significant keyword overlap in the specified search channel (SEO or PPC).
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         commonTerms:
                           description: Number of unique keywords that both this competitor domain and the target domain compete for in the same search channel.
@@ -307,7 +313,6 @@ paths:
                       additionalProperties: false
                       description: Represents a competitor domain with shared keyword overlap data, indicating the strength of competitive relationship in either paid or organic search.
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request - Invalid parameters provided (e.g., invalid domain format, pageSize exceeds maximum, or invalid country code)
@@ -324,7 +329,7 @@ paths:
       description: 'Returns the top competitors for a domain combining both paid search (PPC) and organic search (SEO) data. This endpoint identifies domains that compete across both advertising and organic rankings to reveal comprehensive competitive landscape insights.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/competitors?query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: domain
         in: query
@@ -439,7 +444,9 @@ paths:
                     example: 5000
                   combinedCompetitors:
                     description: Array of competitor domains ranked by combined SEO and PPC keyword overlap strength.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
@@ -450,23 +457,26 @@ paths:
                           example: 1
                         domain:
                           description: Domain name of the competitor that shares significant keyword overlap in both paid and organic search results.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                       additionalProperties: false
                       description: Represents a competitor domain that competes for similar keywords in both paid and organic search, ranked by competitive overlap strength.
                     readOnly: true
-                    nullable: true
                   ppcCompetitors:
                     description: Array of competitor domains ranked by paid search advertising keyword overlap and competitive strength.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         domain:
                           description: Domain name of the competitor that shares significant keyword overlap in the specified search channel (SEO or PPC).
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         commonTerms:
                           description: Number of unique keywords that both this competitor domain and the target domain compete for in the same search channel.
@@ -480,17 +490,19 @@ paths:
                       additionalProperties: false
                       description: Represents a competitor domain with shared keyword overlap data, indicating the strength of competitive relationship in either paid or organic search.
                     readOnly: true
-                    nullable: true
                   seoCompetitors:
                     description: Array of competitor domains ranked by organic search keyword overlap and SEO competitive strength.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         domain:
                           description: Domain name of the competitor that shares significant keyword overlap in the specified search channel (SEO or PPC).
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         commonTerms:
                           description: Number of unique keywords that both this competitor domain and the target domain compete for in the same search channel.
@@ -504,7 +516,6 @@ paths:
                       additionalProperties: false
                       description: Represents a competitor domain with shared keyword overlap data, indicating the strength of competitive relationship in either paid or organic search.
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request - Invalid parameters provided (e.g., invalid domain format, pageSize exceeds maximum, or invalid country code)

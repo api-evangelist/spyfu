@@ -1,9 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Account Account API Kombat API API
+  title: Kombat API
   version: v2
+  description: Conduct head-to-head keyword competition analysis between domains to uncover competitive advantages, shared opportunities, and strategic gaps across both organic and paid search channels.
 servers:
-- url: https://api.spyfu.com/apis/accounts_api
+- url: https://api.spyfu.com/apis/keyword_api
 security:
 - Basic_Authentication_Token: []
 - Query_Parameter_Token: []
@@ -18,7 +19,7 @@ paths:
       description: 'Returns paid search keywords shared across multiple competitor domains. The process selects keywords from the includedDomains, then removes any keywords that belong to domains in the excludedDomains list.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/kombat?query=example.com,example.org)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: includeDomainsCsv
         in: query
@@ -413,154 +414,180 @@ paths:
                     example: 50000
                   results:
                     description: Array of competitive keywords with detailed metrics showing overlap between multiple domains in either SEO or PPC search channels.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: The keyword that shows competitive overlap between multiple domains in the same search channel.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: running shoes
                         searchVolume:
                           description: Estimated monthly search volume for this keyword based on Google search data across the selected country/region, blended from multiple sources for accuracy.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 266000
                         liveSearchVolume:
                           description: Adjusted search volume based on recent trends and real-time data, providing a more current estimate than historical averages.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 82000
                         rankingDifficulty:
                           description: SEO difficulty score (0-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 98
                         totalMonthlyClicks:
                           description: Total estimated monthly clicks (both organic and paid) generated from search results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 219000
                         percentMobileSearches:
                           description: Percentage of searches for this keyword that originate from mobile devices (0.0-1.0).
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52
                         percentDesktopSearches:
                           description: Percentage of searches for this keyword that originate from desktop devices (0.0-1.0).
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.48
                         percentSearchesNotClicked:
                           description: Percentage of searches where users leave the SERP without clicking any result, often due to sufficient information in featured snippets or direct answers (0.0-1.0).
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.18
                         percentPaidClicks:
                           description: Percentage of total SERP clicks that go to paid ad results (0.0-1.0).
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52
                         percentOrganicClicks:
                           description: Percentage of total SERP clicks that go to organic search results (0.0-1.0).
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.48
                         broadCostPerClick:
                           description: Average cost-per-click for broad match keyword targeting, representing what advertisers typically pay when their ads are triggered by related keywords.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.73
                         phraseCostPerClick:
                           description: Average cost-per-click for phrase match keyword targeting, where ads show for searches that include the keyword phrase in the same order.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.67
                         exactCostPerClick:
                           description: Average cost-per-click for exact match keyword targeting, the most precise and typically highest-performing match type.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.65
                         broadMonthlyClicks:
                           description: Estimated monthly paid clicks for broad match targeting of this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 57019.8
                         phraseMonthlyClicks:
                           description: Estimated monthly paid clicks for phrase match targeting of this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 38000
                         exactMonthlyClicks:
                           description: Estimated monthly paid clicks for exact match targeting of this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 29094.6
                         broadMonthlyCost:
                           description: Estimated monthly advertising spend for broad match targeting of this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 41604.9
                         phraseMonthlyCost:
                           description: Estimated monthly advertising spend for phrase match targeting of this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 25542
                         exactMonthlyCost:
                           description: Estimated monthly advertising spend for exact match targeting of this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 19041.6
                         paidCompetitors:
                           description: Total number of unique advertisers observed purchasing ads for this keyword over the last 14 months, indicating competitive intensity.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 15
                         distinctCompetitors:
                           description: List of domain names that have purchased ads for this keyword over the last 14 months.
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: string
-                          nullable: true
                           example:
                           - example.com
                           - competitor1.com
                           - competitor2.com
                         rankingHomepages:
                           description: Number of domain homepages (root URLs) ranking within the first 100 organic search results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 8
                         serpFeaturesCsv:
                           description: Comma-separated list of SERP features present for this keyword (e.g., Images, Videos, Maps, Shopping), indicating competition for organic real estate.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Images,Maps
                         serpFirstResult:
                           description: Domain name of the top-ranking organic result for this keyword, useful for identifying category leaders.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         isQuestion:
                           description: Indicates whether this keyword is phrased as a question (who, what, when, where, why, how).
@@ -573,7 +600,6 @@ paths:
                       additionalProperties: false
                       description: Represents a competitive keyword with comprehensive metrics including search volume, competition analysis, cost data, and SERP characteristics for competitive intelligence analysis.
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request - Invalid parameters provided (e.g., malformed domain list, invalid boolean values, or invalid country code)
@@ -590,7 +616,7 @@ paths:
       description: 'Returns organic search keywords shared across multiple competitor domains. The process selects keywords from the includedDomains, then removes any keywords that belong to domains in the excludedDomains list.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/kombat?query=example.com,example.org)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: includeDomainsCsv
         in: query
@@ -985,154 +1011,180 @@ paths:
                     example: 50000
                   results:
                     description: Array of competitive keywords with detailed metrics showing overlap between multiple domains in either SEO or PPC search channels.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: The keyword that shows competitive overlap between multiple domains in the same search channel.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: running shoes
                         searchVolume:
                           description: Estimated monthly search volume for this keyword based on Google search data across the selected country/region, blended from multiple sources for accuracy.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 266000
                         liveSearchVolume:
                           description: Adjusted search volume based on recent trends and real-time data, providing a more current estimate than historical averages.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 82000
                         rankingDifficulty:
                           description: SEO difficulty score (0-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 98
                         totalMonthlyClicks:
                           description: Total estimated monthly clicks (both organic and paid) generated from search results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 219000
                         percentMobileSearches:
                           description: Percentage of searches for this keyword that originate from mobile devices (0.0-1.0).
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52
                         percentDesktopSearches:
                           description: Percentage of searches for this keyword that originate from desktop devices (0.0-1.0).
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.48
                         percentSearchesNotClicked:
                           description: Percentage of searches where users leave the SERP without clicking any result, often due to sufficient information in featured snippets or direct answers (0.0-1.0).
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.18
                         percentPaidClicks:
                           description: Percentage of total SERP clicks that go to paid ad results (0.0-1.0).
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.52
                         percentOrganicClicks:
                           description: Percentage of total SERP clicks that go to organic search results (0.0-1.0).
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.48
                         broadCostPerClick:
                           description: Average cost-per-click for broad match keyword targeting, representing what advertisers typically pay when their ads are triggered by related keywords.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.73
                         phraseCostPerClick:
                           description: Average cost-per-click for phrase match keyword targeting, where ads show for searches that include the keyword phrase in the same order.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.67
                         exactCostPerClick:
                           description: Average cost-per-click for exact match keyword targeting, the most precise and typically highest-performing match type.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 0.65
                         broadMonthlyClicks:
                           description: Estimated monthly paid clicks for broad match targeting of this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 57019.8
                         phraseMonthlyClicks:
                           description: Estimated monthly paid clicks for phrase match targeting of this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 38000
                         exactMonthlyClicks:
                           description: Estimated monthly paid clicks for exact match targeting of this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: float
-                          nullable: true
                           example: 29094.6
                         broadMonthlyCost:
                           description: Estimated monthly advertising spend for broad match targeting of this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 41604.9
                         phraseMonthlyCost:
                           description: Estimated monthly advertising spend for phrase match targeting of this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 25542
                         exactMonthlyCost:
                           description: Estimated monthly advertising spend for exact match targeting of this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
-                          nullable: true
                           example: 19041.6
                         paidCompetitors:
                           description: Total number of unique advertisers observed purchasing ads for this keyword over the last 14 months, indicating competitive intensity.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 15
                         distinctCompetitors:
                           description: List of domain names that have purchased ads for this keyword over the last 14 months.
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: string
-                          nullable: true
                           example:
                           - example.com
                           - competitor1.com
                           - competitor2.com
                         rankingHomepages:
                           description: Number of domain homepages (root URLs) ranking within the first 100 organic search results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 8
                         serpFeaturesCsv:
                           description: Comma-separated list of SERP features present for this keyword (e.g., Images, Videos, Maps, Shopping), indicating competition for organic real estate.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Images,Maps
                         serpFirstResult:
                           description: Domain name of the top-ranking organic result for this keyword, useful for identifying category leaders.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         isQuestion:
                           description: Indicates whether this keyword is phrased as a question (who, what, when, where, why, how).
@@ -1145,7 +1197,6 @@ paths:
                       additionalProperties: false
                       description: Represents a competitive keyword with comprehensive metrics including search volume, competition analysis, cost data, and SERP characteristics for competitive intelligence analysis.
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request - Invalid parameters provided (e.g., malformed domain list, invalid boolean values, or invalid country code)

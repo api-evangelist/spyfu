@@ -1,9 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Account Account API Ad History Research API API
+  title: Ad History Research API
   version: v2
+  description: Access the world's most comprehensive advertising intelligence database with 18 years of historical ad data spanning tens of billions of ads across millions of advertisers.
 servers:
-- url: https://api.spyfu.com/apis/accounts_api
+- url: https://api.spyfu.com/apis/cloud_ad_history_api
 security:
 - Basic_Authentication_Token: []
 - Query_Parameter_Token: []
@@ -18,7 +19,7 @@ paths:
       description: 'Returns historical ad variations and copy for a specific domain. This endpoint focuses on ads from a particular advertiser across all their keywords and campaigns, unlike term-based endpoints that focus on specific keywords.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/ppc/ad-history/domain?query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: domain
         in: query
@@ -126,16 +127,19 @@ paths:
                     example: 100
                   results:
                     description: Array of ads with their associated keywords found for the specified domain.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keywords:
                           description: List of keywords that triggered this ad to appear in search results.
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: string
-                          nullable: true
                           example:
                           - running shoes
                           - athletic shoes
@@ -152,18 +156,21 @@ paths:
                           example: 20231215
                         title:
                           description: The headline text of the ad as it appeared in search results.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Best Running Shoes 2024 - Free Shipping
                         body:
                           description: The description text of the ad providing additional details about the offer.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order.
                         url:
                           description: The landing page URL that the ad directed users to when clicked.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: https://example.com/running-shoes
                         adId:
                           description: Unique identifier for this specific ad in SpyFu's database.
@@ -173,7 +180,6 @@ paths:
                       additionalProperties: false
                       description: Represents an ad with associated keywords that triggered it to appear in search results.
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request - Invalid parameters provided (e.g., invalid domain format, pageSize exceeds maximum, or invalid country code)
@@ -190,7 +196,7 @@ paths:
       description: 'Returns historical advertisers and ad variations for a specific keyword. This endpoint focuses on ads that have appeared for a particular keyword, unlike domain-based endpoints that focus on ads from specific advertisers.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/keyword/ad-history?query=example%20keyword)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: term
         in: query
@@ -276,21 +282,25 @@ paths:
                     example: 100
                   results:
                     description: Array of ads found for the specified keyword with associated landing pages and advertiser information.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         domainName:
                           description: The domain name of the advertiser who placed this ad.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         urls:
                           description: List of landing page URLs that this ad directed users to when clicked.
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: string
-                          nullable: true
                           example:
                           - https://example.com/running-shoes
                           - https://example.com/athletic-footwear
@@ -306,13 +316,15 @@ paths:
                           example: 20231215
                         title:
                           description: The headline text of the ad as it appeared in search results.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Best Running Shoes 2024 - Free Shipping
                         body:
                           description: The description text of the ad providing additional details about the offer.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order.
                         adId:
                           description: Unique identifier for this specific ad in SpyFu's database.
@@ -322,7 +334,6 @@ paths:
                       additionalProperties: false
                       description: Represents ad data for a specific keyword with associated advertiser information and landing pages.
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request - Invalid parameters provided (e.g., empty term, pageSize exceeds maximum, or invalid country code)
@@ -339,7 +350,7 @@ paths:
       description: 'Returns historical ad variations and advertiser performance statistics for a specific keyword. This endpoint includes domain-level metrics alongside ad copy data, unlike the basic ad history endpoint that focuses purely on ad variations.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/keyword/ad-history?query=example%20keyword)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: term
         in: query
@@ -425,13 +436,17 @@ paths:
                     example: 100
                   domains:
                     description: Array of domains (advertisers) that have purchased ads for the specified keyword, ranked by performance metrics.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         ads:
                           description: Collection of ads this domain has purchased for the specified keyword.
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: object
                             properties:
@@ -447,28 +462,33 @@ paths:
                                 example: 1
                               title:
                                 description: The headline text of the ad as it appeared in search results.
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: Best Running Shoes 2024 - Free Shipping
                               body:
                                 description: The description text of the ad providing additional details about the offer.
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order.
                               domainName:
                                 description: The domain name of the advertiser who placed this ad.
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: example.com
                               fullUrl:
                                 description: The complete landing page URL that the ad directed users to when clicked.
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: https://example.com/running-shoes?utm_source=google&utm_campaign=shoes
                               term:
                                 description: The search keyword that triggered this ad to appear in search results.
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: running shoes
                               adCount:
                                 description: The number of times this specific ad variation was observed during the capture period.
@@ -481,7 +501,6 @@ paths:
                                 example: true
                             additionalProperties: false
                             description: Represents a single ad from SpyFu's historical advertising database with complete ad copy and metadata.
-                          nullable: true
                         budget:
                           description: Estimated monthly advertising budget this domain spends on the specified keyword.
                           type: number
@@ -494,8 +513,9 @@ paths:
                           example: 73.2
                         domainName:
                           description: The domain name of the advertiser.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         percentageLeaderboard:
                           description: Percentage of time this domain's ads appear in top positions (leaderboard) rather than sidebar positions.
@@ -514,10 +534,11 @@ paths:
                           example: 45
                       additionalProperties: false
                       description: Represents an advertiser (domain) that purchases ads for a specific keyword, including their ad performance metrics and budget estimates.
-                    nullable: true
                   topAds:
                     description: Array of the most successful ads for the specified keyword, ranked by performance and frequency metrics.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
@@ -538,18 +559,21 @@ paths:
                           example: 2.1
                         body:
                           description: The description text of the ad providing additional details about the offer.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Discover premium running shoes with advanced cushioning technology. Shop now and save 20% on your first order.
                         title:
                           description: The headline text of the ad as it appeared in search results.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Best Running Shoes 2024 - Free Shipping
                         fullUrl:
                           description: The complete landing page URL that the ad directed users to when clicked.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: https://example.com/running-shoes?utm_source=google&utm_campaign=shoes
                         leaderboardCount:
                           description: Number of times this ad appeared in top ad positions (leaderboard) rather than sidebar positions.
@@ -568,7 +592,6 @@ paths:
                           example: 28.7
                       additionalProperties: false
                       description: Represents a top-performing ad with aggregated performance metrics across multiple observations.
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request - Invalid parameters provided (e.g., empty term, pageSize exceeds maximum, or invalid country code)

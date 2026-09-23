@@ -1,9 +1,9 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Account Account API Ranking History API API
+  title: Ranking History API
   version: v2
 servers:
-- url: https://api.spyfu.com/apis/accounts_api
+- url: https://api.spyfu.com/apis/organic_history_api
 security:
 - Basic_Authentication_Token: []
 - Query_Parameter_Token: []
@@ -18,7 +18,7 @@ paths:
       description: 'Returns historical organic ranking data for a domain across multiple keywords within a specified date range. Track position changes, click gains/losses, and ranking trends over time to analyze SEO performance.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/seo/ranking-history/domain?expandChart=false&searchType=MostValuable&includeAnyTerm=true&query=example.com&sidebarContext=topics) _(TODO – verify)_'
+        Visualize this API live on SpyFu _(TODO – verify)_'
       parameters:
       - name: domain
         in: query
@@ -245,31 +245,38 @@ paths:
                     readOnly: true
                     example: 100
                   results:
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                         historicalRanks:
-                          type: object
+                          type:
+                          - object
+                          - 'null'
                           additionalProperties:
                             type: integer
                             format: int32
-                          nullable: true
                         startRank:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                         endRank:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                         rankChange:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                         endClicks:
                           type: integer
                           format: int64
@@ -277,12 +284,12 @@ paths:
                           type: integer
                           format: int64
                         searchVolume:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                       additionalProperties: false
                     readOnly: true
-                    nullable: true
                   totalVolume:
                     type: integer
                     format: int64
@@ -327,7 +334,7 @@ paths:
       description: 'Returns historical organic ranking data for a specific keyword across multiple specified domains within a date range. Compare how different domains have performed for the same keyword over time.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/keyword/ranking-history?query=example%20keyword) _(TODO – verify)_'
+        Visualize this API live on SpyFu _(TODO – verify)_'
       parameters:
       - name: keyword
         in: query
@@ -411,24 +418,28 @@ paths:
                     readOnly: true
                     example: 100
                   results:
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         domain:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                         keyword:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                         results:
-                          type: object
+                          type:
+                          - object
+                          - 'null'
                           additionalProperties:
                             type: integer
                             format: int32
-                          nullable: true
                       additionalProperties: false
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Invalid request parameters, keyword, or domain list
@@ -445,7 +456,7 @@ paths:
       description: 'Returns historical organic ranking data for a specific domain across multiple specified keywords within a date range. Analyze how a domain''s positions have changed over time for your target keyword list.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/seo/ranking-history/domain?expandChart=false&searchType=MostValuable&includeAnyTerm=true&query=example.com&sidebarContext=topics) _(TODO – verify)_'
+        Visualize this API live on SpyFu _(TODO – verify)_'
       parameters:
       - name: domain
         in: query
@@ -558,24 +569,28 @@ paths:
                     readOnly: true
                     example: 100
                   results:
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         domain:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                         keyword:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                         results:
-                          type: object
+                          type:
+                          - object
+                          - 'null'
                           additionalProperties:
                             type: integer
                             format: int32
-                          nullable: true
                       additionalProperties: false
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Invalid request parameters, domain, or keyword list

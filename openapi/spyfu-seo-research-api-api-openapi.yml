@@ -1,9 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Account Account API SEO Research API API
+  title: SEO Research API
   version: v2
+  description: Access the world's most comprehensive organic search intelligence database to identify keyword opportunities, track ranking changes, and analyze competitor SEO strategies.
 servers:
-- url: https://api.spyfu.com/apis/accounts_api
+- url: https://api.spyfu.com/apis/serp_api
 security:
 - Basic_Authentication_Token: []
 - Query_Parameter_Token: []
@@ -18,7 +19,7 @@ paths:
       description: 'Returns keywords that generate the highest organic click volume for a domain. This endpoint identifies the most traffic-driving keywords to reveal a domain''s most valuable SEO assets and content opportunities.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?includeAnyTerm=true&includeAnyUrl=true&searchType=mostvaluable&sidebarContext=filters&query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: query
         in: query
@@ -502,7 +503,17 @@ paths:
         example: false
       - name: exactMatch
         in: query
-        description: "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+        description: 'Indicates whether to apply exact match filtering for the query.
+
+          This parameter will result in **only** exact matches,
+
+          meaning protocols (http/https) and trailing slashes **must** be included.
+
+          For example, a query of "https://example.com/blog" will not match
+
+          - "example.com/blog"
+
+          - "https://example.com/blog/"'
         schema:
           type: boolean
       responses:
@@ -522,21 +533,25 @@ paths:
                     example: 100
                   results:
                     description: Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: The keyword for which this domain ranks organically in the top 100 search results.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: running shoes
                         topRankedUrl:
                           description: The highest ranking URL from this domain for this specific keyword.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://example.com/best-running-shoes
                         rank:
                           description: Current organic search position for this keyword (1 = top position).
@@ -546,17 +561,19 @@ paths:
                           example: 7
                         rankChange:
                           description: Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: -3
                         searchVolume:
                           description: Monthly search volume for this keyword based on Google search data across the selected country/region.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 700000
                         keywordDifficulty:
                           description: SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.
@@ -566,24 +583,27 @@ paths:
                           example: 69
                         broadCostPerClick:
                           description: Average cost per click for broad match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         phraseCostPerClick:
                           description: Average cost per click for phrase match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         exactCostPerClick:
                           description: Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         seoClicks:
                           description: Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.
@@ -593,110 +613,124 @@ paths:
                           example: 3000
                         seoClicksChange:
                           description: Change in estimated organic clicks compared to the previous measurement period.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: -600
                         totalMonthlyClicks:
                           description: Total number of clicks (organic and paid combined) on search results for this keyword in the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 647000
                         percentMobileSearches:
                           description: Percentage of searches for this keyword that come from mobile devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.4
                         percentDesktopSearches:
                           description: Percentage of searches for this keyword that come from desktop devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.6
                         percentNotClicked:
                           description: Percentage of searches where users leave the SERP without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.075
                         percentPaidClicks:
                           description: Percentage of total SERP clicks that go to paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.079
                         percentOrganicClicks:
                           description: Percentage of total SERP clicks that go to organic search results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.921
                         broadMonthlyCost:
                           description: 'Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 6043.5
                         phraseMonthlyCost:
                           description: 'Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5695.5
                         exactMonthlyCost:
                           description: 'Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5392.5
                         paidCompetitors:
                           description: Total number of advertisers observed purchasing ads for this keyword over the last 14 months.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 0
                         rankingHomepages:
                           description: Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 10
                         yourRank:
                           description: The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 5
                         yourRankChange:
                           description: Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: -3
                         yourUrl:
                           description: The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://comparedomain.com/blog
                       additionalProperties: false
                       description: Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data.
                     readOnly: true
-                    nullable: true
                   totalMatchingResults:
                     description: Total number of organic keywords available that match the query criteria, including results not included in the current page.
                     type: integer
@@ -719,7 +753,7 @@ paths:
       description: 'Returns keywords where a domain recently achieved rankings in the top 100 organic search results. This endpoint identifies fresh ranking opportunities to reveal new content successes and emerging SEO momentum.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?includeAnyTerm=true&includeAnyUrl=true&searchType=newlyranked&sidebarContext=filters&query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: query
         in: query
@@ -1203,7 +1237,17 @@ paths:
         example: false
       - name: exactMatch
         in: query
-        description: "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+        description: 'Indicates whether to apply exact match filtering for the query.
+
+          This parameter will result in **only** exact matches,
+
+          meaning protocols (http/https) and trailing slashes **must** be included.
+
+          For example, a query of "https://example.com/blog" will not match
+
+          - "example.com/blog"
+
+          - "https://example.com/blog/"'
         schema:
           type: boolean
       responses:
@@ -1223,21 +1267,25 @@ paths:
                     example: 100
                   results:
                     description: Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: The keyword for which this domain ranks organically in the top 100 search results.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: running shoes
                         topRankedUrl:
                           description: The highest ranking URL from this domain for this specific keyword.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://example.com/best-running-shoes
                         rank:
                           description: Current organic search position for this keyword (1 = top position).
@@ -1247,17 +1295,19 @@ paths:
                           example: 7
                         rankChange:
                           description: Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: -3
                         searchVolume:
                           description: Monthly search volume for this keyword based on Google search data across the selected country/region.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 700000
                         keywordDifficulty:
                           description: SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.
@@ -1267,24 +1317,27 @@ paths:
                           example: 69
                         broadCostPerClick:
                           description: Average cost per click for broad match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         phraseCostPerClick:
                           description: Average cost per click for phrase match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         exactCostPerClick:
                           description: Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         seoClicks:
                           description: Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.
@@ -1294,110 +1347,124 @@ paths:
                           example: 3000
                         seoClicksChange:
                           description: Change in estimated organic clicks compared to the previous measurement period.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: -600
                         totalMonthlyClicks:
                           description: Total number of clicks (organic and paid combined) on search results for this keyword in the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 647000
                         percentMobileSearches:
                           description: Percentage of searches for this keyword that come from mobile devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.4
                         percentDesktopSearches:
                           description: Percentage of searches for this keyword that come from desktop devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.6
                         percentNotClicked:
                           description: Percentage of searches where users leave the SERP without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.075
                         percentPaidClicks:
                           description: Percentage of total SERP clicks that go to paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.079
                         percentOrganicClicks:
                           description: Percentage of total SERP clicks that go to organic search results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.921
                         broadMonthlyCost:
                           description: 'Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 6043.5
                         phraseMonthlyCost:
                           description: 'Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5695.5
                         exactMonthlyCost:
                           description: 'Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5392.5
                         paidCompetitors:
                           description: Total number of advertisers observed purchasing ads for this keyword over the last 14 months.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 0
                         rankingHomepages:
                           description: Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 10
                         yourRank:
                           description: The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 5
                         yourRankChange:
                           description: Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: -3
                         yourUrl:
                           description: The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://comparedomain.com/blog
                       additionalProperties: false
                       description: Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data.
                     readOnly: true
-                    nullable: true
                   totalMatchingResults:
                     description: Total number of organic keywords available that match the query criteria, including results not included in the current page.
                     type: integer
@@ -1420,7 +1487,7 @@ paths:
       description: 'Returns keywords where a domain, path, subdomain, page or full URL improved its organic search ranking positions compared to the previous month. This endpoint identifies the biggest ranking gains to reveal successful SEO efforts and content optimizations.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?includeAnyTerm=true&includeAnyUrl=true&searchType=gainedranks&sidebarContext=filters&query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: query
         in: query
@@ -1904,7 +1971,17 @@ paths:
         example: false
       - name: exactMatch
         in: query
-        description: "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+        description: 'Indicates whether to apply exact match filtering for the query.
+
+          This parameter will result in **only** exact matches,
+
+          meaning protocols (http/https) and trailing slashes **must** be included.
+
+          For example, a query of "https://example.com/blog" will not match
+
+          - "example.com/blog"
+
+          - "https://example.com/blog/"'
         schema:
           type: boolean
       responses:
@@ -1924,21 +2001,25 @@ paths:
                     example: 100
                   results:
                     description: Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: The keyword for which this domain ranks organically in the top 100 search results.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: running shoes
                         topRankedUrl:
                           description: The highest ranking URL from this domain for this specific keyword.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://example.com/best-running-shoes
                         rank:
                           description: Current organic search position for this keyword (1 = top position).
@@ -1948,17 +2029,19 @@ paths:
                           example: 7
                         rankChange:
                           description: Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: -3
                         searchVolume:
                           description: Monthly search volume for this keyword based on Google search data across the selected country/region.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 700000
                         keywordDifficulty:
                           description: SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.
@@ -1968,24 +2051,27 @@ paths:
                           example: 69
                         broadCostPerClick:
                           description: Average cost per click for broad match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         phraseCostPerClick:
                           description: Average cost per click for phrase match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         exactCostPerClick:
                           description: Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         seoClicks:
                           description: Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.
@@ -1995,110 +2081,124 @@ paths:
                           example: 3000
                         seoClicksChange:
                           description: Change in estimated organic clicks compared to the previous measurement period.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: -600
                         totalMonthlyClicks:
                           description: Total number of clicks (organic and paid combined) on search results for this keyword in the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 647000
                         percentMobileSearches:
                           description: Percentage of searches for this keyword that come from mobile devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.4
                         percentDesktopSearches:
                           description: Percentage of searches for this keyword that come from desktop devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.6
                         percentNotClicked:
                           description: Percentage of searches where users leave the SERP without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.075
                         percentPaidClicks:
                           description: Percentage of total SERP clicks that go to paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.079
                         percentOrganicClicks:
                           description: Percentage of total SERP clicks that go to organic search results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.921
                         broadMonthlyCost:
                           description: 'Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 6043.5
                         phraseMonthlyCost:
                           description: 'Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5695.5
                         exactMonthlyCost:
                           description: 'Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5392.5
                         paidCompetitors:
                           description: Total number of advertisers observed purchasing ads for this keyword over the last 14 months.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 0
                         rankingHomepages:
                           description: Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 10
                         yourRank:
                           description: The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 5
                         yourRankChange:
                           description: Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: -3
                         yourUrl:
                           description: The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://comparedomain.com/blog
                       additionalProperties: false
                       description: Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data.
                     readOnly: true
-                    nullable: true
                   totalMatchingResults:
                     description: Total number of organic keywords available that match the query criteria, including results not included in the current page.
                     type: integer
@@ -2121,7 +2221,7 @@ paths:
       description: 'Returns keywords where a domain''s organic search ranking positions declined compared to the previous month. This endpoint identifies ranking losses that remain within the top 100 results to reveal content that needs SEO attention.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?includeAnyTerm=true&includeAnyUrl=true&searchType=lostranks&sidebarContext=filters&query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: query
         in: query
@@ -2633,7 +2733,17 @@ paths:
         example: false
       - name: exactMatch
         in: query
-        description: "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+        description: 'Indicates whether to apply exact match filtering for the query.
+
+          This parameter will result in **only** exact matches,
+
+          meaning protocols (http/https) and trailing slashes **must** be included.
+
+          For example, a query of "https://example.com/blog" will not match
+
+          - "example.com/blog"
+
+          - "https://example.com/blog/"'
         schema:
           type: boolean
       responses:
@@ -2653,21 +2763,25 @@ paths:
                     example: 100
                   results:
                     description: Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: The keyword for which this domain ranks organically in the top 100 search results.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: running shoes
                         topRankedUrl:
                           description: The highest ranking URL from this domain for this specific keyword.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://example.com/best-running-shoes
                         rank:
                           description: Current organic search position for this keyword (1 = top position).
@@ -2677,17 +2791,19 @@ paths:
                           example: 7
                         rankChange:
                           description: Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: -3
                         searchVolume:
                           description: Monthly search volume for this keyword based on Google search data across the selected country/region.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 700000
                         keywordDifficulty:
                           description: SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.
@@ -2697,24 +2813,27 @@ paths:
                           example: 69
                         broadCostPerClick:
                           description: Average cost per click for broad match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         phraseCostPerClick:
                           description: Average cost per click for phrase match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         exactCostPerClick:
                           description: Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         seoClicks:
                           description: Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.
@@ -2724,110 +2843,124 @@ paths:
                           example: 3000
                         seoClicksChange:
                           description: Change in estimated organic clicks compared to the previous measurement period.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: -600
                         totalMonthlyClicks:
                           description: Total number of clicks (organic and paid combined) on search results for this keyword in the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 647000
                         percentMobileSearches:
                           description: Percentage of searches for this keyword that come from mobile devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.4
                         percentDesktopSearches:
                           description: Percentage of searches for this keyword that come from desktop devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.6
                         percentNotClicked:
                           description: Percentage of searches where users leave the SERP without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.075
                         percentPaidClicks:
                           description: Percentage of total SERP clicks that go to paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.079
                         percentOrganicClicks:
                           description: Percentage of total SERP clicks that go to organic search results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.921
                         broadMonthlyCost:
                           description: 'Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 6043.5
                         phraseMonthlyCost:
                           description: 'Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5695.5
                         exactMonthlyCost:
                           description: 'Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5392.5
                         paidCompetitors:
                           description: Total number of advertisers observed purchasing ads for this keyword over the last 14 months.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 0
                         rankingHomepages:
                           description: Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 10
                         yourRank:
                           description: The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 5
                         yourRankChange:
                           description: Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: -3
                         yourUrl:
                           description: The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://comparedomain.com/blog
                       additionalProperties: false
                       description: Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data.
                     readOnly: true
-                    nullable: true
                   totalMatchingResults:
                     description: Total number of organic keywords available that match the query criteria, including results not included in the current page.
                     type: integer
@@ -2850,7 +2983,7 @@ paths:
       description: 'Returns keywords where a domain, path, subdomain, page or full URL experienced increased organic clicks compared to the previous month. This endpoint identifies the biggest click improvements to reveal rising content opportunities and successful SEO changes.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?includeAnyTerm=true&includeAnyUrl=true&searchType=gainedclicks&sidebarContext=filters&query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: query
         in: query
@@ -3334,7 +3467,17 @@ paths:
         example: false
       - name: exactMatch
         in: query
-        description: "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+        description: 'Indicates whether to apply exact match filtering for the query.
+
+          This parameter will result in **only** exact matches,
+
+          meaning protocols (http/https) and trailing slashes **must** be included.
+
+          For example, a query of "https://example.com/blog" will not match
+
+          - "example.com/blog"
+
+          - "https://example.com/blog/"'
         schema:
           type: boolean
       responses:
@@ -3354,21 +3497,25 @@ paths:
                     example: 100
                   results:
                     description: Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: The keyword for which this domain ranks organically in the top 100 search results.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: running shoes
                         topRankedUrl:
                           description: The highest ranking URL from this domain for this specific keyword.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://example.com/best-running-shoes
                         rank:
                           description: Current organic search position for this keyword (1 = top position).
@@ -3378,17 +3525,19 @@ paths:
                           example: 7
                         rankChange:
                           description: Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: -3
                         searchVolume:
                           description: Monthly search volume for this keyword based on Google search data across the selected country/region.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 700000
                         keywordDifficulty:
                           description: SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.
@@ -3398,24 +3547,27 @@ paths:
                           example: 69
                         broadCostPerClick:
                           description: Average cost per click for broad match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         phraseCostPerClick:
                           description: Average cost per click for phrase match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         exactCostPerClick:
                           description: Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         seoClicks:
                           description: Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.
@@ -3425,110 +3577,124 @@ paths:
                           example: 3000
                         seoClicksChange:
                           description: Change in estimated organic clicks compared to the previous measurement period.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: -600
                         totalMonthlyClicks:
                           description: Total number of clicks (organic and paid combined) on search results for this keyword in the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 647000
                         percentMobileSearches:
                           description: Percentage of searches for this keyword that come from mobile devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.4
                         percentDesktopSearches:
                           description: Percentage of searches for this keyword that come from desktop devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.6
                         percentNotClicked:
                           description: Percentage of searches where users leave the SERP without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.075
                         percentPaidClicks:
                           description: Percentage of total SERP clicks that go to paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.079
                         percentOrganicClicks:
                           description: Percentage of total SERP clicks that go to organic search results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.921
                         broadMonthlyCost:
                           description: 'Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 6043.5
                         phraseMonthlyCost:
                           description: 'Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5695.5
                         exactMonthlyCost:
                           description: 'Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5392.5
                         paidCompetitors:
                           description: Total number of advertisers observed purchasing ads for this keyword over the last 14 months.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 0
                         rankingHomepages:
                           description: Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 10
                         yourRank:
                           description: The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 5
                         yourRankChange:
                           description: Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: -3
                         yourUrl:
                           description: The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://comparedomain.com/blog
                       additionalProperties: false
                       description: Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data.
                     readOnly: true
-                    nullable: true
                   totalMatchingResults:
                     description: Total number of organic keywords available that match the query criteria, including results not included in the current page.
                     type: integer
@@ -3551,7 +3717,7 @@ paths:
       description: 'Returns keywords where a domain experienced decreased organic clicks compared to the previous month. This endpoint identifies the biggest click losses to reveal content that needs attention or competitive pressure points.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?includeAnyTerm=true&includeAnyUrl=true&searchType=lostclicks&sidebarContext=filters&query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: query
         in: query
@@ -4063,7 +4229,17 @@ paths:
         example: false
       - name: exactMatch
         in: query
-        description: "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+        description: 'Indicates whether to apply exact match filtering for the query.
+
+          This parameter will result in **only** exact matches,
+
+          meaning protocols (http/https) and trailing slashes **must** be included.
+
+          For example, a query of "https://example.com/blog" will not match
+
+          - "example.com/blog"
+
+          - "https://example.com/blog/"'
         schema:
           type: boolean
       responses:
@@ -4083,21 +4259,25 @@ paths:
                     example: 100
                   results:
                     description: Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: The keyword for which this domain ranks organically in the top 100 search results.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: running shoes
                         topRankedUrl:
                           description: The highest ranking URL from this domain for this specific keyword.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://example.com/best-running-shoes
                         rank:
                           description: Current organic search position for this keyword (1 = top position).
@@ -4107,17 +4287,19 @@ paths:
                           example: 7
                         rankChange:
                           description: Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: -3
                         searchVolume:
                           description: Monthly search volume for this keyword based on Google search data across the selected country/region.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 700000
                         keywordDifficulty:
                           description: SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.
@@ -4127,24 +4309,27 @@ paths:
                           example: 69
                         broadCostPerClick:
                           description: Average cost per click for broad match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         phraseCostPerClick:
                           description: Average cost per click for phrase match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         exactCostPerClick:
                           description: Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         seoClicks:
                           description: Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.
@@ -4154,110 +4339,124 @@ paths:
                           example: 3000
                         seoClicksChange:
                           description: Change in estimated organic clicks compared to the previous measurement period.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: -600
                         totalMonthlyClicks:
                           description: Total number of clicks (organic and paid combined) on search results for this keyword in the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 647000
                         percentMobileSearches:
                           description: Percentage of searches for this keyword that come from mobile devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.4
                         percentDesktopSearches:
                           description: Percentage of searches for this keyword that come from desktop devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.6
                         percentNotClicked:
                           description: Percentage of searches where users leave the SERP without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.075
                         percentPaidClicks:
                           description: Percentage of total SERP clicks that go to paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.079
                         percentOrganicClicks:
                           description: Percentage of total SERP clicks that go to organic search results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.921
                         broadMonthlyCost:
                           description: 'Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 6043.5
                         phraseMonthlyCost:
                           description: 'Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5695.5
                         exactMonthlyCost:
                           description: 'Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5392.5
                         paidCompetitors:
                           description: Total number of advertisers observed purchasing ads for this keyword over the last 14 months.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 0
                         rankingHomepages:
                           description: Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 10
                         yourRank:
                           description: The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 5
                         yourRankChange:
                           description: Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: -3
                         yourUrl:
                           description: The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://comparedomain.com/blog
                       additionalProperties: false
                       description: Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data.
                     readOnly: true
-                    nullable: true
                   totalMatchingResults:
                     description: Total number of organic keywords available that match the query criteria, including results not included in the current page.
                     type: integer
@@ -4280,7 +4479,7 @@ paths:
       description: 'Returns keywords where a domain achieved first page rankings (top 10 results) this month after not ranking there previously. This endpoint identifies new ranking successes to reveal effective content strategies and emerging opportunities.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?includeAnyTerm=true&includeAnyUrl=true&searchType=justmadeit&sidebarContext=filters&query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: query
         in: query
@@ -4792,7 +4991,17 @@ paths:
         example: false
       - name: exactMatch
         in: query
-        description: "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+        description: 'Indicates whether to apply exact match filtering for the query.
+
+          This parameter will result in **only** exact matches,
+
+          meaning protocols (http/https) and trailing slashes **must** be included.
+
+          For example, a query of "https://example.com/blog" will not match
+
+          - "example.com/blog"
+
+          - "https://example.com/blog/"'
         schema:
           type: boolean
       responses:
@@ -4812,21 +5021,25 @@ paths:
                     example: 100
                   results:
                     description: Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: The keyword for which this domain ranks organically in the top 100 search results.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: running shoes
                         topRankedUrl:
                           description: The highest ranking URL from this domain for this specific keyword.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://example.com/best-running-shoes
                         rank:
                           description: Current organic search position for this keyword (1 = top position).
@@ -4836,17 +5049,19 @@ paths:
                           example: 7
                         rankChange:
                           description: Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: -3
                         searchVolume:
                           description: Monthly search volume for this keyword based on Google search data across the selected country/region.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 700000
                         keywordDifficulty:
                           description: SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.
@@ -4856,24 +5071,27 @@ paths:
                           example: 69
                         broadCostPerClick:
                           description: Average cost per click for broad match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         phraseCostPerClick:
                           description: Average cost per click for phrase match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         exactCostPerClick:
                           description: Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         seoClicks:
                           description: Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.
@@ -4883,110 +5101,124 @@ paths:
                           example: 3000
                         seoClicksChange:
                           description: Change in estimated organic clicks compared to the previous measurement period.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: -600
                         totalMonthlyClicks:
                           description: Total number of clicks (organic and paid combined) on search results for this keyword in the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 647000
                         percentMobileSearches:
                           description: Percentage of searches for this keyword that come from mobile devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.4
                         percentDesktopSearches:
                           description: Percentage of searches for this keyword that come from desktop devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.6
                         percentNotClicked:
                           description: Percentage of searches where users leave the SERP without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.075
                         percentPaidClicks:
                           description: Percentage of total SERP clicks that go to paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.079
                         percentOrganicClicks:
                           description: Percentage of total SERP clicks that go to organic search results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.921
                         broadMonthlyCost:
                           description: 'Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 6043.5
                         phraseMonthlyCost:
                           description: 'Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5695.5
                         exactMonthlyCost:
                           description: 'Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5392.5
                         paidCompetitors:
                           description: Total number of advertisers observed purchasing ads for this keyword over the last 14 months.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 0
                         rankingHomepages:
                           description: Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 10
                         yourRank:
                           description: The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 5
                         yourRankChange:
                           description: Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: -3
                         yourUrl:
                           description: The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://comparedomain.com/blog
                       additionalProperties: false
                       description: Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data.
                     readOnly: true
-                    nullable: true
                   totalMatchingResults:
                     description: Total number of organic keywords available that match the query criteria, including results not included in the current page.
                     type: integer
@@ -5009,7 +5241,7 @@ paths:
       description: 'Returns keywords where a domain dropped from the first page (top 10 results) compared to the previous month. This endpoint identifies recent ranking losses to reveal content that needs attention or competitive threats.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?includeAnyTerm=true&includeAnyUrl=true&searchType=justfelloff&sidebarContext=filters&query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: query
         in: query
@@ -5521,7 +5753,17 @@ paths:
         example: false
       - name: exactMatch
         in: query
-        description: "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+        description: 'Indicates whether to apply exact match filtering for the query.
+
+          This parameter will result in **only** exact matches,
+
+          meaning protocols (http/https) and trailing slashes **must** be included.
+
+          For example, a query of "https://example.com/blog" will not match
+
+          - "example.com/blog"
+
+          - "https://example.com/blog/"'
         schema:
           type: boolean
       responses:
@@ -5541,21 +5783,25 @@ paths:
                     example: 100
                   results:
                     description: Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: The keyword for which this domain ranks organically in the top 100 search results.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: running shoes
                         topRankedUrl:
                           description: The highest ranking URL from this domain for this specific keyword.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://example.com/best-running-shoes
                         rank:
                           description: Current organic search position for this keyword (1 = top position).
@@ -5565,17 +5811,19 @@ paths:
                           example: 7
                         rankChange:
                           description: Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: -3
                         searchVolume:
                           description: Monthly search volume for this keyword based on Google search data across the selected country/region.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 700000
                         keywordDifficulty:
                           description: SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.
@@ -5585,24 +5833,27 @@ paths:
                           example: 69
                         broadCostPerClick:
                           description: Average cost per click for broad match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         phraseCostPerClick:
                           description: Average cost per click for phrase match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         exactCostPerClick:
                           description: Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         seoClicks:
                           description: Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.
@@ -5612,110 +5863,124 @@ paths:
                           example: 3000
                         seoClicksChange:
                           description: Change in estimated organic clicks compared to the previous measurement period.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: -600
                         totalMonthlyClicks:
                           description: Total number of clicks (organic and paid combined) on search results for this keyword in the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 647000
                         percentMobileSearches:
                           description: Percentage of searches for this keyword that come from mobile devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.4
                         percentDesktopSearches:
                           description: Percentage of searches for this keyword that come from desktop devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.6
                         percentNotClicked:
                           description: Percentage of searches where users leave the SERP without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.075
                         percentPaidClicks:
                           description: Percentage of total SERP clicks that go to paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.079
                         percentOrganicClicks:
                           description: Percentage of total SERP clicks that go to organic search results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.921
                         broadMonthlyCost:
                           description: 'Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 6043.5
                         phraseMonthlyCost:
                           description: 'Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5695.5
                         exactMonthlyCost:
                           description: 'Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5392.5
                         paidCompetitors:
                           description: Total number of advertisers observed purchasing ads for this keyword over the last 14 months.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 0
                         rankingHomepages:
                           description: Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 10
                         yourRank:
                           description: The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 5
                         yourRankChange:
                           description: Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: -3
                         yourUrl:
                           description: The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://comparedomain.com/blog
                       additionalProperties: false
                       description: Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data.
                     readOnly: true
-                    nullable: true
                   totalMatchingResults:
                     description: Total number of organic keywords available that match the query criteria, including results not included in the current page.
                     type: integer
@@ -6246,7 +6511,17 @@ paths:
         example: false
       - name: exactMatch
         in: query
-        description: "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+        description: 'Indicates whether to apply exact match filtering for the query.
+
+          This parameter will result in **only** exact matches,
+
+          meaning protocols (http/https) and trailing slashes **must** be included.
+
+          For example, a query of "https://example.com/blog" will not match
+
+          - "example.com/blog"
+
+          - "https://example.com/blog/"'
         schema:
           type: boolean
       responses:
@@ -6266,21 +6541,25 @@ paths:
                     example: 100
                   results:
                     description: Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: The keyword for which this domain ranks organically in the top 100 search results.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: running shoes
                         topRankedUrl:
                           description: The highest ranking URL from this domain for this specific keyword.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://example.com/best-running-shoes
                         rank:
                           description: Current organic search position for this keyword (1 = top position).
@@ -6290,17 +6569,19 @@ paths:
                           example: 7
                         rankChange:
                           description: Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: -3
                         searchVolume:
                           description: Monthly search volume for this keyword based on Google search data across the selected country/region.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 700000
                         keywordDifficulty:
                           description: SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.
@@ -6310,24 +6591,27 @@ paths:
                           example: 69
                         broadCostPerClick:
                           description: Average cost per click for broad match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         phraseCostPerClick:
                           description: Average cost per click for phrase match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         exactCostPerClick:
                           description: Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         seoClicks:
                           description: Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.
@@ -6337,110 +6621,124 @@ paths:
                           example: 3000
                         seoClicksChange:
                           description: Change in estimated organic clicks compared to the previous measurement period.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: -600
                         totalMonthlyClicks:
                           description: Total number of clicks (organic and paid combined) on search results for this keyword in the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 647000
                         percentMobileSearches:
                           description: Percentage of searches for this keyword that come from mobile devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.4
                         percentDesktopSearches:
                           description: Percentage of searches for this keyword that come from desktop devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.6
                         percentNotClicked:
                           description: Percentage of searches where users leave the SERP without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.075
                         percentPaidClicks:
                           description: Percentage of total SERP clicks that go to paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.079
                         percentOrganicClicks:
                           description: Percentage of total SERP clicks that go to organic search results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.921
                         broadMonthlyCost:
                           description: 'Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 6043.5
                         phraseMonthlyCost:
                           description: 'Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5695.5
                         exactMonthlyCost:
                           description: 'Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5392.5
                         paidCompetitors:
                           description: Total number of advertisers observed purchasing ads for this keyword over the last 14 months.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 0
                         rankingHomepages:
                           description: Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 10
                         yourRank:
                           description: The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 5
                         yourRankChange:
                           description: Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: -3
                         yourUrl:
                           description: The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://comparedomain.com/blog
                       additionalProperties: false
                       description: Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data.
                     readOnly: true
-                    nullable: true
                   totalMatchingResults:
                     description: Total number of organic keywords available that match the query criteria, including results not included in the current page.
                     type: integer
@@ -6960,7 +7258,17 @@ paths:
         example: false
       - name: exactMatch
         in: query
-        description: "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+        description: 'Indicates whether to apply exact match filtering for the query.
+
+          This parameter will result in **only** exact matches,
+
+          meaning protocols (http/https) and trailing slashes **must** be included.
+
+          For example, a query of "https://example.com/blog" will not match
+
+          - "example.com/blog"
+
+          - "https://example.com/blog/"'
         schema:
           type: boolean
       responses:
@@ -6980,21 +7288,25 @@ paths:
                     example: 100
                   results:
                     description: Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: The keyword for which this domain ranks organically in the top 100 search results.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: running shoes
                         topRankedUrl:
                           description: The highest ranking URL from this domain for this specific keyword.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://example.com/best-running-shoes
                         rank:
                           description: Current organic search position for this keyword (1 = top position).
@@ -7004,17 +7316,19 @@ paths:
                           example: 7
                         rankChange:
                           description: Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: -3
                         searchVolume:
                           description: Monthly search volume for this keyword based on Google search data across the selected country/region.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 700000
                         keywordDifficulty:
                           description: SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.
@@ -7024,24 +7338,27 @@ paths:
                           example: 69
                         broadCostPerClick:
                           description: Average cost per click for broad match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         phraseCostPerClick:
                           description: Average cost per click for phrase match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         exactCostPerClick:
                           description: Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         seoClicks:
                           description: Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.
@@ -7051,110 +7368,124 @@ paths:
                           example: 3000
                         seoClicksChange:
                           description: Change in estimated organic clicks compared to the previous measurement period.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: -600
                         totalMonthlyClicks:
                           description: Total number of clicks (organic and paid combined) on search results for this keyword in the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 647000
                         percentMobileSearches:
                           description: Percentage of searches for this keyword that come from mobile devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.4
                         percentDesktopSearches:
                           description: Percentage of searches for this keyword that come from desktop devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.6
                         percentNotClicked:
                           description: Percentage of searches where users leave the SERP without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.075
                         percentPaidClicks:
                           description: Percentage of total SERP clicks that go to paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.079
                         percentOrganicClicks:
                           description: Percentage of total SERP clicks that go to organic search results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.921
                         broadMonthlyCost:
                           description: 'Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 6043.5
                         phraseMonthlyCost:
                           description: 'Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5695.5
                         exactMonthlyCost:
                           description: 'Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5392.5
                         paidCompetitors:
                           description: Total number of advertisers observed purchasing ads for this keyword over the last 14 months.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 0
                         rankingHomepages:
                           description: Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 10
                         yourRank:
                           description: The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 5
                         yourRankChange:
                           description: Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: -3
                         yourUrl:
                           description: The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://comparedomain.com/blog
                       additionalProperties: false
                       description: Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data.
                     readOnly: true
-                    nullable: true
                   totalMatchingResults:
                     description: Total number of organic keywords available that match the query criteria, including results not included in the current page.
                     type: integer
@@ -7187,7 +7518,7 @@ paths:
         - Put your domain in `query` and competitor in `compareDomain` to see where you outrank them
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?query=example.com) _(TODO - verify)_'
+        Visualize this API live on SpyFu _(TODO - verify)_'
       parameters:
       - name: query
         in: query
@@ -7672,7 +8003,17 @@ paths:
         example: false
       - name: exactMatch
         in: query
-        description: "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+        description: 'Indicates whether to apply exact match filtering for the query.
+
+          This parameter will result in **only** exact matches,
+
+          meaning protocols (http/https) and trailing slashes **must** be included.
+
+          For example, a query of "https://example.com/blog" will not match
+
+          - "example.com/blog"
+
+          - "https://example.com/blog/"'
         schema:
           type: boolean
       responses:
@@ -7692,21 +8033,25 @@ paths:
                     example: 100
                   results:
                     description: Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: The keyword for which this domain ranks organically in the top 100 search results.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: running shoes
                         topRankedUrl:
                           description: The highest ranking URL from this domain for this specific keyword.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://example.com/best-running-shoes
                         rank:
                           description: Current organic search position for this keyword (1 = top position).
@@ -7716,17 +8061,19 @@ paths:
                           example: 7
                         rankChange:
                           description: Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: -3
                         searchVolume:
                           description: Monthly search volume for this keyword based on Google search data across the selected country/region.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 700000
                         keywordDifficulty:
                           description: SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.
@@ -7736,24 +8083,27 @@ paths:
                           example: 69
                         broadCostPerClick:
                           description: Average cost per click for broad match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         phraseCostPerClick:
                           description: Average cost per click for phrase match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         exactCostPerClick:
                           description: Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         seoClicks:
                           description: Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.
@@ -7763,110 +8113,124 @@ paths:
                           example: 3000
                         seoClicksChange:
                           description: Change in estimated organic clicks compared to the previous measurement period.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: -600
                         totalMonthlyClicks:
                           description: Total number of clicks (organic and paid combined) on search results for this keyword in the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 647000
                         percentMobileSearches:
                           description: Percentage of searches for this keyword that come from mobile devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.4
                         percentDesktopSearches:
                           description: Percentage of searches for this keyword that come from desktop devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.6
                         percentNotClicked:
                           description: Percentage of searches where users leave the SERP without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.075
                         percentPaidClicks:
                           description: Percentage of total SERP clicks that go to paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.079
                         percentOrganicClicks:
                           description: Percentage of total SERP clicks that go to organic search results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.921
                         broadMonthlyCost:
                           description: 'Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 6043.5
                         phraseMonthlyCost:
                           description: 'Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5695.5
                         exactMonthlyCost:
                           description: 'Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5392.5
                         paidCompetitors:
                           description: Total number of advertisers observed purchasing ads for this keyword over the last 14 months.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 0
                         rankingHomepages:
                           description: Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 10
                         yourRank:
                           description: The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 5
                         yourRankChange:
                           description: Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: -3
                         yourUrl:
                           description: The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://comparedomain.com/blog
                       additionalProperties: false
                       description: Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data.
                     readOnly: true
-                    nullable: true
                   totalMatchingResults:
                     description: Total number of organic keywords available that match the query criteria, including results not included in the current page.
                     type: integer
@@ -7899,7 +8263,7 @@ paths:
         - Put your domain in `query` and competitor in `compareDomain` to see where you''re gaining ground
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/seo/keywords/domain?query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: query
         in: query
@@ -8384,7 +8748,17 @@ paths:
         example: false
       - name: exactMatch
         in: query
-        description: "Indicates whether to apply exact match filtering for the query.\r\nThis parameter will result in **only** exact matches,\r\nmeaning protocols (http/https) and trailing slashes **must** be included.\r\nFor example, a query of \"https://example.com/blog\" will not match\r\n- \"example.com/blog\"\r\n- \"https://example.com/blog/\""
+        description: 'Indicates whether to apply exact match filtering for the query.
+
+          This parameter will result in **only** exact matches,
+
+          meaning protocols (http/https) and trailing slashes **must** be included.
+
+          For example, a query of "https://example.com/blog" will not match
+
+          - "example.com/blog"
+
+          - "https://example.com/blog/"'
         schema:
           type: boolean
       responses:
@@ -8404,21 +8778,25 @@ paths:
                     example: 100
                   results:
                     description: Array of organic search keywords with comprehensive SEO metrics including rankings, click estimates, and SERP analysis data.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: The keyword for which this domain ranks organically in the top 100 search results.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: running shoes
                         topRankedUrl:
                           description: The highest ranking URL from this domain for this specific keyword.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://example.com/best-running-shoes
                         rank:
                           description: Current organic search position for this keyword (1 = top position).
@@ -8428,17 +8806,19 @@ paths:
                           example: 7
                         rankChange:
                           description: Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: -3
                         searchVolume:
                           description: Monthly search volume for this keyword based on Google search data across the selected country/region.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 700000
                         keywordDifficulty:
                           description: SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.
@@ -8448,24 +8828,27 @@ paths:
                           example: 69
                         broadCostPerClick:
                           description: Average cost per click for broad match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         phraseCostPerClick:
                           description: Average cost per click for phrase match advertising on this keyword.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         exactCostPerClick:
                           description: Average cost per click for exact match advertising on this keyword. These costs fluctuate depending on many factors, so keep that in mind when you are estimating larger budgets.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.28
                         seoClicks:
                           description: Estimated monthly organic clicks this domain receives from this keyword based on current ranking position.
@@ -8475,110 +8858,124 @@ paths:
                           example: 3000
                         seoClicksChange:
                           description: Change in estimated organic clicks compared to the previous measurement period.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: -600
                         totalMonthlyClicks:
                           description: Total number of clicks (organic and paid combined) on search results for this keyword in the past month.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
                           readOnly: true
-                          nullable: true
                           example: 647000
                         percentMobileSearches:
                           description: Percentage of searches for this keyword that come from mobile devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.4
                         percentDesktopSearches:
                           description: Percentage of searches for this keyword that come from desktop devices.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.6
                         percentNotClicked:
                           description: Percentage of searches where users leave the SERP without clicking any result.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.075
                         percentPaidClicks:
                           description: Percentage of total SERP clicks that go to paid ads.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.079
                         percentOrganicClicks:
                           description: Percentage of total SERP clicks that go to organic search results.
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 0.921
                         broadMonthlyCost:
                           description: 'Estimated monthly advertising cost for broad match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 6043.5
                         phraseMonthlyCost:
                           description: 'Estimated monthly advertising cost for phrase match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5695.5
                         exactMonthlyCost:
                           description: 'Estimated monthly advertising cost for exact match bidding on this keyword from the #2 position.'
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           format: double
                           readOnly: true
-                          nullable: true
                           example: 5392.5
                         paidCompetitors:
                           description: Total number of advertisers observed purchasing ads for this keyword over the last 14 months.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 0
                         rankingHomepages:
                           description: Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
                           readOnly: true
-                          nullable: true
                           example: 10
                         yourRank:
                           description: The comparison domain's organic search position for this keyword (1 = top organic result). This field represents the rank of the domain specified in the 'compareDomain' parameter, allowing direct comparison with the primary query domain's rank.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 5
                         yourRankChange:
                           description: Change in the comparison domain's organic position from the previous data update. Positive values indicate the comparison domain moved up in rankings; negative values indicate it moved down. This shows how the comparison domain's performance has changed over time.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: -3
                         yourUrl:
                           description: The specific URL from the comparison domain that ranks for this keyword. This shows which page on the comparison domain is competing for this search term, providing insights into their content strategy.
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           readOnly: true
-                          nullable: true
                           example: https://comparedomain.com/blog
                       additionalProperties: false
                       description: Represents an organic search keyword with comprehensive SEO metrics including rankings, click estimates, costs, and SERP analysis data.
                     readOnly: true
-                    nullable: true
                   totalMatchingResults:
                     description: Total number of organic keywords available that match the query criteria, including results not included in the current page.
                     type: integer
@@ -8597,11 +8994,11 @@ paths:
   /v2/seo/getSerpAnalysisKeywords:
     get:
       operationId: OrganicSerpApi_GetSerpAnalysisKeywords_GET
-      summary: 'Get SERP Analysis for Keyword '
+      summary: Get SERP Analysis for Keyword
       description: 'Returns detailed search engine results page (SERP) analysis for a specific keyword, showing all domains ranking in positions 1-100. This endpoint provides comprehensive ranking data updated monthly to reveal the competitive landscape for any keyword.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/keyword/serp-analysis?query=example%20keyword)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: keyword
         in: query
@@ -8674,29 +9071,35 @@ paths:
                     example: 100
                   results:
                     description: Array of keywords with detailed SERP analysis including ranking data, search volume metrics, and competitive landscape insights.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         keyword:
                           description: The keyword for which this domain ranks organically in the top 100 search results.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: running shoes
                         domain:
                           description: The domain name that ranks for this keyword in organic search results.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: example.com
                         url:
                           description: The specific URL from this domain that ranks for this keyword.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: https://example.com/blog
                         title:
                           description: The page title of the ranking URL as it appears in search results.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Best Running Shoes for Athletes
                         rank:
                           description: Current organic search position for this keyword (1 = top position).
@@ -8705,21 +9108,24 @@ paths:
                           example: 7
                         rankChange:
                           description: Change in ranking position since the previous measurement period (positive values indicate ranking improvement; negative values indicate moving further down the SERP).
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: -3
                         searchVolume:
                           description: Monthly search volume for this keyword based on Google search data across the selected country/region.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 700000
                         rankingHomepages:
                           description: Number of domain homepages (vs. deeper pages) ranking in the top 100 organic results for this keyword.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int32
-                          nullable: true
                           example: 10
                         keywordDifficulty:
                           description: SEO difficulty score (1-100) indicating how challenging it would be to rank organically for this keyword, with 100 being most difficult.
@@ -8734,7 +9140,6 @@ paths:
                       additionalProperties: false
                       description: Represents a keyword with detailed SERP analysis including ranking data, search volume metrics, and competitive landscape insights.
                     readOnly: true
-                    nullable: true
                   totalMatchingResults:
                     description: Total number of keywords available that match the query criteria, including results not included in the current page.
                     type: integer
@@ -8817,15 +9222,17 @@ paths:
                     example: 1
                   domain:
                     description: Root domain for the results
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     readOnly: true
-                    nullable: true
                     example: example.com
                   url:
                     description: URL for the results
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     readOnly: true
-                    nullable: true
                     example: https://example.com/blog
                   totalOrganicResults:
                     description: Total keywords found for domain or URL
@@ -8866,7 +9273,7 @@ paths:
       description: 'Returns the pages that generate the most organic traffic for a domain. This endpoint identifies the highest-performing content by estimated monthly organic clicks, revealing which pages drive the most SEO value and traffic to the site.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/seo/top-pages?query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: query
         in: query
@@ -8997,19 +9404,23 @@ paths:
                     example: 100
                   results:
                     description: Array of top-performing pages with organic traffic estimates, keyword rankings, and competitive performance data.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         title:
                           description: The HTML title tag of the page as it appears in search results. This helps identify the page's content focus and SEO optimization strategy.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Best Running Shoes 2024 - Complete Buyer's Guide
                         url:
                           description: The complete URL of the page that ranks for multiple organic keywords. This shows the specific page driving organic traffic for the domain.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: https://example.com/best-running-shoes-2024
                         keywordCount:
                           description: Total number of unique keywords this page ranks for in the top 100 organic search results. Higher counts indicate broader topical coverage.
@@ -9023,8 +9434,9 @@ paths:
                           example: 15420
                         topKeyword:
                           description: The highest-value keyword this page ranks for, typically the term driving the most organic traffic to this specific page.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: best running shoes
                         topKeywordPosition:
                           description: 'The organic search position (rank) for the top keyword, where 1 represents the #1 organic result on Google.'
@@ -9033,9 +9445,10 @@ paths:
                           example: 3
                         topKeywordSearchVolume:
                           description: Monthly search volume for the top keyword, showing how many people search for this term each month on Google.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 74000
                         topKeywordClicks:
                           description: Estimated monthly organic clicks this page receives specifically from its top keyword, based on the keyword's search volume and the page's ranking position.
@@ -9045,7 +9458,6 @@ paths:
                       additionalProperties: false
                       description: Represents a top-performing page from a domain's organic search portfolio, including traffic estimates, keyword performance, and the page's most valuable search term.
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request
@@ -9062,7 +9474,7 @@ paths:
       description: 'Returns pages that have recently started generating significant organic traffic for a domain. This endpoint identifies newly discovered high-performing content, revealing fresh opportunities and emerging content strategies that are driving SEO success.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/seo/top-pages/domain?query=example.com) _(TODO - verify)_'
+        Visualize this API live on SpyFu _(TODO - verify)_'
       parameters:
       - name: query
         in: query
@@ -9193,19 +9605,23 @@ paths:
                     example: 100
                   results:
                     description: Array of top-performing pages with organic traffic estimates, keyword rankings, and competitive performance data.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         title:
                           description: The HTML title tag of the page as it appears in search results. This helps identify the page's content focus and SEO optimization strategy.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Best Running Shoes 2024 - Complete Buyer's Guide
                         url:
                           description: The complete URL of the page that ranks for multiple organic keywords. This shows the specific page driving organic traffic for the domain.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: https://example.com/best-running-shoes-2024
                         keywordCount:
                           description: Total number of unique keywords this page ranks for in the top 100 organic search results. Higher counts indicate broader topical coverage.
@@ -9219,8 +9635,9 @@ paths:
                           example: 15420
                         topKeyword:
                           description: The highest-value keyword this page ranks for, typically the term driving the most organic traffic to this specific page.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: best running shoes
                         topKeywordPosition:
                           description: 'The organic search position (rank) for the top keyword, where 1 represents the #1 organic result on Google.'
@@ -9229,9 +9646,10 @@ paths:
                           example: 3
                         topKeywordSearchVolume:
                           description: Monthly search volume for the top keyword, showing how many people search for this term each month on Google.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 74000
                         topKeywordClicks:
                           description: Estimated monthly organic clicks this page receives specifically from its top keyword, based on the keyword's search volume and the page's ranking position.
@@ -9241,7 +9659,6 @@ paths:
                       additionalProperties: false
                       description: Represents a top-performing page from a domain's organic search portfolio, including traffic estimates, keyword performance, and the page's most valuable search term.
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request
@@ -9401,19 +9818,23 @@ paths:
                     example: 100
                   results:
                     description: Array of top-performing pages with organic traffic estimates, keyword rankings, and competitive performance data.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         title:
                           description: The HTML title tag of the page as it appears in search results. This helps identify the page's content focus and SEO optimization strategy.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: Best Running Shoes 2024 - Complete Buyer's Guide
                         url:
                           description: The complete URL of the page that ranks for multiple organic keywords. This shows the specific page driving organic traffic for the domain.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: https://example.com/best-running-shoes-2024
                         keywordCount:
                           description: Total number of unique keywords this page ranks for in the top 100 organic search results. Higher counts indicate broader topical coverage.
@@ -9427,8 +9848,9 @@ paths:
                           example: 15420
                         topKeyword:
                           description: The highest-value keyword this page ranks for, typically the term driving the most organic traffic to this specific page.
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: best running shoes
                         topKeywordPosition:
                           description: 'The organic search position (rank) for the top keyword, where 1 represents the #1 organic result on Google.'
@@ -9437,9 +9859,10 @@ paths:
                           example: 3
                         topKeywordSearchVolume:
                           description: Monthly search volume for the top keyword, showing how many people search for this term each month on Google.
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           format: int64
-                          nullable: true
                           example: 74000
                         topKeywordClicks:
                           description: Estimated monthly organic clicks this page receives specifically from its top keyword, based on the keyword's search volume and the page's ranking position.
@@ -9449,7 +9872,6 @@ paths:
                       additionalProperties: false
                       description: Represents a top-performing page from a domain's organic search portfolio, including traffic estimates, keyword performance, and the page's most valuable search term.
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request

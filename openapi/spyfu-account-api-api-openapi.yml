@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Account Account API API
+  title: Account API
   version: v2
 servers:
 - url: https://api.spyfu.com/apis/accounts_api
@@ -39,8 +39,9 @@ paths:
                       type: string
                       format: date-time
                     serviceLevelName:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
                     requestCount:
                       type: integer
                       format: int32
@@ -95,8 +96,9 @@ paths:
                       type: string
                       format: date-time
                     serviceLevelName:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
                     requestCount:
                       type: integer
                       format: int32
@@ -163,8 +165,9 @@ paths:
                       type: integer
                       format: int32
                     apiMethod:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
                   additionalProperties: false
         '400':
           description: Bad Request

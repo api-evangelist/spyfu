@@ -1,9 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Account Account API Domain Stats API API
+  title: Domain Stats API
   version: v2
+  description: Access comprehensive domain performance metrics and historical analytics to track search visibility trends, competitive positioning, and market share evolution over time.
 servers:
-- url: https://api.spyfu.com/apis/accounts_api
+- url: https://api.spyfu.com/apis/domain_stats_api
 security:
 - Basic_Authentication_Token: []
 - Query_Parameter_Token: []
@@ -18,7 +19,7 @@ paths:
       description: 'Returns comprehensive domain statistics for all available historical periods. This endpoint provides time-series data showing SEO and PPC performance trends to analyze domain growth, competitive positioning, and marketing effectiveness over time.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/domain-overview?query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: domain
         in: query
@@ -76,12 +77,15 @@ paths:
                 properties:
                   domain:
                     description: Domain name for which the statistics were collected and analyzed.
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     example: example.com
                   results:
                     description: Array of domain performance statistics organized by time period, including SEO metrics, PPC data, traffic estimates, and competitive strength indicators.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
@@ -151,7 +155,6 @@ paths:
                           example: true
                       additionalProperties: false
                       description: Represents comprehensive domain performance statistics for a specific month, including SEO and PPC metrics, traffic estimates, and competitive strength indicators.
-                    nullable: true
                   resultCount:
                     description: Number of results returned
                     type: integer
@@ -174,7 +177,7 @@ paths:
       description: 'Returns the most recent domain statistics available in SpyFu''s database. This endpoint provides current SEO and PPC performance metrics to analyze the domain''s latest competitive position and marketing activity.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/domain-overview?query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: domain
         in: query
@@ -240,12 +243,15 @@ paths:
                 properties:
                   domain:
                     description: Domain name for which the statistics were collected and analyzed.
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     example: example.com
                   results:
                     description: Array of domain performance statistics organized by time period, including SEO metrics, PPC data, traffic estimates, and competitive strength indicators.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
@@ -315,7 +321,6 @@ paths:
                           example: true
                       additionalProperties: false
                       description: Represents comprehensive domain performance statistics for a specific month, including SEO and PPC metrics, traffic estimates, and competitive strength indicators.
-                    nullable: true
                   resultCount:
                     description: Number of results returned
                     type: integer
@@ -338,7 +343,7 @@ paths:
       description: 'Returns domain statistics for a specific month and year. This endpoint provides point-in-time snapshots of SEO and PPC performance metrics to analyze historical domain activity and compare performance across different time periods.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/domain-overview?query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: domain
         in: query
@@ -418,12 +423,15 @@ paths:
                 properties:
                   domain:
                     description: Domain name for which the statistics were collected and analyzed.
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     example: example.com
                   results:
                     description: Array of domain performance statistics organized by time period, including SEO metrics, PPC data, traffic estimates, and competitive strength indicators.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
@@ -493,7 +501,6 @@ paths:
                           example: true
                       additionalProperties: false
                       description: Represents comprehensive domain performance statistics for a specific month, including SEO and PPC metrics, traffic estimates, and competitive strength indicators.
-                    nullable: true
                   resultCount:
                     description: Number of results returned
                     type: integer
@@ -516,7 +523,7 @@ paths:
       description: 'Returns a chronological list of dates for which SpyFu has collected domain statistics data. This endpoint helps identify data coverage periods and historical tracking availability for domain analysis and competitive research.
 
 
-        [Visualize this API live on SpyFu](https://www.spyfu.com/domain-overview?query=example.com)'
+        Visualize this API live on SpyFu'
       parameters:
       - name: domain
         in: query
@@ -580,13 +587,16 @@ paths:
                     example: 100
                   results:
                     description: Array of available search dates for which domain performance statistics have been collected and can be queried.
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         dateString:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                         month:
                           type: integer
                           format: int32
@@ -597,7 +607,6 @@ paths:
                           readOnly: true
                       additionalProperties: false
                     readOnly: true
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request - Invalid parameters provided (e.g., invalid domain format or invalid country code)
@@ -682,23 +691,31 @@ paths:
                     readOnly: true
                     example: 1
                   totalMatchingResults:
-                    description: "The total number of results available that matches the query including\r\nitems that might not be included in the returned results/page."
-                    type: integer
+                    description: 'The total number of results available that matches the query including
+
+                      items that might not be included in the returned results/page.'
+                    type:
+                    - integer
+                    - 'null'
                     format: int64
                     readOnly: true
-                    nullable: true
                   results:
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         domain:
                           description: Searched domain
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: domain.com
                         results:
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: object
                             properties:
@@ -768,9 +785,7 @@ paths:
                                 example: true
                             additionalProperties: false
                             description: Represents comprehensive domain performance statistics for a specific month, including SEO and PPC metrics, traffic estimates, and competitive strength indicators.
-                          nullable: true
                       additionalProperties: false
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request
@@ -1024,23 +1039,31 @@ paths:
                     readOnly: true
                     example: 1
                   totalMatchingResults:
-                    description: "The total number of results available that matches the query including\r\nitems that might not be included in the returned results/page."
-                    type: integer
+                    description: 'The total number of results available that matches the query including
+
+                      items that might not be included in the returned results/page.'
+                    type:
+                    - integer
+                    - 'null'
                     format: int64
                     readOnly: true
-                    nullable: true
                   results:
-                    type: array
+                    type:
+                    - array
+                    - 'null'
                     items:
                       type: object
                       properties:
                         domain:
                           description: Searched domain
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           example: domain.com
                         results:
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: object
                             properties:
@@ -1110,9 +1133,7 @@ paths:
                                 example: true
                             additionalProperties: false
                             description: Represents comprehensive domain performance statistics for a specific month, including SEO and PPC metrics, traffic estimates, and competitive strength indicators.
-                          nullable: true
                       additionalProperties: false
-                    nullable: true
                 additionalProperties: false
         '400':
           description: Bad Request
