@@ -1,0 +1,57 @@
+slug: spyfu
+provider: SpyFu
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: SEO Research API
+  spec_file: spyfu-seo-research-api-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: '"Access the world''s most comprehensive organic search intelligence database to identify
+    keyword opportunities, track ranking changes, and analyze competitor SEO strategies"; GET /v2/seo/getSeoKeywords
+    "Get SEO Keywords"'
+  reason: Operations return organic keyword rankings, gained/lost ranks and clicks for domains — this
+    is search-engine-optimisation analysis, squarely Digital Marketing Management (web/SEO). A case could
+    be made for Market Intelligence given the competitor framing, hence 0.8 rather than higher.
+- tag: Competitors API
+  spec_file: spyfu-competitors-api-api-openapi.yml
+  capability_id: BC-400.30
+  capability_id_l1: BC-400
+  capability_name: Market Intelligence Management
+  confidence: 0.78
+  evidence: '"Discover and analyze your most significant competitors across both paid and organic search
+    channels"; ''Get Top PPC Competitors'''
+  reason: Explicitly competitor discovery and analysis — competitive intelligence within Market Intelligence
+    Management.
+- tag: Kombat API
+  spec_file: spyfu-kombat-api-api-openapi.yml
+  capability_id: BC-400.30
+  capability_id_l1: BC-400
+  capability_name: Market Intelligence Management
+  confidence: 0.75
+  evidence: '"Conduct head-to-head keyword competition analysis between domains to uncover competitive
+    advantages, shared opportunities, and strategic gaps"'
+  reason: Explicit head-to-head competitor comparison across organic and paid search — competitive intelligence.
+- tag: Ad History Research API
+  spec_file: spyfu-ad-history-research-api-api-openapi.yml
+  capability_id: BC-400.30
+  capability_id_l1: BC-400
+  capability_name: Market Intelligence Management
+  confidence: 0.72
+  evidence: '"Access the world''s most comprehensive advertising intelligence database with 18 years of
+    historical ad data ... across millions of advertisers"; ''Get Domain Ad History'''
+  reason: Retrieval of competitors' historical advertising activity is competitive/market intelligence
+    feeding marketing decisions. Some overlap with Digital Marketing Management (paid media), but the
+    operations are research/intelligence rather than campaign execution.

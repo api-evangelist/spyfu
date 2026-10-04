@@ -231,6 +231,9 @@ apis:
   - type: Overlay
     url: overlays/spyfu-seo-research-api-api-overlay.yaml
 common:
+- type: CapabilityMap
+  url: capabilities/spyfu-capability-edges.yml
+  name: SpyFu Business Capability Map
 - type: AgenticAccess
   url: agentic-access/spyfu-agentic-access.yml
 - type: DomainSecurity
