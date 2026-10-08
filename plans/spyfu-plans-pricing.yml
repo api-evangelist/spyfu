@@ -78,3 +78,28 @@ notes: >-
   Billing cycles run from the first to the last day of each calendar month
   (UTC). Overage above included credits is charged to the account payment
   method.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - subscription
+  units: []
+  plans:
+  - name: Basic
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Pro + AI
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Team / Agency
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
